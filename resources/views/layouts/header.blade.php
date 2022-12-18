@@ -21,7 +21,7 @@
                     </div>
                     <div class="header__sideBar-cate">
                         <div class="header__sideBar-cate-menu">
-                            <div><a href="">Home</a></div>
+                            <div><a href="{{ url('client/home') }}">Home</a></div>
                             <div class="" id="dropdown1">
                                 <div class="dropdown1__name">Categories</div>
                                 <ion-icon name="caret-forward-outline"></ion-icon>
