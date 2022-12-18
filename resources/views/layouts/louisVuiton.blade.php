@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="container__list">
-            <div class="container__list-tittle">Louis Vuiton</div>
+            <div class="container__list-tittle">Louis Vuitton</div>
             <div class="container__list-products">
                 @foreach ($louisVuiton as $item)
                 <div class="container__list-products-item">
