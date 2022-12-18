@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="footer__copyrights">
-            <p>Copyright © NextTag - All Rights Reserved</p>
+            <p style="color: white">Copyright © NextTag - All Rights Reserved</p>
         </div>
     </div>
 </body>

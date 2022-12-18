@@ -61,10 +61,10 @@
                     @foreach($middle_slides_img as $middle)
                     <div class="container__newArrivals-collection-list"
                         style="background-image: url({{ $middle->IMG }});">
-                        <div class="content">
+                        {{-- <div class="content">
                             <div class="tittle">Winter is coming</div>
                             <button>See more >></button>
-                        </div>
+                        </div> --}}
                     </div>
                     @endforeach
                     <div class="container__newArrivals-collection-button">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         @foreach($channel as $item)
         <div class="container__listCol">
             <div class="container__listCol-items">

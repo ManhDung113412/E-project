@@ -6,6 +6,7 @@
 
 form {
     width: 100%;
+    position: relative;
     height: 100%;
     color: black;
     background-color: whitesmoke;
@@ -25,10 +26,12 @@ form {
     justify-content: center;
     border-radius: 10px;
     overflow: hidden;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     margin-bottom: 20%;
+    margin-left: 20%;
+    margin-top: 8%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    transform: translate(-80%, 20%);
+    /* transform: translate(-80%, 20%); */
 }
 
 
@@ -150,6 +153,7 @@ input:valid~label {
     position: absolute;
     display: flex;
     justify-content: center;
+
 }
 
 .container__signIn-change button {
@@ -157,34 +161,46 @@ input:valid~label {
     height: 35px;
     box-shadow: 3px 3px transparent;
     border: 1px solid transparent;
-    background-color: #000000;
-    color: white;
+    background-color: transparent;
+    color: rgb(78, 78, 255);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .container__signIn-change button:hover {
     background-color: rgb(255, 255, 255);
     border: 1px solid transparent;
     color: black;
+    text-decoration:none ;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
     transition: 0.4s ease-in-out;
 
 }
 
+.container__signIn-forget{
+    width: 93%;
+    margin: 0 auto;
+    margin-top: 10px;
+}.container__signIn-forget a{
+    color: rgb(78, 78, 255);
+}.container__signIn-forget a:hover{
+    text-decoration: underline rgb(78, 78, 255);
+}
+
 .container__signIn{
     position: absolute;
     height: 100%;
-    animation: nonActive 0.65s ease-in-out 1 forwards;
+    animation: nonActive 0.85s ease-in-out 1 forwards;
 }
 
 .container__signIn.active{
-    animation: activeForm 0.65s ease-in-out 1 forwards;
+    animation: activeForm 0.85s ease-in-out 1 forwards;
 }
 
 @keyframes activeForm {
     from{
         opacity: 0;
-        transform: translate(-100%,0);
+        transform: translate(-150%,0);
     }to{
         opacity: 1;
         transform: translate(0,0);
@@ -196,7 +212,7 @@ input:valid~label {
         transform: translate(0,0);
     }to{
         opacity: 0;
-        transform: translate(100%,0);
+        transform: translate(150%,0);
     }
 }
 
