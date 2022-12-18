@@ -34,6 +34,7 @@
                         <th>Material</th>
                         <th>Color</th>
                         <th>Size</th>
+                        <th>Quantity</th>
                         <th>Trending</th>
                         <th>Arrivals</th>
                         <th>Feature</th>
@@ -56,6 +57,7 @@
                         <td>{{$product->material}}</td>
                         <td>{{$product->color}}</td>
                         <td>{{$product->size}}</td>
+                        <td>{{$product->quantity}}</td>
                         <td>{{$product->is_trending ? 'V' : ''}}</td>
                         <td>{{$product->is_new_arrivals ? 'V' : ''}}</td>
                         <td>{{$product->is_feature ? 'V' : ''}}</td>

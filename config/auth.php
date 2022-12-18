@@ -75,10 +75,10 @@ return [
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\admin\adminModel::class,
+            'model' => App\Models\Admin::class,
         ],
 
-        
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -100,7 +100,22 @@ return [
     |
     */
 
-    'Admin_password_hash' => [
+    // 'Admin_password_hash' => [
+    //     'admins' => [
+    //         'provider' => 'admins',
+    //         'table' => 'password_resets',
+    //         'expire' => 60,
+    //         'throttle' => 60,
+    //     ],
+    // ],
+
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',

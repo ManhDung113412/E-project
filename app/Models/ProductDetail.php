@@ -27,6 +27,7 @@ class ProductDetail extends Model
         'is_new_arrivals', 
         'is_feature', 
         'product_id', 
+        'quantity',
         'slug', 
     ];
 
