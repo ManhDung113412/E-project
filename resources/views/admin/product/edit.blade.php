@@ -27,7 +27,7 @@
                         <label>Brand</label>
                         <select class="form-control" id="brand" name="brand_id">
                             @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }} @if ($product->category->brand_id == $brand->id) selected @endif">
+                                <option value="{{ $brand->id }} @if ($product->brand_id == $brand->id) selected @endif">
                                     {{ $brand->name }}
                                 </option>
                             @endforeach
@@ -43,7 +43,7 @@
                         <div id="categories">
                             <select class="form-control">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }} @if ($category->brand_id == $category->id) selected @endif">
+                                    <option value="{{ $category->id }} @if ($product->category_id == $category->id) selected @endif">
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
@@ -82,7 +82,7 @@
                             </div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-default">Edit</button>
+                    <button type="submit" class="btn btn-default">Product Edit</button>
                     <form>
             </div>
         </div>

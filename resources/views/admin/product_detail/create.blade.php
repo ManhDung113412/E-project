@@ -15,51 +15,12 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{{ route('admin.product-detail.store') }}" method="POST">
+                <form action="{{ route('admin.product-detail.store', $product->id) }}" method="POST">
                     @csrf
-                    {{-- Brand --}}
-                    <div class="form-group">
-                        <label>Brand</label>
-                        <select class="form-control" id="brand" name="brand_id">
-                            @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}">
-                                    {{ $brand->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('brand_id')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    {{-- Category --}}
-                    <div class="form-group" >
-                        <label">Category</label>
-                        <div>
-                            <select class="form-control" id="category" name="category_id">
-                            </select>
-                        </div>
-                        @error('category_id')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
                     {{-- Product --}}
                     <div class="form-group" >
                         <label>Product</label>
-                        <div>
-                            <select class="form-control" id="product" name="product_id">
-                            </select>
-                        </div>
-                        @error('product_id')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input class="form-control" name="product_id" value="{{$product->name}}" disabled/>
                     </div>
 
                     {{-- Import Price --}}

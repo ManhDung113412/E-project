@@ -94,9 +94,9 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.index');
         Route::post('search', [ProductController::class, 'search'])
             ->name('admin.product-detail.search');
-        Route::get('create', [ProductDetailController::class, 'create'])
+        Route::get('create/{id}', [ProductDetailController::class, 'create'])
             ->name('admin.product-detail.create');
-        Route::post('store', [ProductDetailController::class, 'store'])
+        Route::post('store/{id}', [ProductDetailController::class, 'store'])
             ->name('admin.product-detail.store');
         Route::get('edit/{id}', [ProductDetailController::class, 'edit'])
             ->name('admin.product-detail.edit');

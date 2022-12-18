@@ -17,13 +17,12 @@ class ProductDetailController extends Controller
         return view('admin.product_detail.list', compact('product_details'));
     }
 
-    public function create(){
-        $brands = Brand::all();
-        return view('admin.product_detail.create', compact('brands'));
+    public function create($id){
+        $product = Product::find($id);
+        return view('admin.product_detail.create', compact('product'));
     }
 
-    public function store(Request $request){
-        // dd($request);
+    public function store(Request $request, $id){
         $this->validate($request, [
         'import_price' => 'required|numeric', 
         'export_price' => 'required|numeric', 
@@ -36,19 +35,15 @@ class ProductDetailController extends Controller
         'color' => 'required', 
         'size' => 'required', 
         'code' => 'required', 
-        'brand_id' => 'required', 
-        'category_id' => 'required', 
-        'product_id' => 'required', 
         'quantity' => 'required|numeric', 
         ]);
 
-        $product = Product::find($request->product_id);
-        $slug = Str::slug($product->name . '-' . $request->code);
+        // $slug = Str::slug($product->name . '-' . $request->code);
         
-        $checkSlug = ProductDetail::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
+        // $checkSlug = ProductDetail::where('slug', $slug)->first();
+        // while ($checkSlug) {
+        //     $slug = $checkSlug->slug . Str::random(5);
+        // }
 
         ProductDetail::create([
         'import_price'=> $request->import_price, 
@@ -65,9 +60,9 @@ class ProductDetailController extends Controller
         'is_trending'=> $request->is_trending ? $request->is_trending : 0, 
         'is_new_arrivals'=> $request->is_arrivals ? $request->is_arrivals : 0, 
         'is_feature'=> $request->is_feature ? $request->is_feature : 0, 
-        'product_id'=> $request->product_id, 
+        'product_id'=> $id, 
         'quantity'=> $request->quantity, 
-        'slug'=> $slug, 
+        'slug'=> 'slug', 
         ]);
 
         return redirect()->route('admin.product-detail.index')->with('success', 'Created Successfully');
@@ -94,9 +89,6 @@ class ProductDetailController extends Controller
             'color' => 'required', 
             'size' => 'required', 
             'code' => 'required', 
-            'brand_id' => 'required', 
-            'category_id' => 'required', 
-            'product_id' => 'required', 
             'quantity' => 'required|numeric', 
             ]);
     

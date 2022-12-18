@@ -55,9 +55,9 @@
             <li>
                 <a href="{{route('admin.product-detail.index')}}">List Product Detail</a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{route('admin.product-detail.create')}}">Add Product Detail</a>
-            </li>
+            </li> --}}
         </ul>
         <!-- /.nav-second-level -->
     </li>

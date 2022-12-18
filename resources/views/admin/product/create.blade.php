@@ -19,7 +19,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Brand</label>
-                        <select class="form-control" id="brand" name="brand_id">
+                        <select class="form-control" id="brand" name="brand">
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->id }}">
                                     {{ $brand->name }}
@@ -34,11 +34,13 @@
                     </div>
                     <div class="form-group" >
                         <label>Category</label>
-                        <div id="categories">
-                            <select class="form-control">
-                                <option>First Choose Brand</option>
-                            </select>
-                        </div>
+                        <select class="form-control" id="category" name="category">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('category_id')
                             <div class="alert alert-danger">
                                 {{ $message }}

@@ -16,15 +16,12 @@ class CategoryController extends Controller
     }
 
     public function create(){
-        $brands = Brand::all();
-        return view('admin.category.create', compact('brands'));
+        return view('admin.category.create');
     }
 
     public function store(Request $request){
         $this->validate($request, [
             'name' => 'required|unique:categories',
-            'logo' => 'required',
-            'brand_id' => 'required',
             'code' => 'required',
         ]);
 
@@ -36,8 +33,6 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $request->name,
-            'logo' => $request->logo,
-            'brand_id' => $request->brand_id,
             'code' => $request->code,
             'slug' => $slug,
         ]);
@@ -47,15 +42,12 @@ class CategoryController extends Controller
 
     public function edit($id){
         $category = Category::find($id);
-        $brands = Brand::all();
-        return view('admin.category.edit', compact('category', 'brands'));
+        return view('admin.category.edit', compact('category'));
     }
 
     public function update(Request $request, $id){
         $this->validate($request, [
-            'name' => 'required|unique:categories',
-            'logo' => 'required',
-            'brand_id' => 'required',
+            'name' => 'required',
             'code' => 'required',
         ]);
 
@@ -67,17 +59,15 @@ class CategoryController extends Controller
 
         Category::where('id', $id)->update([
             'name' => $request->name,
-            'logo' => $request->logo,
-            'brand_id' => $request->brand_id,
             'code' => $request->code,
             'slug' => $slug,
         ]);
 
-        return redirect()->route('admin.category.index')->with('success', 'Created Successfully');
+        return redirect()->route('admin.category.index')->with('success', 'Updated Successfully');
     }
 
     public function delete($id){
         Category::where('id', $id)->delete();
-        return redirect()->route('admin.category.index')->with('success', 'Delete Successfully');
+        return redirect()->route('admin.category.index')->with('success', 'Deleted Successfully');
     }
 }

@@ -23,26 +23,28 @@ List Product
                 <thead>
                     <tr align="center">
                         <th>STT</th>
+                        <th>Code</th>
                         <th>Brand</th>
                         <th>Category</th>
-                        <th>Code</th>
                         <th>Name</th>
                         <th>Image</th>
                         <th>Delete</th>
                         <th>Edit</th>
+                        <th>Add</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $index => $product)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index}}</td>
-                        <td>{{$product->category->brand->name}}</td>
-                        <td>{{$product->category->name}}</td>
                         <td>{{$product->code}}</td>
+                        <td>{{$product->brand->name}}</td>
+                        <td>{{$product->category->name}}</td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->img}}</td>
                         <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->id)}}"> Delete</a></td>
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->id)}}">Edit</a></td>
+                        <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->id)}}">Add</a></td>
                     </tr>
                     @endforeach
                 </tbody>

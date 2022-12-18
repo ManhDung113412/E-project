@@ -24,28 +24,9 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                        <label>Brand</label>
-                        <select class="form-control" name="brand_id">
-                            @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}" @if ($category->brand_id == $brand->id) selected @endif>
-                                    {{ $brand->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label>Category Name</label>
                         <input class="form-control" value="{{$category->name}}" name="name" placeholder="Please Enter Category Name" />
                         @error('name')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Category Logo</label>
-                        <input class="form-control" value="{{$category->logo}}" name="logo" placeholder="Please Enter Category Logo" />
-                        @error('logo')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -60,7 +41,7 @@
                             </div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-default">Create</button>
+                    <button type="submit" class="btn btn-default">Category Edit</button>
                     <form>
             </div>
         </div>

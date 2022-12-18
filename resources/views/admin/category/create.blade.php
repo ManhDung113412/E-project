@@ -18,26 +18,9 @@
                 <form action="{{ route('admin.category.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label>Brand</label>
-                        <select class="form-control" name="brand_id">
-                            @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label>Category Name</label>
                         <input class="form-control" name="name" placeholder="Please Enter Category Name" />
                         @error('name')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Category Logo</label>
-                        <input class="form-control" name="logo" placeholder="Please Enter Category Logo" />
-                        @error('logo')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
