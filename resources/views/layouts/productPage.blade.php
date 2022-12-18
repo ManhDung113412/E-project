@@ -1,94 +1,189 @@
 @extends('layouts.master')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/productPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/pageStyle/subsAndScroll.css') }}">
 @stop
 @section('content')
+<div class="main">
     <div class="container">
-        <div class="container__sidebar">
-            <div class="container__sidebar-Category">
-                <ul>
-                    <h3>CATEGORIES</h3>
-                    <hr>
-                    <li><input type="checkbox">
-                        Long Wallet
-                    </li>
-                    <li><input type="checkbox">
-                        Small Wallet
-                    </li>
-                    <li><input type="checkbox">
-                        Cards Holder
-                    </li>
-                    <li><input type="checkbox">
-                        Chain And Strap Wallets
-                    </li>
-                </ul>
-                <ul>
-                    <h3>Price</h3>
-                    <hr>
-                    <li><input type="checkbox">
-                        High To Low
-                    </li>
-                    <li><input type="checkbox">
-                        Low To High
-                    </li>
-                </ul>
-                <ul>
-                    <h3>For</h3>
-                    <hr>
-                    <li><input type="checkbox">
-                        Men
-                    </li>
-                    <li><input type="checkbox">
-                        Women
-                    </li>
-                </ul>
-                <ul>
-                    <h3>For</h3>
-                    <hr>
-                    <li><input type="checkbox">
-                        New Arrivals
-                    </li>
-                    <li><input type="checkbox">
-                        Trending
-                    </li>
-                    <li><input type="checkbox">
-                        Discounted Products
-                    </li>
-                </ul>
+        <div class="container__sideBar">
+            <div class="container__sideBar-box">
+                <div class="container__sideBar-box-tittle">Category</div>
+                <hr class="box1">
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Long Wallet</div>
+                </div>
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Small Wallet</div>
+                </div>
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Cards Holder</div>
+                </div>
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
+                </div>
+            </div>
+            <div class="container__sideBar-box">
+                <div class="container__sideBar-box-tittle">Price</div>
+                <hr class="box1">
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">High to low</div>
+                </div>
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Low to high</div>
+                </div>
+            </div>
+            <div class="container__sideBar-box">
+                <div class="container__sideBar-box-tittle">Collection</div>
+                <hr class="box1">
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">New Arrivals</div>
+                </div>
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Trending</div>
+                </div>
+                <div class="container__sideBar-box-cate">
+                    <input type="checkbox" name="" id="filter" value="filter">
+                    <div class="container__sideBar-box-cate-name">Discount</div>
+                </div>
             </div>
         </div>
-        <div class="container__mainside">
-            <div class="container__mainside-title">
-                <h1>New Arrival</h1>
-            </div>
-            <div class="container__mainside-products-row1">
-                <div class="product-card"><img
-                        src="{{ asset('assets/image/658610_17WAG_1283_001_080_0000_Light-GG-Marmont-card-case-wallet.jpg') }}"
-                        alt=""></div>
-                <div class="product-card"><img
-                        src="{{ asset('assets/image/louis-vuitton-sarah-wallet--N63551_PM1_Back view.png') }}"
-                        alt=""></div>
-                <div class="product-card"><img
-                        src="{{ asset('assets/image/louis-vuitton-sarah-wallet--N63551_PM1_Interior view.png') }}"
-                        alt=""></div>
-            </div>
-            <div class="container__mainside-products-row2">
-                <div class="product-card"><img
-                        src="{{ asset('assets/image/louis-vuitton-sarah-wallet--N63551_PM1_Side view.png') }}"
-                        alt=""></div>
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-            </div>
-            <div class="container__mainside-products-row3">
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-            </div>
-            <div class="container__mainside-products-row4">
-                <div class="product-card"></div>
-                <div class="product-card"></div>
-                <div class="product-card"></div>
+        <div class="container__list">
+            <div class="container__list-tittle">Product List</div>
+            <div class="container__list-products">
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                <div class="container__list-products-item">
+                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></div>
+                    <div class="container__list-products-item-info">
+                        <p>Product Name</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<hr class="main1">
+</div>
+<div class="container__featured">
+    <div class="container__featured-tittle">You May Also Like</div>
+    <div class="container__featured-products">
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
+            </div>
+        </div>
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
+            </div>
+        </div>
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
+            </div>
+        </div>
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="subscribeUs">
+    <div class="subscribeUs__text">
+        <div class="subscribeUs__text-firstText">Subscribe To Our Newsletter</div>
+        <div class="subscribeUs__text-secondText">Keep your finger on the pulse of fashion with weekly
+            round-ups
+            of
+            our
+            latest arrivals, upcoming launches, special promotions and trend-focused editorials.
+        </div>
+        <div class="subscribeUs__text-input">
+            <input type="text" placeholder="Email address" autocomplete="off">
+            <button>Subscribe</button>
+        </div>
+    </div>
+</div>
+<div class="scrollBackToTop">
+    <button id="scrollUp"><ion-icon name="chevron-up-outline"></ion-icon></button>
+</div>
+<script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 @stop

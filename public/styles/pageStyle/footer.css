@@ -1,10 +1,11 @@
 .footer {
-    margin-top: 100px;
+    color: white;
     width: 100%;
     height: 340px;
     background-color: #292929;
     display: flex;
     flex-direction: column;
+
 }
 
 .footer__main {
@@ -52,15 +53,22 @@
     list-style-type: none;
     margin-bottom: 10px;
     font-size: 18px;
+    display: flex;
+    justify-content: center;
+
+}.footer__main-service ul p{
+    height: 65px;
 }
 
 .footer__main-service ul li a {
     color: white;
+    align-self: start;
 }
 
 .footer__main-service ul li a:hover {
     color: rgb(255, 230, 230);
 }
+
 
 .footer__main-socialMedia {
     width: 35%;
@@ -68,14 +76,24 @@
     display: flex;
     flex-direction: column;
 }
-
+.footer__main-service ul p{
+    color: white;
+}.footer__main-service ul p:hover{
+    color: rgb(255, 230, 230);
+}
+.footer__main-socialMedia p{
+    color: white;
+}.footer__main-socialMedia p:hover{
+    color: rgb(255, 230, 230);
+}
 .footer__main-socialMedia p {
     text-align: center;
+    margin-top: 20px;
 }
 
 .footer__main-socialMedia ul:nth-child(1) {
     font-size: 30px;
-    margin-top: 20px;
+    margin-top: 30px;
     color: rgb(255, 255, 255);
     font-weight: bold;
     margin-bottom: 30px;
@@ -107,8 +125,13 @@
 
 .footer__main-socialMedia ul li a {
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.footer__main-socialMedia ul li a img{
+    align-self: center;
+}
 .footer__main-socialMedia ul li a:hover {
     color: rgb(255, 230, 230);
 }
