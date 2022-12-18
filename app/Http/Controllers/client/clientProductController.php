@@ -36,4 +36,24 @@ class clientProductController extends Controller
     {
         return view('layouts.trending');
     }
+    public function getDiscount()
+    {
+        return view('layouts.discountProduct');
+    }
+    public function getGucci()
+    {
+        return view('layouts.gucci');
+    }
+    public function getLouisVuiton()
+    {
+        return view('layouts.louisVuiton');
+    }
+    public function getChannel()
+    {
+        return view('layouts.Channel');
+    }
+    public function getDior()
+    {
+        return view('layouts.dior');
+    }
 }

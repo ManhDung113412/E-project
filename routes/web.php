@@ -138,16 +138,21 @@ Route::prefix('client')->group(function () {
     Route::get('productPage', [clientController::class, 'getProductPages']);
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
-
 });
 
 
-Route::prefix('client/Products')->group(function () {
-    Route::get('Long-Wallet', [clientProductController::class, 'getLongWallet']);
-    Route::get('Small-Wallet', [clientProductController::class, 'getSmallWallet']);
-    Route::get('Cards-Holder', [clientProductController::class, 'getCardsHolder']);
-    Route::get('Chain-And-Strap', [clientProductController::class, 'getchainandStrap']);
-    Route::get('New-Arrival', [clientProductController::class, 'getNewArrival']);
-    Route::get('Trending', [clientProductController::class, 'getTrending']);
-    
+Route::prefix('client/products')->group(function () {
+    Route::get('long-wallet', [clientProductController::class, 'getLongWallet']);
+    Route::get('small-wallet', [clientProductController::class, 'getSmallWallet']);
+    Route::get('cards-holder', [clientProductController::class, 'getCardsHolder']);
+    Route::get('chain-and-strap', [clientProductController::class, 'getchainandStrap']);
+    Route::get('new-arrival', [clientProductController::class, 'getNewArrival']);
+    Route::get('discount', [clientProductController::class, 'getDiscount']);
+    Route::get('trending', [clientProductController::class, 'getTrending']);
+    Route::get('gucci', [clientProductController::class, 'getGucci']);
+    Route::get('louis-vuiton', [clientProductController::class, 'getLouisVuiton']);
+    Route::get('channel', [clientProductController::class, 'getChannel']);
+    Route::get('dior', [clientProductController::class, 'getDior']);
+
 });
+
