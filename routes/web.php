@@ -19,7 +19,7 @@ use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
         ->name('admin.auth.register');
 
@@ -31,8 +31,6 @@ Route::prefix('admin')->group(function(){
 
     Route::post('login', [AuthController::class, 'checkLogin'])
         ->name('admin.auth.check-login');
-
-    
 });
 
 Route::prefix('admin')->middleware('admin.login')->group(function () {

@@ -18,7 +18,7 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $longWallet = DB::table('categories')->join('products', 'Products.Category_ID', '=', 'categories.ID')->where('Products.Category_ID', 3)->paginate(13);
-        return view('layouts.longWallet', ['longWallet' => $longWallet,'randomProduct' => $ran_pro]);
+        return view('layouts.longWallet', ['longWallet' => $longWallet, 'randomProduct' => $ran_pro]);
     }
     public function getSmallWallet()
     {
@@ -27,7 +27,7 @@ class clientProductController extends Controller
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $smallWallet = DB::table('categories')->join('products', 'Products.Category_ID', '=', 'categories.ID')->where('Products.Category_ID', 4)->paginate(13);
         // dd($smallWallet);
-        return view('layouts.smallWallet', ['smallWallet' => $smallWallet,'randomProduct' => $ran_pro]);
+        return view('layouts.smallWallet', ['smallWallet' => $smallWallet, 'randomProduct' => $ran_pro]);
     }
     public function getCardsHolder()
     {
@@ -36,7 +36,7 @@ class clientProductController extends Controller
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $cardHolder = DB::table('categories')->join('products', 'Products.Category_ID', '=', 'categories.ID')->where('Products.Category_ID', 1)->paginate(13);
         //   dd($cardHolder);
-        return view('layouts.cardsHolder', ['cardsHolder' => $cardHolder,'randomProduct'=>$ran_pro]);
+        return view('layouts.cardsHolder', ['cardsHolder' => $cardHolder, 'randomProduct' => $ran_pro]);
     }
     public function getchainandStrap()
     {
@@ -44,7 +44,7 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $chainAndStrap = DB::table('categories')->join('products', 'Products.Category_ID', '=', 'categories.ID')->where('Products.Category_ID', 2)->paginate(13);
-        return view('layouts.chainsandStrap', ['chainAndStrap' => $chainAndStrap,'randomProduct' => $ran_pro]);
+        return view('layouts.chainsandStrap', ['chainAndStrap' => $chainAndStrap, 'randomProduct' => $ran_pro]);
     }
 
     public function getGucci()
@@ -53,7 +53,7 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $gucci = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->where('Products.Brand_ID', 4)->paginate(13);
-        return view('layouts.gucci', ['gucci' => $gucci,'randomProduct' => $ran_pro]);
+        return view('layouts.gucci', ['gucci' => $gucci, 'randomProduct' => $ran_pro]);
     }
     public function getLouisVuiton()
     {
@@ -61,7 +61,7 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $louisVuiton = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->where('Products.Brand_ID', 3)->paginate(13);
-        return view('layouts.louisVuiton', ['louisVuiton' => $louisVuiton,'randomProduct' => $ran_pro]);
+        return view('layouts.louisVuiton', ['louisVuiton' => $louisVuiton, 'randomProduct' => $ran_pro]);
     }
     public function getChannel()
     {
@@ -69,7 +69,7 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $channel = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->where('Products.Brand_ID', 1)->paginate(13);
-        return view('layouts.Channel', ['Channel' => $channel,'randomProduct'=> $ran_pro]);
+        return view('layouts.Channel', ['Channel' => $channel, 'randomProduct' => $ran_pro]);
     }
     public function getDior()
     {
@@ -77,11 +77,12 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $dior = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->where('Products.Brand_ID', 2)->paginate(13);
-        return view('layouts.dior', ['dior' => $dior,'randomProduct' => $ran_pro]);
+        return view('layouts.dior', ['dior' => $dior, 'randomProduct' => $ran_pro]);
     }
 
     public function getNewArrival()
     {
+        // $products = DB::table('product_details')->join('products', 'Products.Brand_ID
         return view('layouts.newArrival');
     }
     public function getTrending()

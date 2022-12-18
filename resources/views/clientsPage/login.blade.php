@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign</title>
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/login.css') }}">
+
 </head>
 
 <body>
@@ -16,11 +17,11 @@
                 <div class="container__signIn-tittle">Sign In</div>
                 <div class="container__signIn-input">
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input required="" type="text" name="user_name" autocomplete="off" class="input">
                         <label class="user-label">Username</label>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input required="" type="text" name="password" autocomplete="off" class="input">
                         <label class="user-label">Password</label>
                     </div>
                 </div>
@@ -31,41 +32,43 @@
                     <button id="toRegister">Register</button>
                 </div>
             </div>
-            <div id="registerForm" class="container__signIn ">
-                <div class="container__signIn-tittle">Register</div>
-                <div class="container__signIn-input">
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Firstname</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Lastname</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="date" name="text" autocomplete="off" class="inputDate">
-                        <label class="user-labelDate">DOB</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Email</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Username</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Password</label>
-                    </div>
+    </form>
+    <form action="" method="get">
+        <div id="registerForm" class="container__signIn ">
+            <div class="container__signIn-tittle">Register</div>
+            <div class="container__signIn-input">
+                <div class="input-group">
+                    <input required="" type="text" name="first_name" autocomplete="off" class="input">
+                    <label class="user-label">Firstname</label>
                 </div>
-                <div class="container__signIn-button">
-                    <button>Sign up</button>
+                <div class="input-group">
+                    <input required="" type="text" name="last_name" autocomplete="off" class="input">
+                    <label class="user-label">Lastname</label>
                 </div>
-                <div class="container__signIn-change">
-                    <button id="toSignIn">Sign in</button>
+                <div class="input-group">
+                    <input required="" type="date" name="DOB" autocomplete="off" class="inputDate">
+                    <label class="user-labelDate">DOB</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="text" name="mail" autocomplete="off" class="input">
+                    <label class="user-label">Email</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="text" name="userNam" autocomplete="off" class="input">
+                    <label class="user-label">Username</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="text" name="pass_word" autocomplete="off" class="input">
+                    <label class="user-label">Password</label>
                 </div>
             </div>
+            <div class="container__signIn-button">
+                <button>Sign up</button>
+            </div>
+            <div class="container__signIn-change">
+                <button id="toSignIn">Sign in</button>
+            </div>
+        </div>
         </div>
         <div id="abc" class="slideShow">
             <div id="formImage" class="slideShow-image show"
