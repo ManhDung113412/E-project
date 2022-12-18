@@ -60,7 +60,7 @@
                         <div><a href="{{ url('client/products/dior') }}">Dior</a></div>
                         <div><a href="{{ url('client/products/gucci') }}">Gucci</a></div>
                         <div><a href="{{ url('client/products/channel') }}">Channel</a></div>
-                        <div><a href="{{ url('client/products/louis-vuiton') }}">Louis Vuiton</a></div>
+                        <div><a href="{{ url('client/products/louis-vuiton') }}">Louis Vuitton</a></div>
                     </div>
                 </div>
             </div>

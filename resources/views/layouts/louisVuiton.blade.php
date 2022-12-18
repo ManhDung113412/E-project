@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="container__list">
-            <div class="container__list-tittle">Louis Vuiton</div>
+            <div class="container__list-tittle">Louis Vuitton</div>
             <div class="container__list-products">
                 @foreach ($louisVuiton as $item)
                 <div class="container__list-products-item">
@@ -65,7 +65,7 @@
                         class="container__list-products-item-img"></div>
                     <div class="container__list-products-item-info">
                         <p>{{ $item->Name }}</p>
-                        <p>$1000</p>
+                        <p>${{ $item->Export_Price }}</p>
                     </div>
                 </div>
                 @endforeach
@@ -85,7 +85,7 @@
                     class="container__featured-products-items-img"></div>
                 <div class="container__featured-products-items-info">
                     <p>{{ $item->Name }}</p>
-                    <p>$1000</p>
+                    <p>${{ $item->Export_Price }}</p>
                 </div>
             </div>
             @endforeach
