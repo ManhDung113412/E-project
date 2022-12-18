@@ -127,8 +127,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
 Route::prefix('client')->group(function () {
     Route::get('home', [homepageController::class, 'getHomePage']);
-    Route::get('aboutUs', [aboutusController::class, 'getAboutUs'])
-        ->name('client.about-us');
+    Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
     Route::get('login', [clientLoginController::class, 'getLogin']);
     Route::post('login', [clientLoginController::class, 'postLogin']);

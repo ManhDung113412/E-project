@@ -9,6 +9,6 @@ class aboutusController extends Controller
 {
     public function getAboutUs()
     {
-        return redirect()->route('client.about-us');
+        return view('clientsPage.aboutUs');
     }
 }

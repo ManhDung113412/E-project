@@ -78,38 +78,17 @@
 <div class="container__featured">
     <div class="container__featured-tittle">You May Also Like</div>
     <div class="container__featured-products">
-        <div class="container__featured-products-items">
-            <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                class="container__featured-products-items-img"></div>
-            <div class="container__featured-products-items-info">
-                <p>Product Name</p>
-                <p>$1000</p>
+        <div class="container__featured-products">
+            @foreach($randomProduct as $item)
+            <div class="container__featured-products-items">
+                <div style="background-image: url({{ $item->IMG }})"
+                    class="container__featured-products-items-img"></div>
+                <div class="container__featured-products-items-info">
+                    <p>{{ $item->Name }}</p>
+                    <p>$1000</p>
+                </div>
             </div>
-        </div>
-        <div class="container__featured-products-items">
-            <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                class="container__featured-products-items-img"></div>
-            <div class="container__featured-products-items-info">
-                <p>Product Name</p>
-                <p>$1000</p>
-            </div>
-        </div>
-        <div class="container__featured-products-items">
-            <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                class="container__featured-products-items-img"></div>
-            <div class="container__featured-products-items-info">
-                <p>Product Name</p>
-                <p>$1000</p>
-            </div>
-        </div>
-        <div class="container__featured-products-items">
-            <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                class="container__featured-products-items-img"></div>
-            <div class="container__featured-products-items-info">
-                <p>Product Name</p>
-                <p>$1000</p>
-            </div>
-        </div>
+            @endforeach
     </div>
 </div>
 </div>

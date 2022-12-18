@@ -36,7 +36,7 @@
                             </div>
                             <div><a href="">My Shopping Cart</a></div>
                             <div><a href="">My Wish List</a></div>
-                            <div><a href="">About Us</a></div>
+                            <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     </button>
                 </div>
                 <div class="header__nav-logo">
-                    <a style="color: black" href="">
+                    <a style="color: black" href="{{ url('client/home') }}">
                         P U R S E L L E T
                     </a>
                 </div>

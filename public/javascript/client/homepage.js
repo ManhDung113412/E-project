@@ -33,4 +33,3 @@ document.getElementById('prevNew').onclick = function (e) {
 }
 
 
-

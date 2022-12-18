@@ -124,7 +124,7 @@
                     <div class="container__listCol-items-img-child"
                         style="background-image: url({{ $item->After_Hover_IMG }});"></div>
                     <div class="container__listCol-items-tittle">
-                        <button>View More</button>
+                        <button onclick="location.href='{{ url('client/products/channel') }}'">View More</button>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                     <div class="container__listCol-items-img-child"
                         style="background-image: url({{ $item->After_Hover_IMG }});"></div>
                     <div class="container__listCol-items-tittle">
-                        <button>View More</button>
+                        <button onclick="location.href='{{ url('client/products/dior') }}'">View More</button>
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                     <div class="container__listCol-items-img-child" style="background-image: url({{ $item->After_Hover_IMG }});">
                     </div>
                     <div class="container__listCol-items-tittle">
-                        <button>View More</button>
+                        <button onclick="location.href='{{ url('client/products/gucci') }}'">View More</button>
                     </div>
                 </div>
             </div>
@@ -163,7 +163,7 @@
                     <div class="container__listCol-items-img-child"
                         style="background-image: url({{ $item->After_Hover_IMG }});"></div>
                     <div class="container__listCol-items-tittle">
-                        <button>View More</button>
+                        <button onclick="location.href='{{ url('client/products/louis-vuiton') }}'">View More</button>
                     </div>
                 </div>
             </div>
