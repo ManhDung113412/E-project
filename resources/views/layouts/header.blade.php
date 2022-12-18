@@ -42,25 +42,25 @@
                 </div>
                 <div id="drop1" class="">
                     <div class="header__side-category">
-                        <div><a href="">Long Wallet</a></div>
-                        <div><a href="">Small Wallet</a></div>
-                        <div><a href="">Cards Holder</a></div>
-                        <div><a href="">Chain and Strap Wallet</a></div>
+                        <div><a href="{{ url('client/products/long-wallet') }}">Long Wallet</a></div>
+                        <div><a href="{{ url('client/products/small-wallet') }}">Small Wallet</a></div>
+                        <div><a href="{{ url('client/products/cards-holder') }}">Cards Holder</a></div>
+                        <div><a href="{{ url('client/products/chain-and-strap') }}">Chain and Strap Wallet</a></div>
                     </div>
                 </div>
                 <div id="drop2" class="">
                     <div class="header__side-collection">
-                        <div><a href="">New Arrivals</a></div>
-                        <div><a href="">Trending</a></div>
-                        <div><a href="">On Sales</a></div>
+                        <div><a href="{{ url('client/products/new-arrival') }}">New Arrivals</a></div>
+                        <div><a href="{{ url('client/products/trending') }}">Trending</a></div>
+                        <div><a href="{{ url('client/products/discount') }}">On Sales</a></div>
                     </div>
                 </div>
                 <div id="drop3" class="">
                     <div class="header__side-brand">
-                        <div><a href="">Dior</a></div>
-                        <div><a href="">Gucci</a></div>
-                        <div><a href="">Channel</a></div>
-                        <div><a href="">Louis Vuiton</a></div>
+                        <div><a href="{{ url('client/products/dior') }}">Dior</a></div>
+                        <div><a href="{{ url('client/products/gucci') }}">Gucci</a></div>
+                        <div><a href="{{ url('client/products/channel') }}">Channel</a></div>
+                        <div><a href="{{ url('client/products/louis-vuiton') }}">Louis Vuiton</a></div>
                     </div>
                 </div>
             </div>
