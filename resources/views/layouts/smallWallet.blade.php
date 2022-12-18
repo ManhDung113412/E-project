@@ -5,6 +5,7 @@
 @stop
 @section('content')
 <div class="main">
+    
     <div class="container">
         <div class="container__sideBar">
             <div class="container__sideBar-box">
@@ -59,7 +60,17 @@
         <div class="container__list">
             <div class="container__list-tittle">Small Wallet</div>
             <div class="container__list-products">
+                @foreach($smallWallet as $item)
                 <div class="container__list-products-item">
+                    <img src="{{ $item->IMG }}" style="background-image: url(./8858227441694-removebg-preview.png)"
+                        class="container__list-products-item-img"></img>
+                    <div class="container__list-products-item-info">
+                        <p>{{ $item->Name }}</p>
+                        <p>$1000</p>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <div class="container__list-products-item">
                     <div style="background-image: url(./8858227441694-removebg-preview.png)"
                         class="container__list-products-item-img"></div>
                     <div class="container__list-products-item-info">
@@ -114,20 +125,15 @@
                         <p>Product Name</p>
                         <p>$1000</p>
                     </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
+                </div>l --}}
             </div>
         </div>
     </div>
 </div>
+
 <hr class="main1">
+{!! $smallWallet->links() !!}
+
 </div>
 <div class="container__featured">
     <div class="container__featured-tittle">You May Also Like</div>

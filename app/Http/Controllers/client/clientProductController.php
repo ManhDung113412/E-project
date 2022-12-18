@@ -4,6 +4,7 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class clientProductController extends Controller
 {
@@ -18,7 +19,9 @@ class clientProductController extends Controller
     }
     public function getSmallWallet()
     {
-        return view('layouts.smallWallet');
+        $smallWallet = DB::table('categories')->join('products', 'Products.Category_ID','=','categories.ID')->where('Products.Category_ID',4)->paginate(13);
+        // dd($smallWallet);
+        return view('layouts.smallWallet',['smallWallet' => $smallWallet]);
     }
     public function getCardsHolder()
     {
