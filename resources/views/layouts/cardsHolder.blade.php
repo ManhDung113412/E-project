@@ -65,7 +65,7 @@
                         class="container__list-products-item-img"></div>
                     <div class="container__list-products-item-info">
                         <p>{{ $item->Name }}</p>
-                        <p>$1000</p>
+                        <p>${{ $item->Export_Price }}</p>
                     </div>
                 </div>
                 @endforeach
@@ -84,7 +84,7 @@
                 class="container__featured-products-items-img"></div>
             <div class="container__featured-products-items-info">
                 <p>{{ $item->Name }}</p>
-                <p>$1000</p>
+                <p>${{ $item->Export_Price }}</p>
             </div>
         </div>
         @endforeach

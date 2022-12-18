@@ -20,7 +20,6 @@ class homepageController extends Controller
         $chanel = DB::table('brand_collections')->where('Brand_ID',1)->get();
         $Gucci = DB::table('brand_collections')->where('Brand_ID',3)->get();
         $LV = DB::table('brand_collections')->where('Brand_ID',4)->get();
-        // dd($chanel);
         return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $ran_pro,'dior'=>$dior,'channel'=>$chanel,'LV'=>$LV,'gucci'=>$Gucci]);
     }
 }
