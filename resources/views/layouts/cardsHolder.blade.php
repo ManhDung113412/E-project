@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="container__list">
-            <div class="container__list-tittle">Product List</div>
+            <div class="container__list-tittle">Cards Holder</div>
             <div class="container__list-products">
                 <div class="container__list-products-item">
                     <div style="background-image: url(./8858227441694-removebg-preview.png)"

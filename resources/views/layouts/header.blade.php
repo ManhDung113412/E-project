@@ -36,7 +36,7 @@
                             </div>
                             <div><a href="">My Shopping Cart</a></div>
                             <div><a href="">My Wish List</a></div>
-                            <div><a href="{{route('client.about-us')}}">About Us</a></div>
+                            <div><a href="">About Us</a></div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="header__update">
-                <div class="header__update-all">
+                <div id="topUpdate" class="header__update-all">
                     <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a></div>
                     <div class="header__update-1"><a style="color: white" href=""> Give code for..</a></div>
                     <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a></div>
@@ -90,8 +90,9 @@
                 </div>
             </div>
         </div>
-        <script src="{{ asset('javascript/client/homepage.js') }}"></script>
+
     </form>
 </body>
+<script src="{{ asset('javascript/client/header.js') }}"></script>
 
 </html>

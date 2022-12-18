@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
 .container {
     width: 100%;
 }
@@ -6,6 +12,7 @@
     max-width: 100%;
     height: 765px;
     width: calc(100% * 3);
+
 }
 
 .container__slideCol::-webkit-scrollbar {
@@ -17,7 +24,15 @@
     overflow: hidden;
     height: 100%;
     position: relative;
-    animation: slide 10s ease infinite;
+    animation: slide 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes slide{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
 }
 
 .container__slideCol-item {
@@ -27,6 +42,7 @@
     background-position: 50% 50%;
     background-size: 130%;
     transition: 1s;
+
 }
 
 .container__slideCol-item:hover {
@@ -40,11 +56,9 @@
     display: flex;
     flex-direction: column;
     width: 550px;
+
 }
 
-#item2 > div {
-    left: 200px;
-}
 
 .container__left-frame-text-p1 {
     font-size: 25px;
@@ -55,7 +69,7 @@
     font-weight: bold;
 }
 
-.container__slideCol-item-content > a {
+.container__slideCol-item-content>a {
     color: white;
     width: 180px;
     height: 60px;
@@ -69,7 +83,7 @@
     font-weight: bold;
 }
 
-.container__slideCol-item-content > a:hover {
+.container__slideCol-item-content>a:hover {
     background-color: transparent;
     color: black;
     transition: 0.3s ease-in-out;
@@ -82,7 +96,7 @@
     background-color: transparent;
 }
 
-.container__slideCol-list-button > button {
+.container__slideCol-list-button>button {
     align-self: center;
     border-radius: 50%;
     background-color: transparent;
@@ -90,15 +104,18 @@
     width: 50px;
     height: 50px;
     display: flex;
+
+
 }
 
-.container__slideCol-list-button > button > ion-icon {
+.container__slideCol-list-button>button>ion-icon {
     align-self: center;
 }
 
 .container__slideCol-list-button:hover {
     background-color: rgb(224, 224, 224);
     border-radius: 50%;
+
 }
 
 #prevBut {
@@ -133,7 +150,7 @@
 }
 
 .container__featured-products-items {
-    width: 350px;
+    width: 300px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -147,8 +164,7 @@
     border: 3px solid black;
 }
 
-.container__featured-products-items:hover
-    .container__featured-products-items-info {
+.container__featured-products-items:hover .container__featured-products-items-info {
     opacity: 1;
 }
 
@@ -156,13 +172,13 @@
     width: 100%;
     height: 400px;
     background-position: 50% 80%;
-    background-size: 120%;
+    background-size: 100%;
     background-color: rgb(241, 241, 241);
     transition: 0.5s ease-in-out;
 }
 
 .container__featured-products-items-img:hover {
-    background-size: 150%;
+    background-size: 120%;
 }
 
 .container__featured-products-items-info {
@@ -180,6 +196,7 @@
     height: 733px;
     display: flex;
     flex-direction: row;
+
 }
 
 .container__newArrivals-content {
@@ -210,6 +227,7 @@
 .container__newArrivals-content-tittle {
     margin-left: 30px;
     font-size: 30px;
+
 }
 
 .container__newArrivals-content-tittle a {
@@ -263,6 +281,7 @@
 .container__newArrivals-collection-slide {
     width: max-content;
     margin-top: 50px;
+
 }
 
 .container__newArrivals-collection-list {
@@ -307,9 +326,8 @@
     left: calc(60% + 660px);
 }
 
-.container__newArrivals-collection-list:nth-child(n + 7) {
+.container__newArrivals-collection-list:nth-child(n+7) {
     left: calc(60% + 660px);
-    opacity: 0;
 }
 
 .container__newArrivals-collection-list .content {
@@ -388,6 +406,7 @@
     transition: 0.3s ease-in-out;
     display: flex;
     margin: 5px;
+
 }
 
 .container__newArrivals-collection-button button ion-icon {
@@ -405,6 +424,7 @@
     height: 700px;
     display: flex;
     flex-direction: row;
+
 }
 
 .container__listCol-items {
@@ -429,6 +449,7 @@
     height: 700px;
     transition: 0.5s ease-in-out;
     background-size: cover;
+
 }
 
 .container__listCol-items-img-child:nth-child(2) {
@@ -436,8 +457,7 @@
     animation: listCol 0.5s ease-in-out 1 forwards;
 }
 
-.container__listCol-items:hover
-    .container__listCol-items-img-child:nth-child(2) {
+.container__listCol-items:hover .container__listCol-items-img-child:nth-child(2) {
     display: block;
     transition: 0.3s ease-in-out;
 }
@@ -453,6 +473,8 @@
         filter: brightness(30%);
     }
 }
+
+
 
 .container__listCol-items-tittle {
     position: absolute;
@@ -478,18 +500,6 @@
 
 .container__listCol-items:hover .container__listCol-items-tittle {
     animation: listColButton 0.5s ease-in-out 1 forwards;
-}
-
-/* .container__slideCol-item:nth-child(2) {
-    left: 200px;
-} */
-
-/* .container__slideCol-list:nth-child(n + 1) > div {
-    left: 200px;
-} */
-
-.containerslideCol-item:nth-child(2),.containerslideCol-item:nth-child(3){
-    left: 200px;
 }
 
 @keyframes listColButton {
@@ -530,6 +540,7 @@
     animation: brandsLogo 0.5s ease-in-out 1 forwards;
 }
 
+
 .brands__items-name {
     position: absolute;
     align-self: center;
@@ -551,15 +562,17 @@
     }
 }
 
+
+
+
 /* subcribes */
 
 .subscribeUs {
     width: 100%;
     height: 462px;
-    background-color: #fff4f4;
+    background-color: #FFF4F4;
     text-align: center;
     display: inline-block;
-    margin-top: 20px;
 }
 
 .subscribeUs__text {
@@ -586,7 +599,7 @@
     justify-content: center;
 }
 
-.subscribeUs__text-input > input {
+.subscribeUs__text-input>input {
     min-height: 48px;
     max-width: 150px;
     padding: 0 1rem;
@@ -598,36 +611,37 @@
     background-color: transparent;
 }
 
-.subscribeUs__text-input > input:focus,
-.subscribeUs__text-input > input:focus-visible {
-    border-color: #3898ec;
+.subscribeUs__text-input>input:focus,
+.subscribeUs__text-input>input:focus-visible {
+    border-color: #3898EC;
     outline: none;
 }
 
-.subscribeUs__text-input > button {
+.subscribeUs__text-input>button {
     min-height: 50px;
-    padding: 0.5em 1em;
+    padding: .5em 1em;
     border: none;
     border-radius: 0 6px 6px 0;
     background-color: #5e4dcd;
     color: #fff;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color .3s ease-in-out;
     border: 1px solid transparent;
 }
 
-.subscribeUs__text-input > button:hover {
+.subscribeUs__text-input>button:hover {
     background-color: transparent;
     border: 1px solid #5e4dcd;
     color: black;
 }
 
+
 /* Scroll back to top */
 
 .scrollBackToTop {
     position: fixed;
-    bottom: 20px;
+    bottom: 100px;
     right: 20px;
     z-index: 99999999;
     cursor: pointer;
@@ -649,8 +663,8 @@
 .scrollBackToTop button ion-icon {
     align-self: center;
     align-content: center;
-    margin-right: 7px;
-    margin-top: 5px;
+    margin-right: 9px;
+    margin-top: 4px;
 }
 
 .scrollBackToTop button:hover {

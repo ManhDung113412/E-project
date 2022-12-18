@@ -7,6 +7,7 @@ $('returnPolicy').addEventListener('click', function (e) {
     window.scrollTo(0, 500);
 });
 
+
 $('warranty').addEventListener('click', function (e) {
     e.preventDefault();
     window.scrollTo(0, 1500);

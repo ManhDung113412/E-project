@@ -9,11 +9,11 @@ use App\Models\client\loginModel;
 
 class clientController extends Controller
 {
-    private $login;
-    public function __construct()
-    {
-        $this->login = new loginModel();
-    }
+    // private $login;
+    // public function __construct()
+    // {
+    //     $this->login = new loginModel();
+    // }
 
     public function getMaster()
     {

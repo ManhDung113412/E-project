@@ -7,18 +7,19 @@
     <div class="container">
         <div class="container__productImage">
             <div class="container__productImage-preview">
-                <div class="container__productImage-preview-image"></div>
-                <div class="container__productImage-preview-image"></div>
-                <div class="container__productImage-preview-image"></div>
+                <div class="container__productImage-preview-image" style="background-image: url(./a/8855835508766.png);"></div>
+                <div class="container__productImage-preview-image" style="background-image: url(./a/8855835541534.png);"></div>
+                <div class="container__productImage-preview-image" style="background-image: url(./a/8855835574302.png);"></div>
             </div>
-            <div class="container__productImage-mainImage"></div>
+            <div id="abc" class="container__productImage-mainImage" style="background-image: url(./a/8855835639838.png);"></div>
         </div>
         <div class="container__productInfo">
             <div class="container__productInfo-main">
                 <div class="container__productInfo-main-info">
                     <div class="top">
                         <div class="top__name">Product Name</div>
-                        <div class="top__favor"><ion-icon name="heart-outline"></ion-icon>
+                        <div class="top__favor">
+                            <ion-icon name="heart-outline"></ion-icon>
                         </div>
                     </div>
                     <div class="price">
@@ -26,7 +27,6 @@
                         <div class="price__cost">10000$</div>
                     </div>
                     <div class="color">
-                        <p>Color</p>
                         <div class="white"></div>
                         <div class="grey"></div>
                         <div class="black"></div>
@@ -47,62 +47,65 @@
         </div>
     </div>
     <hr class="main__hr">
-    <div class="main__alsoLike">
-        <p>You May Also Like</p>
-        <div class="main__alsoLike-product">
-            <div class="main__alsoLike-product-card">
-                <div class="main__alsoLike-product-card-image">
-                    <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                </div>
-                <div class="main__alsoLike-product-card-info">
-                    <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                    <div class="main__alsoLike-product-card-info-price">Price</div>
-                </div>
+
+</div>
+<hr class="main__hr">
+<div class="main__reivew">
+    <p>Reviews</p>
+    <button>Write Us A Reviews</button>
+</div>
+<div class="container__featured">
+    <div class="container__featured-tittle">You May Also Like</div>
+    <div class="container__featured-products">
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
             </div>
-            <div class="main__alsoLike-product-card">
-                <div class="main__alsoLike-product-card-image">
-                    <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                </div>
-                <div class="main__alsoLike-product-card-info">
-                    <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                    <div class="main__alsoLike-product-card-info-price">Price</div>
-                </div>
+        </div>
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
             </div>
-            <div class="main__alsoLike-product-card">
-                <div class="main__alsoLike-product-card-image">
-                    <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                </div>
-                <div class="main__alsoLike-product-card-info">
-                    <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                    <div class="main__alsoLike-product-card-info-price">Price</div>
-                </div>
+        </div>
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
             </div>
-            <div class="main__alsoLike-product-card">
-                <div class="main__alsoLike-product-card-image">
-                    <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                </div>
-                <div class="main__alsoLike-product-card-info">
-                    <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                    <div class="main__alsoLike-product-card-info-price">Price</div>
-                </div>
+        </div>
+        <div class="container__featured-products-items">
+            <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                class="container__featured-products-items-img"></div>
+            <div class="container__featured-products-items-info">
+                <p>Product Name</p>
+                <p>$1000</p>
             </div>
         </div>
     </div>
-    <hr class="main__hr">
-    <div class="main__reivew">
-        <p>Reviews</p>
-        <button>Write Us A Reviews</button>
-    </div>
+</div>
 </div>
 <div class="subscribeUs">
     <div class="subscribeUs__text">
         <div class="subscribeUs__text-firstText">Subscribe To Our Newsletter</div>
-        <div class="subscribeUs__text-secondText">Keep your finger on the pulse of fashion with weekly round-ups
+        <div class="subscribeUs__text-secondText">Keep your finger on the pulse of fashion with weekly
+            round-ups
             of
             our
             latest arrivals, upcoming launches, special promotions and trend-focused editorials.
         </div>
-        <input type="text" placeholder="Enter your email address"><button>SUBSCRIBE</button>
+        <div class="subscribeUs__text-input">
+            <input type="text" placeholder="Email address" autocomplete="off">
+            <button>Subscribe</button>
+        </div>
     </div>
 </div>
+<script src="{{ asset('javascript/client/product.js') }}"></script>
 @stop

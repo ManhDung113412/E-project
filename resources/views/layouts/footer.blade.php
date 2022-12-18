@@ -36,27 +36,27 @@
             <div class="footer__main-socialMedia">
                 <p>FOLLOW US</p>
                 <ul>
-                    <li><a href=""><img src="{{ asset('assets/socialmedia E-project/facebook.png') }}"
+                    <li><a href=""><img style="width: 50px; height: 50px" src="{{ asset('assets/socialmedia E-project/facebook.png') }}"
                                 alt="">
                             <P>Facebook</P>
                         </a>
                     </li>
-                    <li><a href=""><img src="{{ asset('assets/socialmedia E-project/tiktok.png') }}"
+                    <li><a href=""><img style="width: 50px; height: 50px" src="{{ asset('assets/socialmedia E-project/tiktok.png') }}"
                                 alt="">
                             <P>Tiktok</P>
                         </a>
                     </li>
-                    <li> <a href=""><img src="{{ asset('assets/socialmedia E-project/twitter.png') }}"
+                    <li> <a href=""><img style="width: 60px; height: 60px" src="{{ asset('assets/socialmedia E-project/twitter.png') }}"
                                 alt="">
                             <p> Twitter</p>
                         </a>
                     </li>
-                    <li> <a href=""><img src="{{ asset('assets/socialmedia E-project/insta.png') }}"
+                    <li> <a href=""><img style="width: 50px; height: 50px" src="{{ asset('assets/socialmedia E-project/insta.png') }}"
                                 alt="">
                             <P>Instagram</P>
                         </a>
                     </li>
-                    <li><a href=""><img src="{{ asset('assets/socialmedia E-project/youtube.png') }}"
+                    <li><a href=""><img style="width: 70px; height: 70px" src="{{ asset('assets/socialmedia E-project/youtube.png') }}"
                                 alt="">
                             <P>Youtube</P>
                         </a>
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="footer__copyrights">
-            <p>Copyright © 5ae - All Rights Reserved</p>
+            <p>Copyright © NextTag - All Rights Reserved</p>
         </div>
     </div>
 </body>
