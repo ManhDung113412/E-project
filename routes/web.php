@@ -16,7 +16,7 @@ use App\Http\Controllers\client\mainproductController;
 use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
-
+use App\Http\Controllers\client\clientProductController;
 
 Route::prefix('admin')->group(function(){
     Route::get('login', [AdminController::class, 'login'])
@@ -125,4 +125,16 @@ Route::prefix('client')->group(function () {
     Route::get('productPage', [clientController::class, 'getProductPages']);
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
+
+});
+
+
+Route::prefix('client/Products')->group(function () {
+    Route::get('Long-Wallet', [clientProductController::class, 'getLongWallet']);
+    Route::get('Small-Wallet', [clientProductController::class, 'getSmallWallet']);
+    Route::get('Cards-Holder', [clientProductController::class, 'getCardsHolder']);
+    Route::get('Chain-And-Strap', [clientProductController::class, 'getchainandStrap']);
+    Route::get('New-Arrival', [clientProductController::class, 'getNewArrival']);
+    Route::get('Trending', [clientProductController::class, 'getTrending']);
+    
 });
