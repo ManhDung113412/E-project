@@ -38,14 +38,23 @@ class AuthController extends Controller
     public function checkLogin(Request $request){
         $this->validate($request,
         [
-            'email_address' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
-        if(Auth::attempt(['email_address' => $request->email, 'password' => $request->password])){
+        $admin = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if(Auth::guard('admins')->attempt($admin)){
             return  redirect()->route('admin.brand.index');
         }
-
         return redirect()->route('admin.auth.login')->with('error', 'Your Email or Password is invalid!');
+    }
+
+    public function logout(){
+        Auth::guard('admins')->logout();
+        return redirect()->route('admin.auth.login');
     }
 }

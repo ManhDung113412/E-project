@@ -47,10 +47,16 @@
                             @csrf    
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email_address" type="email" autofocus>
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>

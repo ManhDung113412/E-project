@@ -31,9 +31,14 @@ Route::prefix('admin')->group(function(){
 
     Route::post('login', [AuthController::class, 'checkLogin'])
         ->name('admin.auth.check-login');
+
+    
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('admin.login')->group(function () {
+
+    Route::get('logout', [AuthController::class, 'logout'])
+        ->name('admin.auth.logout');
 
     // Brand Routes
     Route::prefix('brand')->group(function () {
