@@ -3,6 +3,7 @@
 // Admin Controllers
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
@@ -19,9 +20,16 @@ use App\Http\Controllers\clientController;
 
 
 Route::prefix('admin')->group(function(){
-    Route::get('login', [AdminController::class, 'login'])
+    Route::get('register', [AuthController::class, 'register'])
+        ->name('admin.auth.register');
+
+    Route::post('register', [AuthController::class, 'checkRegister'])
+        ->name('admin.auth.check-register');
+
+    Route::get('login', [AuthController::class, 'login'])
         ->name('admin.auth.login');
-    Route::post('login', [AdminController::class, 'checkLogin'])
+
+    Route::post('login', [AuthController::class, 'checkLogin'])
         ->name('admin.auth.check-login');
 });
 
