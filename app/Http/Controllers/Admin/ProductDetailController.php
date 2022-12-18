@@ -23,6 +23,7 @@ class ProductDetailController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request);
         $this->validate($request, [
         'import_price' => 'required|numeric', 
         'export_price' => 'required|numeric', 
@@ -38,6 +39,7 @@ class ProductDetailController extends Controller
         'brand_id' => 'required', 
         'category_id' => 'required', 
         'product_id' => 'required', 
+        'quantity' => 'required|numeric', 
         ]);
 
         $product = Product::find($request->product_id);
@@ -60,10 +62,11 @@ class ProductDetailController extends Controller
         'color'=> $request->color, 
         'size'=> $request->size, 
         'code'=> $request->code, 
-        'is_trending'=> $request->is_trending, 
-        'is_new_arrivals'=> $request->is_arrivals, 
-        'is_feature'=> $request->is_feature, 
+        'is_trending'=> $request->is_trending ? $request->is_trending : 0, 
+        'is_new_arrivals'=> $request->is_arrivals ? $request->is_arrivals : 0, 
+        'is_feature'=> $request->is_feature ? $request->is_feature : 0, 
         'product_id'=> $request->product_id, 
+        'quantity'=> $request->quantity, 
         'slug'=> $slug, 
         ]);
 
@@ -94,6 +97,7 @@ class ProductDetailController extends Controller
             'brand_id' => 'required', 
             'category_id' => 'required', 
             'product_id' => 'required', 
+            'quantity' => 'required|numeric', 
             ]);
     
             $product = Product::find($request->product_id);
@@ -103,6 +107,9 @@ class ProductDetailController extends Controller
             while ($checkSlug) {
                 $slug = $checkSlug->slug . Str::random(5);
             }
+
+            $old_product_detail = ProductDetail::find($id);
+            $old_quantity = $old_product_detail->quantity;
     
             ProductDetail::where('id', $id)->update([
             'import_price'=> $request->import_price, 
@@ -120,6 +127,7 @@ class ProductDetailController extends Controller
             'is_new_arrivals'=> $request->is_arrivals, 
             'is_feature'=> $request->is_feature, 
             'product_id'=> $request->product_id, 
+            'quantity' => $request->quantity + $old_quantity, 
             'slug'=> $slug, 
             ]);
     

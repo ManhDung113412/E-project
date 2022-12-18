@@ -190,6 +190,17 @@
                         @enderror
                     </div>
 
+                    {{-- Quantity --}}
+                    <div class="form-group">
+                        <label>Product Detail Quantity</label>
+                        <input class="form-control" value="{{$product_detail->quantity}}" name="quantity" placeholder="Please Enter Product Detail Quantity" type="number" />
+                        @error('quantity')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
                     {{-- Is Trending or Feature or Arrivals --}}
                     <div class="form-group">
                         <label>Is Trending? </label><br>
