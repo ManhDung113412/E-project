@@ -6,28 +6,15 @@
     <div class="container">
         <div class="container__slideCol">
             <div id="slideS" class="container__slideCol-list">
-                <div style="background-image: url(./Chanel-Fashion-Show-Detail-SS-2020.jpg)" class="container__slideCol-item">
-                    <div class="container__slideCol-item-content">
-                        <p class="container__left-frame-text-p1">Best Fashion For You..</p>
-                        <p class="container__left-frame-text-p2">New Fashion Collection Trends in 2022</p>
-                        <a href="">Shop Now</a>
+                @foreach ($top_slides_img as $top)
+                    <div style="background-image: url({{ $top->IMG }})" class="container__slideCol-item">
+                        <div class="container__slideCol-item-content">
+                            <p class="container__left-frame-text-p1">Best Fashion For You..</p>
+                            <p class="container__left-frame-text-p2">New Fashion Collection Trends in 2022</p>
+                            <a href="">Shop Now</a>
+                        </div>
                     </div>
-                </div>
-                <div id="item2" style="background-image: url(./charles-keith-home-s-banner-1920.jpg)"
-                    class="container__slideCol-item">
-                    <div class="container__slideCol-item-content">
-                        <p class="container__left-frame-text-p1">Best Fashion For You..</p>
-                        <p class="container__left-frame-text-p2">New Fashion Collection Trends in 2022</p>
-                        <a href="">Shop Now</a>
-                    </div>
-                </div>
-                <div id="item2" style="background-image: url(./Bag-Chanel.jpg)" class="container__slideCol-item">
-                    <div class="container__slideCol-item-content">
-                        <p class="container__left-frame-text-p1">Best Fashion For You..</p>
-                        <p class="container__left-frame-text-p2">New Fashion Collection Trends in 2022</p>
-                        <a href="">Shop Now</a>
-                    </div>
-                </div>
+                @endforeach
                 <div id="prevBut" class="container__slideCol-list-button">
                     <button id="prev">
                         <ion-icon name="chevron-back-outline"></ion-icon>
@@ -283,9 +270,7 @@
             <ion-icon name="chevron-up-outline"></ion-icon>
         </button>
     </div>
-    <script>
-
-    </script>
+    <script></script>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 @stop

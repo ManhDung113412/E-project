@@ -59,70 +59,16 @@
         <div class="container__list">
             <div class="container__list-tittle">Louis Vuiton</div>
             <div class="container__list-products">
+                @foreach ($louisVuiton as $item)
                 <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
+                    <div style="background-image: url({{ $item->IMG }})"
                         class="container__list-products-item-img"></div>
                     <div class="container__list-products-item-info">
-                        <p>Product Name</p>
+                        <p>{{ $item->Name }}</p>
                         <p>$1000</p>
                     </div>
                 </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
-                <div class="container__list-products-item">
-                    <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                        class="container__list-products-item-img"></div>
-                    <div class="container__list-products-item-info">
-                        <p>Product Name</p>
-                        <p>$1000</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

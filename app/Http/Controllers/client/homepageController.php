@@ -11,10 +11,8 @@ class homepageController extends Controller
 {
     public function getHomePage()
     {
-        // $img_header_collection = DB::table('big_collection')->where('is_header_silde', 1)->get();
-        // $img_middle_collection = DB::table('big_collection')->where('is_middle_silde', 1)->get();
-        // $img_bottom_collection = DB::table('small_collection')->get();
-        // return view('clientsPage.homePage', compact('img_header_collection', 'img_bottom_collection', 'img_middle_collection'));
-        return view('clientsPage.homePage' );
+        $middle_slides_img = DB::table('sliedes')->where('Is_Top_Slide', 1)->where('Is_Middle_Slide', 0)->get();
+        $top_slides_img = DB::table('sliedes')->where('Is_Top_Slide', 1)->where('Is_Middle_Slide', 0)->get();
+        return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img]);
     }
 }
