@@ -15,7 +15,8 @@ class clientProductController extends Controller
 
     public function getLongWallet()
     {
-        return view('layouts.longWallet');
+        $longWallet = DB::table('categories')->join('products', 'Products.Category_ID','=','categories.ID')->where('Products.Category_ID',3)->paginate(13);
+        return view('layouts.longWallet',['longWallet' => $longWallet]);
     }
     public function getSmallWallet()
     {
@@ -25,11 +26,14 @@ class clientProductController extends Controller
     }
     public function getCardsHolder()
     {
-        return view('layouts.cardsHolder');
+        $cardHolder = DB::table('categories')->join('products', 'Products.Category_ID','=','categories.ID')->where('Products.Category_ID',1)->paginate(13);
+    //   dd($cardHolder);
+        return view('layouts.cardsHolder',['cardsHolder' => $cardHolder]);
     }
     public function getchainandStrap()
     {
-        return view('layouts.chainsandStrap');
+        $chainAndStrap = DB::table('categories')->join('products', 'Products.Category_ID','=','categories.ID')->where('Products.Category_ID',2)->paginate(13);
+        return view('layouts.chainsandStrap',['chainAndStrap' => $chainAndStrap]);
     }
     public function getNewArrival()
     {
