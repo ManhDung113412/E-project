@@ -66,6 +66,7 @@
                                     @enderror
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Register</button>
+                                <a href="{{route('admin.auth.login')}}" class="btn btn-lg btn-warning btn-block">Login</a>
                             </fieldset>
                         </form>
                     </div>

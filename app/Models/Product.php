@@ -15,12 +15,17 @@ class Product extends Model
         'name', 
         'img', 
         'category_id', 
+        'brand_id',
         'code', 
         'slug', 
     ];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function brand(){
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
     public function productdetails()

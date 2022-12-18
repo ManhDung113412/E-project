@@ -55,7 +55,7 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|unique:brands',
+            'name' => 'required',
             'logo' => 'required',
             'information' => 'required',
             'code' => 'required',
@@ -81,6 +81,6 @@ class BrandController extends Controller
     public function delete($id)
     {
         Brand::where('id', $id)->delete();
-        return redirect()->route('admin.brand.index')->with('success', 'Delete Successfully');
+        return redirect()->route('admin.brand.index')->with('success', 'Deleted Successfully');
     }
 }

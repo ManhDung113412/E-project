@@ -26,6 +26,7 @@ class CreateProductDetailsTable extends Migration
             $table->string('color');
             $table->string('size');
             $table->string('code');
+            $table->integer('quantity');
             $table->boolean('is_trending')->default(0);
             $table->boolean('is_new_arrivals')->default(0);
             $table->boolean('is_feature')->default(0);
