@@ -86,17 +86,28 @@
 
 .mainContent_service-storeLocation-map {
     width: 50%;
+    height: auto;
+
+    /* overflow: hidden; */
+}.mainContent_service-storeLocation-map-item{
+    width: 600px;
+    height: 450px;
+    /* border: 1px solid black; */
+    margin-left: 50px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 }
 
 iframe {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: 40px;
-    margin-bottom: 35px;
+    /* margin-left: 40px;
+    margin-bottom: 35px; */
 }
 
 iframe:hover {
-
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.3s ease-in-out;
 }
 
