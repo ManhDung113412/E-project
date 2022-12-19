@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <form action="">
+    <div class="frm" action="">
         <div class="container">
-            <div id="signInForm" class="container__signIn active">
+            <form action="" id="signInForm" class="container__signIn active">
                 <div class="container__signIn-tittle">Sign In</div>
                 <div class="container__signIn-input">
                     <div class="input-group">
@@ -26,62 +26,56 @@
                     </div>
                 </div>
                 <div class="container__signIn-button">
-                    <button>Sign in</button>
+                    <button id="">Sign in</button>
                 </div>
                 <div class="container__signIn-forget"><a href="">Forgotten password?</a></div>
                 <div class="container__signIn-change">
                     <button id="toRegister">Register</button>
                 </div>
-            </div>
-    </form>
-    <form action="">
-        <div id="registerForm" class="container__signIn ">
-            <div class="container__signIn-tittle">Register</div>
-            <div class="container__signIn-input">
-                <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Firstname</label>
+            </form>
+            <form action="" id="registerForm" class="container__signIn ">
+                <div class="container__signIn-tittle">Register</div>
+                <div class="container__signIn-input">
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Firstname</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Lastname</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Password</label>
+                    </div>
+                    <div class="input-group">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Confirm Password</label>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Lastname</label>
+                <div class="container__signIn-button">
+                    <button>Sign up</button>
                 </div>
-                <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Email</label>
+                <div class="container__signIn-change">
+                    <button id="toSignIn">Sign in</button>
                 </div>
-                <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Username</label>
-                </div>
-                <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Password</label>
-                </div>
-                <div class="input-group">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Confirm Password</label>
-                </div>
-            </div>
-            <div class="container__signIn-button">
-                <button>Sign up</button>
-            </div>
-            <div class="container__signIn-change">
-                <button id="toSignIn">Sign in</button>
-            </div>
-        </div>
+            </form>
         </div>
         <div id="abc" class="slideShow">
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./chanel/Bag-Chanel-Summer-Trends-2020.jpg);"></div>
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./gucci/63aeece630d8df78acf77978c2161515.jpg);"></div>
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./LV/W_Fa_Wild_at_Heart_V2.png); background-size: 140%;"></div>
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./dior/Dior-Fall-2020-Runway-Bag-Collection-5.jpg);"></div>
+            <div id="formImage" class="slideShow-image show" style="background-image: url(./chanel/Bag-Chanel-Summer-Trends-2020.jpg);"></div>
+            <div id="formImage" class="slideShow-image show" style="background-image: url(./gucci/63aeece630d8df78acf77978c2161515.jpg);"></div>
+            <div id="formImage" class="slideShow-image show" style="background-image: url(./LV/W_Fa_Wild_at_Heart_V2.png); background-size: 140%;"></div>
+            <div id="formImage" class="slideShow-image show" style="background-image: url(./dior/Dior-Fall-2020-Runway-Bag-Collection-5.jpg);"></div>
         </div>
-    </form>
+    </div>
 </body>
 <script src="{{ asset('javascript/client/loginNew.js') }}"></script>
 
