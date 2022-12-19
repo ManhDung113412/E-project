@@ -62,10 +62,6 @@
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
-                            {{-- <div class="content">
-                            <div class="tittle">Winter is coming</div>
-                            <button>See more >></button>
-                        </div> --}}
                         </div>
                     @endforeach
                     <div class="container__newArrivals-collection-button">

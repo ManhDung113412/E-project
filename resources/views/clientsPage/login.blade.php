@@ -33,41 +33,43 @@
                     <button id="toRegister">Register</button>
                 </div>
             </div>
-            <div id="registerForm" class="container__signIn ">
-                <div class="container__signIn-tittle">Register</div>
-                <div class="container__signIn-input">
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Firstname</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Lastname</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Email</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Username</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Password</label>
-                    </div>
-                    <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
-                        <label class="user-label">Confirm Password</label>
-                    </div>
+    </form>
+    <form action="">
+        <div id="registerForm" class="container__signIn ">
+            <div class="container__signIn-tittle">Register</div>
+            <div class="container__signIn-input">
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Firstname</label>
                 </div>
-                <div class="container__signIn-button">
-                    <button>Sign up</button>
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Lastname</label>
                 </div>
-                <div class="container__signIn-change">
-                    <button id="toSignIn">Sign in</button>
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Email</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Username</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Password</label>
+                </div>
+                <div class="input-group">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label">Confirm Password</label>
                 </div>
             </div>
+            <div class="container__signIn-button">
+                <button>Sign up</button>
+            </div>
+            <div class="container__signIn-change">
+                <button id="toSignIn">Sign in</button>
+            </div>
+        </div>
         </div>
         <div id="abc" class="slideShow">
             <div id="formImage" class="slideShow-image show"
