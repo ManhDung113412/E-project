@@ -150,4 +150,7 @@ Route::prefix('client/products')->group(function () {
     Route::get('louis-vuiton', [clientProductController::class, 'getLouisVuiton']);
     Route::get('channel', [clientProductController::class, 'getChannel']);
     Route::get('dior', [clientProductController::class, 'getDior']);
+
+
+    Route::get('specificProduct/{ID}',[clientProductController::class, 'getSpecificProduct']);
 });

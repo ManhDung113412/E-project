@@ -30,42 +30,42 @@
         <div class="container__featured">
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
-                @foreach($randomPro as $item)
-                <div class="container__featured-products-items">
-                    <div style="background-image: url({{ $item->IMG }})"
-                        class="container__featured-products-items-img"></div>
-                    <div class="container__featured-products-items-info">
-                        <p>{{ $item->Name }}</p>
-                        <p>$1000</p>
+                @foreach ($randomPro as $item)
+                    <div class="container__featured-products-items">
+                        <div style="background-image: url({{ $item->IMG }})"
+                            class="container__featured-products-items-img"></div>
+                        <div class="container__featured-products-items-info">
+                            <p>{{ $item->Name }}</p>
+                            <p>${{ $item->Export_Price }}</p>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
         <div class="container__newArrivals">
             <div class="container__newArrivals-content">
                 <div class="container__newArrivals-content-tittle">
-                    <a href="">New Arrivals</a>
+                    <a href="{{ url('client/new-arrival') }}">New Arrivals</a>
                 </div>
                 <div class="container__newArrivals-content-text">
                     Make bold fashion choices with our latest Purse and Wallets
                 </div>
                 <div class="container__newArrivals-content-button">
-                    <a href="">
+                    <a href="{{ url('/client/products/new-arrival') }}">
                         <p>Shop Now</p>
                     </a>
                 </div>
             </div>
             <div class="container__newArrivals-collection">
                 <div id="colListNew" class="container__newArrivals-collection-slide">
-                    @foreach($middle_slides_img as $middle)
-                    <div class="container__newArrivals-collection-list"
-                        style="background-image: url({{ $middle->IMG }});">
-                        {{-- <div class="content">
+                    @foreach ($middle_slides_img as $middle)
+                        <div class="container__newArrivals-collection-list"
+                            style="background-image: url({{ $middle->IMG }});">
+                            {{-- <div class="content">
                             <div class="tittle">Winter is coming</div>
                             <button>See more >></button>
                         </div> --}}
-                    </div>
+                        </div>
                     @endforeach
                     <div class="container__newArrivals-collection-button">
                         <button id="prevNew">
@@ -79,35 +79,37 @@
             </div>
         </div>
         <div class="container__featured">
-            <div class="container__featured-tittle">Trending Now</div>
+            <div class="container__featured-tittle"><a href="url('/client/products/trending') "
+                    style="color: black">Trending Now</a> </div>
             <div class="container__featured-products">
-                @foreach($trending as $item)
-                <div class="container__featured-products-items">
-                    <div style="background-image: url({{ $item->IMG }})"
-                        class="container__featured-products-items-img"></div>
-                    <div class="container__featured-products-items-info">
-                        <p>{{ $item->Name }}</p>
-                        <p>${{ $item->Export_Price }}</p>
-                    </div>
-                </div>
+                @foreach ($trending as $item)
+                    <a class="container__featured-products-items"
+                        href="{{ url('/client/products/specificProduct', $item->ID) }}">
+                        <div style="background-image: url({{ $item->IMG }})"
+                            class="container__featured-products-items-img"></div>
+                        <div class="container__featured-products-items-info">
+                            <p>{{ $item->Name }}</p>
+                            <p>${{ $item->Export_Price }}</p>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
-        @foreach($channel as $item)
-        <div class="container__listCol">
-            <div class="container__listCol-items">
-                <div class="container__listCol-items-img">
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->After_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-tittle">
-                        <button onclick="location.href='{{ url('client/products/channel') }}'">View More</button>
+        @foreach ($channel as $item)
+            <div class="container__listCol">
+                <div class="container__listCol-items">
+                    <div class="container__listCol-items-img">
+                        <div class="container__listCol-items-img-child"
+                            style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
+                        <div class="container__listCol-items-img-child"
+                            style="background-image: url({{ $item->After_Hover_IMG }});"></div>
+                        <div class="container__listCol-items-tittle">
+                            <button onclick="location.href='{{ url('client/products/channel') }}'">View More</button>
+                        </div>
                     </div>
                 </div>
-            </div>
         @endforeach
-        @foreach($dior as $item)
+        @foreach ($dior as $item)
             <div class="container__listCol-items">
                 <div class="container__listCol-items-img">
                     <div class="container__listCol-items-img-child"
@@ -119,21 +121,22 @@
                     </div>
                 </div>
             </div>
-            @endforeach
-            @foreach($gucci as $item)
+        @endforeach
+        @foreach ($gucci as $item)
             <div class="container__listCol-items">
                 <div class="container__listCol-items-img">
                     <div class="container__listCol-items-img-child"
                         style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-img-child" style="background-image: url({{ $item->After_Hover_IMG }});">
+                    <div class="container__listCol-items-img-child"
+                        style="background-image: url({{ $item->After_Hover_IMG }});">
                     </div>
                     <div class="container__listCol-items-tittle">
                         <button onclick="location.href='{{ url('client/products/gucci') }}'">View More</button>
                     </div>
                 </div>
             </div>
-            @endforeach
-            @foreach ($LV as $item)
+        @endforeach
+        @foreach ($LV as $item)
             <div class="container__listCol-items">
                 <div class="container__listCol-items-img">
                     <div class="container__listCol-items-img-child"
@@ -145,53 +148,49 @@
                     </div>
                 </div>
             </div>
-            @endforeach
-        </div>
-        <div class="brands">
-            @foreach($channel as $item)
+        @endforeach
+    </div>
+    <div class="brands">
+        @foreach ($channel as $item)
             <div class="brands__items">
-                <img src="{{ $item->IMG }}"
-                    style="height: 100px; width: 100px;" alt="">
+                <img src="{{ $item->IMG }}" style="height: 100px; width: 100px;" alt="">
                 <div class="brands__items-name">Chanel</div>
             </div>
-            @endforeach
-            @foreach($dior as $item)
+        @endforeach
+        @foreach ($dior as $item)
             <div class="brands__items">
-                <img src="{{ $item->IMG }}"
-                    style="height: 100px; width: 100px;" alt="">
+                <img src="{{ $item->IMG }}" style="height: 100px; width: 100px;" alt="">
                 <div class="brands__items-name">Dior</div>
             </div>
-            @endforeach
-            @foreach ($gucci as $item)
+        @endforeach
+        @foreach ($gucci as $item)
             <div class="brands__items">
-                <img src="{{ $item->IMG }}"
-                    style="height: 60px; width: 100px;" alt="">
+                <img src="{{ $item->IMG }}" style="height: 60px; width: 100px;" alt="">
                 <div class="brands__items-name">Gucci</div>
             </div>
-            @endforeach
-            @foreach($LV as $item)
+        @endforeach
+        @foreach ($LV as $item)
             <div class="brands__items">
-                <img src="{{ $item->IMG }}"
-                    style="height: 100px; width: 100px;" alt="">
+                <img src="{{ $item->IMG }}" style="height: 100px; width: 100px;" alt="">
                 <div class="brands__items-name">Louis Vuitton</div>
             </div>
-            @endforeach
-        </div>
-        <div class="subscribeUs">
-            <div class="subscribeUs__text">
-                <div class="subscribeUs__text-firstText">Subscribe To Our Newsletter</div>
-                <div class="subscribeUs__text-secondText">Keep your finger on the pulse of fashion with weekly
-                    round-ups
-                    of
-                    our
-                    latest arrivals, upcoming launches, special promotions and trend-focused editorials.
-                </div>
-                <div class="subscribeUs__text-input">
-                    <input type="text" placeholder="Email address" autocomplete="off">
-                    <button>Subscribe</button>
-                </div>
+        @endforeach
+    </div>
+    <div class="subscribeUs">
+        <div class="subscribeUs__text">
+            <div class="subscribeUs__text-firstText">Subscribe To Our Newsletter</div>
+            <div class="subscribeUs__text-secondText">Keep your finger on the pulse of fashion with weekly
+                round-ups
+                of
+                our
+                latest arrivals, upcoming launches, special promotions and trend-focused editorials.
+            </div>
+            <div class="subscribeUs__text-input">
+                <input type="text" placeholder="Email address" autocomplete="off">
+                <button>Subscribe</button>
             </div>
         </div>
+    </div>
     </div>
     <div class="scrollBackToTop">
         <button id="scrollUp">
