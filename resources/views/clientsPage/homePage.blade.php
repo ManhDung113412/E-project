@@ -84,7 +84,7 @@
             <div class="container__featured-products">
                 @foreach ($trending as $item)
                     <a class="container__featured-products-items"
-                        href="{{ url('/client/products/specificProduct', $item->ID) }}">
+                        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
                         <div style="background-image: url({{ $item->IMG }})"
                             class="container__featured-products-items-img"></div>
                         <div class="container__featured-products-items-info">

@@ -152,5 +152,5 @@ Route::prefix('client/products')->group(function () {
     Route::get('dior', [clientProductController::class, 'getDior']);
 
 
-    Route::get('specificProduct/{ID}',[clientProductController::class, 'getSpecificProduct']);
+    Route::get('specificProduct/{Slug}',[clientProductController::class, 'getSpecificProduct']);
 });
