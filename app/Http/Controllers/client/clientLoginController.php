@@ -15,78 +15,82 @@ class clientLoginController extends Controller
 
     public function getLogin()
     {
+        // dd('hehe');
+
         return view('clientsPage.Login');
     }
 
-    // public function postLogin(Request $req)
-    // {
-    //     $req->validate(
-    //         $rules = [
-    //             'user_name'  => 'bail|required',
-    //             'password'  => 'bail|required|',
-    //         ],
-    //         $messages = [
-    //             'user_name.required' => 'User Name Cannot Be Empty',
-    //             'password.required' => 'Password Cannot Be Empty',
-    //         ]
-    //     );
-    //     $user_name = $req->user_name;
-    //     $password = $req->password;
+    public function postLogin(Request $req)
+    {
+        // dd('hehe');
 
-    //     $remember_token = $req->has('remember') ? true : false;
+        $req->validate(
+            $rules = [
+                'user_name'  => 'bail|required',
+                'password'  => 'bail|required',
+            ],
+            $messages = [
+                'user_name.required' => 'User Name Cannot Be Empty',
+                'password.required' => 'Password Cannot Be Empty',
+            ]
+        );
+        $user_name = $req->user_name;
+        $password = $req->password;
+        // dd($user_name,$password);
 
-    //     $customer = Auth::guard('customers')->attempt(['Customer_email' => $user_name, 'password' => $password], $remember_token);
-
-    //     if ($customer == true) {
-    //         return view('clientsPage.homePage');
-    //     } else {
-    //         return redirect()->back();
-    //     }
-    // }
+// dd('cac');
+        $customer = Auth::guard('customers')->attempt(['User_Name' => $user_name, 'Password' => $password]);
+        dd($customer);
+        
+        // if ($customer == true) {
+        //     dd('an');
+        //     return view('clientsPage.homePage');
+        // } else {
+        //     dd('xit');
+        //     return redirect()->back();
+        // }
+    }
 
     public function postRegister(Request $request)
     {
-        $request->validate(
+        
             $rules = [
-                'firstname' => 'bail|required|max:30',
-                'lastname'  => 'bail|required|max:30',
-                'dob'  => 'bail|required',
-                'numberphone'  => 'bail|required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im|unique:customer_models,customer_phone',
-                'email'  => 'bail|required|email|unique:customer_models,customer_email',
-                'username'  => 'bail|required|max:30',
-                'password'  => 'bail|required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',
-            ],
+                'first_name' => 'bail|required|max:30',
+                'last_name'  => 'bail|required|max:30',
+                'mail'  => 'bail|required|email|unique:users,Email',
+                'user_name'  => 'bail|required',
+                'password'  => 'bail|required',
+                'c_password'  => 'same:password',
+            ];
 
             $messages = [
-                'firstname.required' => 'First name is required and must be 30 characters or less.',
-                'firstname.max' => 'First name is required and must be 30 characters or less.',
-                'lastname.required' => 'Last name is required and must be 30 characters or less.',
-                'lastname.max' => 'Last name is required and must be 30 characters or less.',
-                'dob.required' => 'DOB is required.',
-                'numberphone.required' => 'Enter your number to be the first to know about exclusive offers, new launches and more via text message.',
-                'numberphone.regex' => 'Number phone is invalid',
-                'numberphone.unique' => 'Number phone is already used',
-                'email.required' => 'Email address is required.',
-                'email.unique' => 'Email is already used',
-                'username.required' => 'User name is required and must be 30 characters or less.',
-                'username.max' => 'User name is required and must be 30 characters or less.',
-                'password.required' => 'Password is required. It must be 8 or more characters and include at least one number and letter. Password is case sensitive and cannot contain spaces.',
-                'password.regex' => 'Password is required. It must be 8 or more characters and include at least one number and letter. Password is case sensitive and cannot contain spaces.',
+                'required' => 'This Field Cannot Be Empty',
+                'max' => 'This Field Must Be at Most 30 Characters Long',
+                'mail.email' => 'This Is Not A Valid Email',
+                'mail.unique' => 'This Email Has Already Exists',
+                'regex' => 'Alphanumeric Characters And Must Be 8-20 Characters Long',
+                'same'  => 'Must Match With Password'
+            ];
+
+        $request -> validate($rules,$messages);
+            // $first_name = $request->firstname;
+            // $last_name = $request->lastname;
+            // $dob = $request->dob;
+            // $mail = $request->email;
+            // $user_name = $request->username;
+            // $password = bcrypt($req->password);
+            // $rank = 1;
+            // $create_at = $date = date('Y-m-d H:i:s');
+            // $update_at = null;
+        DB::table('users')->insert(
+            [
+                'First_Name' => $request->first_name 
+                ,'Last_Name' => $request->last_name
+                ,'Email'     => $request->mail
+                ,'User_Name' => $request->user_name
+                ,'Password'  => bcrypt($request->password)
+                ,'rank'      => 1
             ]
         );
-
-        $data = array(
-            $firstname = $request->firstname,
-            $lastname = $request->lastname,
-            $dob = $request->dob,
-            $numberphone = $request->numberphone,
-            $email = $request->email,
-            $username = $request->username,
-            $password = bcrypt($request->password),
-            $rank = 1,
-            $create_at = $date = date('Y-m-d H:i:s'),
-            $update_at = null
-        );
-        $this->login->createUser($data);
     }
 }
