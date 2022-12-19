@@ -70,7 +70,7 @@
                 </div>
             </div>
             @endforeach
-
+            {!! $Channel->links() !!}
         </div>
     </div>
 </div>

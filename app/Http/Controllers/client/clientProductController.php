@@ -37,7 +37,6 @@ class clientProductController extends Controller
         $ran_pro = [];
         array_push($ran_pro, $products[0], $products[1], $products[2], $products[3]);
         $cardHolder =  DB::table('categories')->join('Products', 'Products.Category_ID', '=', 'categories.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('categories.ID', 1)->groupBy('Product_details.Product_ID')->paginate(13);
-        //   dd($cardHolder);
         return view('layouts.cardsHolder', ['cardsHolder' => $cardHolder, 'randomProduct' => $ran_pro]);
     }
     public function getchainandStrap()
@@ -102,5 +101,20 @@ class clientProductController extends Controller
     public function getDiscount()
     {
         return view('layouts.discountProduct');
+    }
+
+
+    public function getSpecificProduct(Request $req)
+    {
+        // $Slug = $req -> Slug;
+        // dd($Slug);
+        $ID = $req->ID;
+        $this_product = DB::table('Product_details')->join('Products', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.product_ID', $ID)->get();
+        // $this_products = DB::table('Product_details')->where('Product_details.Slug', $Slug)->get();
+        // $this_products = DB::table('product_details')->join('products','products.ID','=','product_details.Product_ID')->where('product_details.Slug', $Slug)->groupBy('Product_details.Product_ID')->get()->shuffle();
+
+        // dd($this_products);
+        
+        return view('clientsPage.mainProduct', ['product' => $this_product]);
     }
 }
