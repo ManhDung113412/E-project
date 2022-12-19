@@ -60,14 +60,15 @@
             <div class="container__list-tittle">Louis Vuitton</div>
             <div class="container__list-products">
                 @foreach ($louisVuiton as $item)
-                <div class="container__list-products-item">
+                <a class="container__list-products-item"
+                href="{{ url('/client/products/specificProduct', $item->Slug) }}">
                     <div style="background-image: url({{ $item->Main_IMG }})"
                         class="container__list-products-item-img"></div>
                     <div class="container__list-products-item-info">
                         <p>{{ $item->Name }}</p>
                         <p>${{ $item->Export_Price }}</p>
                     </div>
-                </div>
+                </a>
                 @endforeach
             </div>
         </div>
