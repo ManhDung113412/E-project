@@ -26,14 +26,10 @@ class BrandController extends Controller
             'name' => 'required|unique:brands',
             'logo' => 'required',
             'information' => 'required',
-            'code' => 'required',
+            'code' => 'required|unique:brands',
         ]);
 
         $slug = Str::slug($request->name);
-        $checkSlug = Brand::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
 
         Brand::create([
             'name' => $request->name,
@@ -62,10 +58,6 @@ class BrandController extends Controller
         ]);
 
         $slug = Str::slug($request->name);
-        $checkSlug = Brand::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
 
         Brand::where('id', $id)->update([
             'name' => $request->name,

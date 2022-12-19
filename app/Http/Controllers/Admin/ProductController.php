@@ -31,14 +31,10 @@ class ProductController extends Controller
             'category' => 'required',
             'name' => 'required|unique:products',
             'img' => 'required',
-            'code' => 'required',
+            'code' => 'required|unique:products',
         ]);
 
         $slug = Str::slug($request->name);
-        $checkSlug = Product::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
 
         Product::create([
             'brand_id' => $request->brand,
@@ -71,10 +67,6 @@ class ProductController extends Controller
         ]);
 
         $slug = Str::slug($request->name);
-        $checkSlug = Product::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
 
         Product::where('id', $id)->update([
             'brand_id' => $request->brand,
@@ -85,7 +77,7 @@ class ProductController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('admin.product.edit')->with('success', 'Updated Successfully');
+        return redirect()->route('admin.product.index')->with('success', 'Updated Successfully');
     }
 
     public function delete($id)

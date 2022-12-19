@@ -80,9 +80,11 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product.create');
         Route::post('store', [ProductController::class, 'store'])
             ->name('admin.product.store');
+            
         Route::get('edit/{id}', [ProductController::class, 'edit'])
             ->name('admin.product.edit');
-        Route::put('update', [ProductController::class, 'update'])
+
+        Route::put('update/{id}', [ProductController::class, 'update'])
             ->name('admin.product.update');
         Route::get('delete/{id}', [ProductController::class, 'delete'])
             ->name('admin.product.delete');
@@ -98,8 +100,10 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.create');
         Route::post('store/{id}', [ProductDetailController::class, 'store'])
             ->name('admin.product-detail.store');
+
         Route::get('edit/{id}', [ProductDetailController::class, 'edit'])
             ->name('admin.product-detail.edit');
+
         Route::put('update/{id}', [ProductDetailController::class, 'update'])
             ->name('admin.product-detail.update');
         Route::get('delete/{id}', [ProductDetailController::class, 'delete'])
