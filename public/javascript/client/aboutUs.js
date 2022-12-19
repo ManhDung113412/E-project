@@ -5,6 +5,7 @@ $ = function (ID) {
 $('returnPolicy').addEventListener('click', function (e) {
     e.preventDefault();
     window.scrollTo(0, 500);
+    // window.scrollTo({top: 500, behavior: "smooth"});
 });
 
 

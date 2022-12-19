@@ -28,11 +28,11 @@
                                 </div>
                             </div>
                             <div class="price">
-                                <div class="price__discount">{{ $item->Export_Price }}$</div>
+                                <div class="price__official">$<b>{{ $item->Export_Price }}</b></div>
                             </div>
                             <div class="color">
                                 @foreach ($getColor as $item)
-                                    <div class="white" style="background-color: {{ $item->Color }}"></div>
+                                    <a style="background-color: {{ $item->Color }}" href=""></a>
                                 @endforeach
                             </div>
                         </div>
@@ -41,16 +41,20 @@
                         </div>
                         <hr>
                         <div class="container__productInfo-main-descrip">
-                            <p>Description</p>
-                            <p>{{ $item->Information }}</p>
+                            <h2>Description</h2>
+                            <ul>
+                                <li>{{ $item->Information }}</li>
+                            </ul>
                         </div>
                         <hr>
                         <div class="container__productInfo-main-details">
-                            <p>Details</p>
-                            <p>Size: {{ $item->Size }}</p>
-                            <p>Material: {{ $item->Material }}</p>
-                            <p>Code: {{ $item->Code }}</p>
-                            <p>In Stock: {{ $item->Quantity }}</p>
+                            <h2>Details</h2>
+                            <ul>
+                                <li><b>Size:</b> {{ $item->Size }}</li>
+                                <li><b>Material:</b> {{ $item->Material }}</li>
+                                <li><b>Code:</b> {{ $item->Code }}</p>
+                                <li><b>In Stock:</b> {{ $item->Quantity }}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
