@@ -18,55 +18,10 @@
                 <form action="{{ route('admin.product-detail.update', $product_detail->id) }}" method="POST">
                     @csrf
                     @method('put')
-                    {{-- Brand --}}
-                    <div class="form-group">
-                        <label>Brand</label>
-                        <select class="form-control" id="brand" name="brand_id">
-                            @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }} @if ($product_detail->product->category->brand_id == $brand->id) selected @endif">
-                                    {{ $brand->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('brand_id')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    {{-- Category --}}
-                    <div class="form-group" >
-                        <label">Category</label>
-                        <select class="form-control" id="category" name="category_id">
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }} @if ($product_detail->product->category_id == $category->id) selected @endif">
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('category_id')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
                     {{-- Product --}}
                     <div class="form-group" >
                         <label>Product</label>
-                        <select class="form-control" id="product" name="product_id">
-                            @foreach ($products as $product)
-                                <option value="{{ $product->id }} @if ($product_detail->product_id == $product->id) selected @endif">
-                                    {{ $product->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('product_id')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input class="form-control" name="product_id" value="{{$product_detail->product->name}}" disabled/>
                     </div>
 
                     {{-- Import Price --}}
@@ -205,22 +160,33 @@
                     <div class="form-group">
                         <label>Is Trending? </label><br>
                         <label class="radio-inline">
-                            <input name="is_trending" value="1" type="radio" @if ($product_detail->is_trending) checked @endif>
+                            <input name="is_trending" value="0" type="radio" @if ($product_detail->is_trending == 0) checked @endif>No
+                        </label>
+                        <label class="radio-inline">
+                            <input name="is_trending" value="1" type="radio" @if ($product_detail->is_trending == 1) checked @endif>Yes
                         </label>
                     </div>
+
                     <div class="form-group">
                         <label>Is Feature? </label><br>
                         <label class="radio-inline">
-                            <input name="is_feature" value="1" type="radio" @if ($product_detail->is_feature) checked @endif>
+                            <input name="is_feature" value="0" type="radio" @if ($product_detail->is_feature == 0) checked @endif>No
+                        </label>
+                        <label class="radio-inline">
+                            <input name="is_feature" value="1" type="radio" @if ($product_detail->is_feature == 1) checked @endif>Yes 
                         </label>
                     </div>
+                    
                     <div class="form-group">
                         <label>Is Arrivals? </label><br>
                         <label class="radio-inline">
-                            <input name="is_arrivals" value="1" type="radio" @if ($product_detail->is_arrivals  ) checked @endif>
+                            <input name="is_arrivals" value="0" type="radio" @if ($product_detail->is_arrivals == 0) checked @endif>No
+                        </label>
+                        <label class="radio-inline">
+                            <input name="is_arrivals" value="1" type="radio" @if ($product_detail->is_arrivals == 1) checked @endif>Yes
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-default">Update</button>
+                    <button type="submit" class="btn btn-default">Edit Product Detail</button>
                     <form>
             </div>
         </div>

@@ -28,7 +28,7 @@ class ProductDetail extends Model
         'is_feature', 
         'product_id', 
         'quantity',
-        'slug', 
+        // 'slug', 
     ];
 
     public function product(){

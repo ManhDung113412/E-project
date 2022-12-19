@@ -22,14 +22,10 @@ class CategoryController extends Controller
     public function store(Request $request){
         $this->validate($request, [
             'name' => 'required|unique:categories',
-            'code' => 'required',
+            'code' => 'required|unique:categories',
         ]);
 
         $slug = Str::slug($request->name);
-        $checkSlug = Category::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
 
         Category::create([
             'name' => $request->name,
@@ -52,10 +48,6 @@ class CategoryController extends Controller
         ]);
 
         $slug = Str::slug($request->name);
-        $checkSlug = Category::where('slug', $slug)->first();
-        while ($checkSlug) {
-            $slug = $checkSlug->slug . Str::random(5);
-        }
 
         Category::where('id', $id)->update([
             'name' => $request->name,

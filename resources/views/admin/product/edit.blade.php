@@ -14,10 +14,10 @@
                 </h1>
             </div>
             @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                 <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
                 <form action="{{ route('admin.product.update', $product->id) }}" method="POST">
@@ -25,14 +25,14 @@
                     @method('put')
                     <div class="form-group">
                         <label>Brand</label>
-                        <select class="form-control" id="brand" name="brand_id">
+                        <select class="form-control" name="brand">
                             @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }} @if ($product->brand_id == $brand->id) selected @endif">
+                                <option value="{{ $brand->id }}" @if ($product->brand_id == $brand->id) selected @endif>
                                     {{ $brand->name }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('brand_id')
+                        @error('brand')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -41,15 +41,15 @@
                     <div class="form-group" >
                         <label>Category</label>
                         <div id="categories">
-                            <select class="form-control">
+                            <select class="form-control" name="category">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }} @if ($product->category_id == $category->id) selected @endif">
+                                    <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
-                        @error('category_id')
+                        @error('category')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>

@@ -159,19 +159,30 @@
                     <div class="form-group">
                         <label>Is Trending? </label><br>
                         <label class="radio-inline">
-                            <input name="is_trending" value="1" type="radio">
+                            <input name="is_trending" value="0" checked type="radio">No
+                        </label>
+                        <label class="radio-inline">
+                            <input name="is_trending" value="1" type="radio">Yes
                         </label>
                     </div>
+
                     <div class="form-group">
                         <label>Is Feature? </label><br>
                         <label class="radio-inline">
-                            <input name="is_feature" value="1" type="radio">
+                            <input name="is_feature" value="0" checked type="radio">No
+                        </label>
+                        <label class="radio-inline">
+                            <input name="is_feature" value="1" type="radio">Yes 
                         </label>
                     </div>
+
                     <div class="form-group">
                         <label>Is Arrivals? </label><br>
                         <label class="radio-inline">
-                            <input name="is_arrivals" value="1" type="radio">
+                            <input name="is_arrivals" value="0" checked type="radio">No
+                        </label>
+                        <label class="radio-inline">
+                            <input name="is_arrivals" value="1" type="radio">Yes
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Create</button>
