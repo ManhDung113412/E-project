@@ -16,10 +16,10 @@
                             style="background-image: url({{ $item->Slide_IMG_2 }});"></div>
                     </div>
                     <div id="abc" class="container__productImage-mainImage"
-                        style="background-image: url({{ $item->IMG }});"></div>
+                        style="background-image: url({{ $item->Main_IMG }})"></div>
                 </div>
                 <div class="container__productInfo">
-                    <div class="container__productInfo-main" >
+                    <div class="container__productInfo-main">
                         <div class="container__productInfo-main-info">
                             <div class="top">
                                 <div class="top__name">{{ $item->Name }}</div>
@@ -31,9 +31,9 @@
                                 <div class="price__discount">{{ $item->Export_Price }}$</div>
                             </div>
                             <div class="color">
-                                <div class="white" style="background-color: {{ $item->Color }}"></div>
-                                <div class="grey"></div>
-                                <div class="black"></div>
+                                @foreach ($getColor as $item)
+                                    <div class="white" style="background-color: {{ $item->Color }}"></div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="container__productInfo-main-add">
