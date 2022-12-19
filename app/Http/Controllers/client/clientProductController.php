@@ -104,12 +104,17 @@ class clientProductController extends Controller
     }
 
 
-    public function getSpecificProduct(Request $req){
-        // $slug = $req -> Slug;
-        $ID = $req ->ID;
-        $this_product = DB::table('Product_details')->join('Products', 'Products.ID', '=', 'product_details.Product_ID')->where('Products.ID',$ID)->get();
-        // dd($this_product[0]);
+    public function getSpecificProduct(Request $req)
+    {
+        // $Slug = $req -> Slug;
+        // dd($Slug);
+        $ID = $req->ID;
+        $this_product = DB::table('Product_details')->join('Products', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.product_ID', $ID)->get();
+        // $this_products = DB::table('Product_details')->where('Product_details.Slug', $Slug)->get();
+        // $this_products = DB::table('product_details')->join('products','products.ID','=','product_details.Product_ID')->where('product_details.Slug', $Slug)->groupBy('Product_details.Product_ID')->get()->shuffle();
+
+        // dd($this_products);
         
-        return view('clientsPage.mainProduct',['product' => $this_product]);
+        return view('clientsPage.mainProduct', ['product' => $this_product]);
     }
 }

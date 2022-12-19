@@ -21,10 +21,13 @@ class homepageController extends Controller
         $Gucci = DB::table('brand_collections')->where('Brand_ID', 3)->get();
         $LV = DB::table('brand_collections')->where('Brand_ID', 4)->get();
         
-        $trending = DB::table('product_details')->join('products', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_Trending', 1)->get()->shuffle();
-        $tren = $trending->take(4);
-        // dd($p);
+        $trending = DB::table('product_details')->join('products','products.ID','=','product_details.Product_ID')->where('product_details.Is_Trending', 1)->groupBy('Product_details.Product_ID')->get()->shuffle();
+        // $dior = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('Products.Brand_ID', 2)->paginate(13);
         
+        $tren = $trending->take(4);
+        // dd($tren);
+        // dd($p);
+
         return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren]);
     }
 }
