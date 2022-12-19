@@ -31,14 +31,15 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-                    <div class="container__featured-products-items">
+                    <a class="container__featured-products-items"
+                    href="{{ url('/client/products/specificProduct', $item->Slug) }}">
                         <div style="background-image: url({{ $item->IMG }})"
                             class="container__featured-products-items-img"></div>
                         <div class="container__featured-products-items-info">
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
