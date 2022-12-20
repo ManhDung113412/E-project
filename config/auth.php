@@ -38,15 +38,15 @@ return [
     'guards' => [
         'web' => [
             'driver'    => 'session',
-            'provider' => 'users',
+            'provider' => 'userssss',
         ],
         'admins' => [ // Tên guard khi gọi ở controller
             'driver' =>  'session',
             'provider' => 'admins', // Tên bảng
         ],
-        'customers' => [
+        'users' => [
             'driver' => 'session',
-            'provider' => 'customers'
+            'provider' => 'users'
         ],
     ],
 
@@ -68,9 +68,9 @@ return [
     */
 
     'providers' => [
-        'customers' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Customers::class,
+            'model' => App\Models\User::class,
         ],
 
         'admins' => [ // Tên bảng (Provider sẽ truy xuất dữ liệu của bảng này)
@@ -109,20 +109,20 @@ return [
     //     ],
     // ],
 
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'admins' => [ // Tên bảng
-            'provider' => 'admins',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-    ],
+    // 'passwords' => [
+    //     'user' => [
+    //         'provider' => 'users',
+    //         'table' => 'password_resets',
+    //         'expire' => 60,
+    //         'throttle' => 60,
+    //     ],
+    //     'admins' => [ // Tên bảng
+    //         'provider' => 'admins',
+    //         'table' => 'password_resets',
+    //         'expire' => 60,
+    //         'throttle' => 60,
+    //     ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------

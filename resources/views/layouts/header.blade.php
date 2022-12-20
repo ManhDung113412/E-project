@@ -34,7 +34,7 @@
                                 <div class="dropdown3__name">Brands</div>
                                 <ion-icon name="caret-forward-outline"></ion-icon>
                             </div>
-                            <div><a href="">My Shopping Cart</a></div>
+                            <div><a href="http://127.0.0.1:8000/client/Cart">My Shopping Cart</a></div>
                             <div><a href="">My Wish List</a></div>
                             <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                         </div>
@@ -64,6 +64,10 @@
                     </div>
                 </div>
             </div>
+            <div id="openLog" class="header__log">
+                <div class="header__log-signIn">Sign In</div>
+                <div class="header__log-signOut">Sign Out</div>
+            </div>
             <div class="header__update">
                 <div id="topUpdate" class="header__update-all">
                     <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a></div>
@@ -84,9 +88,15 @@
                     </a>
                 </div>
                 <div class="header__nav-right">
-                    <ion-icon name="person-outline"></ion-icon>
-                    <ion-icon name="cart-outline"></ion-icon>
-                    <ion-icon name="heart-outline"></ion-icon>
+                    <button id="log"><ion-icon name="person-outline"></ion-icon></button>
+                    <button>
+                        <div class="quantityCart">20</div>
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                    <button>
+                        <div class="quantityCart">20</div>
+                        <ion-icon name="heart-outline"></ion-icon>
+                    </button>
                 </div>
             </div>
         </div>

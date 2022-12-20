@@ -32,7 +32,8 @@
                             </div>
                             <div class="color">
                                 @foreach ($getColor as $item)
-                                    <a style="background-color: {{ $item->Color }}" href=""></a>
+                                    <a style="background-color: {{ $item->Color }}"
+                                        href="{{ url('/client/products/specificProduct', $item->Slug) }}"></a>
                                 @endforeach
                             </div>
                         </div>
@@ -70,38 +71,17 @@
     <div class="container__featured">
         <div class="container__featured-tittle">You May Also Like</div>
         <div class="container__featured-products">
-            <div class="container__featured-products-items">
-                <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                    class="container__featured-products-items-img"></div>
-                <div class="container__featured-products-items-info">
-                    <p>Product Name</p>
-                    <p>$1000</p>
-                </div>
-            </div>
-            <div class="container__featured-products-items">
-                <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                    class="container__featured-products-items-img"></div>
-                <div class="container__featured-products-items-info">
-                    <p>Product Name</p>
-                    <p>$1000</p>
-                </div>
-            </div>
-            <div class="container__featured-products-items">
-                <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                    class="container__featured-products-items-img"></div>
-                <div class="container__featured-products-items-info">
-                    <p>Product Name</p>
-                    <p>$1000</p>
-                </div>
-            </div>
-            <div class="container__featured-products-items">
-                <div style="background-image: url(./8858227441694-removebg-preview.png)"
-                    class="container__featured-products-items-img"></div>
-                <div class="container__featured-products-items-info">
-                    <p>Product Name</p>
-                    <p>$1000</p>
-                </div>
-            </div>
+            @foreach ($ran_pro as $item)
+                <a class="container__featured-products-items"
+                    href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                    <div style="background-image: url({{ $item->Main_IMG }})"
+                        class="container__featured-products-items-img"></div>
+                    <div class="container__featured-products-items-info">
+                        <p>{{ $item->Name }}</p>
+                        <p>${{ $item->Export_Price }}</p>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </div>
     </div>

@@ -15,12 +15,14 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{{ route('admin.product-detail.store', $product->ID) }}" method="POST">
+                <form action="{{ route('admin.product-detail.store') }}" method="POST">
                     @csrf
                     {{-- Product --}}
                     <div class="form-group" >
                         <label>Product</label>
-                        <input class="form-control" name="product_id" value="{{$product->Name}}" disabled/>
+                        <select class="form-control" name="product_id">
+                            <option selected value="{{$product->ID}}">{{$product->Name}}</option>
+                        </select>
                     </div>
 
                     {{-- Import Price --}}
