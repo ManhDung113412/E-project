@@ -54,5 +54,20 @@ setInterval(function(){
 document.getElementById('log').onclick = function (e) {
     e.preventDefault();
     document.getElementById('openLog').classList.toggle('active');
+    document.getElementById('shoppingCart').classList.remove('activeCart');
+}
 
+// shoppingCart
+
+document.getElementById('showCart').onclick = function (e) {
+    e.preventDefault();
+    document.getElementById('shoppingCart').classList.toggle('activeCart');
+    document.getElementById('openLog').classList.remove('active');
+
+}
+
+document.getElementById('hideCart').onclick = function (e) {
+    e.preventDefault();
+    document.getElementById('shoppingCart').classList.toggle('activeCart');
+    document.getElementById('openLog').classList.remove('active');
 }

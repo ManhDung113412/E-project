@@ -196,28 +196,34 @@ input:valid~label {
     position: absolute;
     height: 100%;
     animation: nonActive 0.85s ease-in-out 1 forwards;
+    /* display: none; */
 }
 
 .container__signIn.active{
     position: absolute;
     animation: activeForm 0.85s ease-in-out 1 forwards;
+    /* display: block; */
 }
 
 @keyframes activeForm {
     from{
         opacity: 0;
+        /* display: none; */
         transform: translate(-150%,0);
     }to{
         opacity: 1;
+        /* display: block; */
         transform: translate(0,0);
     }
 }
 @keyframes nonActive {
     from{
         opacity: 1;
+        /* display: block; */
         transform: translate(0,0);
     }to{
         opacity: 0;
+        /* display: none; */
         transform: translate(150%,0);
     }
 }

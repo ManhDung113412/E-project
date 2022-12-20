@@ -12,6 +12,13 @@ document.getElementById('toSignIn').onclick = function (e) {
 
 }
 
+// document.getElementById('signUp').onclick = function (e) {
+//     e.preventDefault();
+//     document.getElementById('registerForm').classList.add('active');
+//     document.getElementById('signInForm').classList.remove('active');
+
+// }
+
 setInterval(function(){
     var item = document.querySelectorAll('.slideShow-image');
     document.getElementById('abc').appendChild(item[0]);

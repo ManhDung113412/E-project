@@ -128,4 +128,9 @@ class clientProductController extends Controller
         $get_color = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Product_ID', $product_ID)->get();
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color, 'ran_pro' => $ran_pro]);
     }
+
+    public function getSlideLogin(Request $req)
+    {
+
+    }
 }
