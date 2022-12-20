@@ -14,23 +14,23 @@
             <div class="footer__main-service">
                 <ul>
                     <p>MY ACCOUNT</p>
-                    <li><a href="">Sign In</a></li>
-                    <li><a href="">Sign Up</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/login">Sign In</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/login">Sign Up</a></li>
                     <li><a href="">My Wish List</a></li>
-                    <li><a href="">My Cart</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/Cart">My Cart</a></li>
                 </ul>
                 <ul>
                     <p>SERVICE</p>
-                    <li><a href="">Store Location</a></li>
-                    <li><a href="">Return Policy</a></li>
-                    <li><a href="">Item Care & Warranty</a></li>
-                    <li><a href="">Payment Options</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/aboutUs">Store Location</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/aboutUs">Return Policy</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/aboutUs">Item Care & Warranty</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/aboutUs">Payment Options</a></li>
                     <li><a href="">Size Guide</a></li>
                 </ul>
                 <ul>
                     <p>ABOUT US</p>
-                    <li><a href="">Who We Are</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/aboutUs">Who We Are</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/aboutUs">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer__main-socialMedia">
@@ -56,7 +56,7 @@
                             <P>Instagram</P>
                         </a>
                     </li>
-                    <li><a href=""><img style="width: 70px; height: 70px" src="{{ asset('assets/socialmedia E-project/youtube.png') }}"
+                    <li><a href="https://www.youtube.com/channel/UC9cyMr1Y4M06jw3zCHWWYaw"><img style="width: 70px; height: 70px" src="{{ asset('assets/socialmedia E-project/youtube.png') }}"
                                 alt="">
                             <P>Youtube</P>
                         </a>

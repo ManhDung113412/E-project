@@ -47,3 +47,12 @@ setInterval(function(){
     var update = document.querySelectorAll('.header__update-1');
     document.getElementById('topUpdate').appendChild(update[0]);
 },3000);
+
+
+// show log
+
+document.getElementById('log').onclick = function (e) {
+    e.preventDefault();
+    document.getElementById('openLog').classList.toggle('active');
+
+}
