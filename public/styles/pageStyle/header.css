@@ -25,6 +25,74 @@ form {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
+.header__log {
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    top: 112px;
+    right: 90px;
+    background-color: white;
+    border: 1px solid whitesmoke;
+    animation: hideLog 0.3s ease-in-out 1 forwards;
+
+
+}
+
+.header__log.active {
+    display: block;
+    animation: showLog 0.3s ease-in-out 1 forwards;
+}
+
+@keyframes showLog{
+    from{
+        display: none;
+        transform: translate(0, -70px);
+    }to{
+        display: block;
+        opacity: 1;
+        transform: translate(0, 0);
+
+    }
+}
+@keyframes hideLog{
+    from{
+        display: block;
+        transform: translate(0, 0);
+        opacity: 1;
+    }to{
+        display: none;
+        opacity: 0;
+        transform: translate(0, -70px);
+
+    }
+}
+
+.header__log-signIn {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.header__log-signIn:hover {
+    background-color: rgb(255, 242, 242);
+}
+
+.header__log-signOut {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.header__log-signOut:hover {
+    background-color: rgb(255, 242, 242);
+}
+
 .header__side-category {
     position: absolute;
     background-color: white;
@@ -380,9 +448,41 @@ ion-icon {
     align-self: center;
 }
 
-.header__nav-right ion-icon {
-    margin: 10px;
-    font-size: 30px;
+.header__nav-right button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    position: relative;
+
+
+}
+
+.header__nav-right button .quantityCart {
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 15px;
+    background-color: rgb(255, 61, 61);
+    font-size: 8px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    right: 0;
+    margin-top: 5px;
+    line-height: 15px;
+    z-index: 1;
+}
+
+.header__nav-right button ion-icon {
+    width: 30px;
+    float: left;
+    height: 40px;
+    margin-top: 8px;
+    /* border: 1px solid black ; */
+
 }
 
 
