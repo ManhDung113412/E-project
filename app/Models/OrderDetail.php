@@ -9,5 +9,27 @@ class OrderDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'order_details';
+    protected $table = 'orders_details';
+
+    // protected $fillable = [
+
+    // ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'Order_ID', 'ID');
+    }
+
+    public function payment(){
+        return $this->belongsTo(Payment::class, 'Payment_ID', 'ID');
+    }
+
+    public function code(){
+        return $this->belongsTo(Code::class, 'Code_ID', 'ID');
+    }
+
+    public function product_details()
+    {
+        return $this->hasMany(ProductDetail::class, 'Product_Detail_ID', 'ID');
+    }
 }

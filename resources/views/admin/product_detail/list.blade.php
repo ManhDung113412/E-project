@@ -51,9 +51,9 @@
                             <td>{{$product->Import_Price}}</td>
                             <td>{{$product->Export_Price}}</td>
                             <td>{{$product->Sale_Price}}</td>
-                            <td>{{$product->Main_IMG}}</td>
-                            <td>{{$product->Slide_IMG_1}}</td>
-                            <td>{{$product->Slide_IMG_2}}</td>
+                            <td><img width="100" src="{{$product->Main_IMG}}" alt=""></td>
+                            <td><img width="100" src="{{$product->Slide_IMG_1}}" alt=""></td>
+                            <td><img width="100" src="{{$product->Slide_IMG_2}}" alt=""></td>
                             <td>{{$product->Information}}</td>
                             <td>{{$product->Material}}</td>
                             <td>{{$product->Color}}</td>

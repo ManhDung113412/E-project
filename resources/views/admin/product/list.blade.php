@@ -46,7 +46,7 @@ List Product
                         <td>{{$product->brand->Name}}</td>
                         <td>{{$product->category->Name}}</td>
                         <td>{{$product->Name}}</td>
-                        <td>{{$product->IMG}}</td>
+                        <td><img width="100" src="{{$product->IMG}}" alt=""></td>
                         <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->ID)}}"> Delete</a></td>
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->ID)}}">Edit</a></td>
                         <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->ID)}}">Add</a></td>

@@ -33,4 +33,8 @@ class User extends Authenticatable
     protected $hidden = [
         'Password',
     ];
+
+    public function orders(){
+        return $this->hasMany(Order::class, 'Customer_ID', 'ID');
+    }
 }

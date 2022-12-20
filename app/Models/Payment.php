@@ -10,4 +10,13 @@ class Payment extends Model
     use HasFactory;
 
     protected $table = 'payments';
+
+    protected $fillable = [
+        'Method',
+        'Price'
+    ];
+
+    public function order_details(){
+        return $this->hasMany(OrderDetail::class, 'Payment_ID', 'ID');
+    }
 }
