@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class shoppingcartController extends Controller
 {
-    public function getShoppingCart()
+    public function getShoppingCart(Request $req)
     {
-        return view('clientsPage.shippingCart');
+        $data = $req->session()->get('this_customer');
+
+        return view('clientsPage.shoppingCart',['this_customer'=>$data]);
     } 
+
+
 }

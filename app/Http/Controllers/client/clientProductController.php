@@ -122,15 +122,10 @@ class clientProductController extends Controller
     {
         $Slug = $req->Slug;
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
-        // dd($this_product);
         $random_products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
-
         $ran_pro = $random_products->take(4);
-
         $product_ID =  $this_product[0]->Product_ID;
         $get_color = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Product_ID', $product_ID)->get();
-        // dd($this_product[0]->Color);
-        // dd($get_color);
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color, 'ran_pro' => $ran_pro]);
     }
 }

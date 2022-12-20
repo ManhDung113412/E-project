@@ -43,6 +43,9 @@ class clientLoginController extends Controller
         // dd($customer);
 
         if ($customer == true) {
+            $customer_ID = Auth::guard('users')->user();
+            $this_customer = DB::table('users')->join('wish_list', 'users.ID', '=', 'wish_list.Customer_ID')->join('carts', 'users.ID', '=', 'carts.Customer_ID')->where('carts.Customer_ID', $customer_ID->ID)->get();
+            $data = session(['this_customer' => $this_customer]);
             return redirect()->route('homepage');
         } else {
             return redirect()->back();
@@ -82,7 +85,7 @@ class clientLoginController extends Controller
         // $update_at = null;
         DB::table('users')->insert(
             [
-                'First_Name' => $request->first_name, 'Last_Name' => $request->last_name, 'Email'=> $request->mail, 'username' => $request->user_name, 'password'  => bcrypt($request->password), 'rank'      => 1
+                'First_Name' => $request->first_name, 'Last_Name' => $request->last_name, 'Email' => $request->mail, 'username' => $request->user_name, 'password'  => bcrypt($request->password), 'rank'      => 1
             ]
         );
     }
