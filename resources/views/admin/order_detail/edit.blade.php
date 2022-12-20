@@ -24,9 +24,27 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                        <label>Order Code</label>
                         <h1 class="form-control">
+                            <label>Order Code</label>:
                                 {{ $order->Code }}
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <h1 class="form-control">
+                            <label>Customer Name</label>:
+                                {{ $order->customer->Last_Name }}
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <h1 class="form-control">
+                            <label>Customer Name</label>:
+                                {{ $order->Location}}
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <h1 class="form-control">
+                            <label>Customer Name</label>:
+                                {{ $order->payment->Method }}
                         </h1>
                     </div>
                     <button type="submit" class="btn btn-default">Product Edit</button>
