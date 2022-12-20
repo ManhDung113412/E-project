@@ -23,9 +23,9 @@ class AuthController extends Controller
         ]);
 
         Admin::create([
-            'Name' => $request->name,
-            'Email' => $request->email,
-            'Password' => bcrypt($request->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
 
         return redirect()->route('admin.auth.login')->with('success', 'Registered Successfully');

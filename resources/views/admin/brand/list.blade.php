@@ -34,7 +34,7 @@ List Brands
                 <tbody>
                     @foreach ($brands as $index => $brand)
                     <tr class="odd gradeX" align="center">
-                        <td>{{$index}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{$brand->Code}}</td>
                         <td>{{$brand->Name}}</td>
                         <td>{{$brand->Logo}}</td>

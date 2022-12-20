@@ -17,8 +17,8 @@ class Category extends Model
         'Slug',  
     ];
 
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'Category_ID', 'ID');
-    }
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class, 'Category_ID', 'ID');
+    // }
 }

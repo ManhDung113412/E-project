@@ -36,7 +36,7 @@ List Product
                 <tbody>
                     @foreach ($products as $index => $product)
                     <tr class="odd gradeX" align="center">
-                        <td>{{$index}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{$product->Code}}</td>
                         <td>{{$product->brand->Name}}</td>
                         <td>{{$product->category->Name}}</td>

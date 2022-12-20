@@ -33,7 +33,7 @@ List Categories
                 <tbody>
                     @foreach ($categories as $index => $category)
                     <tr class="odd gradeX" align="center">
-                        <td>{{$index}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{$category->Code}}</td>
                         <td>{{$category->Name}}</td>
                         <td>{{$category->Logo}}</td>

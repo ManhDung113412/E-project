@@ -45,7 +45,7 @@
                 <tbody>
                     @foreach ($product_details as $index => $product)
                     <tr class="odd gradeX" align="center">
-                        <td>{{$index}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{$product->Code}}</td>
                         <td>{{$product->Import_Price}}</td>
                         <td>{{$product->Export_Price}}</td>
