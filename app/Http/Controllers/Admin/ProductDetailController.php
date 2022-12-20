@@ -14,17 +14,17 @@ class ProductDetailController extends Controller
 {
     public function index()
     {
-        $product_details = ProductDetail::all();
+        $product_details = ProductDetail::paginate(5);
         return view('admin.product_detail.list', compact('product_details'));
     }
 
     public function create($id)
     {
-        $product = Product::where('ID', $id)->get();
+        $product = Product::find($id);
         return view('admin.product_detail.create', compact('product'));
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'import_price' => 'required|numeric',
@@ -40,8 +40,8 @@ class ProductDetailController extends Controller
             'code' => 'required|unique:product_details',
             'quantity' => 'required|numeric',
         ]);
-
-        $product = Product::where('ID', $id)->get();
+        
+        $product = Product::find($request->product_id);
 
         $slug = Str::slug($product->Name . "-" . $request->color);
 
@@ -60,7 +60,7 @@ class ProductDetailController extends Controller
             'Is_Trending' => $request->is_trending,
             'Is_New_Arrivals' => $request->is_arrivals,
             'Is_Feature' => $request->is_feature,
-            'Product_ID' => $id,
+            'Product_ID' => $request->product_id,
             'Quantity' => $request->quantity,
             'Slug'=> $slug, 
         ]);
@@ -70,9 +70,9 @@ class ProductDetailController extends Controller
 
     public function edit($id)
     {
-        $products = Product::all();
         $product_detail = ProductDetail::find($id);
-        return view('admin.product_detail.edit', compact('products', 'product_detail'));
+        $product = Product::find($product_detail->Product_ID);
+        return view('admin.product_detail.edit', compact('product', 'product_detail'));
     }
 
     public function update(Request $request, $id)
@@ -94,13 +94,12 @@ class ProductDetailController extends Controller
 
         $product_detail = ProductDetail::find($id);
         $product_id  = $product_detail->Product_ID;
-        $product = Product::where('Product_ID', $product_id)->get();
+        $product = Product::find($product_id);
 
         $slug = Str::slug($product->Name . "-" . $request->color);
 
         $old_product_detail = ProductDetail::find($id);
         $old_quantity = $old_product_detail->Quantity;
-        $product_id = $old_product_detail->Product_ID;
 
         ProductDetail::where('ID', $id)->update([
             'Import_Price' => $request->import_price,
@@ -131,3 +130,4 @@ class ProductDetailController extends Controller
         return redirect()->route('admin.product-detail.index')->with('success', 'Deleted Successfully');
     }
 }
+

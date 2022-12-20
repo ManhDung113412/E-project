@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -34,11 +35,12 @@ class ProductController extends Controller
             'code' => 'required|unique:products',
         ]);
 
+
         $slug = Str::slug($request->name);
 
         Product::create([
-            'Brand_id' => $request->brand,
-            'Category_id' => $request->category,
+            'Brand_ID' => $request->brand,
+            'Category_ID' => $request->category,
             'Name' => $request->name,
             'IMG' => $request->img,
             'Code' => $request->code,
@@ -82,6 +84,12 @@ class ProductController extends Controller
 
     public function delete($id)
     {
+        $product = Product::find($id);
+        $product_id = $product->ID;
+        $product_details = ProductDetail::where('Product_ID', $product_id)->count();
+        if($product_details){
+            return redirect()->route('admin.product.index')->with('error', 'Cannot detele this product!');
+        }
         Product::where('ID', $id)->delete();
         return redirect()->route('admin.product.index')->with('success', 'Deleted Successfully');
     }

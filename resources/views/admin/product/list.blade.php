@@ -13,11 +13,16 @@ List Product
                     <small>List</small>
                 </h1>
             </div>
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <!-- /.col-lg-12 -->
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
@@ -36,7 +41,7 @@ List Product
                 <tbody>
                     @foreach ($products as $index => $product)
                     <tr class="odd gradeX" align="center">
-                        <td>{{$index}}</td>
+                        <td>{{$index + 1}}</td>
                         <td>{{$product->Code}}</td>
                         <td>{{$product->brand->Name}}</td>
                         <td>{{$product->category->Name}}</td>

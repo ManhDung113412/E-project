@@ -28,8 +28,8 @@ class Product extends Model
         return $this->belongsTo(Brand::class, 'Brand_ID', 'ID');
     }
 
-    public function productdetails()
-    {
-        return $this->hasMany(ProductDetail::class, 'Product_ID', 'ID');
-    }
+    // public function productdetails()
+    // {
+    //     return $this->hasMany(ProductDetail::class, 'Product_ID', 'ID');
+    // }
 }

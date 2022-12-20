@@ -31,7 +31,7 @@ class ProductDetail extends Model
         'Slug', 
     ];
 
-    public function product(){
-        return $this->belongsTo(Product::class, 'Product_ID', 'ID');
-    }
+    // public function product(){
+    //     return $this->belongsTo(Product::class, 'Product_ID', 'ID');
+    // }
 }

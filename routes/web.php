@@ -83,7 +83,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product.store');
         Route::get('edit/{id}', [ProductController::class, 'edit'])
             ->name('admin.product.edit');
-        Route::put('update', [ProductController::class, 'update'])
+        Route::put('update/{id}', [ProductController::class, 'update'])
             ->name('admin.product.update');
         Route::get('delete/{id}', [ProductController::class, 'delete'])
             ->name('admin.product.delete');
@@ -97,7 +97,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.search');
         Route::get('create/{id}', [ProductDetailController::class, 'create'])
             ->name('admin.product-detail.create');
-        Route::post('store/{id}', [ProductDetailController::class, 'store'])
+        Route::post('store', [ProductDetailController::class, 'store'])
             ->name('admin.product-detail.store');
         Route::get('edit/{id}', [ProductDetailController::class, 'edit'])
             ->name('admin.product-detail.edit');
