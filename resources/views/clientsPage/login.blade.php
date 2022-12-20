@@ -11,63 +11,107 @@
 </head>
 
 <body>
-    <form action="">
+    <div class="frm" action="">
         <div class="container">
-            <div id="signInForm" class="container__signIn active">
+            <form action="{{ url('http://127.0.0.1:8000/client/login') }}" id="signInForm" method="POST"
+                class="container__signIn active">
+                @csrf
                 <div class="container__signIn-tittle">Sign In</div>
                 <div class="container__signIn-input">
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input type="text" name="user_name" autocomplete="off" class="input">
                         <label class="user-label">Username</label>
+                        <small>
+                            @error('user_name')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input type="password" name="password" autocomplete="off" class="input">
                         <label class="user-label">Password</label>
+                        <small>
+                            @error('password')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                 </div>
                 <div class="container__signIn-button">
-                    <button>Sign in</button>
+                    <button id="" type="submit">Sign in</button>
                 </div>
                 <div class="container__signIn-forget"><a href="">Forgotten password?</a></div>
                 <div class="container__signIn-change">
                     <button id="toRegister">Register</button>
                 </div>
-            </div>
-            <div id="registerForm" class="container__signIn ">
+            </form>
+            <form action="{{ url('http://127.0.0.1:8000/client/register') }}" method="POST" id="registerForm"
+                class="container__signIn ">
+                @csrf
                 <div class="container__signIn-tittle">Register</div>
                 <div class="container__signIn-input">
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input  type="text" name="first_name" autocomplete="off" class="input">
                         <label class="user-label">Firstname</label>
+                        <small>
+                            @error('first_name')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input  type="text" name="last_name" autocomplete="off" class="input">
                         <label class="user-label">Lastname</label>
+                        <small>
+                            @error('last_name')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input  type="text" name="mail" autocomplete="off" class="input">
                         <label class="user-label">Email</label>
+                        <small>
+                            @error('mail')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input  type="text" name="user_name" autocomplete="off" class="input">
                         <label class="user-label">Username</label>
+                        <small>
+                            @error('user_name')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input  type="password" name="password" autocomplete="off" class="input">
                         <label class="user-label">Password</label>
+                        <small>
+                            @error('password')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                     <div class="input-group">
-                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <input  type="password" name="c_password" autocomplete="off" class="input">
                         <label class="user-label">Confirm Password</label>
+                        <small>
+                            @error('c_password')
+                                {{ $message }}
+                            @enderror
+                        </small>
                     </div>
                 </div>
                 <div class="container__signIn-button">
-                    <button>Sign up</button>
+                    <button type="submit">Sign up</button>
                 </div>
                 <div class="container__signIn-change">
                     <button id="toSignIn">Sign in</button>
                 </div>
-            </div>
+            </form>
         </div>
         <div id="abc" class="slideShow">
             <div id="formImage" class="slideShow-image show"
@@ -79,7 +123,7 @@
             <div id="formImage" class="slideShow-image show"
                 style="background-image: url(./dior/Dior-Fall-2020-Runway-Bag-Collection-5.jpg);"></div>
         </div>
-    </form>
+    </div>
 </body>
 <script src="{{ asset('javascript/client/loginNew.js') }}"></script>
 

@@ -80,11 +80,9 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product.create');
         Route::post('store', [ProductController::class, 'store'])
             ->name('admin.product.store');
-            
         Route::get('edit/{id}', [ProductController::class, 'edit'])
             ->name('admin.product.edit');
-
-        Route::put('update/{id}', [ProductController::class, 'update'])
+        Route::put('update', [ProductController::class, 'update'])
             ->name('admin.product.update');
         Route::get('delete/{id}', [ProductController::class, 'delete'])
             ->name('admin.product.delete');
@@ -100,10 +98,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.create');
         Route::post('store/{id}', [ProductDetailController::class, 'store'])
             ->name('admin.product-detail.store');
-
         Route::get('edit/{id}', [ProductDetailController::class, 'edit'])
             ->name('admin.product-detail.edit');
-
         Route::put('update/{id}', [ProductDetailController::class, 'update'])
             ->name('admin.product-detail.update');
         Route::get('delete/{id}', [ProductDetailController::class, 'delete'])
@@ -128,13 +124,20 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 });
 
 Route::prefix('client')->group(function () {
+    // Route::get('login-register', [clientLoginController::class, 'getLogin']);
+    // Route::post('login-register', [clientLoginController::class, 'postLogin']);
+    
+
     Route::get('home', [homepageController::class, 'getHomePage']);
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
+
     Route::get('login', [clientLoginController::class, 'getLogin']);
     Route::post('login', [clientLoginController::class, 'postLogin']);
+
     Route::post('register', [clientLoginController::class, 'postRegister']);
 
+    
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
@@ -156,5 +159,5 @@ Route::prefix('client/products')->group(function () {
     Route::get('dior', [clientProductController::class, 'getDior']);
 
 
-    Route::get('specificProduct/{ID}',[clientProductController::class, 'getSpecificProduct']);
+    Route::get('specificProduct/{Slug}',[clientProductController::class, 'getSpecificProduct']);
 });

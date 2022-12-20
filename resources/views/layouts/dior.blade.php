@@ -59,7 +59,8 @@
         <div class="container__list">
             <div class="container__list-tittle">Dior</div>
             @foreach($dior as $item)
-            <div class="container__list-products">
+            <a class="container__list-products"
+            href="{{ url('/client/products/specificProduct', $item->Slug) }}">
                 <div class="container__list-products-item">
                     <div style="background-image: url({{ $item->IMG }})"
                         class="container__list-products-item-img"></div>
@@ -68,7 +69,7 @@
                         <p>${{ $item->Export_Price }}</p>
                     </div>
                 </div>
-            </div>
+            </a>
             @endforeach
 
         </div>
@@ -80,14 +81,15 @@
     <div class="container__featured-tittle">You May Also Like</div>
     <div class="container__featured-products">
         @foreach ($randomProduct as $item)
-        <div class="container__featured-products-items">
+        <a class="container__featured-products-items"
+        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
             <div style="background-image: url({{ $item->IMG }})"
                 class="container__featured-products-items-img"></div>
             <div class="container__featured-products-items-info">
                 <p>{{ $item->Name }}</p>
                 <p>${{ $item->Export_Price }}</p>
             </div>
-        </div>
+        </a>
         @endforeach
     </div>
 </div>

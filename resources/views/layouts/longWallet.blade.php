@@ -60,14 +60,15 @@
                 <div class="container__list-tittle">Long Wallet</div>
                 <div class="container__list-products">
                     @foreach($longWallet as $item)
-                    <div class="container__list-products-item">
-                        <div style="background-image: url({{ $item->IMG }})"
+                    <a class="container__list-products-item"
+                    href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                        <div style="background-image: url({{ $item->Main_IMG }})"
                             class="container__list-products-item-img"></div>
                         <div class="container__list-products-item-info">
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
-                    </div>
+                    </a>
                     @endforeach
                 </div>
             </div>
@@ -79,14 +80,15 @@
         <div class="container__featured-products">
             <div class="container__featured-products">
                 @foreach($randomProduct as $item)
-                <div class="container__featured-products-items">
-                    <div style="background-image: url({{ $item->IMG }})"
+                <a class="container__featured-products-items"
+                href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                    <div style="background-image: url({{ $item->Main_IMG }})"
                         class="container__featured-products-items-img"></div>
                     <div class="container__featured-products-items-info">
                         <p>{{ $item->Name }}</p>
                         <p>${{ $item->Export_Price }}</p>
                     </div>
-                </div>
+                </a>
                 @endforeach
         </div>
     </div>

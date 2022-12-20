@@ -31,14 +31,15 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-                    <div class="container__featured-products-items">
+                    <a class="container__featured-products-items"
+                    href="{{ url('/client/products/specificProduct', $item->Slug) }}">
                         <div style="background-image: url({{ $item->IMG }})"
                             class="container__featured-products-items-img"></div>
                         <div class="container__featured-products-items-info">
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -61,10 +62,6 @@
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
-                            {{-- <div class="content">
-                            <div class="tittle">Winter is coming</div>
-                            <button>See more >></button>
-                        </div> --}}
                         </div>
                     @endforeach
                     <div class="container__newArrivals-collection-button">
@@ -84,8 +81,8 @@
             <div class="container__featured-products">
                 @foreach ($trending as $item)
                     <a class="container__featured-products-items"
-                        href="{{ url('/client/products/specificProduct', $item->ID) }}">
-                        <div style="background-image: url({{ $item->IMG }})"
+                        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                        <div style="background-image: url({{ $item->Main_IMG }})"
                             class="container__featured-products-items-img"></div>
                         <div class="container__featured-products-items-info">
                             <p>{{ $item->Name }}</p>
@@ -197,7 +194,6 @@
             <ion-icon name="chevron-up-outline"></ion-icon>
         </button>
     </div>
-    <script></script>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 @stop
