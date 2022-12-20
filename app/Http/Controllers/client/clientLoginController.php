@@ -39,16 +39,14 @@ class clientLoginController extends Controller
         // dd($user_name,$password);
 
         // dd('cac');
-        $customer = Auth::guard('users')->attempt(['user_name' => $user_name, 'password' => $password]);
-        dd($customer);
+        $customer = Auth::guard('users')->attempt(['username' => $user_name, 'password' => $password]);
+        // dd($customer);
 
-        // if ($customer == true) {
-        //     dd('an');
-        //     return view('clientsPage.homePage');
-        // } else {
-        //     dd('xit');
-        //     return redirect()->back();
-        // }
+        if ($customer == true) {
+            return redirect()->route('homepage');
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function postRegister(Request $request)

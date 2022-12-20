@@ -128,7 +128,7 @@ Route::prefix('client')->group(function () {
     // Route::post('login-register', [clientLoginController::class, 'postLogin']);
     
 
-    Route::get('home', [homepageController::class, 'getHomePage']);
+    Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
 
