@@ -88,7 +88,6 @@
                     </a>
                 </div>
                 <div class="header__nav-right">
-<<<<<<< HEAD
                     <button id="log"><ion-icon name="person-outline"></ion-icon></button>
                     <button>
                         <div class="quantityCart">20</div>
@@ -98,11 +97,6 @@
                         <div class="quantityCart">20</div>
                         <ion-icon name="heart-outline"></ion-icon>
                     </button>
-=======
-                    <a href="http://127.0.0.1:8000/client/login"><ion-icon name="person-outline"></ion-icon></a>
-                    <a href="http://127.0.0.1:8000/client/Cart"><ion-icon name="cart-outline"></ion-icon></a>
-                    <a href=""><ion-icon name="heart-outline"></ion-icon></a>
->>>>>>> f09eedacaca1fe75158f0622365d41bb41a88845
                 </div>
             </div>
         </div>
