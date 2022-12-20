@@ -100,7 +100,7 @@ class clientProductController extends Controller
     public function getTrending()
     {
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
-        
+
         $ran_pro = $products->take(4);
 
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_Trending', 1)->groupBy('Product_details.Product_ID')->paginate(13);
@@ -109,7 +109,12 @@ class clientProductController extends Controller
 
     public function getDiscount()
     {
-        return view('layouts.discountProduct');
+        $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+
+        $ran_pro = $products->take(4);
+
+        // $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_Discounted', 1)->groupBy('Product_details.Product_ID')->paginate(13);
+        return view('layouts.discountProduct', ['products' => $products, 'randomProduct' => $ran_pro]);
     }
 
 
@@ -122,4 +127,5 @@ class clientProductController extends Controller
         $get_color = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Product_ID', $product_ID)->get();
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color]);
     }
+
 }
