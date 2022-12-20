@@ -18,6 +18,7 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
+use App\Models\OrderDetail;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -120,6 +121,16 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.user.update');
         Route::get('delete/{id}', [UserController::class, 'delete'])
             ->name('admin.user.delete');
+    });
+
+    // User Routes
+    Route::prefix('order')->group(function () {
+        Route::get('', [OrderDetail::class, 'index'])
+            ->name('admin.order.index');
+        Route::get('edit/{id}', [OrderDetail::class, 'edit'])
+            ->name('admin.order.edit');
+        Route::put('update/{id}', [OrderDetail::class, 'update'])
+            ->name('admin.order.update');
     });
 });
 

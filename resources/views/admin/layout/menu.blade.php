@@ -50,6 +50,18 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
+        <a href="#"><i class="fa fa-shopping-cart"></i> Order<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="#">List User</a>
+            </li>
+            <li>
+                <a href="#">Add User</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
         <a href="#"><i class="fa fa-list fa-fw"></i> Product Detail<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
