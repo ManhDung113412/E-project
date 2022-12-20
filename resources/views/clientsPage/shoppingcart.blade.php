@@ -9,27 +9,25 @@
             <div class="container__product">
                 <div class="container__product-big">
                     <div class="container__product-categories">
-                        @foreach ($this_customer as $item)
-                            <div class="container__product-categories-product">{{ $item->Email }}</div>
-                        @endforeach
+                            <div class="container__product-categories-product"></div>
                         <div class="container__product-categories-price">Price</div>
                         <div class="container__product-categories-quantity">Quantity</div>
                         <div class="container__product-categories-total">Total</div>
                         <div class="container__product-categories-button"></div>
                 </div>
                 <div class="container__product-list">
+                    @foreach($this_customer as $item)
                     <div class="container__product-list-cart">
                         <div class="container__product-list-cart-image">
                             <div class="container__product-list-cart-image-img">
-                                <img src="./image/div1-right.png" style="width: 89px; height: 110px;" alt="">
+                                <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;" alt="">
                             </div>
                             <div class="container__product-list-cart-image-info">
-                                <div class="container__product-list-cart-info-name">Product Name</div>
-                                <div class="container__product-list-cart-info-cate">Color</div>
-                                <div class="container__product-list-cart-info-cate">Category</div>
+                                <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
+                                <div class="container__product-list-cart-info-cate">{{ $item->Color }}</div>
                             </div>
                         </div>
-                        <div class="container__product-list-cart-price">$1000</div>
+                        <div class="container__product-list-cart-price">${{ $item->Export_Price }}</div>
                         <div class="container__product-list-cart-quantity">
                             <button>
                                 <ion-icon class="icon" name="remove-outline"></ion-icon>
@@ -45,118 +43,9 @@
                             <button>Replace</button>
                         </div>
                     </div>
-                    <div class="container__product-list-cart">
-                        <div class="container__product-list-cart-image">
-                            <div class="container__product-list-cart-image-img">
-                                <img src="./image/div1-right.png" style="width: 89px; height: 110px;" alt="">
-                            </div>
-                            <div class="container__product-list-cart-image-info">
-                                <div class="container__product-list-cart-info-name">Product Name</div>
-                                <div class="container__product-list-cart-info-cate">Color</div>
-                                <div class="container__product-list-cart-info-cate">Category</div>
-                            </div>
-                        </div>
-                        <div class="container__product-list-cart-price">$1000</div>
-                        <div class="container__product-list-cart-quantity">
-                            <button>
-                                <ion-icon class="icon" name="remove-outline"></ion-icon>
-                            </button>
-                            <div class="container__product-list-cart-quantity-numb">2</div>
-                            <button>
-                                <ion-icon class="icon" name="add-outline"></ion-icon>
-                            </button>
-                        </div>
-                        <div class="container__product-list-cart-total">$2000</div>
-                        <div class="container__product-list-cart-button">
-                            <button>Remove</button>
-                            <button>Replace</button>
-                        </div>
-                    </div>
-                    <div class="container__product-list-cart">
-                        <div class="container__product-list-cart-image">
-                            <div class="container__product-list-cart-image-img">
-                                <img src="./image/div1-right.png" style="width: 89px; height: 110px;" alt="">
-                            </div>
-                            <div class="container__product-list-cart-image-info">
-                                <div class="container__product-list-cart-info-name">Product Name</div>
-                                <div class="container__product-list-cart-info-cate">Color</div>
-                                <div class="container__product-list-cart-info-cate">Category</div>
-                            </div>
-                        </div>
-                        <div class="container__product-list-cart-price">$1000</div>
-                        <div class="container__product-list-cart-quantity">
-                            <button>
-                                <ion-icon class="icon" name="remove-outline"></ion-icon>
-                            </button>
-                            <div class="container__product-list-cart-quantity-numb">2</div>
-                            <button>
-                                <ion-icon class="icon" name="add-outline"></ion-icon>
-                            </button>
-                        </div>
-                        <div class="container__product-list-cart-total">$2000</div>
-                        <div class="container__product-list-cart-button">
-                            <button>Remove</button>
-                            <button>Replace</button>
-                        </div>
-                    </div>
-                    <div class="container__product-list-cart">
-                        <div class="container__product-list-cart-image">
-                            <div class="container__product-list-cart-image-img">
-                                <img src="./image/div1-right.png" style="width: 89px; height: 110px;" alt="">
-                            </div>
-                            <div class="container__product-list-cart-image-info">
-                                <div class="container__product-list-cart-info-name">Product Name</div>
-                                <div class="container__product-list-cart-info-cate">Color</div>
-                                <div class="container__product-list-cart-info-cate">Category</div>
-                            </div>
-                        </div>
-                        <div class="container__product-list-cart-price">$1000</div>
-                        <div class="container__product-list-cart-quantity">
-                            <button>
-                                <ion-icon class="icon" name="remove-outline"></ion-icon>
-                            </button>
-                            <div class="container__product-list-cart-quantity-numb">2</div>
-                            <button>
-                                <ion-icon class="icon" name="add-outline"></ion-icon>
-                            </button>
-                        </div>
-                        <div class="container__product-list-cart-total">$2000</div>
-                        <div class="container__product-list-cart-button">
-                            <button>Remove</button>
-                            <button>Replace</button>
-                        </div>
-                    </div>
-                    <div class="container__product-list-cart">
-                        <div class="container__product-list-cart-image">
-                            <div class="container__product-list-cart-image-img">
-                                <img src="./image/div1-right.png" style="width: 89px; height: 110px;" alt="">
-                            </div>
-                            <div class="container__product-list-cart-image-info">
-                                <div class="container__product-list-cart-info-name">Product Name</div>
-                                <div class="container__product-list-cart-info-cate">Color</div>
-                                <div class="container__product-list-cart-info-cate">Category</div>
-                            </div>
-                        </div>
-                        <div class="container__product-list-cart-price">$1000</div>
-                        <div class="container__product-list-cart-quantity">
-                            <button>
-                                <ion-icon class="icon" name="remove-outline"></ion-icon>
-                            </button>
-                            <div class="container__product-list-cart-quantity-numb">2</div>
-                            <button>
-                                <ion-icon class="icon" name="add-outline"></ion-icon>
-                            </button>
-                        </div>
-                        <div class="container__product-list-cart-total">$2000</div>
-                        <div class="container__product-list-cart-button">
-                            <button>Remove</button>
-                            <button>Replace</button>
-                        </div>
-                    </div>
-
+                 @endforeach
                 </div>
             </div>
-
         </div>
         <div class="container__cartTotal">
             <div class="container__cartTotal-big">
