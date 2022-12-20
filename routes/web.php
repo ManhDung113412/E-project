@@ -19,6 +19,7 @@ use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
 
+
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
         ->name('admin.auth.register');
@@ -160,11 +161,15 @@ Route::prefix('client/products')->group(function () {
 
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
+    Route::post('specificProduct/{Slug}',[clientProductController::class,'addToCart']);
+
 });
 
 
 Route::prefix('client')->group(function () {
         Route::get('myshoppingcart',[shoppingcartController::class,'getShoppingCart']);
-
+        
         Route::get('mywishlist',[shoppingcartController::class,'getWishList']);
+
+
 });

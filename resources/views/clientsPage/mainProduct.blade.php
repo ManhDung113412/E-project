@@ -4,6 +4,8 @@
 @stop
 @section('content')
     <div class="main">
+        <form action="" method="POST">
+            @csrf
         <div class="container">
             @foreach ($product as $item)
                 <div class="container__productImage">
@@ -38,7 +40,7 @@
                             </div>
                         </div>
                         <div class="container__productInfo-main-add">
-                            <button>Add to cart</button>
+                            <button type="submit">Add to cart</button>
                         </div>
                         <hr>
                         <div class="container__productInfo-main-descrip">
@@ -60,6 +62,7 @@
                     </div>
                 </div>
         </div>
+    </form>
         <hr class="main__hr">
         @endforeach
     </div>
