@@ -94,48 +94,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header__cart-list-items">
-                        <div class="header__cart-list-items-img" style="background-image: url(./)"></div>
-                        <div class="header__cart-list-items-info">
-                            <div class="header__cart-list-items-info-name">Product Name</div>
-                            <div class="header__cart-list-items-info-quantity">
-                                <button>
-                                    <ion-icon name="remove-outline"></ion-icon>
-                                </button>
-                                <div class="header__cart-list-items-info-quantity-num">20</div>
-                                <button>
-                                    <ion-icon name="add-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="header__cart-list-items-info-right">
-                            <div class="header__cart-list-items-info-right-price">$1000</div>
-                            <div class="header__cart-list-items-info-right-action">
-                                <button><ion-icon name="trash-bin-outline"></ion-icon></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header__cart-list-items">
-                        <div class="header__cart-list-items-img" style="background-image: url(./)"></div>
-                        <div class="header__cart-list-items-info">
-                            <div class="header__cart-list-items-info-name">Product Name</div>
-                            <div class="header__cart-list-items-info-quantity">
-                                <button>
-                                    <ion-icon name="remove-outline"></ion-icon>
-                                </button>
-                                <div class="header__cart-list-items-info-quantity-num">20</div>
-                                <button>
-                                    <ion-icon name="add-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="header__cart-list-items-info-right">
-                            <div class="header__cart-list-items-info-right-price">$1000</div>
-                            <div class="header__cart-list-items-info-right-action">
-                                <button><ion-icon name="trash-bin-outline"></ion-icon></button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="header__cart-total">
                     <p><b>Total</b></p>

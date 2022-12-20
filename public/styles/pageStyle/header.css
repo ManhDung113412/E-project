@@ -500,7 +500,8 @@ ion-icon {
 
 .header__cart-list-items-img{
     width: 20%;
-    background-color: rgb(160, 160, 160);
+    background-size: cover;
+    background-color: rgb(241, 241, 241);
     height: 100%;
 }
 
