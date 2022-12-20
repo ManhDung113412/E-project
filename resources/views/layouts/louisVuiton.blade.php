@@ -7,6 +7,10 @@
 <div class="main">
     <div class="container">
         <div class="container__sideBar">
+            <div class="container__sideBar-search">
+                <button><ion-icon name="search-outline"></ion-icon></button>
+                <input type="text" placeholder="Search">
+            </div>
             <div class="container__sideBar-box">
                 <div class="container__sideBar-box-tittle">Categories</div>
                 <hr class="box1">
@@ -55,6 +59,10 @@
                     <div class="container__sideBar-box-cate-name">Discount</div>
                 </div>
             </div>
+            <div class="container__sideBar-filter">
+                <button>Filter</button>
+            </div>
+
         </div>
         <div class="container__list">
             <div class="container__list-tittle">Louis Vuitton</div>
