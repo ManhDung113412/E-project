@@ -82,7 +82,7 @@ class clientLoginController extends Controller
         // $update_at = null;
         DB::table('users')->insert(
             [
-                'First_Name' => $request->first_name, 'Last_Name' => $request->last_name, 'Email'     => $request->mail, 'User_Name' => $request->user_name, 'Password'  => bcrypt($request->password), 'rank'      => 1
+                'First_Name' => $request->first_name, 'Last_Name' => $request->last_name, 'Email'=> $request->mail, 'username' => $request->user_name, 'password'  => bcrypt($request->password), 'rank'      => 1
             ]
         );
     }

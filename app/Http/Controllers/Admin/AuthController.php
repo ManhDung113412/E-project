@@ -57,7 +57,7 @@ class AuthController extends Controller
         if (Auth::guard('admins')->attempt($admin)) {
             return  redirect()->route('admin.brand.index');
         }
-       
+
         // dd(Auth::guard('admins')->attempt($admin));
         return redirect()->route('admin.auth.login')->with('error', 'Your Email or Password is invalid!');
     }
