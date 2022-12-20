@@ -19,7 +19,7 @@
                 <div class="container__signIn-tittle">Sign In</div>
                 <div class="container__signIn-input">
                     <div class="input-group">
-                        <input type="text" name="user_name" autocomplete="off" class="input">
+                        <input placeholder="" type="text" name="user_name" autocomplete="off" class="input">
                         <label class="user-label">Username</label>
                         <small>
                             @error('user_name')
@@ -28,7 +28,7 @@
                         </small>
                     </div>
                     <div class="input-group">
-                        <input type="password" name="password" autocomplete="off" class="input">
+                        <input placeholder="" type="password" name="password" autocomplete="off" class="input">
                         <label class="user-label">Password</label>
                         <small>
                             @error('password')
@@ -51,7 +51,7 @@
                 <div class="container__signIn-tittle">Register</div>
                 <div class="container__signIn-input">
                     <div class="input-group">
-                        <input  type="text" name="first_name" autocomplete="off" class="input">
+                        <input placeholder="" type="text" name="first_name" autocomplete="off" class="input">
                         <label class="user-label">Firstname</label>
                         <small>
                             @error('first_name')
@@ -60,7 +60,7 @@
                         </small>
                     </div>
                     <div class="input-group">
-                        <input  type="text" name="last_name" autocomplete="off" class="input">
+                        <input placeholder="" type="text" name="last_name" autocomplete="off" class="input">
                         <label class="user-label">Lastname</label>
                         <small>
                             @error('last_name')
@@ -69,7 +69,7 @@
                         </small>
                     </div>
                     <div class="input-group">
-                        <input  type="text" name="mail" autocomplete="off" class="input">
+                        <input placeholder="" type="text" name="mail" autocomplete="off" class="input">
                         <label class="user-label">Email</label>
                         <small>
                             @error('mail')
@@ -78,7 +78,7 @@
                         </small>
                     </div>
                     <div class="input-group">
-                        <input  type="text" name="user_name" autocomplete="off" class="input">
+                        <input placeholder="" type="text" name="user_name" autocomplete="off" class="input">
                         <label class="user-label">Username</label>
                         <small>
                             @error('user_name')
@@ -87,7 +87,7 @@
                         </small>
                     </div>
                     <div class="input-group">
-                        <input  type="password" name="password" autocomplete="off" class="input">
+                        <input placeholder="" type="password" name="password" autocomplete="off" class="input">
                         <label class="user-label">Password</label>
                         <small>
                             @error('password')
@@ -96,7 +96,7 @@
                         </small>
                     </div>
                     <div class="input-group">
-                        <input  type="password" name="c_password" autocomplete="off" class="input">
+                        <input placeholder="" type="password" name="c_password" autocomplete="off" class="input">
                         <label class="user-label">Confirm Password</label>
                         <small>
                             @error('c_password')
