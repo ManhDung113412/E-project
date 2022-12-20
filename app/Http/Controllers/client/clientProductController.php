@@ -131,6 +131,8 @@ class clientProductController extends Controller
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color, 'ran_pro' => $ran_pro]);
     }
 
+
+
     public function addToCart(Request $req)
     {
         $data = $req->session()->get('this_customer');
@@ -146,5 +148,6 @@ class clientProductController extends Controller
 
         return redirect()->back();
     }
-    
+
+
 }

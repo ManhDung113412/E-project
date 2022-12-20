@@ -15,8 +15,15 @@ class clientLoginController extends Controller
 
     public function getLogin()
     {
+<<<<<<< HEAD
+        // dd('hehe');
+        $slideImg = DB::table('brand_collections')->get();
+        // dd($chanel);
+        return view('clientsPage.login', ['img' => $slideImg]);
+=======
 
         return view('clientsPage.Login');
+>>>>>>> f12427a9d2c0b58722501bb4967febee8b0292cf
     }
 
     public function postLogin(Request $req)
@@ -44,6 +51,8 @@ class clientLoginController extends Controller
             return redirect()->route('homepage');
         } else {
             return redirect()->back();
+            document.getElementById('signInForm').classList.add('active');
+            document.getElementById('registerForm').classList.remove('active');
         }
     }
 
