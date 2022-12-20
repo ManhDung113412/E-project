@@ -18,6 +18,8 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
+use App\Models\OrderDetail;
+
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -82,7 +84,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product.store');
         Route::get('edit/{id}', [ProductController::class, 'edit'])
             ->name('admin.product.edit');
-        Route::put('update', [ProductController::class, 'update'])
+        Route::put('update/{id}', [ProductController::class, 'update'])
             ->name('admin.product.update');
         Route::get('delete/{id}', [ProductController::class, 'delete'])
             ->name('admin.product.delete');
@@ -96,7 +98,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.search');
         Route::get('create/{id}', [ProductDetailController::class, 'create'])
             ->name('admin.product-detail.create');
-        Route::post('store/{id}', [ProductDetailController::class, 'store'])
+        Route::post('store', [ProductDetailController::class, 'store'])
             ->name('admin.product-detail.store');
         Route::get('edit/{id}', [ProductDetailController::class, 'edit'])
             ->name('admin.product-detail.edit');
@@ -120,6 +122,16 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.user.update');
         Route::get('delete/{id}', [UserController::class, 'delete'])
             ->name('admin.user.delete');
+    });
+
+    // User Routes
+    Route::prefix('order')->group(function () {
+        Route::get('', [OrderDetail::class, 'index'])
+            ->name('admin.order.index');
+        Route::get('edit/{id}', [OrderDetail::class, 'edit'])
+            ->name('admin.order.edit');
+        Route::put('update/{id}', [OrderDetail::class, 'update'])
+            ->name('admin.order.update');
     });
 });
 
@@ -160,11 +172,15 @@ Route::prefix('client/products')->group(function () {
 
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
+    Route::post('specificProduct/{Slug}',[clientProductController::class,'addToCart']);
+
 });
 
 
 Route::prefix('client')->group(function () {
         Route::get('myshoppingcart',[shoppingcartController::class,'getShoppingCart']);
-
+        
         Route::get('mywishlist',[shoppingcartController::class,'getWishList']);
+
+
 });

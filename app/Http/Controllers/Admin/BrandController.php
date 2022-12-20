@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -72,6 +74,12 @@ class BrandController extends Controller
 
     public function delete($id)
     {
+        $brand = Brand::find($id);
+        $brand_id = $brand->ID;
+        $products = Product::where('Brand_ID', $brand_id)->count();
+        if($products){
+            return redirect()->route('admin.brand.index')->with('error', 'Cannot detele this brand!');
+        }
         Brand::where('ID', $id)->delete();
         return redirect()->route('admin.brand.index')->with('success', 'Deleted Successfully');
     }

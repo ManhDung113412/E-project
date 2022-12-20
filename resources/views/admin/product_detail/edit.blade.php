@@ -21,7 +21,9 @@
                     {{-- Product --}}
                     <div class="form-group" >
                         <label>Product</label>
-                        <input class="form-control" name="product_id" value="{{$product_detail->product->Name}}" disabled/>
+                        <select class="form-control" name="product_id">
+                            <option selected value="{{$product->ID}}">{{$product->Name}}</option>
+                        </select>
                     </div>
 
                     {{-- Import Price --}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use DB;
@@ -126,11 +127,27 @@ class clientProductController extends Controller
         $ran_pro = $random_products->take(4);
         $product_ID =  $this_product[0]->Product_ID;
         $get_color = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Product_ID', $product_ID)->get();
+
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color, 'ran_pro' => $ran_pro]);
     }
 
-    public function getSlideLogin(Request $req)
-    {
 
+
+    public function addToCart(Request $req)
+    {
+        $data = $req->session()->get('this_customer');
+        $customer_ID = $data[0]->Customer_ID;
+
+        $Slug = $req->Slug;
+        $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
+        $pro_ID = $this_product[0]->ID;
+
+        DB::table('carts')->insert([
+            'Quantity' => 1, 'Customer_ID' => $customer_ID, 'Product_Detail_ID' => $pro_ID
+        ]);
+
+        return redirect()->back();
     }
+
+
 }

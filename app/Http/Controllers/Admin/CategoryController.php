@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -59,6 +60,12 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
+        $category = Category::find($id);
+        $category_id = $category->ID;
+        $products = Product::where('Category_ID', $category_id)->count();
+        if($products){
+            return redirect()->route('admin.category.index')->with('error', 'Cannot detele this category!');
+        }
         Category::where('ID', $id)->delete();
         return redirect()->route('admin.category.index')->with('success', 'Deleted Successfully');
     }
