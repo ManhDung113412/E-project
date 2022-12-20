@@ -12,24 +12,24 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'name', 
-        'img', 
-        'category_id', 
-        'brand_id',
-        'code', 
-        'slug', 
+        'Name', 
+        'IMG', 
+        'Category_ID', 
+        'Brand_ID',
+        'Code', 
+        'Slug', 
     ];
 
     public function category(){
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'Category_ID', 'ID');
     }
 
     public function brand(){
-        return $this->belongsTo(Brand::class, 'brand_id', 'id');
+        return $this->belongsTo(Brand::class, 'Brand_ID', 'ID');
     }
 
     public function productdetails()
     {
-        return $this->hasMany(ProductDetail::class, 'product_id', 'id');
+        return $this->hasMany(ProductDetail::class, 'Product_ID', 'ID');
     }
 }

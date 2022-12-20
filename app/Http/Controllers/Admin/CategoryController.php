@@ -28,9 +28,9 @@ class CategoryController extends Controller
         $slug = Str::slug($request->name);
 
         Category::create([
-            'name' => $request->name,
-            'code' => $request->code,
-            'slug' => $slug,
+            'Name' => $request->name,
+            'Code' => $request->code,
+            'Slug' => $slug,
         ]);
 
         return redirect()->route('admin.category.index')->with('success', 'Created Successfully');
@@ -49,17 +49,17 @@ class CategoryController extends Controller
 
         $slug = Str::slug($request->name);
 
-        Category::where('id', $id)->update([
-            'name' => $request->name,
-            'code' => $request->code,
-            'slug' => $slug,
+        Category::where('ID', $id)->update([
+            'Name' => $request->name,
+            'Code' => $request->code,
+            'Slug' => $slug,
         ]);
 
         return redirect()->route('admin.category.index')->with('success', 'Updated Successfully');
     }
 
     public function delete($id){
-        Category::where('id', $id)->delete();
+        Category::where('ID', $id)->delete();
         return redirect()->route('admin.category.index')->with('success', 'Deleted Successfully');
     }
 }

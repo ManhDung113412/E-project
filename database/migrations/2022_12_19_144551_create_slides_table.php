@@ -13,17 +13,17 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('is_top_slide')->default(0);
-            $table->boolean('is_middle_slide')->default(0);
-            $table->text('img');
-            $table->string('title');
-            $table->unsignedBigInteger('brand_id');
+        Schema::create('sliedes', function (Blueprint $table) {
+            $table->id('ID');
+            $table->boolean('Is_Top_Slide')->default(0);
+            $table->boolean('Is_Middle_Slide')->default(0);
+            $table->text('IMG');
+            $table->string('Title');
+            $table->unsignedBigInteger('Brand_ID');
             $table->timestamps();
 
-            $table->foreign('brand_id')
-                ->references('id')->on('brands')
+            $table->foreign('Brand_ID')
+                ->references('ID')->on('brands')
                 ->cascadeOnDelete();
         });
     }
@@ -35,6 +35,6 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('sliedes');
     }
 }

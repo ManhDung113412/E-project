@@ -37,14 +37,14 @@ List Product
                     @foreach ($products as $index => $product)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index}}</td>
-                        <td>{{$product->code}}</td>
-                        <td>{{$product->brand->name}}</td>
-                        <td>{{$product->category->name}}</td>
-                        <td>{{$product->name}}</td>
-                        <td>{{$product->img}}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->id)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->id)}}">Edit</a></td>
-                        <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->id)}}">Add</a></td>
+                        <td>{{$product->Code}}</td>
+                        <td>{{$product->brand->Name}}</td>
+                        <td>{{$product->category->Name}}</td>
+                        <td>{{$product->Name}}</td>
+                        <td>{{$product->IMG}}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->ID)}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->ID)}}">Edit</a></td>
+                        <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->ID)}}">Add</a></td>
                     </tr>
                     @endforeach
                 </tbody>

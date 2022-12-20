@@ -14,16 +14,16 @@ class CreateBrandCollectionsTable extends Migration
     public function up()
     {
         Schema::create('brand_collections', function (Blueprint $table) {
-            $table->id();
-            $table->text('before_hover_img');
-            $table->text('after_hover_img');
-            $table->text('img');
-            $table->string('title');
-            $table->unsignedBigInteger('brand_id');
+            $table->id('ID');
+            $table->text('Before_Hover_IMG');
+            $table->text('After_Hover_IMG');
+            $table->text('IMG');
+            $table->string('Title');
+            $table->unsignedBigInteger('Brand_ID');
             $table->timestamps();
 
-            $table->foreign('brand_id')
-                ->references('id')->on('brands')
+            $table->foreign('Brand_ID')
+                ->references('ID')->on('brands')
                 ->cascadeOnDelete();
         });
     }

@@ -15,19 +15,19 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{{ route('admin.product-detail.update', $product_detail->id) }}" method="POST">
+                <form action="{{ route('admin.product-detail.update', $product_detail->ID) }}" method="POST">
                     @csrf
                     @method('put')
                     {{-- Product --}}
                     <div class="form-group" >
                         <label>Product</label>
-                        <input class="form-control" name="product_id" value="{{$product_detail->product->name}}" disabled/>
+                        <input class="form-control" name="product_id" value="{{$product_detail->product->Name}}" disabled/>
                     </div>
 
                     {{-- Import Price --}}
                     <div class="form-group">
                         <label>Product Detail Import Price</label>
-                        <input class="form-control" value="{{$product_detail->import_price}}" name="import_price" placeholder="Please Enter Product Detail Import Price" />
+                        <input class="form-control" value="{{$product_detail->Import_Price}}" name="import_price" placeholder="Please Enter Product Detail Import Price" />
                         @error('import_price')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -38,7 +38,7 @@
                     {{-- Import Price --}}
                     <div class="form-group">
                         <label>Product Detail Export Price</label>
-                        <input class="form-control" value="{{$product_detail->export_price}}" name="export_price" placeholder="Please Enter Product Detail Export Price" />
+                        <input class="form-control" value="{{$product_detail->Export_Price}}" name="export_price" placeholder="Please Enter Product Detail Export Price" />
                         @error('export_price')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -49,7 +49,7 @@
                     {{-- Sale Price --}}
                     <div class="form-group">
                         <label>Product Detail Sale Price</label>
-                        <input class="form-control" value="{{$product_detail->sale_price}}" name="sale_price" placeholder="Please Enter Product Detail Sale Price" />
+                        <input class="form-control" value="{{$product_detail->Sale_Price}}" name="sale_price" placeholder="Please Enter Product Detail Sale Price" />
                         @error('sale_price')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -60,7 +60,7 @@
                     {{-- Main Image --}}
                     <div class="form-group">
                         <label>Product Detail Main Image</label>
-                        <input class="form-control" value="{{$product_detail->main_img}}" name="main_img" placeholder="Please Enter Product Detail Main Image" />
+                        <input class="form-control" value="{{$product_detail->Main_IMG}}" name="main_img" placeholder="Please Enter Product Detail Main Image" />
                         @error('main_img')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -71,7 +71,7 @@
                     {{-- Slide Image 1 --}}
                     <div class="form-group">
                         <label>Product Detail Slide Image 1</label>
-                        <input class="form-control" value="{{$product_detail->slide_img_1}}" name="slide_img_1" placeholder="Please Enter Product Detail Slide Image 1" />
+                        <input class="form-control" value="{{$product_detail->Slide_IMG_1}}" name="slide_img_1" placeholder="Please Enter Product Detail Slide Image 1" />
                         @error('slide_img_1')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -82,7 +82,7 @@
                     {{-- Slide Image 2 --}}
                     <div class="form-group">
                         <label>Product Detail Slide Image 2</label>
-                        <input class="form-control" value="{{$product_detail->slide_img_2}}" name="slide_img_2" placeholder="Please Enter Product Detail Slide Image 2" />
+                        <input class="form-control" value="{{$product_detail->Slide_IMG_2}}" name="slide_img_2" placeholder="Please Enter Product Detail Slide Image 2" />
                         @error('slide_img_2')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -93,7 +93,7 @@
                     {{-- Information --}}
                     <div class="form-group">
                         <label>Product Detail Information</label>
-                        <input class="form-control" value="{{$product_detail->information}}" name="information" placeholder="Please Enter Product Detail Information" />
+                        <input class="form-control" value="{{$product_detail->Information}}" name="information" placeholder="Please Enter Product Detail Information" />
                         @error('information')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -104,7 +104,7 @@
                     {{-- Material --}}
                     <div class="form-group">
                         <label>Product Detail Material</label>
-                        <input class="form-control" value="{{$product_detail->material}}" name="material" placeholder="Please Enter Product Detail Material" />
+                        <input class="form-control" value="{{$product_detail->Material}}" name="material" placeholder="Please Enter Product Detail Material" />
                         @error('material')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -115,7 +115,7 @@
                     {{-- Color --}}
                     <div class="form-group">
                         <label>Product Detail Color</label>
-                        <input class="form-control" value="{{$product_detail->color}}" name="color" placeholder="Please Enter Product Detail Color" />
+                        <input class="form-control" value="{{$product_detail->Color}}" name="color" placeholder="Please Enter Product Detail Color" />
                         @error('color')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -126,7 +126,7 @@
                     {{-- Size --}}
                     <div class="form-group">
                         <label>Product Detail Size</label>
-                        <input class="form-control" value="{{$product_detail->size}}" name="size" placeholder="Please Enter Product Detail Size" />
+                        <input class="form-control" value="{{$product_detail->Size}}" name="size" placeholder="Please Enter Product Detail Size" />
                         @error('size')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -137,7 +137,7 @@
                     {{-- Code --}}
                     <div class="form-group">
                         <label>Product Detail Code</label>
-                        <input class="form-control" value="{{$product_detail->code}}" name="code" placeholder="Please Enter Product Detail Code" />
+                        <input class="form-control" value="{{$product_detail->Code}}" name="code" placeholder="Please Enter Product Detail Code" />
                         @error('code')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -148,7 +148,7 @@
                     {{-- Quantity --}}
                     <div class="form-group">
                         <label>Product Detail Quantity</label>
-                        <input class="form-control" value="{{$product_detail->quantity}}" name="quantity" placeholder="Please Enter Product Detail Quantity" type="number" />
+                        <input class="form-control" value="{{$product_detail->Quantity}}" name="quantity" placeholder="Please Enter Product Detail Quantity" type="number" />
                         @error('quantity')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -160,30 +160,30 @@
                     <div class="form-group">
                         <label>Is Trending? </label><br>
                         <label class="radio-inline">
-                            <input name="is_trending" value="0" type="radio" @if ($product_detail->is_trending == 0) checked @endif>No
+                            <input name="is_trending" value="0" type="radio" @if ($product_detail->Is_Trending == 0) checked @endif>No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_trending" value="1" type="radio" @if ($product_detail->is_trending == 1) checked @endif>Yes
+                            <input name="is_trending" value="1" type="radio" @if ($product_detail->Is_Trending == 1) checked @endif>Yes
                         </label>
                     </div>
 
                     <div class="form-group">
                         <label>Is Feature? </label><br>
                         <label class="radio-inline">
-                            <input name="is_feature" value="0" type="radio" @if ($product_detail->is_feature == 0) checked @endif>No
+                            <input name="is_feature" value="0" type="radio" @if ($product_detail->Is_Feature == 0) checked @endif>No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_feature" value="1" type="radio" @if ($product_detail->is_feature == 1) checked @endif>Yes 
+                            <input name="is_feature" value="1" type="radio" @if ($product_detail->Is_Feature == 1) checked @endif>Yes 
                         </label>
                     </div>
                     
                     <div class="form-group">
                         <label>Is Arrivals? </label><br>
                         <label class="radio-inline">
-                            <input name="is_arrivals" value="0" type="radio" @if ($product_detail->is_arrivals == 0) checked @endif>No
+                            <input name="is_arrivals" value="0" type="radio" @if ($product_detail->Is_Arrivals == 0) checked @endif>No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_arrivals" value="1" type="radio" @if ($product_detail->is_arrivals == 1) checked @endif>Yes
+                            <input name="is_arrivals" value="1" type="radio" @if ($product_detail->Is_Arrivals == 1) checked @endif>Yes
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Edit Product Detail</button>
