@@ -46,23 +46,23 @@
                     @foreach ($product_details as $index => $product)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index}}</td>
-                        <td>{{$product->code}}</td>
-                        <td>{{$product->import_price}}</td>
-                        <td>{{$product->export_price}}</td>
-                        <td>{{$product->sale_price}}</td>
-                        <td>{{$product->main_img}}</td>
-                        <td>{{$product->slide_img_1}}</td>
-                        <td>{{$product->slide_img_2}}</td>
-                        <td>{{$product->information}}</td>
-                        <td>{{$product->material}}</td>
-                        <td>{{$product->color}}</td>
-                        <td>{{$product->size}}</td>
-                        <td>{{$product->quantity}}</td>
-                        <td>{{$product->is_trending ? 'V' : ''}}</td>
-                        <td>{{$product->is_new_arrivals ? 'V' : ''}}</td>
-                        <td>{{$product->is_feature ? 'V' : ''}}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product-detail.delete', $product->id)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product-detail.edit', $product->id)}}">Edit</a></td>
+                        <td>{{$product->Code}}</td>
+                        <td>{{$product->Import_Price}}</td>
+                        <td>{{$product->Export_Price}}</td>
+                        <td>{{$product->Sale_Price}}</td>
+                        <td>{{$product->Main_IMG}}</td>
+                        <td>{{$product->Slide_IMG_1}}</td>
+                        <td>{{$product->Slide_IMG_2}}</td>
+                        <td>{{$product->Information}}</td>
+                        <td>{{$product->Material}}</td>
+                        <td>{{$product->Color}}</td>
+                        <td>{{$product->Size}}</td>
+                        <td>{{$product->Quantity}}</td>
+                        <td>{{$product->Is_Trending ? 'V' : ''}}</td>
+                        <td>{{$product->Is_New_Arrivals ? 'V' : ''}}</td>
+                        <td>{{$product->Is_Feature ? 'V' : ''}}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product-detail.delete', $product->ID)}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product-detail.edit', $product->ID)}}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

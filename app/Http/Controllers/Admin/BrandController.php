@@ -23,20 +23,20 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:brands',
-            'logo' => 'required',
-            'information' => 'required',
-            'code' => 'required|unique:brands',
+            'name'          => 'required|unique:brands',
+            'logo'          => 'required',
+            'information'   => 'required',
+            'code'          => 'required|unique:brands',
         ]);
 
         $slug = Str::slug($request->name);
 
         Brand::create([
-            'name' => $request->name,
-            'logo' => $request->logo,
-            'information' => $request->information,
-            'code' => $request->code,
-            'slug' => $slug,
+            'Name'          => $request->name,
+            'Logo'          => $request->logo,
+            'Information'   => $request->information,
+            'Code'          => $request->code,
+            'Slug'          => $slug,
         ]);
 
         return redirect()->route('admin.brand.index')->with('success', 'Created Successfully');
@@ -51,28 +51,28 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'logo' => 'required',
-            'information' => 'required',
-            'code' => 'required',
+            'name'          => 'required',
+            'logo'          => 'required',
+            'information'   => 'required',
+            'code'          => 'required',
         ]);
 
         $slug = Str::slug($request->name);
 
-        Brand::where('id', $id)->update([
-            'name' => $request->name,
-            'logo' => $request->logo,
-            'information' => $request->information,
-            'code' => $request->code,
-            'slug' => $slug,
+        Brand::where('ID', $id)->update([
+            'Name'          => $request->name,
+            'Logo'          => $request->logo,
+            'Information'   => $request->information,
+            'Code'          => $request->code,
+            'Slug'          => $slug,
         ]);
 
-        return redirect()->route('admin.brand.edit', $id)->with('success', 'Updated Successfully');
+        return redirect()->route('admin.brand.index')->with('success', 'Updated Successfully');
     }
 
     public function delete($id)
     {
-        Brand::where('id', $id)->delete();
+        Brand::where('ID', $id)->delete();
         return redirect()->route('admin.brand.index')->with('success', 'Deleted Successfully');
     }
 }

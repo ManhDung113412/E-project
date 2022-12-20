@@ -12,15 +12,15 @@ class Brand extends Model
     protected $table = 'brands';
 
     protected $fillable = [
-        'name',
-        'logo',
-        'information',
-        'code',
-        'slug',
+        'Name',
+        'Logo',
+        'Information',
+        'Code',
+        'Slug',
     ];
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'brand_id', 'id');
+        return $this->hasMany(Product::class, 'Brand_ID', 'ID');
     }
 }

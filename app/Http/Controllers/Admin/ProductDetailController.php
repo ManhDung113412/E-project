@@ -20,7 +20,7 @@ class ProductDetailController extends Controller
 
     public function create($id)
     {
-        $product = Product::find($id);
+        $product = Product::where('ID', $id)->get();
         return view('admin.product_detail.create', compact('product'));
     }
 
@@ -41,28 +41,28 @@ class ProductDetailController extends Controller
             'quantity' => 'required|numeric',
         ]);
 
-        $product = Product::find($id);
+        $product = Product::where('ID', $id)->get();
 
-        $slug = Str::slug($product->name . "-" . $request->color);
+        $slug = Str::slug($product->Name . "-" . $request->color);
 
         ProductDetail::create([
-            'import_price' => $request->import_price,
-            'export_price' => $request->export_price,
-            'sale_price' => $request->sale_price,
-            'main_img' => $request->main_img,
-            'slide_img_1' => $request->slide_img_1,
-            'slide_img_2' => $request->slide_img_2,
-            'information' => $request->information,
-            'material' => $request->material,
-            'color' => $request->color,
-            'size' => $request->size,
-            'code' => $request->code,
-            'is_trending' => $request->is_trending,
-            'is_new_arrivals' => $request->is_arrivals,
-            'is_feature' => $request->is_feature,
-            'product_id' => $id,
-            'quantity' => $request->quantity,
-            'slug'=> $slug, 
+            'Import_Price' => $request->import_price,
+            'Export_Price' => $request->export_price,
+            'Sale_Price' => $request->sale_price,
+            'Main_IMG' => $request->main_img,
+            'Slide_IMG_1' => $request->slide_img_1,
+            'Slide_IMG_2' => $request->slide_img_2,
+            'Information' => $request->information,
+            'Material' => $request->material,
+            'Color' => $request->color,
+            'Size' => $request->size,
+            'Code' => $request->code,
+            'Is_Trending' => $request->is_trending,
+            'Is_New_Arrivals' => $request->is_arrivals,
+            'Is_Feature' => $request->is_feature,
+            'Product_ID' => $id,
+            'Quantity' => $request->quantity,
+            'Slug'=> $slug, 
         ]);
 
         return redirect()->route('admin.product-detail.index')->with('success', 'Created Successfully');
@@ -93,33 +93,33 @@ class ProductDetailController extends Controller
         ]);
 
         $product_detail = ProductDetail::find($id);
-        $product_id  = $product_detail->product_id;
-        $product = Product::find($product_id);
+        $product_id  = $product_detail->Product_ID;
+        $product = Product::where('Product_ID', $product_id)->get();
 
-        $slug = Str::slug($product->name . "-" . $request->color);
+        $slug = Str::slug($product->Name . "-" . $request->color);
 
         $old_product_detail = ProductDetail::find($id);
-        $old_quantity = $old_product_detail->quantity;
-        $product_id = $old_product_detail->product_id;
+        $old_quantity = $old_product_detail->Quantity;
+        $product_id = $old_product_detail->Product_ID;
 
-        ProductDetail::where('id', $id)->update([
-            'import_price' => $request->import_price,
-            'export_price' => $request->export_price,
-            'sale_price' => $request->sale_price,
-            'main_img' => $request->main_img,
-            'slide_img_1' => $request->slide_img_1,
-            'slide_img_2' => $request->slide_img_2,
-            'information' => $request->information,
-            'material' => $request->material,
-            'color' => $request->color,
-            'size' => $request->size,
-            'code' => $request->code,
-            'is_trending' => $request->is_trending,
-            'is_new_arrivals' => $request->is_arrivals,
-            'is_feature' => $request->is_feature,
-            'product_id' => $product_id,
-            'quantity' => $request->quantity + $old_quantity,
-            'slug'=> $slug, 
+        ProductDetail::where('ID', $id)->update([
+            'Import_Price' => $request->import_price,
+            'Export_Price' => $request->export_price,
+            'Sale_Price' => $request->sale_price,
+            'Main_IMG' => $request->main_img,
+            'Slide_IMG_1' => $request->slide_img_1,
+            'Slide_IMG_2' => $request->slide_img_2,
+            'Information' => $request->information,
+            'Material' => $request->material,
+            'Color' => $request->color,
+            'Size' => $request->size,
+            'Code' => $request->code,
+            'Is_Trending' => $request->is_trending,
+            'Is_New_Arrivals' => $request->is_arrivals,
+            'Is_Feature' => $request->is_feature,
+            'Product_ID' => $product_id,
+            'Quantity' => $request->quantity + $old_quantity,
+            'Slug'=> $slug, 
         ]);
         
         return redirect()->route('admin.product-detail.index')->with('success', 'Updated Successfully');
@@ -127,7 +127,7 @@ class ProductDetailController extends Controller
 
     public function delete($id)
     {
-        ProductDetail::where('id', $id)->delete();
+        ProductDetail::where('ID', $id)->delete();
         return redirect()->route('admin.product-detail.index')->with('success', 'Deleted Successfully');
     }
 }

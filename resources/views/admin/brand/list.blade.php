@@ -35,12 +35,12 @@ List Brands
                     @foreach ($brands as $index => $brand)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index}}</td>
-                        <td>{{$brand->code}}</td>
-                        <td>{{$brand->name}}</td>
-                        <td>{{$brand->logo}}</td>
-                        <td>{{$brand->information}}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.brand.delete', $brand->id)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.brand.edit', $brand->id)}}">Edit</a></td>
+                        <td>{{$brand->Code}}</td>
+                        <td>{{$brand->Name}}</td>
+                        <td>{{$brand->Logo}}</td>
+                        <td>{{$brand->Information}}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.brand.delete', $brand->ID)}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.brand.edit', $brand->ID)}}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

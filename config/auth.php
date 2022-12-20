@@ -40,9 +40,9 @@ return [
             'driver'    => 'session',
             'provider' => 'users',
         ],
-        'admins' => [
+        'admins' => [ // Tên guard khi gọi ở controller
             'driver' =>  'session',
-            'provider' => 'admins',
+            'provider' => 'admins', // Tên bảng
         ],
         'customers' => [
             'driver' => 'session',
@@ -73,9 +73,9 @@ return [
             'model' => App\Models\customers::class,
         ],
 
-        'admins' => [
+        'admins' => [ // Tên bảng (Provider sẽ truy xuất dữ liệu của bảng này)
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => App\Models\Admin::class, // Đường dẫn của Model
         ],
 
 
@@ -116,7 +116,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admins' => [
+        'admins' => [ // Tên bảng
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,

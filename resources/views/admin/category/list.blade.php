@@ -34,11 +34,11 @@ List Categories
                     @foreach ($categories as $index => $category)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index}}</td>
-                        <td>{{$category->code}}</td>
-                        <td>{{$category->name}}</td>
-                        <td>{{$category->logo}}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.category.delete', $category->id)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.category.edit', $category->id)}}">Edit</a></td>
+                        <td>{{$category->Code}}</td>
+                        <td>{{$category->Name}}</td>
+                        <td>{{$category->Logo}}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.category.delete', $category->ID)}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.category.edit', $category->ID)}}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

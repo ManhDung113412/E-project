@@ -12,26 +12,26 @@ class ProductDetail extends Model
     protected $table = 'product_details';
 
     protected $fillable = [
-        'import_price', 
-        'export_price', 
-        'sale_price', 
-        'main_img', 
-        'slide_img_1', 
-        'slide_img_2', 
-        'information', 
-        'material', 
-        'color', 
-        'size', 
-        'code', 
-        'is_trending', 
-        'is_new_arrivals', 
-        'is_feature', 
-        'product_id', 
-        'quantity',
-        // 'slug', 
+        'Import_Price', 
+        'Export_Price', 
+        'Sale_Price', 
+        'Main_IMG', 
+        'Slide_IMG_1', 
+        'Slide_IMG_2', 
+        'Information', 
+        'Material', 
+        'Color', 
+        'Size', 
+        'Code', 
+        'Is_Trending', 
+        'Is_New_Arrivals', 
+        'Is_Feature', 
+        'Product_ID', 
+        'Quantity',
+        'Slug', 
     ];
 
     public function product(){
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class, 'Product_ID', 'ID');
     }
 }

@@ -20,15 +20,15 @@
             @endif
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{{ route('admin.product.update', $product->id) }}" method="POST">
+                <form action="{{ route('admin.product.update', $product->ID) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="form-group">
                         <label>Brand</label>
                         <select class="form-control" name="brand">
                             @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}" @if ($product->brand_id == $brand->id) selected @endif>
-                                    {{ $brand->name }}
+                                <option value="{{ $brand->ID }}" @if ($product->Brand_ID == $brand->ID) selected @endif>
+                                    {{ $brand->Name }}
                                 </option>
                             @endforeach
                         </select>
@@ -43,8 +43,8 @@
                         <div id="categories">
                             <select class="form-control" name="category">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>
-                                        {{ $category->name }}
+                                    <option value="{{ $category->ID }}" @if ($product->Category_ID == $category->ID) selected @endif>
+                                        {{ $category->Name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label>Product Name</label>
-                        <input class="form-control" value="{{$product->name}}" name="name" placeholder="Please Enter Product Name" />
+                        <input class="form-control" value="{{$product->Name}}" name="name" placeholder="Please Enter Product Name" />
                         @error('name')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label>Product Image</label>
-                        <input class="form-control" value="{{$product->img}}" name="img" placeholder="Please Enter Category Img" />
+                        <input class="form-control" value="{{$product->IMG}}" name="img" placeholder="Please Enter Category Img" />
                         @error('img')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label>Product Code</label>
-                        <input class="form-control" value="{{$product->code}}" name="code" placeholder="Please Enter Product Code" />
+                        <input class="form-control" value="{{$product->Code}}" name="code" placeholder="Please Enter Product Code" />
                         @error('code')
                             <div class="alert alert-danger">
                                 {{ $message }}

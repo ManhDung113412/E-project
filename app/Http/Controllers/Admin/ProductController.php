@@ -37,12 +37,12 @@ class ProductController extends Controller
         $slug = Str::slug($request->name);
 
         Product::create([
-            'brand_id' => $request->brand,
-            'category_id' => $request->category,
-            'name' => $request->name,
-            'img' => $request->img,
-            'code' => $request->code,
-            'slug' => $slug,
+            'Brand_id' => $request->brand,
+            'Category_id' => $request->category,
+            'Name' => $request->name,
+            'IMG' => $request->img,
+            'Code' => $request->code,
+            'Slug' => $slug,
         ]);
 
         return redirect()->route('admin.product.index')->with('success', 'Created Successfully');
@@ -68,13 +68,13 @@ class ProductController extends Controller
 
         $slug = Str::slug($request->name);
 
-        Product::where('id', $id)->update([
-            'brand_id' => $request->brand,
-            'category_id' => $request->category,
-            'name' => $request->name,
-            'img' => $request->img,
-            'code' => $request->code,
-            'slug' => $slug,
+        Product::where('ID', $id)->update([
+            'Brand_ID' => $request->brand,
+            'Category_ID' => $request->category,
+            'Name' => $request->name,
+            'IMG' => $request->img,
+            'Code' => $request->code,
+            'Slug' => $slug,
         ]);
 
         return redirect()->route('admin.product.index')->with('success', 'Updated Successfully');
@@ -82,7 +82,7 @@ class ProductController extends Controller
 
     public function delete($id)
     {
-        Product::where('id', $id)->delete();
+        Product::where('ID', $id)->delete();
         return redirect()->route('admin.product.index')->with('success', 'Deleted Successfully');
     }
 }
