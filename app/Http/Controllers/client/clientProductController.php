@@ -8,6 +8,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class clientProductController extends Controller
 {
@@ -136,7 +138,13 @@ class clientProductController extends Controller
         $data = $req->session()->get('this_customer');
         // $customer_ID = $data[0]->Customer_ID;
         dd($data);
+        $customer_ID = Auth::guard('users')->id();
+        $this_customer = User::where('id', $customer_ID)->get();
 
+        // $data = session()->get('this_customer');
+        // dd($data);
+        $customer_ID = $this_customer[0]->id;
+        // dd($customer_ID);
         $Slug = $req->Slug;
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $pro_ID = $this_product[0]->ID;
@@ -149,7 +157,4 @@ class clientProductController extends Controller
 
         return redirect()->back();
     }
-
-
-
 }
