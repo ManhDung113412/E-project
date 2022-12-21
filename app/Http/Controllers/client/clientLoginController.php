@@ -40,8 +40,9 @@ class clientLoginController extends Controller
         $customer = Auth::guard('users')->attempt(['username' => $user_name, 'password' => $password]);
 
         if ($customer == true) {
-            $customer_ID = Auth::guard('users')->user();
-            $this_customer = DB::table('users')->join('wish_list', 'users.ID', '=', 'wish_list.Customer_ID')->join('carts', 'users.ID', '=', 'carts.Customer_ID')->where('carts.Customer_ID', $customer_ID->ID)->get();
+            $customer_ID = Auth::guard('users')->id();
+            $this_customer = DB::table('users')->where('users.ID', $customer_ID)->get();
+            // dd($this_customer);
             $data = session(['this_customer' => $this_customer]);
             return redirect()->route('homepage');
         } else {

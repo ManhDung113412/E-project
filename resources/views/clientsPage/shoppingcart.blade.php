@@ -33,13 +33,13 @@
                                     <button id="decrementQuantity">
                                         <ion-icon class="icon" name="remove-outline"></ion-icon>
                                     </button>
-                                    <input id="quantity" class="container__product-list-cart-quantity-numb">
-                                        {{ $item->Product_quantity }}
-                                    </input>
                                     <button id="incrementQuantity">
                                         <ion-icon class="icon" name="add-outline"></ion-icon>
                                     </button>
                                 </div>  
+                                <input id="quantity" class="container__product-list-cart-quantity-numb">
+                                    {{ $item->Product_quantity }}
+                                </input>
                                 <div class="container__product-list-cart-total">
                                     ${{ $item->Export_Price * $item->Product_quantity }}</div>
                                 <div class="container__product-list-cart-button">
