@@ -154,6 +154,7 @@ Route::prefix('client')->group(function () {
     Route::get('productPage', [clientController::class, 'getProductPages']);
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
+    Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
 });
 
 
@@ -179,7 +180,7 @@ Route::prefix('client/products')->group(function () {
 
 Route::prefix('client')->group(function () {
         Route::get('myshoppingcart',[shoppingcartController::class,'getShoppingCart']);
-        
+
         Route::get('mywishlist',[shoppingcartController::class,'getWishList']);
 
 
