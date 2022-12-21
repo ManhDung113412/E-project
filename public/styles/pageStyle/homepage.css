@@ -183,6 +183,60 @@
     border-radius: 5px;
     border: 3px solid white;
     transition: 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.container__featured-products-items:hover .container__featured-products-items-img{
+    /* filter: brightness(80%); */
+    transition: 0.3s ease-in-out;
+}
+
+.container__featured-products-items:hover .container__featured-products-items-button{
+    animation: addButton 0.3s ease-in-out 1 forwards;
+}
+
+
+
+@keyframes addButton {
+    from {
+        opacity: 0;
+        transform: translate(0, -50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.container__featured-products-items-button{
+    position: absolute;
+
+    /* color: */
+
+    align-self: center;
+    opacity: 0;
+    transform: translate(0,-50px);
+    z-index: 2;
+    border-radius: 5px;
+
+
+}
+
+.container__featured-products-items-button button{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    width: 45px;
+    height: 45px;
+    border: none;
+    /* background-color: white; */
+}.container__featured-products-items-button button ion-icon{
+    font-size: 35px;
 }
 
 .container__featured-products-items:hover {
@@ -200,6 +254,8 @@
     background-size: cover;
     background-color: rgb(241, 241, 241);
     transition: 0.5s ease-in-out;
+    z-index: 1;
+
 }
 
 /* .container__featured-products-items-img:hover {
@@ -487,6 +543,7 @@
 .container__listCol-items-img-child:nth-child(2) {
     display: none;
     animation: listCol 0.5s ease-in-out 1 forwards;
+    filter: brightness(30%);
 }
 
 .container__listCol-items:hover .container__listCol-items-img-child:nth-child(2) {
@@ -497,7 +554,7 @@
 @keyframes listCol {
     from {
         opacity: 0;
-        filter: brightness(100%);
+        /* filter: brightness(100%); */
     }
 
     to {

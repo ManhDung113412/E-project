@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDetailController;
 use App\Http\Controllers\Admin\UserController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
+use App\Models\OrderDetail;
 
 
 Route::prefix('admin')->group(function () {
@@ -122,6 +124,18 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
         Route::get('delete/{id}', [UserController::class, 'delete'])
             ->name('admin.user.delete');
     });
+
+    // User Routes
+    Route::prefix('order')->group(function () {
+        Route::get('', [OrderDetailController::class, 'index'])
+            ->name('admin.order.index');
+        Route::get('edit/{id}', [OrderDetailController::class, 'edit'])
+            ->name('admin.order.edit');
+        Route::put('update/{id}', [OrderDetailController::class, 'update'])
+            ->name('admin.order.update');
+        Route::get('detail/{id}', [OrderDetailController::class, 'detail'])
+            ->name('admin.order.detail');
+    });
 });
 
 Route::prefix('client')->group(function () {
@@ -161,15 +175,12 @@ Route::prefix('client/products')->group(function () {
 
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
-    Route::post('specificProduct/{Slug}',[clientProductController::class,'addToCart']);
-
+    Route::post('specificProduct/{Slug}', [clientProductController::class, 'addToCart']);
 });
 
 
 Route::prefix('client')->group(function () {
-        Route::get('myshoppingcart',[shoppingcartController::class,'getShoppingCart']);
-        
-        Route::get('mywishlist',[shoppingcartController::class,'getWishList']);
+    Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
-
+    Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 });

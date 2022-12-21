@@ -68,6 +68,41 @@
                 <div class="header__log-signIn">Sign In</div>
                 <div class="header__log-signOut">Sign Out</div>
             </div>
+            <div id="shoppingCart" class="header__cart" >
+                <div class="header__cart-tittle">Shopping Cart
+                    <button id="hideCart"><ion-icon name="chevron-up-outline"></ion-icon></button>
+                </div>
+                <div class="header__cart-list">
+                    <div class="header__cart-list-items">
+                        <div class="header__cart-list-items-img" style="background-image: url(./)"></div>
+                        <div class="header__cart-list-items-info">
+                            <div class="header__cart-list-items-info-name">Product Name</div>
+                            <div class="header__cart-list-items-info-quantity">
+                                <button>
+                                    <ion-icon name="remove-outline"></ion-icon>
+                                </button>
+                                <div class="header__cart-list-items-info-quantity-num">20</div>
+                                <button>
+                                    <ion-icon name="add-outline"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="header__cart-list-items-info-right">
+                            <div class="header__cart-list-items-info-right-price">$1000</div>
+                            <div class="header__cart-list-items-info-right-action">
+                                <button><ion-icon name="trash-bin-outline"></ion-icon></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__cart-total">
+                    <p><b>Total</b></p>
+                    <p>$10000</p>
+                </div>
+                <div class="header__cart-checkout">
+                    <button>Check out</button>
+                </div>
+            </div>
             <div class="header__update">
                 <div id="topUpdate" class="header__update-all">
                     <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a></div>
@@ -88,8 +123,10 @@
                     </a>
                 </div>
                 <div class="header__nav-right">
-                    <button id="log"><ion-icon name="person-outline"></ion-icon></button>
-                    <a href="{{ url('http://127.0.0.1:8000/client/myshoppingcart') }}">
+                    <button id="log">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </button>
+                    <button id="showCart">
                         <div class="quantityCart">20</div>
                         <ion-icon name="cart-outline"></ion-icon>
                     </a>

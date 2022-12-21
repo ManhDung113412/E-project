@@ -114,14 +114,10 @@
             </form>
         </div>
         <div id="abc" class="slideShow">
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./chanel/Bag-Chanel-Summer-Trends-2020.jpg);"></div>
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./gucci/63aeece630d8df78acf77978c2161515.jpg);"></div>
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./LV/W_Fa_Wild_at_Heart_V2.png); background-size: 140%;"></div>
-            <div id="formImage" class="slideShow-image show"
-                style="background-image: url(./dior/Dior-Fall-2020-Runway-Bag-Collection-5.jpg);"></div>
+            @foreach ($img as $item)
+                <div id="formImage" class="slideShow-image show" style="background-image: url({{ $item->Before_Hover_IMG }});">
+                </div>
+            @endforeach
         </div>
     </div>
 </body>
