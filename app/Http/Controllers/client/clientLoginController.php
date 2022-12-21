@@ -80,14 +80,19 @@ class clientLoginController extends Controller
         $request->validate($rules, $messages);
         DB::table('users')->insert(
             [
-                'First_Name' => $request->first_name, 'Last_Name' => $request->last_name, 'Email' => $request->mail, 'username' => $request->user_name, 'password'  => bcrypt($request->password), 'rank'      => 1
+                'First_Name'
+                 => $request->first_name, 'Last_Name' 
+                 => $request->last_name, 'Email' 
+                 => $request->mail, 'username' 
+                 => $request->user_name, 'password'  
+                 => bcrypt($request->password), 'rank' => 1
             ]
         );
         return redirect()->back();
     }
 
-    public function logOut(){
-        Auth::guard('admins')->logout();
+    public function logOut(Request $req){
+        Auth::guard('users')->logout();
         $req -> session()->forget('this_admin');
         return redirect()->route('admin.login');
     }

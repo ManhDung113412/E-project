@@ -18,20 +18,42 @@ class shoppingcartController extends Controller
     {
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
-        // $customer =session()->get('this_customer');
         $customer_ID = $this_customer[0]->id;
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
         $Product_Details_ID = [];
-
+        // dd($carts);
         foreach ($carts as $item) {
             array_push($Product_Details_ID, $item->Product_Detail_ID);
         };
+        $product_Details_Slug = [];
 
-        $customer_cart = DB::table('carts')
-            ->join('product_details', 'product_details.ID', '=', 'carts.Product_Detail_ID')
-            ->join('Products', 'Products.ID', '=', 'product_details.Product_ID')
-            ->get();
+        foreach ($Product_Details_ID as $item) {
+            $Slug =  ProductDetail::where('product_details.ID', $item)
+                ->join('Products', 'Products.id', '=', 'product_details.Product_ID')
+                ->get('product_details.Slug');
+            foreach ($Slug as $kk) {
+                array_push($product_Details_Slug, $kk);
+            }
+        }
 
-        return view('clientsPage.shoppingCart', ['this_customer' => $customer_cart]);
+        $specific_item_slug = [];
+        foreach ($product_Details_Slug as $item) {
+            array_push($specific_item_slug, $item->Slug);
+        }
+
+        $all_cart_products = [];
+        foreach ($specific_item_slug as $item) {
+            $pro =  ProductDetail::where('product_details.Slug', $item)
+                ->join('Products', 'Products.id', '=', 'product_details.Product_ID')
+                ->get();
+            array_push($all_cart_products, $pro);
+        }
+
+        $allPro =[];
+        foreach($all_cart_products as $item){
+            array_push($allPro,$item[0]);
+        }
+        
+        return view('clientsPage.shoppingCart', ['this_customer' => $allPro]);
     }
 }
