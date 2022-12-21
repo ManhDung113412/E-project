@@ -16,7 +16,7 @@ class Payment extends Model
         'Price'
     ];
 
-    public function order_details(){
+    public function orders(){
         return $this->hasMany(OrderDetail::class, 'Payment_ID', 'ID');
     }
 }

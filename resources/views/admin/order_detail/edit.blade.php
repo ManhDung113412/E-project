@@ -20,7 +20,7 @@
             @endif
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{{ route('admin.order.update', $order->ID) }}" method="POST">
+                <form action="{{ route('admin.order-detail.update', $order->ID) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="form-group">
@@ -43,11 +43,27 @@
                     </div>
                     <div class="form-group">
                         <h1 class="form-control">
-                            <label>Customer Name</label>:
+                            <label>Payment</label>:
                                 {{ $order->payment->Method }}
                         </h1>
                     </div>
-                    <button type="submit" class="btn btn-default">Product Edit</button>
+                    <div class="form-group">
+                        <h1 class="form-control">
+                            <label>Discount Code</label>:
+                                {{ $order->code->Code }}
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <h1 class="form-control">
+                            <label>Discount Code</label>:
+                            <select name="status">
+                                <option @if ($order->Status == "Pending") selected @endif value="Pending">Pending</option>
+                                <option @if ($order->Status == "Done") selected @endif value="Done">Done</option>
+                                <option @if ($order->Status == "Cancel") selected @endif value="Cancel">Cancel</option>
+                            </select>
+                        </h1>
+                    </div>
+                    <button type="submit" class="btn btn-default">Order Edit</button>
                     <form>
             </div>
         </div>

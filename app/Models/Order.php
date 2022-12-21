@@ -19,4 +19,12 @@ class Order extends Model
     public function customer(){
         return $this->belongsTo(User::class, 'Customer_ID', 'ID');
     }
+
+    public function payment(){
+        return $this->belongsTo(Payment::class, 'Payment_ID', 'ID');
+    }
+
+    public function code(){
+        return $this->belongsTo(Code::class, 'Code_ID', 'ID');
+    }
 }

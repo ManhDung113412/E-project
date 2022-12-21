@@ -25,6 +25,14 @@ class OrderDetailController extends Controller
         return view('admin.order_detail.edit', compact('order'));
     }
 
+    public function update(Request $request,$id)
+    {
+        Order::where('ID', $id)->update([
+            'Status' => $request->status,
+        ]);
+        return redirect()->route('admin.order-detail.edit', $id)->with('success', 'Updated Successfully!');
+    }
+
     public function detail($id)
     {
         $order = Order::find($id);

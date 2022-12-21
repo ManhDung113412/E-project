@@ -16,7 +16,7 @@ class Code extends Model
         'Discount'
     ];
 
-    public function order_details(){
+    public function orders(){
         return $this->hasMany(OrderDetail::class, 'Code_ID', 'ID');
     }
 }
