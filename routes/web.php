@@ -145,6 +145,7 @@ Route::prefix('client')->group(function () {
     Route::get('productPage', [clientController::class, 'getProductPages']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
+    Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
 });
 
 
