@@ -17,6 +17,7 @@
 .container {
     margin-top: 100px;
     width: 100%;
+    overflow: hidden;
     margin-bottom: 65px;
     display: flex;
     flex-direction: row;
@@ -37,6 +38,7 @@
     height: 100%;
     margin: 0 auto;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .container__product-categories {
@@ -51,21 +53,25 @@
 .container__product-categories-product {
     width: 36%;
     height: 100%;
+    margin-left: 20px;
 }
 
 .container__product-categories-price {
     width: 18%;
     height: 100%;
+    margin-right: 20px;
 }
 
 .container__product-categories-quantity {
     width: 22%;
     height: 100%;
+    /* margin-left: 20px; */
 }
 
 .container__product-categories-total {
     width: 13%;
     height: 100%;
+    margin-right: 30px;
 }
 
 .container__product-categories-button {
@@ -78,6 +84,8 @@
     height: 820px;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+
 }
 
 .container__product-list-cart {
@@ -100,6 +108,7 @@
 .container__product-list-cart-image-img {
     height: 100%;
     width: 110px;
+    /* background-color: rgb(194, 194, 194); */
 }
 
 .container__product-list-cart-image-info {
@@ -108,16 +117,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    overflow: hidden;
 }
 
 .container__product-list-cart-info-name {
-    font-size: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .container__product-list-cart-info-cate {
-    font-size: 14px;
-    color: #AAAAAA;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-top: 10px;
 }
 
 .container__product-list-cart-price {
@@ -136,17 +149,27 @@
     align-items: center;
 }
 
-.container__product-list-cart-quantity>div {
-    width: 19px;
-    height: 19px;
+.container__product-list-cart-quantity div {
+    margin-left: 5px;
+    line-height: 15px;
     text-align: center;
+    margin-bottom: 5px;
 }
 
-.container__product-list-cart-quantity>button {
-    width: 17px;
-    height: 17px;
-    background-color: white;
-    border: 1px solid black;
+.container__product-list-cart-quantity button {
+    border: none;
+    background-color: transparent;
+    width: 27px;
+    color: black;
+    height: 27px;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+}
+
+.container__product-list-cart-quantity button ion-icon{
+    margin-right: 2px;
+    align-content: center;
 }
 
 .container__product-list-cart-total {
@@ -230,7 +253,7 @@
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
-    
+
 }
 
 .container__cartTotal-big2-info-deli{
@@ -279,8 +302,8 @@
     background-color:transparent;
     border: none;
     position: absolute;
-    margin-right: 7px;
-    margin-top: 7px;
+    margin-right: 18px;
+    margin-top: 4px;
 }
 
 .hr1 {
