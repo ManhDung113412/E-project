@@ -73,6 +73,18 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.delete');
     });
 
+     // User Routes
+     Route::prefix('order')->group(function () {
+        Route::get('', [OrderDetailController::class, 'index'])
+            ->name('admin.order-detail.index');
+        Route::get('edit/{id}', [OrderDetailController::class, 'edit'])
+            ->name('admin.order-detail.edit');
+        Route::put('update/{id}', [OrderDetailController::class, 'update'])
+            ->name('admin.order-detail.update');
+        Route::get('detail/{id}', [OrderDetailController::class, 'detail'])
+            ->name('admin.order-detail.detail');
+    });
+
     // Product Routes
     Route::prefix('product')->group(function () {
         Route::get('', [ProductController::class, 'index'])
@@ -113,28 +125,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('', [UserController::class, 'index'])
             ->name('admin.user.index');
-        Route::get('create', [UserController::class, 'create'])
-            ->name('admin.user.create');
-        Route::post('store', [UserController::class, 'store'])
-            ->name('admin.user.store');
-        Route::get('edit/{id}', [UserController::class, 'edit'])
-            ->name('admin.user.edit');
-        Route::put('update/{id}', [UserController::class, 'update'])
-            ->name('admin.user.update');
-        Route::get('delete/{id}', [UserController::class, 'delete'])
-            ->name('admin.user.delete');
-    });
-
-    // User Routes
-    Route::prefix('order')->group(function () {
-        Route::get('', [OrderDetailController::class, 'index'])
-            ->name('admin.order.index');
-        Route::get('edit/{id}', [OrderDetailController::class, 'edit'])
-            ->name('admin.order.edit');
-        Route::put('update/{id}', [OrderDetailController::class, 'update'])
-            ->name('admin.order.update');
-        Route::get('detail/{id}', [OrderDetailController::class, 'detail'])
-            ->name('admin.order.detail');
+        Route::get('detail/{id}', [UserController::class, 'detail'])
+            ->name('admin.user.detail');
     });
 });
 

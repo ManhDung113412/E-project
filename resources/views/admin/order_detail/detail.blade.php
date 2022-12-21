@@ -55,6 +55,7 @@ Order Detail {{$order->ID}}
                     <thead>
                         <tr align="center">
                             <th>STT</th>
+                            <th>Category</th>
                             <th>Brand</th>
                             <th>Product</th>
                             <th>Quantity</th>
@@ -71,9 +72,17 @@ Order Detail {{$order->ID}}
                                     $product_id = $product_detail->Product_ID;
                                     $product = DB::table('products')->find($product_id);
                                     $product_name = $product->Name;
+                                    $category_id = $product->Category_ID;
+                                    $category = DB::table('categories')->find($category_id);
+                                    $category_name = $category->Name;
                                     $brand_id = $product->Brand_ID;
                                     $brand = DB::table('brands')->find($brand_id);
                                     $brand_name = $brand->Name;
+                                    echo $category_name;
+                                @endphp
+                            </td>
+                            <td>
+                                @php
                                     echo $brand_name;
                                 @endphp
                             </td>
@@ -87,7 +96,7 @@ Order Detail {{$order->ID}}
                         </tr>
                         @endforeach
                         <tr class="odd gradeX" align="center">
-                        <td colspan="3"><b>Total</b></td>
+                        <td colspan="4"><b>Total</b></td>
                         <td colspan="1"><b>{{ App\Models\OrderDetail::where('Order_ID', $order_detail[0]->Order_ID)->sum('Quantity') }}</b></td>
                         <td colspan="1"><b>${{ App\Models\OrderDetail::where('Order_ID', $order_detail[0]->Order_ID)->sum('Price') }}</b></td>
                         </tr>

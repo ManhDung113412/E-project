@@ -41,7 +41,7 @@
         <a href="#"><i class="fa fa-shopping-cart"></i>  Order<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
-                <a href="{{route('admin.order.index')}}">List User</a>
+                <a href="{{route('admin.order-detail.index')}}">List Order</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->

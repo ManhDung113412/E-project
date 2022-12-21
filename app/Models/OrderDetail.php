@@ -20,13 +20,9 @@ class OrderDetail extends Model
         return $this->belongsTo(Order::class, 'Order_ID', 'ID');
     }
 
-    public function payment(){
-        return $this->belongsTo(Payment::class, 'Payment_ID', 'ID');
-    }
+    
 
-    public function code(){
-        return $this->belongsTo(Code::class, 'Code_ID', 'ID');
-    }
+    
 
     public function product_details()
     {

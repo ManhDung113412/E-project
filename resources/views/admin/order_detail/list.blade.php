@@ -55,8 +55,8 @@
                             </th>
                             <td>{{$order->Location}}</td>
                             <td>{{$order->created_at}}</td>
-                            <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order.detail', $order->ID)}}"> View</a></td>
-                            <td class="center"><i class="fa fa-pencil  fa-fw"></i><a href="{{route('admin.order.edit', $order->ID)}}"> Edit</a></td>
+                            <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order-detail.detail', $order->ID)}}"> View</a></td>
+                            <td class="center"><i class="fa fa-pencil  fa-fw"></i><a href="{{route('admin.order-detail.edit', $order->ID)}}"> Edit</a></td>
                         </tr>
                         @endforeach
                     </tbody>
