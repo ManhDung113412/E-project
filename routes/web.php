@@ -19,7 +19,6 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
-use App\Models\OrderDetail;
 
 
 Route::prefix('admin')->group(function () {
@@ -131,10 +130,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 });
 
 Route::prefix('client')->group(function () {
-    // Route::get('login-register', [clientLoginController::class, 'getLogin']);
-    // Route::post('login-register', [clientLoginController::class, 'postLogin']);
-
-
+   
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
@@ -169,6 +165,7 @@ Route::prefix('client/products')->group(function () {
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
 });
 
+
 Route::prefix('client/products')->middleware('client-signIn')->group(function () {
     Route::post('specificProduct/{Slug}', [clientProductController::class, 'addToCart']);
 });
@@ -181,6 +178,4 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 
     Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 
-
-    // Route::get('quantity{Slug}', [shoppingcartController::class, 'setProductQuantity']);
 });

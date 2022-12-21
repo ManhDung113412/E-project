@@ -85,4 +85,10 @@ class clientLoginController extends Controller
         );
         return redirect()->back();
     }
+
+    public function logOut(){
+        Auth::guard('admins')->logout();
+        $req -> session()->forget('this_admin');
+        return redirect()->route('admin.login');
+    }
 }
