@@ -19,6 +19,7 @@
                         @foreach ($this_customer as $item)
                             <div class="container__product-list-cart">
                                 <div class="container__product-list-cart-image">
+                                    <input name="id" type="text" value="{{ $item->ID }}">
                                     <div class="container__product-list-cart-image-img">
                                         <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;" alt="">
                                     </div>
@@ -32,7 +33,9 @@
                                     <button id="decrementQuantity">
                                         <ion-icon class="icon" name="remove-outline"></ion-icon>
                                     </button>
-                                    <input id="quantity" class="container__product-list-cart-quantity-numb">2</input>
+                                    <input id="quantity" class="container__product-list-cart-quantity-numb">
+                                        {{ $item->Product_quantity }}
+                                    </input>
                                     <button id="incrementQuantity">
                                         <ion-icon class="icon" name="add-outline"></ion-icon>
                                     </button>
@@ -147,5 +150,6 @@
             <input type="text" placeholder="Enter your email address"><button>SUBSCRIBE</button>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="{{ asset('javascript/client/shoppingCart.js') }}"></script>
 @stop
