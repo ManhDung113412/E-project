@@ -73,8 +73,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.delete');
     });
 
-     // User Routes
-     Route::prefix('order')->group(function () {
+    // User Routes
+    Route::prefix('order')->group(function () {
         Route::get('', [OrderDetailController::class, 'index'])
             ->name('admin.order-detail.index');
         Route::get('edit/{id}', [OrderDetailController::class, 'edit'])
@@ -139,7 +139,7 @@ Route::prefix('client')->group(function () {
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
 
-    Route::get('login', [clientLoginController::class, 'getLogin']);
+    Route::get('login', [clientLoginController::class, 'getLogin'])->name('client-login');
     Route::post('login', [clientLoginController::class, 'postLogin']);
 
     Route::post('register', [clientLoginController::class, 'postRegister']);
@@ -147,7 +147,6 @@ Route::prefix('client')->group(function () {
 
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
-    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
 });
@@ -168,12 +167,17 @@ Route::prefix('client/products')->group(function () {
 
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
+});
+
+Route::prefix('client/products')->middleware('client-signIn')->group(function () {
     Route::post('specificProduct/{Slug}', [clientProductController::class, 'addToCart']);
 });
 
 
-Route::prefix('client')->group(function () {
+Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+
 
     Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 
