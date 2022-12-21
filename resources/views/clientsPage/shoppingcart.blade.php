@@ -24,7 +24,8 @@
                                     </div>
                                     <div class="container__product-list-cart-image-info">
                                         <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
-                                        <div class="container__product-list-cart-info-cate" style="background-color: {{ $item->Color }}"></div>
+                                        <div class="container__product-list-cart-info-cate"
+                                            style="background-color: {{ $item->Color }}"></div>
                                     </div>
                                 </div>
                                 <div class="container__product-list-cart-price">${{ $item->Export_Price }}</div>
@@ -32,10 +33,9 @@
                                     <button id="decrementQuantity">
                                         <ion-icon class="icon" name="remove-outline"></ion-icon>
                                     </button>
-                                    <div id="quantity" class="container__product-list-cart-quantity-numb">
-                                        {{-- {{ $item->Product_quantity }} --}}
-                                        20
-                                    </div>
+                                    <input id="quantity" class="container__product-list-cart-quantity-numb"
+                                    value="">
+                                    </input>
                                     <button id="incrementQuantity">
                                         <ion-icon class="icon" name="add-outline"></ion-icon>
                                     </button>
@@ -67,7 +67,7 @@
                                 <div class="container__cartTotal-big2-info-right">$5</div>
                             </div>
                             <div class="container__cartTotal-big2-info-deli">
-                                <input type="text" list="ship" placeholder="Delivery Option"/>
+                                <input type="text" list="ship" placeholder="Delivery Option" />
                                 <datalist id="ship">
                                     <option value="    Standard  - $5">
                                     <option value="    Fast  - $8">
@@ -151,6 +151,6 @@
             <input type="text" placeholder="Enter your email address"><button>SUBSCRIBE</button>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{{ asset('javascript/client/shoppingCart.js') }}"></script>
 @stop

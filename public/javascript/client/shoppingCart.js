@@ -1,33 +1,33 @@
+var quantityVal = $("#quantity").val();
+quantityVal = 1;
 
-// const plus = document.querySelector('.incrementQuantity'),
-//     minus = document.querySelector('.decrementQuantity');
-
+$(#)
 $(document).ready(function(){
     $("#incrementQuantity").click(function(){
-      
+        quantityVal++;
+        console.log(quantityVal);
     });
+
+    $("#decrementQuantity").click(function(){
+        if(quantityVal > 1){
+            quantityVal--;
+            console.log(quantityVal);
+        }
+    });
+    // $.ajax({
+    //     url: '{{  url()  }}',
+    //     method: 'GET',
+    //     data: {qty: qtyVal2, item_id: itemidVal2, id: idVal2, cart_id: cartidVal2 },
+    //     cache: false,
+    //     dataType: 'html',
+    //     success: function(data) {
+    
+    //     },
+    // });
+
 });
 
 
-// var a = document.getElementById('quantity').value;
 
-
-
-// document.getElementById('incrementQuantity').addEventListener('click', (e) =>
-// {
-//     e.preventDefault();
-//     a++;
-//     console.log(a   );
-// });
-
-// document.getElementById('decrementQuantity').addEventListener('click', (e) =>
-// {
-//     e.preventDefault();
-//     if(a !== 1){
-//         a--;
-//     }
-//     console.log(a);
-
-// });
 
 
