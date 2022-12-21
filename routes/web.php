@@ -148,6 +148,7 @@ Route::prefix('client')->group(function () {
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
 });
 

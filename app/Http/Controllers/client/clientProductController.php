@@ -134,14 +134,15 @@ class clientProductController extends Controller
     public function addToCart(Request $req)
     {
         $data = $req->session()->get('this_customer');
-        $customer_ID = $data[0]->Customer_ID;
+        // $customer_ID = $data[0]->Customer_ID;
+        dd($data);
 
         $Slug = $req->Slug;
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $pro_ID = $this_product[0]->ID;
-        
-         
-        
+
+
+
         DB::table('carts')->insert([
             'Product_quantity' => 1, 'Customer_ID' => $customer_ID, 'Product_Detail_ID' => $pro_ID
         ]);
