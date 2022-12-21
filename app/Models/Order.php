@@ -11,6 +11,16 @@ class Order extends Model
 
     protected $table = 'orders';
 
+    protected $fillable = [
+        'Code',
+        'Customer_ID',
+        'Shop_ID',
+        'Code_ID',
+        'Location',
+        'Payment_ID',
+        'Status',
+    ];
+
     public function order_details()
     {
         return $this->hasMany(OrderDetail::class, 'Order_ID', 'ID');

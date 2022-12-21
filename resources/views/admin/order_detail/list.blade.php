@@ -31,7 +31,7 @@
                             <th>Status</th>
                             <th>Location</th>
                             <th>Date</th>
-                            <th>View</th>
+                            <th>Detail</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
