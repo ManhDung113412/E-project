@@ -82,5 +82,6 @@ class clientLoginController extends Controller
                 'First_Name' => $request->first_name, 'Last_Name' => $request->last_name, 'Email' => $request->mail, 'username' => $request->user_name, 'password'  => bcrypt($request->password), 'rank'      => 1
             ]
         );
+        return redirect()->back();
     }
 }
