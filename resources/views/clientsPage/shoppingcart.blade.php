@@ -29,15 +29,16 @@
                                 </div>
                                 <div class="container__product-list-cart-price">${{ $item->Export_Price }}</div>
                                 <div class="container__product-list-cart-quantity">
-                                    <button>
+                                    <button id="decrementQuantity">
                                         <ion-icon class="icon" name="remove-outline"></ion-icon>
                                     </button>
-                                    <div class="container__product-list-cart-quantity-numb">2</div>
-                                    <button>
+                                    <input id="quantity" class="container__product-list-cart-quantity-numb">2</input>
+                                    <button id="incrementQuantity">
                                         <ion-icon class="icon" name="add-outline"></ion-icon>
                                     </button>
-                                </div>
-                                <div class="container__product-list-cart-total">${{ $item->Export_Price * $item->Product_quantity }}</div>
+                                </div>  
+                                <div class="container__product-list-cart-total">
+                                    ${{ $item->Export_Price * $item->Product_quantity }}</div>
                                 <div class="container__product-list-cart-button">
                                     <button>Remove</button>
                                     <button>Replace</button>
@@ -146,4 +147,5 @@
             <input type="text" placeholder="Enter your email address"><button>SUBSCRIBE</button>
         </div>
     </div>
+    <script src="{{ asset('javascript/client/shoppingCart.js') }}"></script>
 @stop

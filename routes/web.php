@@ -183,4 +183,7 @@ Route::prefix('client')->group(function () {
     Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
     Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
+
+
+    // Route::get('quantity{Slug}', [shoppingcartController::class, 'setProductQuantity']);
 });

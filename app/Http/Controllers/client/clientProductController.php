@@ -131,8 +131,6 @@ class clientProductController extends Controller
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color, 'ran_pro' => $ran_pro]);
     }
 
-
-
     public function addToCart(Request $req)
     {
         $data = $req->session()->get('this_customer');
@@ -141,15 +139,19 @@ class clientProductController extends Controller
         $Slug = $req->Slug;
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $pro_ID = $this_product[0]->ID;
-
+// dd($data);
+        
+        foreach($data->all() as $k=>$item){
+            dd($item->Product_Detail_ID);
+        }
+        // if($pro_ID )
+        
         DB::table('carts')->insert([
             'Product_quantity' => 1, 'Customer_ID' => $customer_ID, 'Product_Detail_ID' => $pro_ID
         ]);
 
         return redirect()->back();
     }
-
-
 
 
 
