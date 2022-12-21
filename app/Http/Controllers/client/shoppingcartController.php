@@ -20,8 +20,7 @@ class shoppingcartController extends Controller
         $this_customer = User::where('id', $customer_ID)->get();
         $customer_ID = $this_customer[0]->id;
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
-        $Product_Details_ID = [];
-        // dd($carts);
+       
         foreach ($carts as $item) {
             array_push($Product_Details_ID, $item->Product_Detail_ID);
         };
@@ -53,7 +52,8 @@ class shoppingcartController extends Controller
         foreach($all_cart_products as $item){
             array_push($allPro,$item[0]);
         }
-        
-        return view('clientsPage.shoppingCart', ['this_customer' => $allPro]);
+
+
+        return view('clientsPage.shoppingCart', ['this_customer' => $allPro,'cart_details' => $carts]);
     }
 }
