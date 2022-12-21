@@ -37,7 +37,7 @@
                                         <ion-icon class="icon" name="add-outline"></ion-icon>
                                     </button>
                                 </div>
-                                <div class="container__product-list-cart-total">${{ $item->Export_Price * $item->Quantity }}</div>
+                                <div class="container__product-list-cart-total">${{ $item->Export_Price * $item->Product_quantity }}</div>
                                 <div class="container__product-list-cart-button">
                                     <button>Remove</button>
                                     <button>Replace</button>
@@ -64,9 +64,9 @@
                             <div class="container__cartTotal-big2-info-deli">
                                 <input type="text" list="ship" placeholder="    Delivery Option" />
                                 <datalist id="ship">
-                                    <option value="    Standard Delivery - $5">
-                                    <option value="    Fast Delivery - $8">
-                                    <option value="    Priority Delivery - $12">
+                                    <option value="    Standard  - $5">
+                                    <option value="    Fast  - $8">
+                                    <option value="    Priority - $12">
                                 </datalist>
                             </div>
                             <div class="container__cartTotal-big2-info-give">

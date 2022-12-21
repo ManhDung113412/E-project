@@ -89,10 +89,10 @@
                 </div>
                 <div class="header__nav-right">
                     <button id="log"><ion-icon name="person-outline"></ion-icon></button>
-                    <button>
+                    <a href="{{ url('http://127.0.0.1:8000/client/myshoppingcart') }}">
                         <div class="quantityCart">20</div>
                         <ion-icon name="cart-outline"></ion-icon>
-                    </button>
+                    </a>
                     <button>
                         <div class="quantityCart">20</div>
                         <ion-icon name="heart-outline"></ion-icon>
