@@ -135,8 +135,11 @@ class clientProductController extends Controller
 
     public function addToCart(Request $req)
     {
+
+
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
+        // dd($this_customer);
 
         // $data = session()->get('this_customer');
         // dd($data);

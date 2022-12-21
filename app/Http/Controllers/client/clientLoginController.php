@@ -45,6 +45,7 @@ class clientLoginController extends Controller
             $customer_ID = Auth::guard('users')->id();
             $this_customer = User::where('id',$customer_ID)->get();
             // dd($this_customer);
+            // dd($this_customer);
             // $data = session(['this_customer',$this_customer[0]]);
             // $d = session()->get('this_customer');
             return redirect()->route('homepage');
