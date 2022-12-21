@@ -21,6 +21,7 @@ class shoppingcartController extends Controller
         $customer_ID = $this_customer[0]->id;
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
        
+        $Product_Details_ID = [];
         foreach ($carts as $item) {
             array_push($Product_Details_ID, $item->Product_Detail_ID);
         };
