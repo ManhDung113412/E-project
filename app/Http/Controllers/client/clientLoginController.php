@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\client\loginModel;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use App\Models\User;
+
 
 
 class clientLoginController extends Controller
@@ -41,9 +43,10 @@ class clientLoginController extends Controller
 
         if ($customer == true) {
             $customer_ID = Auth::guard('users')->id();
-            $this_customer = DB::table('users')->where('users.ID', $customer_ID)->get();
+            $this_customer = User::where('id',$customer_ID)->get();
             // dd($this_customer);
-            $data = session(['this_customer' => $this_customer]);
+            // $data = session(['this_customer',$this_customer[0]]);
+            // $d = session()->get('this_customer');
             return redirect()->route('homepage');
         } else {
             return redirect()->back();

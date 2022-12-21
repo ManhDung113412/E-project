@@ -19,12 +19,11 @@
                         @foreach ($this_customer as $item)
                             <div class="container__product-list-cart">
                                 <div class="container__product-list-cart-image">
-                                    <input name="id" type="text" value="{{ $item->ID }}">
                                     <div class="container__product-list-cart-image-img">
                                         <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;" alt="">
                                     </div>
                                     <div class="container__product-list-cart-image-info">
-                                        <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
+                                        {{-- <div class="container__product-list-cart-info-name">{{ $item[0]->Name }}</div> --}}
                                         <div class="container__product-list-cart-info-cate">{{ $item->Color }}</div>
                                     </div>
                                 </div>
@@ -66,7 +65,7 @@
                                 <div class="container__cartTotal-big2-info-right">$5</div>
                             </div>
                             <div class="container__cartTotal-big2-info-deli">
-                                <input type="text" list="ship" placeholder="    Delivery Option" />
+                                <input type="text" list="ship" placeholder="Delivery Option"/>
                                 <datalist id="ship">
                                     <option value="    Standard  - $5">
                                     <option value="    Fast  - $8">
