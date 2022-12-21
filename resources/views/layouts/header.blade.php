@@ -66,7 +66,7 @@
             </div>
             <div id="openLog" class="header__log">
                 <div class="header__log-signIn">Sign In</div>
-                <div class="header__log-signOut">Sign Out</div>
+                <a class="header__log-signOut" href="{{ url('client/logout') }}">Sign Out</a>
             </div>
             <div id="shoppingCart" class="header__cart" >
                 <div class="header__cart-tittle">Shopping Cart

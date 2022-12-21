@@ -43,7 +43,7 @@ class clientLoginController extends Controller
 
         if ($customer == true) {
             $customer_ID = Auth::guard('users')->id();
-            $this_customer = User::where('id',$customer_ID)->get();
+            $this_customer = User::where('id', $customer_ID)->get();
             // dd($this_customer);
             // dd($this_customer);
             // $data = session(['this_customer',$this_customer[0]]);
@@ -81,19 +81,21 @@ class clientLoginController extends Controller
         DB::table('users')->insert(
             [
                 'First_Name'
-                 => $request->first_name, 'Last_Name' 
-                 => $request->last_name, 'Email' 
-                 => $request->mail, 'username' 
-                 => $request->user_name, 'password'  
-                 => bcrypt($request->password), 'rank' => 1
+                => $request->first_name, 'Last_Name'
+                => $request->last_name, 'Email'
+                => $request->mail, 'username'
+                => $request->user_name, 'password'
+                => bcrypt($request->password), 'rank' => 1
             ]
         );
         return redirect()->back();
     }
 
-    public function logOut(Request $req){
+    public function logOut(Request $req)
+    {
+        // dd('asd');
         Auth::guard('users')->logout();
-        $req -> session()->forget('this_admin');
-        return redirect()->route('admin.login');
+        $req -> session()->forget('this_customer');
+        return redirect()->route('client-login');
     }
 }

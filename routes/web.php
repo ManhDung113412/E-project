@@ -130,7 +130,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 });
 
 Route::prefix('client')->group(function () {
-   
+
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
@@ -138,8 +138,8 @@ Route::prefix('client')->group(function () {
     Route::get('login', [clientLoginController::class, 'getLogin'])->name('client-login');
     Route::post('login', [clientLoginController::class, 'postLogin']);
 
-    Route::post('register', [clientLoginController::class, 'postRegister']);
 
+    Route::post('register', [clientLoginController::class, 'postRegister']);
 
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
@@ -170,6 +170,9 @@ Route::prefix('client/products')->middleware('client-signIn')->group(function ()
     Route::post('specificProduct/{Slug}', [clientProductController::class, 'addToCart']);
 });
 
+Route::prefix('client')->middleware('client-signIn')->group(function () {
+    Route::get('logout', [clientLoginController::class, 'logOut']);
+});
 
 Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
@@ -177,5 +180,4 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 
 
     Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
-
 });
