@@ -8,6 +8,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class clientProductController extends Controller
 {
@@ -125,29 +127,36 @@ class clientProductController extends Controller
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $random_products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
         $ran_pro = $random_products->take(4);
+        
         $product_ID =  $this_product[0]->Product_ID;
+
         $get_color = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Product_ID', $product_ID)->get();
 
         return view('clientsPage.mainProduct', ['product' => $this_product, 'getColor' => $get_color, 'ran_pro' => $ran_pro]);
     }
 
-
-
     public function addToCart(Request $req)
     {
-        $data = $req->session()->get('this_customer');
-        $customer_ID = $data[0]->Customer_ID;
 
+
+        $customer_ID = Auth::guard('users')->id();
+        $this_customer = User::where('id', $customer_ID)->get();
+        // dd($this_customer);
+
+        // $data = session()->get('this_customer');
+        // dd($data);
+        $customer_ID = $this_customer[0]->id;
+        // dd($customer_ID);
         $Slug = $req->Slug;
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $pro_ID = $this_product[0]->ID;
 
+
+
         DB::table('carts')->insert([
-            'Quantity' => 1, 'Customer_ID' => $customer_ID, 'Product_Detail_ID' => $pro_ID
+            'Product_quantity' => 1, 'Customer_ID' => $customer_ID, 'Product_Detail_ID' => $pro_ID
         ]);
 
         return redirect()->back();
     }
-
-
 }

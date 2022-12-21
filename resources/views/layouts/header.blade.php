@@ -129,7 +129,7 @@
                     <button id="showCart">
                         <div class="quantityCart">20</div>
                         <ion-icon name="cart-outline"></ion-icon>
-                    </button>
+                    </a>
                     <button>
                         <div class="quantityCart">20</div>
                         <ion-icon name="heart-outline"></ion-icon>

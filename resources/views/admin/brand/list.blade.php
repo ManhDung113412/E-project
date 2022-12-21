@@ -42,7 +42,7 @@ List Brands
                         <td>{{$index + 1}}</td>
                         <td>{{$brand->Code}}</td>
                         <td>{{$brand->Name}}</td>
-                        <td>{{$brand->Logo}}</td>
+                        <td><img width="100" src="{{$brand->Logo}}" alt=""></td>
                         <td>{{$brand->Information}}</td>
                         <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.brand.delete', $brand->ID)}}"> Delete</a></td>
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.brand.edit', $brand->ID)}}">Edit</a></td>

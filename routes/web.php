@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDetailController;
 use App\Http\Controllers\Admin\UserController;
@@ -18,7 +19,6 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
-use App\Models\OrderDetail;
 
 
 Route::prefix('admin')->group(function () {
@@ -72,6 +72,18 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.delete');
     });
 
+    // User Routes
+    Route::prefix('order')->group(function () {
+        Route::get('', [OrderDetailController::class, 'index'])
+            ->name('admin.order-detail.index');
+        Route::get('edit/{id}', [OrderDetailController::class, 'edit'])
+            ->name('admin.order-detail.edit');
+        Route::put('update/{id}', [OrderDetailController::class, 'update'])
+            ->name('admin.order-detail.update');
+        Route::get('detail/{id}', [OrderDetailController::class, 'detail'])
+            ->name('admin.order-detail.detail');
+    });
+
     // Product Routes
     Route::prefix('product')->group(function () {
         Route::get('', [ProductController::class, 'index'])
@@ -112,39 +124,18 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('', [UserController::class, 'index'])
             ->name('admin.user.index');
-        Route::get('create', [UserController::class, 'create'])
-            ->name('admin.user.create');
-        Route::post('store', [UserController::class, 'store'])
-            ->name('admin.user.store');
-        Route::get('edit/{id}', [UserController::class, 'edit'])
-            ->name('admin.user.edit');
-        Route::put('update/{id}', [UserController::class, 'update'])
-            ->name('admin.user.update');
-        Route::get('delete/{id}', [UserController::class, 'delete'])
-            ->name('admin.user.delete');
-    });
-
-    // User Routes
-    Route::prefix('order')->group(function () {
-        Route::get('', [OrderDetail::class, 'index'])
-            ->name('admin.order.index');
-        Route::get('edit/{id}', [OrderDetail::class, 'edit'])
-            ->name('admin.order.edit');
-        Route::put('update/{id}', [OrderDetail::class, 'update'])
-            ->name('admin.order.update');
+        Route::get('detail/{id}', [UserController::class, 'detail'])
+            ->name('admin.user.detail');
     });
 });
 
 Route::prefix('client')->group(function () {
-    // Route::get('login-register', [clientLoginController::class, 'getLogin']);
-    // Route::post('login-register', [clientLoginController::class, 'postLogin']);
-
 
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
 
-    Route::get('login', [clientLoginController::class, 'getLogin']);
+    Route::get('login', [clientLoginController::class, 'getLogin'])->name('client-login');
     Route::post('login', [clientLoginController::class, 'postLogin']);
 
     Route::post('register', [clientLoginController::class, 'postRegister']);
@@ -152,7 +143,7 @@ Route::prefix('client')->group(function () {
 
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
-    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
 });
@@ -173,15 +164,19 @@ Route::prefix('client/products')->group(function () {
 
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
-    Route::post('specificProduct/{Slug}',[clientProductController::class,'addToCart']);
-
 });
 
 
-Route::prefix('client')->group(function () {
-        Route::get('myshoppingcart',[shoppingcartController::class,'getShoppingCart']);
+Route::prefix('client/products')->middleware('client-signIn')->group(function () {
+    Route::post('specificProduct/{Slug}', [clientProductController::class, 'addToCart']);
+});
 
-        Route::get('mywishlist',[shoppingcartController::class,'getWishList']);
 
+Route::prefix('client')->middleware('client-signIn')->group(function () {
+    Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+
+
+    Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 
 });

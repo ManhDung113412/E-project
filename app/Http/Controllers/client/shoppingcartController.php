@@ -3,38 +3,57 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\ProductDetail;
+use App\Models\Product;
+use App\Models\User;
+
 
 class shoppingcartController extends Controller
 {
     public function getShoppingCart(Request $req)
     {
-        $data = $req->session()->get('this_customer');
-        $customer_ID = $data[0]->Customer_ID;
-        $customer = DB::table('users')->join('carts', 'users.id', '=', 'carts.Customer_ID')->join('product_details', 'carts.Product_Detail_ID', '=', 'product_details.ID')->join('Products', 'Products.ID', '=', 'product_details.Product_ID')->where('users.Id', $customer_ID)->get();
-        return view('clientsPage.shoppingCart', ['this_customer' => $customer]);
+        $customer_ID = Auth::guard('users')->id();
+        $this_customer = User::where('id', $customer_ID)->get();
+        $customer_ID = $this_customer[0]->id;
+        $carts = Cart::where('Customer_ID', $customer_ID)->get();
+        $Product_Details_ID = [];
+        // dd($carts);
+        foreach ($carts as $item) {
+            array_push($Product_Details_ID, $item->Product_Detail_ID);
+        };
+        $product_Details_Slug = [];
+
+        foreach ($Product_Details_ID as $item) {
+            $Slug =  ProductDetail::where('product_details.ID', $item)
+                ->join('Products', 'Products.id', '=', 'product_details.Product_ID')
+                ->get('product_details.Slug');
+            foreach ($Slug as $kk) {
+                array_push($product_Details_Slug, $kk);
+            }
+        }
+
+        $specific_item_slug = [];
+        foreach ($product_Details_Slug as $item) {
+            array_push($specific_item_slug, $item->Slug);
+        }
+
+        $all_cart_products = [];
+        foreach ($specific_item_slug as $item) {
+            $pro =  ProductDetail::where('product_details.Slug', $item)
+                ->join('Products', 'Products.id', '=', 'product_details.Product_ID')
+                ->get();
+            array_push($all_cart_products, $pro);
+        }
+
+        $allPro =[];
+        foreach($all_cart_products as $item){
+            array_push($allPro,$item[0]);
+        }
+        
+        return view('clientsPage.shoppingCart', ['this_customer' => $allPro]);
     }
-
-    // public function getSmallShoppingCart(Request $req)
-    // {
-    //     $data = $req->session()->get('this_customer');
-    //     $customer_ID = $data[0]->Customer_ID;
-    //     $customer = DB::table('users')->join('carts', 'users.id', '=', 'carts.Customer_ID')->join('product_details', 'carts.Product_Detail_ID', '=', 'product_details.ID')->join('Products', 'Products.ID', '=', 'product_details.Product_ID')->where('users.Id', $customer_ID)->get();
-    //     return view('layouts.header', ['this_customer' => $customer]);
-    // }
-
-    // public function addToCart(Request $req){
-    //     dd('fasd');
-
-    //     $data = $req->session()->get('this_customer');
-    //     $customer_ID = $data[0]->Customer_ID;
-
-    //     $Slug = $req->Slug;
-    //     $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug',$Slug)->get();
-
-    //     dd($this_product);
-    // }
-
-
 }

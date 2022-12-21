@@ -24,51 +24,45 @@
                     <thead>
                         <tr align="center">
                             <th>STT</th>
-                            <th>Code</th>
-                            <th>Import Price</th>
-                            <th>Export Price</th>
-                            <th>Sale Price</th>
-                            <th>Main Image</th>
-                            <th>Slide Image 1</th>
-                            <th>Slide Image 2</th>
-                            <th>Information</th>
-                            <th>Material</th>
-                            <th>Color</th>
-                            <th>Size</th>
-                            <th>Quantity</th>
-                            <th>Trending</th>
-                            <th>Arrivals</th>
-                            <th>Feature</th>
-                            <th>Delete</th>
+                            <th>Order Code</th>
+                            <th>Customer</th>
+                            <th>Total Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Detail</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product_details as $index => $product)
+                        @foreach ($orders as $index => $order)
                         <tr class="odd gradeX" align="center">
                             <td>{{$index + 1}}</td>
-                            <td>{{$product->Code}}</td>
-                            <td>{{$product->Import_Price}}</td>
-                            <td>{{$product->Export_Price}}</td>
-                            <td>{{$product->Sale_Price}}</td>
-                            <td>{{$product->Main_IMG}}</td>
-                            <td>{{$product->Slide_IMG_1}}</td>
-                            <td>{{$product->Slide_IMG_2}}</td>
-                            <td>{{$product->Information}}</td>
-                            <td>{{$product->Material}}</td>
-                            <td>{{$product->Color}}</td>
-                            <td>{{$product->Size}}</td>
-                            <td>{{$product->Quantity}}</td>
-                            <td>{{$product->Is_Trending ? 'V' : ''}}</td>
-                            <td>{{$product->Is_New_Arrivals ? 'V' : ''}}</td>
-                            <td>{{$product->Is_Feature ? 'V' : ''}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product-detail.delete', $product->ID)}}"> Delete</a></td>
+                            <td>{{$order->Code}}</td>
+                            <td>{{$order->customer->Last_Name}}</td>
+                            <td>{{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Quantity') }}</td>
+                            <td>${{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price') }}</td>
+                            <th 
+                            @if ($order->Status == 'Pending')
+                                class="btn-success"
+                            @elseif ($order->Status == 'Cancel')
+                                class="btn-danger"
+                            @elseif ($order->Status == 'Done')
+                                class="btn-warning"
+                            @endif
+                            >{{$order->Status}}
+                            </th>
+                            <td>{{$order->Location}}</td>
+                            <td>{{$order->created_at}}</td>
+                            <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order-detail.detail', $order->ID)}}"> View</a></td>
+                            <td class="center"><i class="fa fa-pencil  fa-fw"></i><a href="{{route('admin.order-detail.edit', $order->ID)}}"> Edit</a></td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            {!! $product_details->links() !!}
+            {{-- {!! $product_details->links() !!} --}}
         </div>
         <!-- /.row -->
     </div>

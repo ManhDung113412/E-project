@@ -38,6 +38,15 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
+        <a href="#"><i class="fa fa-shopping-cart"></i>  Order<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="{{route('admin.order-detail.index')}}">List Order</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
         <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
@@ -45,18 +54,6 @@
             </li>
             <li>
                 <a href="{{route('admin.product.create')}}">Add Product</a>
-            </li>
-        </ul>
-        <!-- /.nav-second-level -->
-    </li>
-    <li>
-        <a href="#"><i class="fa fa-shopping-cart"></i> Order<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-            <li>
-                <a href="#">List User</a>
-            </li>
-            <li>
-                <a href="#">Add User</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->
@@ -77,10 +74,7 @@
         <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
-                <a href="#">List User</a>
-            </li>
-            <li>
-                <a href="#">Add User</a>
+                <a href="{{route('admin.user.index')}}">List User</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->
