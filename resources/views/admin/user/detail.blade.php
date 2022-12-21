@@ -24,7 +24,7 @@ User {{$user->username}}
                 </div>
             @endif
             <!-- /.col-lg-12 -->
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>Code User</th>
@@ -48,60 +48,50 @@ User {{$user->username}}
                         <td>{{$user->Email}}</td>
                         <td>{{$user->Number_Phone}}</td>
                         <td>{{$user->Rank}}</td>
-                        <td>
-                            @php
-                                $orders = App\Models\Order::where('Customer_ID', $user->ID)->where('Status', 'Done')->get();
-dd($orders);
+                        <td>$@php
+                            $orders = App\Models\Order::where('Customer_ID', $user->ID)->where('Status', 'Done')->get('ID'); // Lấy các trường có Customer_ID = ..., và Done trong bảng Order
                                 $arrOrders = [];
-                                $totalSpending = 0;
                                 foreach ($orders as $key => $order) {
-                                   array_push($arrOrders, $order->ID);
-                                   $order = App\Models\OrderDetail::where('Order_ID', $order->ID)->get();
-                                   dd($order);
-                                   $totalSpending += $order->Price;
+                                   array_push($arrOrders, $order->ID); 
                                 }
-                                dd($totalSpending);
-                                // $orders_id = $orders->ID;
-                                // dd($orders);
-                                // $total_spending = App\Models\OrderDetail::where('Order_ID', 1)->get();
-                                // dd($orders);
-                            @endphp
-                        </td>
+                                $totalSpending = 0;
+                                foreach ($arrOrders as $index => $order) {
+                                    $totalSpending += App\Models\OrderDetail::where('Order_ID', $arrOrders[$index])->sum('Price');
+                                }
+                                echo $totalSpending;
+                        @endphp</td>
                     </tr>
                 </tbody>
             </table>
             <hr>
-            {{-- <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                     <tr align="center">
                         <th>STT</th>
-                        <th>Code User</th>
-                        <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>DOB</th>
-                        <th>Email</th>
-                        <th>Number Phone</th>
-                        <th>Rank</th>
-                        <th>Detail</th>
+                            <th>Order Code</th>
+                            <th>Total Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $index => $user)
+                    @foreach ($orders as $index => $order)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index + 1}}</td>
-                        <td>{{$user->Code}}</td>
-                        <td>{{$user->username}}</td>
-                        <td>{{$user->First_Name}}</td>
-                        <td>{{$user->Last_Name}}</td>
-                        <td>{{$user->Dob}}</td>
-                        <td>{{$user->Email}}</td>
-                        <td>{{$user->Number_Phone}}</td>
-                        <td>{{$user->Rank}}</td>
+                        <td>{{$order->Code}}</td>
+                        <td>{{$order->username}}</td>
+                        <td>{{$order->First_Name}}</td>
+                        <td>{{$order->Status}}</td>
+                        <td>{{$order->Location}}</td>
+                        <td>{{$order->Date}}</td>
+                        <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order-detail.detail', $order->ID)}}"> View</a></td>
                     </tr>
                     @endforeach
                 </tbody>
-            </table> --}}
+            </table>
         </div>
         <!-- /.row -->
     </div>
