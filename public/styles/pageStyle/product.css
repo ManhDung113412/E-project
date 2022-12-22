@@ -92,10 +92,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
     text-transform: uppercase;
+    overflow: hidden;
 }
 .top__name,.top__favor{
     margin-top: 20px;
@@ -103,7 +104,7 @@
 .price {
     width: 100%;
     height: 39px;
-    font-size: 20px;
+    font-size: 25px;
 
     margin-top: 20px;
 }
@@ -168,29 +169,29 @@ hr {
 
 
 .container__productInfo-main-descrip h2 {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 100%;
     height: 15px;
 }
 
 .container__productInfo-main-descrip ul li {
-    font-size: 15px;
+    font-size: 17px;
     margin-left: 30px;
     margin-bottom: 5px;
 }
 
 .container__productInfo-main-details h2 {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin: 10px;
     width: 100%;
 }
 
 .container__productInfo-main-details ul li {
-    font-size: 15px;
+    font-size: 17px;
     margin-left: 30px;
     margin-bottom: 5px;
 }
