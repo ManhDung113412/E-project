@@ -68,25 +68,50 @@ User {{$user->username}}
                 <thead>
                     <tr align="center">
                         <th>STT</th>
-                            <th>Order Code</th>
-                            <th>Total Quantity</th>
-                            <th>Total Price</th>
-                            <th>Status</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Detail</th>
+                        <th>Order Code</th>
+                        <th>Total Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Location</th>
+                        <th>Payment</th>
+                        <th>Date</th>
+                        <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $orders = App\Models\Order::where('Customer_ID', $user->id)->get();
+                    @endphp
                     @foreach ($orders as $index => $order)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index + 1}}</td>
                         <td>{{$order->Code}}</td>
-                        <td>{{$order->username}}</td>
-                        <td>{{$order->First_Name}}</td>
-                        <td>{{$order->Status}}</td>
+                        <td>
+                            @php
+                                $quantity = App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Quantity');
+                                $price = App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price');
+                                echo $quantity;
+                            @endphp
+                        </td>
+                        <td>
+                            @php
+                                echo $price;
+                            @endphp
+                        </td>
+                        <td
+                            @if ($order->Status == 'Pending')
+                                class="btn-success"
+                            @elseif ($order->Status == 'Cancel')
+                                class="btn-danger"
+                            @elseif ($order->Status == 'Done')
+                                class="btn-warning"
+                            @endif
+                        >
+                            {{$order->Status}}
+                        </td>
                         <td>{{$order->Location}}</td>
-                        <td>{{$order->Date}}</td>
+                        <td>{{$order->payment->Method}}</td>
+                        <td>{{$order->created_at}}</td>
                         <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order-detail.detail', $order->ID)}}"> View</a></td>
                     </tr>
                     @endforeach

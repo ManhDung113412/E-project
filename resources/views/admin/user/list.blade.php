@@ -51,7 +51,7 @@ List User
                         <td>{{$user->Email}}</td>
                         <td>{{$user->Number_Phone}}</td>
                         <td>{{$user->Rank}}</td>
-                        <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.user.detail', $user->ID)}}"> View</a></td>
+                        <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.user.detail', $user->id)}}"> View</a></td>
                     </tr>
                     @endforeach
                 </tbody>

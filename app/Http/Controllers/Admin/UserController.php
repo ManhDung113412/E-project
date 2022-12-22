@@ -16,11 +16,11 @@ class UserController extends Controller
 
     public function detail($id){
         $user = User::find($id);
-        $orders = Order::where('Customer_ID', $id)->get();
-        foreach($orders as $order){
-            dd($order->Code)  . "<br>";
-        }
+        
+        // foreach($orders as $order){
+        //     echo $order->Location . "<br>";
+        // }
         // dd(count($orders));
-        return view('admin.user.detail', compact('user', 'orders'));
+        return view('admin.user.detail', compact('user'));
     }
 }
