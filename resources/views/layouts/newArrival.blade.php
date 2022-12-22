@@ -11,7 +11,7 @@
                     <button>
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
-                    <input type="text" placeholder="Search">
+                    <input type="text" placeholder="Search" name="searchBox">
                 </div>
                 <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Categories</div>

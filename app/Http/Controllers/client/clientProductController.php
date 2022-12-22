@@ -17,6 +17,8 @@ class clientProductController extends Controller
     {
         return view('layouts.productPage');
     }
+
+
     public function getLongWallet()
     {
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
@@ -24,8 +26,10 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $longWallet = DB::table('categories')->join('Products', 'Products.Category_ID', '=', 'categories.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('categories.ID', 3)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.longWallet', ['longWallet' => $longWallet, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.longWallet', ['longWallet' => $longWallet, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
+
+
     public function getSmallWallet()
     {
 
@@ -34,9 +38,9 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $smallWallet = DB::table('categories')->join('Products', 'Products.Category_ID', '=', 'categories.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('categories.ID', 4)->groupBy('Product_details.Product_ID')->paginate(13);
-        // dd($smallWallet);
-        return view('layouts.smallWallet', ['smallWallet' => $smallWallet, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.smallWallet', ['smallWallet' => $smallWallet, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
+
     public function getCardsHolder()
     {
 
@@ -45,8 +49,10 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $cardHolder =  DB::table('categories')->join('Products', 'Products.Category_ID', '=', 'categories.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('categories.ID', 1)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.cardsHolder', ['cardsHolder' => $cardHolder, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.cardsHolder', ['cardsHolder' => $cardHolder, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
+
+
     public function getchainandStrap()
     {
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
@@ -54,7 +60,7 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $chainAndStrap = DB::table('categories')->join('Products', 'Products.Category_ID', '=', 'categories.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('categories.ID', 2)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.chainsandStrap', ['chainAndStrap' => $chainAndStrap, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.chainsandStrap', ['chainAndStrap' => $chainAndStrap, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
 
     public function getGucci()
@@ -65,8 +71,10 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $gucci = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('Products.Brand_ID', 4)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.gucci', ['gucci' => $gucci, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.gucci', ['gucci' => $gucci, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
+
+
     public function getLouisVuiton()
     {
 
@@ -75,8 +83,10 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $louisVuiton = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('Products.Brand_ID', 3)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.louisVuiton', ['louisVuiton' => $louisVuiton, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.louisVuiton', ['louisVuiton' => $louisVuiton, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
+
+
     public function getChannel()
     {
 
@@ -85,7 +95,7 @@ class clientProductController extends Controller
 
         $ran_pro = $products->take(4);
         $channel = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('Products.Brand_ID', 1)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.Channel', ['Channel' => $channel, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.Channel', ['Channel' => $channel, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
     public function getDior()
     {
@@ -96,18 +106,20 @@ class clientProductController extends Controller
         $cart_quantity = session()->get('cart_quantity');
 
         $dior = DB::table('brands')->join('products', 'Products.Brand_ID', '=', 'Brands.ID')->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('Products.Brand_ID', 2)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.dior', ['dior' => $dior, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.dior', ['dior' => $dior, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
 
-    public function getNewArrival()
+    public function getNewArrival(Request $req)
     {
+        
+
 
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
         $ran_pro = $products->take(4);
         $cart_quantity = session()->get('cart_quantity');
 
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_New_Arrivals', 1)->paginate(13);
-        return view('layouts.newArrival', ['products' => $products, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.newArrival', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
     public function getTrending()
     {
@@ -117,7 +129,7 @@ class clientProductController extends Controller
         $cart_quantity = session()->get('cart_quantity');
 
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_Trending', 1)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.trending', ['products' => $products, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.trending', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
 
     public function getDiscount()
@@ -128,7 +140,7 @@ class clientProductController extends Controller
         $cart_quantity = session()->get('cart_quantity');
 
         // $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_Discounted', 1)->groupBy('Product_details.Product_ID')->paginate(13);
-        return view('layouts.discountProduct', ['products' => $products, 'randomProduct' => $ran_pro,'cart_quantity' => $cart_quantity]);
+        return view('layouts.discountProduct', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
 
 
@@ -152,10 +164,10 @@ class clientProductController extends Controller
 
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
-     
+
         $customer_ID = $this_customer[0]->id;
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
-        session()->put('cart_quantity',count($carts));
+        session()->put('cart_quantity', count($carts));
 
         $cart_quantity = session()->get('cart_quantity');
 
