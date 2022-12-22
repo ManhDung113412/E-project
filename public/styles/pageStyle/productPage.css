@@ -36,6 +36,7 @@
     border: 1px solid #E4E4E4;
     display: flex;
     flex-direction: row;
+    height: 30px;
 }
 
 .container__sideBar-search button {
@@ -49,6 +50,7 @@
 .container__sideBar-search button ion-icon{
     color: #9b9b9b;
     align-items: center;
+    margin-top: 3px;
     padding-right: 5px;
 }
 
@@ -62,7 +64,6 @@
 
 .container__sideBar-search input:focus {
     outline: none;
-
 }
 
 .container__sideBar-search:hover button ion-icon{
