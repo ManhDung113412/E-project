@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class OrderDetailController extends Controller
     public function edit($id)
     {
         $order = Order::find($id);
-        return view('admin.order_detail.edit', compact('order'));
+        $user = User::find($order->Customer_ID);
+        return view('admin.order_detail.edit', compact('order', 'user'));
     }
 
     public function update(Request $request,$id)
@@ -37,6 +39,7 @@ class OrderDetailController extends Controller
     {
         $order = Order::find($id);
         $order_detail = OrderDetail::where('Order_ID', $id)->get();
-        return view('admin.order_detail.detail', compact('order_detail', 'order'));
+        $user = User::find($order->Customer_ID);
+        return view('admin.order_detail.detail', compact('order_detail', 'order', 'user'));
     }
 }

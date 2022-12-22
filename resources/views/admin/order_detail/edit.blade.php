@@ -31,6 +31,12 @@
                     </div>
                     <div class="form-group">
                         <h1 class="form-control">
+                            <label>Customer Code</label>:
+                            {{$user->Code}}
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <h1 class="form-control">
                             <label>Customer Name</label>:
                                 {{ $order->customer->Last_Name }}
                         </h1>

@@ -24,6 +24,7 @@ Order Detail {{$order->ID}}
                 <thead>
                     <tr>
                         <th>Order Code</th>
+                        <th>Customer Code</th>
                         <th>Customer</th>
                         <th>Status</th>
                         <th>Location</th>
@@ -34,6 +35,7 @@ Order Detail {{$order->ID}}
                     
                     <tr>
                         <th>{{$order->Code}}</th>
+                        <th>{{$user->Code}}</th>
                         <th>{{$order->customer->Last_Name}}</th>
                         <th
                             @if ($order->Status == 'Pending')
