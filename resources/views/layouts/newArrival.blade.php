@@ -7,12 +7,14 @@
     <div class="main">
         <div class="container">
             <div class="container__sideBar">
-                <div class="container__sideBar-search">
-                    <button>
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-                    <input type="text" placeholder="Search">
-                </div>
+                <form action="" method="GET">
+                    <div class="container__sideBar-search">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" placeholder="Search" name="searchBox">
+                    </div>
+                </form>
                 <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Categories</div>
                     <hr class="box1">
