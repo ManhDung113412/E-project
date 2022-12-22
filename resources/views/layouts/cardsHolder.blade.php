@@ -4,46 +4,45 @@
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/subsAndScroll.css') }}">
 @stop
 @section('content')
-    <div class="main">
-        <div class="container">
-            <div class="container__sideBar">
-                <form action="" method="GET">
-                    <div class="container__sideBar-search">
-                        <button>
-                            <ion-icon name="search-outline"></ion-icon>
-                        </button>
-                        <input type="text" placeholder="Search" name="searchBox">
-                    </div>
-                </form>
+<div class="main">
+    <div class="container">
+        <div class="container__sideBar">
+            <form action="" method="GET">
+                <div class="container__sideBar-search">
+                    <button>
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                    <input type="text" placeholder="Search" name="searchBox">
+                </div>
                 <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Categories</div>
+                    <div class="container__sideBar-box-tittle">Brands</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Long Wallet</div>
+                        <input type="checkbox" name="brands" id="filter" value="Gucci">
+                        <div class="container__sideBar-box-cate-name">Gucci</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Small Wallet</div>
+                        <input type="checkbox" name="brands" id="filter" value="Louis Vuitton">
+                        <div class="container__sideBar-box-cate-name">Louis Vuitton</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Cards Holder</div>
+                        <input type="checkbox" name="brands" id="filter" value="Dior">
+                        <div class="container__sideBar-box-cate-name">Dior</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
+                        <input type="checkbox" name="brands" id="filter" value="Chanel">
+                        <div class="container__sideBar-box-cate-name">Chanel</div>
                     </div>
                 </div>
                 <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Price</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="checkbox" name="Price" id="filter" value="high">
                         <div class="container__sideBar-box-cate-name">High to low</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="checkbox" name="Price" id="filter" value="ow">
                         <div class="container__sideBar-box-cate-name">Low to high</div>
                     </div>
                 </div>
@@ -64,10 +63,10 @@
                     </div>
                 </div>
                 <div class="container__sideBar-filter">
-                    <button>Filter</button>
+                    <button type="submit">Filter</button>
                 </div>
-
-            </div>
+            </form>
+        </div>
             <div class="container__list">
                 <div class="container__list-tittle">Cards Holder</div>
                 <div class="container__list-products">

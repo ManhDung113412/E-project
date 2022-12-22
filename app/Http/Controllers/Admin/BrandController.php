@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
@@ -82,5 +83,21 @@ class BrandController extends Controller
         }
         Brand::where('ID', $id)->delete();
         return redirect()->route('admin.brand.index')->with('success', 'Deleted Successfully');
+    }
+
+    public function search(Request $request){
+        if($request->get('query')){
+            $query = $request->get('query');
+            $data = DB::table('brands')
+            ->where('Name', 'LIKE', "%{$query}%")
+            ->get();
+            echo $data;
+            // $output = '<ul>';
+            //     foreach($data as $data){
+            //         $output .= '<li>'.$data->Name.'</li>';
+            //     }
+            // $output .='</ul>';
+            // echo $output;
+        }
     }
 }

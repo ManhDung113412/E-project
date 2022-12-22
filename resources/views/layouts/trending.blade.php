@@ -14,59 +14,58 @@
                         </button>
                         <input type="text" placeholder="Search" name="searchBox">
                     </div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Categories</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="long_Wallet" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Long Wallet</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="small_Wallet" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Small Wallet</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="card_Holder" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Cards Holder</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="chain_Strap" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
+                        </div>
+                    </div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Price</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="high_to_low" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">High to low</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="low_to_high" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Low to high</div>
+                        </div>
+                    </div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Collection</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="new_arrival" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">New Arrivals</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="trending" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Trending</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="checkbox" name="discount" id="filter" value="filter">
+                            <div class="container__sideBar-box-cate-name">Discount</div>
+                        </div>
+                    </div>
+                    <div class="container__sideBar-filter">
+                        <button type="submit">Filter</button>
+                    </div>
                 </form>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Categories</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Long Wallet</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Small Wallet</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Cards Holder</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Price</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">High to low</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Low to high</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Collection</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">New Arrivals</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Trending</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Discount</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-filter">
-                    <button>Filter</button>
-                </div>
-
             </div>
             <div class="container__list">
                 <div class="container__list-tittle">Trending</div>
