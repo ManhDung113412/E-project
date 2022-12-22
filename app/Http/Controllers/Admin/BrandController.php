@@ -78,26 +78,51 @@ class BrandController extends Controller
         $brand = Brand::find($id);
         $brand_id = $brand->ID;
         $products = Product::where('Brand_ID', $brand_id)->count();
-        if($products){
+        if ($products) {
             return redirect()->route('admin.brand.index')->with('error', 'Cannot detele this brand!');
         }
         Brand::where('ID', $id)->delete();
         return redirect()->route('admin.brand.index')->with('success', 'Deleted Successfully');
     }
 
-    public function search(Request $request){
-        if($request->get('query')){
-            $query = $request->get('query');
-            $data = DB::table('brands')
-            ->where('Name', 'LIKE', "%{$query}%")
+    public function search(Request $request)
+    {
+        $data = $request->search;
+        $brands = DB::table('brands')
+            ->where('Code', 'like', '%' . $data . '%')
+            ->orWhere('Name', 'like', '%' . $data . '%')
             ->get();
-            echo $data;
-            // $output = '<ul>';
-            //     foreach($data as $data){
-            //         $output .= '<li>'.$data->Name.'</li>';
-            //     }
-            // $output .='</ul>';
-            // echo $output;
+        if(!count($brands)){
+            $error = 'No Result';
+            return view('admin.brand.list', compact('error'));
         }
+        return view('admin.brand.list', compact('brands'));
     }
+
+    // public function search(Request $request){
+    //     if($request->get('query')){
+    //         $query = $request->get('query');
+    //         $data = DB::table('brands')
+    //         ->where('Name', 'LIKE', "%{$query}%")
+    //         ->get();
+    //         // return response()->json([
+    //         //     'data' => $data,
+    //         // ]);
+    //         $output = "<tbody id='table-body-side'>";
+    //         foreach ($data as $index => $data)
+    //         {
+    //             $output .= "<tr class='odd gradeX' align='center'>
+    //             <td>".++$index."</td>
+    //             <td>".$data->Code."</td>
+    //             <td>".$data->Name."</td>
+    //             <td><img width='100' src='".$data->Logo."'></td>
+    //             <td>".$data->Information."</td>
+    //             <td class='center'><i class='fa fa-trash-o  fa-fw'></i><a href='brand/delete".$data->ID."')> Delete</a></td>
+    //             <td class='center'><i class='fa fa-pencil fa-fw'></i> <a href='brand/edit".$data->ID."')>Edit</a></td>
+    //         </tr>";
+    //         }
+    //         $output .= "</tbody>";
+    //         echo $output;
+    //     }
+    // }
 }

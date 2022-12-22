@@ -14,6 +14,13 @@ List Product
                         <small>List</small>
                     </h1>
                 </div>
+                <div class="form-group">
+                    <form action="{{route('admin.product.search')}}" method="post">
+                        @csrf
+                        <input name="search" class="input-search" placeholder="Search...">
+                        <button type="submit" class="btn-add-product btn btn-success">Search</button>
+                    </form>
+                </div>
                 <div class="heading-right">
                     <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
                 </div>
@@ -29,6 +36,12 @@ List Product
                 </div>
             @endif
             <!-- /.col-lg-12 -->
+            @if (!empty($error))
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endif
+            @if (!empty($products))
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
@@ -49,8 +62,8 @@ List Product
                     <tr class="odd gradeX" align="center">
                         <td>{{$index + 1}}</td>
                         <td>{{$product->Code}}</td>
-                        <td>{{$product->brand->Name}}</td>
-                        <td>{{$product->category->Name}}</td>
+                        <td>{{$product->Brand_Name}}</td>
+                        <td>{{$product->Category_Name}}</td>
                         <td>{{$product->Name}}</td>
                         <td><img width="100" src="{{$product->IMG}}" alt=""></td>
                         <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->ID)}}"> Delete</a></td>
@@ -61,6 +74,7 @@ List Product
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
         <!-- /.row -->
     </div>

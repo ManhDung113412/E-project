@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -68,5 +69,19 @@ class CategoryController extends Controller
         }
         Category::where('ID', $id)->delete();
         return redirect()->route('admin.category.index')->with('success', 'Deleted Successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $data = $request->search;
+        $categories = DB::table('categories')
+            ->where('Code', 'like', '%' . $data . '%')
+            ->orWhere('Name', 'like', '%' . $data . '%')
+            ->get();
+        if(!count($categories)){
+            $error = 'No Result';
+            return view('admin.category.list', compact('error'));
+        }
+        return view('admin.category.list', compact('categories'));
     }
 }

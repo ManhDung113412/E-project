@@ -15,12 +15,16 @@ class OrderDetailController extends Controller
 {
     public function index()
     {
-        $order_details = OrderDetail::all();
-        $orders = Order::all();
-        $products = Product::all();
-        return view('admin.order_detail.list', compact('order_details', 'orders', 'products'));
+        $orders = DB::table('orders As o')
+            ->join('users as u', 'o.Customer_ID', '=', 'u.id')
+            ->join('orders_details as od', 'o.ID', '=', 'od.Order_ID')
+            ->join('payments as p', 'o.Payment_ID', '=', 'p.ID')
+            ->select('o.ID','o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'o.created_at',DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
+            ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'o.created_at')
+            ->paginate(10);
+        return view('admin.order_detail.list', compact('orders'));
     }
-
+// DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price) as TotalPrice'),
     public function edit($id)
     {
         $order = Order::find($id);
@@ -84,5 +88,27 @@ class OrderDetailController extends Controller
         $user = User::find($order->Customer_ID);
         // dd($order->ID);
         return view('admin.order_detail.detail', compact('order_detail', 'order', 'user'));
+    }
+
+    public function search(Request $request)
+    {
+        $data = $request->search;
+        $orders = DB::table('orders As o')
+            ->join('users as u', 'o.Customer_ID', '=', 'u.id')
+            ->join('orders_details as od', 'o.ID', '=', 'od.Order_ID')
+            ->join('payments as p', 'o.Payment_ID', '=', 'p.ID')
+            ->select('o.ID','o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'o.created_at',DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
+            ->where('o.Code', 'like', '%' . $data . '%')
+            ->orWhere('p.Method', 'like', '%' . $data . '%')
+            ->orWhere('o.Status', 'like', '%' . $data . '%')
+            ->orWhere('o.Location', 'like', '%' . $data . '%')
+            ->orWhereDate('o.created_at', 'like', '%' . $data . '%')
+            ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'o.created_at')
+            ->get();
+        if(!count($orders)){
+            $error = 'No Result';
+            return view('admin.order_detail.list', compact('error'));
+        }
+        return view('admin.order_detail.list', compact('orders'));
     }
 }

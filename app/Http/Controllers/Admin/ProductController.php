@@ -9,12 +9,17 @@ use App\Models\Product;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = DB::table('products As p')
+        ->join('brands as b', 'p.Brand_ID', '=', 'b.ID')
+        ->join('categories as c', 'p.Category_ID', '=', 'c.ID')
+        ->select('p.*', 'b.Name as Brand_Name', 'c.Name as Category_Name')
+        ->paginate(10);
         return view('admin.product.list', compact('products'));
     }
 
@@ -92,5 +97,24 @@ class ProductController extends Controller
         }
         Product::where('ID', $id)->delete();
         return redirect()->route('admin.product.index')->with('success', 'Deleted Successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $data = $request->search;
+        $products = DB::table('products As p')
+        ->join('brands as b', 'p.Brand_ID', '=', 'b.ID')
+        ->join('categories as c', 'p.Category_ID', '=', 'c.ID')
+        ->select('p.*', 'b.Name as Brand_Name', 'c.Name as Category_Name')
+        ->where('p.Code', 'like', '%' . $data . '%')
+        ->orWhere('b.Name', 'like', '%' . $data . '%')
+        ->orWhere('c.Name', 'like', '%' . $data . '%')
+        ->orWhere('p.Name', 'like', '%' . $data . '%')
+        ->get();
+        if(!count($products)){
+            $error = 'No Result';
+            return view('admin.product.list', compact('error'));
+        }
+        return view('admin.product.list', compact('products'));
     }
 }

@@ -56,6 +56,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.brand.delete');
         Route::post('search', [BrandController::class, 'search'])
             ->name('admin.brand.search');
+        // Route::post('search', [BrandController::class, 'search'])
+        //     ->name('admin.brand.search');
     });
 
     // Category Routes
@@ -72,9 +74,11 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.update');
         Route::get('delete/{id}', [CategoryController::class, 'delete'])
             ->name('admin.category.delete');
+        Route::post('search', [CategoryController::class, 'search'])
+            ->name('admin.category.search');
     });
 
-    // User Routes
+    // Order Routes
     Route::prefix('order')->group(function () {
         Route::get('', [OrderDetailController::class, 'index'])
             ->name('admin.order-detail.index');
@@ -84,6 +88,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.order-detail.update');
         Route::get('detail/{id}', [OrderDetailController::class, 'detail'])
             ->name('admin.order-detail.detail');
+        Route::post('search', [OrderDetailController::class, 'search'])
+            ->name('admin.order-detail.search');
     });
 
     // Product Routes
@@ -102,6 +108,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product.update');
         Route::get('delete/{id}', [ProductController::class, 'delete'])
             ->name('admin.product.delete');
+        Route::get('search', [ProductController::class, 'search'])
+            ->name('admin.product.search');
     });
 
     // ProductDetail Routes

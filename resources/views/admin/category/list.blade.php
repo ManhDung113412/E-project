@@ -14,6 +14,13 @@ List Categories
                         <small>List</small>
                     </h1>
                 </div>
+                <div class="form-group">
+                    <form action="{{route('admin.category.search')}}" method="post">
+                        @csrf
+                        <input name="search" class="input-search" placeholder="Search...">
+                        <button type="submit" class="btn-add-product btn btn-success">Search</button>
+                    </form>
+                </div>
                 <div class="heading-right">
                     <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
                 </div>
@@ -28,14 +35,19 @@ List Categories
                     {{ session('success') }}
                 </div>
             @endif
+            @if (!empty($error))
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endif
             <!-- /.col-lg-12 -->
+            @if (!empty($categories))
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>STT</th>
                         <th>Code</th>
                         <th>Name</th>
-                        <th>Logo</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
@@ -46,13 +58,13 @@ List Categories
                         <td>{{$index + 1}}</td>
                         <td>{{$category->Code}}</td>
                         <td>{{$category->Name}}</td>
-                        <td>{{$category->Logo}}</td>
                         <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.category.delete', $category->ID)}}"> Delete</a></td>
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.category.edit', $category->ID)}}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
         <!-- /.row -->
     </div>
