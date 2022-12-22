@@ -48,16 +48,7 @@ User {{$user->username}}
                         <td>{{$user->Email}}</td>
                         <td>{{$user->Number_Phone}}</td>
                         <td>{{$user->Rank}}</td>
-                        <td>
-                            @php
-                                $orders = App\Models\Order::where('Customer_ID', $user->id)->where('Status', 'Done')->get();
-                                $totalSpending = 0;
-                                foreach ($orders as $order) {
-                                    $totalSpending += App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price');
-                                }
-                                echo '$'.$totalSpending;
-                            @endphp
-                        </td>
+                        <td>${{$user->Total_Amount_Spent}}</td>
                     </tr>
                 </tbody>
             </table>

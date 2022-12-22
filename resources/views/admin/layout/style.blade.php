@@ -15,3 +15,11 @@
 
 <!-- DataTables Responsive CSS -->
 <link href="/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+
+
+
+
+
+{{-- Add Product Button  LÂM--}} 
+<link rel="stylesheet" href="/styles/adminStyle/addProduct.css">
