@@ -21,6 +21,9 @@ class shoppingcartController extends Controller
         $customer_ID = $this_customer[0]->id;
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
 
+        session()->put('cart_quantity',count($carts));
+
+        $cart_quantity = session()->get('cart_quantity');
 
         // dD($carts);
 
