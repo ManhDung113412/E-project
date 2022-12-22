@@ -24,6 +24,12 @@ class ProductDetailController extends Controller
         return view('admin.product_detail.create', compact('product'));
     }
 
+    public function detail($id)
+    {
+        $product_details = ProductDetail::where('Product_ID', $id)->paginate(5);
+        return view('admin.product_detail.list', compact('product_details'));
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [

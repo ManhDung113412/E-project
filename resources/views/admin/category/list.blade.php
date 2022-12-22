@@ -8,10 +8,15 @@ List Categories
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Categories
-                    <small>List</small>
-                </h1>
+            <div class="heading">
+                <div>
+                    <h1 class="page-header">Categories
+                        <small>List</small>
+                    </h1>
+                </div>
+                <div class="heading-right">
+                    <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
+                </div>
             </div>
             @if (session('error'))
                 <div class="alert alert-danger">
@@ -24,7 +29,7 @@ List Categories
                 </div>
             @endif
             <!-- /.col-lg-12 -->
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>STT</th>

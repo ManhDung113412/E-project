@@ -54,6 +54,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.brand.update');
         Route::get('delete/{id}', [BrandController::class, 'delete'])
             ->name('admin.brand.delete');
+        Route::post('search', [BrandController::class, 'search'])
+            ->name('admin.brand.search');
     });
 
     // Category Routes
@@ -106,10 +108,12 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('product-detail')->group(function () {
         Route::get('', [ProductDetailController::class, 'index'])
             ->name('admin.product-detail.index');
-        Route::post('search', [ProductController::class, 'search'])
-            ->name('admin.product-detail.search');
+        // Route::post('search', [ProductController::class, 'search'])
+        //     ->name('admin.product-detail.search');
         Route::get('create/{id}', [ProductDetailController::class, 'create'])
             ->name('admin.product-detail.create');
+        Route::get('detail/{id}', [ProductDetailController::class, 'detail'])
+            ->name('admin.product-detail.detail');
         Route::post('store', [ProductDetailController::class, 'store'])
             ->name('admin.product-detail.store');
         Route::get('edit/{id}', [ProductDetailController::class, 'edit'])

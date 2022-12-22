@@ -8,10 +8,15 @@ List User
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">User
-                    <small>List</small>
-                </h1>
+            <div class="heading">
+                <div>
+                    <h1 class="page-header">Users
+                        <small>List</small>
+                    </h1>
+                </div>
+                <div class="heading-right">
+                    <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
+                </div>
             </div>
             @if (session('error'))
                 <div class="alert alert-danger">
@@ -24,7 +29,7 @@ List User
                 </div>
             @endif
             <!-- /.col-lg-12 -->
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>STT</th>
@@ -51,16 +56,7 @@ List User
                         <td>{{$user->Dob}}</td>
                         <td>{{$user->Email}}</td>
                         <td>{{$user->Number_Phone}}</td>
-                        <td>
-                            @php
-                                $orders = App\Models\Order::where('Customer_ID', $user->id)->where('Status', 'Done')->get();
-                                $totalSpending = 0;
-                                foreach ($orders as $order) {
-                                    $totalSpending += App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price');
-                                }
-                                echo '$'.$totalSpending;
-                            @endphp
-                        </td>
+                        <td>${{$user->Total_Amount_Spent}}</td>
                         <td @if ($user->Rank == 'VIP' || $user->Rank == 'DIAMOND') style="font-weight: bold;" @endif>
                             {{$user->Rank}}
                         </td>

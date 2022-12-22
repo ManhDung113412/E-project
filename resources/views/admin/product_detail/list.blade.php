@@ -8,10 +8,15 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Products Detail
-                    <small>List</small>
-                </h1>
+            <div class="heading">
+                <div>
+                    <h1 class="page-header">Products Detail
+                        <small>List</small>
+                    </h1>
+                </div>
+                <div class="heading-right">
+                    <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
+                </div>
             </div>
             @if (session('success'))
                     <div class="alert alert-success">
@@ -48,9 +53,15 @@
                         <tr class="odd gradeX" align="center">
                             <td>{{$index + 1}}</td>
                             <td>{{$product->Code}}</td>
-                            <td>{{$product->Import_Price}}</td>
-                            <td>{{$product->Export_Price}}</td>
-                            <td>{{$product->Sale_Price}}</td>
+                            <td>${{$product->Import_Price}}</td>
+                            <td>${{$product->Export_Price}}</td>
+                            <td>
+                                @php
+                                    if($product->Sale_Price){
+                                        echo '$'.$product->Sale_Price;
+                                    }
+                                @endphp
+                            </td>
                             <td><img width="100" src="{{$product->Main_IMG}}" alt=""></td>
                             <td><img width="100" src="{{$product->Slide_IMG_1}}" alt=""></td>
                             <td><img width="100" src="{{$product->Slide_IMG_2}}" alt=""></td>

@@ -8,10 +8,15 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Order
-                    <small>List</small>
-                </h1>
+            <div class="heading">
+                <div>
+                    <h1 class="page-header">Orders
+                        <small>List</small>
+                    </h1>
+                </div>
+                <div class="heading-right">
+                    <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
+                </div>
             </div>
             @if (session('success'))
                 <div class="alert alert-success">
@@ -50,7 +55,15 @@
                             </td>
                             <td>{{$order->customer->Last_Name}}</td>
                             <td>{{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Quantity') }}</td>
-                            <td>${{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price') }}</td>
+                            <td>
+                                @php
+                                    $orderPrice = DB::table('orders_details')
+                                                ->select(DB::raw('sum(Price * Quantity) as totalPrice'))
+                                    ->where('Order_ID', $order->ID)
+                                    ->get();
+                                    echo '$'.$orderPrice[0]->totalPrice;
+                                @endphp 
+                            </td>
                             <th 
                             @if ($order->Status == 'Pending')
                                 class="btn-success"

@@ -8,10 +8,15 @@ List Product
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Product
-                    <small>List</small>
-                </h1>
+            <div class="heading">
+                <div>
+                    <h1 class="page-header">Products
+                        <small>List</small>
+                    </h1>
+                </div>
+                <div class="heading-right">
+                    <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
+                </div>
             </div>
             @if (session('error'))
                 <div class="alert alert-danger">
@@ -24,7 +29,7 @@ List Product
                 </div>
             @endif
             <!-- /.col-lg-12 -->
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>STT</th>
@@ -36,6 +41,7 @@ List Product
                         <th>Delete</th>
                         <th>Edit</th>
                         <th>Add</th>
+                        <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +56,7 @@ List Product
                         <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->ID)}}"> Delete</a></td>
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->ID)}}">Edit</a></td>
                         <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->ID)}}">Add</a></td>
+                        <td class="center"><i class="fa fa-eye fa-fw"></i> <a href="{{route('admin.product-detail.detail', $product->ID)}}">View</a></td>
                     </tr>
                     @endforeach
                 </tbody>
