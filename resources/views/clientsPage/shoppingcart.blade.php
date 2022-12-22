@@ -5,99 +5,103 @@
 @stop
 @section('content')
     <div class="main">
-        <div class="container">
-            <div class="container__product">
-                <div class="container__product-big">
-                    <div class="container__product-categories">
-                        <div class="container__product-categories-product">Product</div>
-                        <div class="container__product-categories-price">Price</div>
-                        <div class="container__product-categories-quantity">Quantity</div>
-                        <div class="container__product-categories-total">Total</div>
-                        <div class="container__product-categories-button"></div>
-                    </div>
-                    <div class="container__product-list">
-                        @foreach ($this_customer as $item)
-                            <div class="container__product-list-cart">
-                                <div class="container__product-list-cart-image">
-                                    <div class="container__product-list-cart-image-img">
-                                        <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;" alt="">
+        <form action="Cart" method="POST" class="ajaxform">
+            @csrf
+            <div class="container">
+                <div class="container__product">
+                    <div class="container__product-big">
+                        <div class="container__product-categories">
+                            <div class="container__product-categories-product">Product</div>
+                            <div class="container__product-categories-price">Price</div>
+                            <div class="container__product-categories-quantity">Quantity</div>
+                            <div class="container__product-categories-total">Total</div>
+                            <div class="container__product-categories-button"></div>
+                        </div>
+                        <div class="container__product-list">
+                            @foreach ($this_customer as $item)
+                                <div class="container__product-list-cart">
+                                    <div class="container__product-list-cart-image">
+                                        <div class="container__product-list-cart-image-img">
+                                            <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;"
+                                                alt="">
+                                        </div>
+                                        <div class="container__product-list-cart-image-info">
+                                            <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
+                                            <div class="container__product-list-cart-info-cate"
+                                                style="background-color: {{ $item->Color }}"></div>
+                                        </div>
                                     </div>
-                                    <div class="container__product-list-cart-image-info">
-                                        <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
-                                        <div class="container__product-list-cart-info-cate"
-                                            style="background-color: {{ $item->Color }}"></div>
+                                    <input class="container__product-list-cart-price"
+                                        value="{{ $item->Export_Price }}">$</input>
+                                    <div class="container__product-list-cart-quantity">
+                                        <button class="decrementQuantity" value="{{ $item->Product_ID }}">
+                                            <ion-icon class="icon" name="remove-outline"></ion-icon>
+                                        </button>
+                                        <input class="container__product-list-cart-quantity-numb " value="">
+                                        </input>
+                                        <button class="incrementQuantity" value="{{ $item->Product_ID }}">
+                                            <ion-icon class="icon" name="add-outline"></ion-icon>
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="container__product-list-cart-price">${{ $item->Export_Price }}</div>
-                                <div class="container__product-list-cart-quantity">
-                                    <button id="decrementQuantity">
-                                        <ion-icon class="icon" name="remove-outline"></ion-icon>
-                                    </button>
-                                    <input id="quantity" class="container__product-list-cart-quantity-numb"
-                                    value="">
-                                    </input>
-                                    <button id="incrementQuantity">
-                                        <ion-icon class="icon" name="add-outline"></ion-icon>
-                                    </button>
-                                </div>
 
-                                <div class="container__product-list-cart-total">
-                                    ${{ $item->Export_Price * $item->Product_quantity }}</div>
-                                <div class="container__product-list-cart-button">
-                                    <button>Remove</button>
-                                    <button>Replace</button>
+                                    <div class="container__product-list-cart-total"></div>
+                                    <div class="container__product-list-cart-button">
+                                        <button>Remove</button>
+                                        <button>Replace</button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container__cartTotal">
+                    <div class="container__cartTotal-big">
+                        <div class="container__cartTotal-big2">
+                            <input type="text" value="{{ $customer_id }}" id="hehe">
+                            <div class="container__cartTotal-big2-tittle">Cart Totals</div>
+                            <hr class="hr1">
+                            <div class="container__cartTotal-big2-info">
+                                <div class="container__cartTotal-big2-info-sub">
+                                    <div class="container__cartTotal-big2-info-sub-left">Subtotals</div>
+                                    <div class="container__cartTotal-big2-info-sub-right">$</div>
+                                </div>
+                                <div class="container__cartTotal-big2-info-ship">
+                                    <div class="container__cartTotal-big2-info-left">Shipping</div>
+                                    <div class="container__cartTotal-big2-info-right">$5</div>
+                                </div>
+                                <div class="container__cartTotal-big2-info-deli">
+                                    <input type="text" list="ship" placeholder="Delivery Option" />
+                                    <datalist id="ship">
+                                        <option value="    Standard  - $5">
+                                        <option value="    Fast  - $8">
+                                        <option value="    Priority - $12">
+                                    </datalist>
+                                </div>
+                                <div class="container__cartTotal-big2-info-give">
+                                    <div class="container__cartTotal-big2-info-give-left">Give Code</div>
+                                    <div class="container__cartTotal-big2-info-give-right">Free Ship</div>
+                                </div>
+                                <div class="container__cartTotal-big2-info-code">
+                                    <input type="text" placeholder="    Enter Your Code">
+                                    <button>
+                                        <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
+                                    </button>
                                 </div>
                             </div>
-                        @endforeach
+                            <hr class="hr1">
+                            <div class="container__cartTotal-big2-totalPrice">
+                                <div class="container__cartTotal-big2-totalPrice-left">Total Price</div>
+                                <div class="container__cartTotal-big2-totalPrice-right">$10000</div>
+                            </div>
+                            <div class="container__cartTotal-big2-button">
+                                <button type="submit">Check Out</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="container__cartTotal">
-                <div class="container__cartTotal-big">
-                    <div class="container__cartTotal-big2">
-                        <div class="container__cartTotal-big2-tittle">Cart Totals</div>
-                        <hr class="hr1">
-                        <div class="container__cartTotal-big2-info">
-                            <div class="container__cartTotal-big2-info-sub">
-                                <div class="container__cartTotal-big2-info-sub-left">Subtotals</div>
-                                <div class="container__cartTotal-big2-info-sub-right">$</div>
-                            </div>
-                            <div class="container__cartTotal-big2-info-ship">
-                                <div class="container__cartTotal-big2-info-left">Shipping</div>
-                                <div class="container__cartTotal-big2-info-right">$5</div>
-                            </div>
-                            <div class="container__cartTotal-big2-info-deli">
-                                <input type="text" list="ship" placeholder="Delivery Option" />
-                                <datalist id="ship">
-                                    <option value="    Standard  - $5">
-                                    <option value="    Fast  - $8">
-                                    <option value="    Priority - $12">
-                                </datalist>
-                            </div>
-                            <div class="container__cartTotal-big2-info-give">
-                                <div class="container__cartTotal-big2-info-give-left">Give Code</div>
-                                <div class="container__cartTotal-big2-info-give-right">Free Ship</div>
-                            </div>
-                            <div class="container__cartTotal-big2-info-code">
-                                <input type="text" placeholder="    Enter Your Code">
-                                <button>
-                                    <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </div>
-                        <hr class="hr1">
-                        <div class="container__cartTotal-big2-totalPrice">
-                            <div class="container__cartTotal-big2-totalPrice-left">Total Price</div>
-                            <div class="container__cartTotal-big2-totalPrice-right">$10000</div>
-                        </div>
-                        <div class="container__cartTotal-big2-button">
-                            <button>Check Out</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        </form>
         <div class="main__alsoLike">
             <p>You May Also Like</p>
             <div class="main__alsoLike-product">
@@ -152,5 +156,59 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="{{ asset('javascript/client/shoppingCart.js') }}"></script>
+    
+    
+    
+    
+    
+    <script>
+        $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+        $(document).ready(function() {
+            const customer_id = $('#hehe').val()
+            $(".incrementQuantity").click(function(e) {
+                e.preventDefault();
+                let product = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                var data1 = {
+                    product_id: product,
+                    customer_id: customer_id
+                }
+                var json = JSON.stringify(data1);
+                $.ajax({
+                    url: "{{ route('shoppingcart') }}",
+                    type: "POST",
+                    data: json,
+                    dataType:'json',
+                    success: function(data3) {
+                        console.log('kkk');
+                    }
+                });
+            });
+            
+            $(".incrementQuantity").click(function(e) {
+                e.preventDefault();
+                let product = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                var data1 = {
+                    product_id: product,
+                    customer_id: customer_id
+                }
+                var json = JSON.stringify(data1);
+                $.ajax({
+                    url: "{{ route('shoppingcart') }}",
+                    type: "POST",
+                    data: json,
+                    dataType:'json',
+                    success: function(data3) {
+                        console.log('kkk');
+                    }
+                });
+            });
+
+        });
+    </script>
 @stop

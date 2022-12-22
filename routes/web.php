@@ -176,8 +176,12 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 });
 
 Route::prefix('client')->middleware('client-signIn')->group(function () {
-    Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
+    // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
+
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::post('Cart', [shoppingcartController::class, 'postShoppingCart'])->name('shoppingcart');
+
+    // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
 
     Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);

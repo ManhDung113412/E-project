@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/header.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -127,7 +128,7 @@
                         <ion-icon name="person-outline"></ion-icon>
                     </button>
                     <button id="showCart">
-                        <div class="quantityCart">20</div>
+                        <div class="quantityCart">{{ $cart_quantity }}</div>
                         <ion-icon name="cart-outline"></ion-icon>
                     </a>
                     <button>
@@ -137,8 +138,8 @@
                 </div>
             </div>
         </div>
-
     </form>
+
 </body>
 <script src="{{ asset('javascript/client/header.js') }}"></script>
 
