@@ -66,8 +66,22 @@
                 </div>
             </div>
             <div id="openLog" class="header__log">
-                <div class="header__log-signIn" href="{{ url('client/login') }}">Sign In</div>
-                <a class="header__log-signOut" href="{{ url('client/logout') }}">Sign Out</a>
+                <div class="header__log-signed">
+                    <div class="header__log-signed-profile">
+                        <a href="">My Profile</a>
+                    </div>
+                    <div class="header__log-signed-signOut">
+                        <a href="{{ url('client/logout') }}">Sign Out</a>
+                    </div>
+                </div>
+                <div class="header__log-notSign">
+                    <div class="header__log-notSign-signIn">
+                        <a href="{{ url('client/login') }}">Sign In</a>
+                    </div>
+                    <div class="header__log-notSign-signUp">
+                        <a href="">Sign Up</a>
+                    </div>
+                </div>
             </div>
             <div id="shoppingCart" class="header__cart" >
                 <div class="header__cart-tittle">Shopping Cart
