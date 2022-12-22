@@ -25,6 +25,7 @@
                         <tr align="center">
                             <th>STT</th>
                             <th>Order Code</th>
+                            <th>Customer Code</th>
                             <th>Customer</th>
                             <th>Total Quantity</th>
                             <th>Total Price</th>
@@ -41,6 +42,12 @@
                         <tr class="odd gradeX" align="center">
                             <td>{{$index + 1}}</td>
                             <td>{{$order->Code}}</td>
+                            <td>
+                                @php
+                                    $user = App\Models\User::where('id', $order->Customer_ID)->get();
+                                    echo $user[0]->Code;
+                                @endphp    
+                            </td>
                             <td>{{$order->customer->Last_Name}}</td>
                             <td>{{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Quantity') }}</td>
                             <td>${{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price') }}</td>

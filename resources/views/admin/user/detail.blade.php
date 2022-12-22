@@ -48,18 +48,16 @@ User {{$user->username}}
                         <td>{{$user->Email}}</td>
                         <td>{{$user->Number_Phone}}</td>
                         <td>{{$user->Rank}}</td>
-                        <td>$@php
-                            $orders = App\Models\Order::where('Customer_ID', $user->ID)->where('Status', 'Done')->get('ID'); // Lấy các trường có Customer_ID = ..., và Done trong bảng Order
-                                $arrOrders = [];
-                                foreach ($orders as $key => $order) {
-                                   array_push($arrOrders, $order->ID); 
-                                }
+                        <td>
+                            @php
+                                $orders = App\Models\Order::where('Customer_ID', $user->id)->where('Status', 'Done')->get();
                                 $totalSpending = 0;
-                                foreach ($arrOrders as $index => $order) {
-                                    $totalSpending += App\Models\OrderDetail::where('Order_ID', $arrOrders[$index])->sum('Price');
+                                foreach ($orders as $order) {
+                                    $totalSpending += App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price');
                                 }
-                                echo $totalSpending;
-                        @endphp</td>
+                                echo '$'.$totalSpending;
+                            @endphp
+                        </td>
                     </tr>
                 </tbody>
             </table>

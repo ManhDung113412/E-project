@@ -35,6 +35,7 @@ List User
                         <th>DOB</th>
                         <th>Email</th>
                         <th>Number Phone</th>
+                        <th>Total Spending</th>
                         <th>Rank</th>
                         <th>Detail</th>
                     </tr>
@@ -50,7 +51,19 @@ List User
                         <td>{{$user->Dob}}</td>
                         <td>{{$user->Email}}</td>
                         <td>{{$user->Number_Phone}}</td>
-                        <td>{{$user->Rank}}</td>
+                        <td>
+                            @php
+                                $orders = App\Models\Order::where('Customer_ID', $user->id)->where('Status', 'Done')->get();
+                                $totalSpending = 0;
+                                foreach ($orders as $order) {
+                                    $totalSpending += App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Price');
+                                }
+                                echo '$'.$totalSpending;
+                            @endphp
+                        </td>
+                        <td @if ($user->Rank == 'VIP' || $user->Rank == 'DIAMOND') style="font-weight: bold;" @endif>
+                            {{$user->Rank}}
+                        </td>
                         <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.user.detail', $user->id)}}"> View</a></td>
                     </tr>
                     @endforeach
