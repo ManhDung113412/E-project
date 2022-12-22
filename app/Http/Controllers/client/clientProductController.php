@@ -166,7 +166,9 @@ class clientProductController extends Controller
 
 
         DB::table('carts')->insert([
-            'Product_quantity' => 1, 'Customer_ID' => $customer_ID, 'Product_Detail_ID' => $pro_ID
+            'Product_quantity' => 1,
+            'Customer_ID' => $customer_ID,
+            'Product_Detail_ID' => $pro_ID
         ]);
 
         return redirect()->back();
