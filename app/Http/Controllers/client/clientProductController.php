@@ -92,7 +92,7 @@ class clientProductController extends Controller
             $smallWallet = DB::table('categories')
                 ->join('Products', 'Products.Category_ID', '=', 'categories.ID')
                 ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
-                ->where('categories.ID', 2)
+                ->where('categories.ID', 3)
                 ->groupBy('Product_details.Product_ID')
                 ->paginate(13);
         } else {

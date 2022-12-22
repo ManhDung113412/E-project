@@ -85,7 +85,6 @@
             </div>
         </div>
     </div>
-    {!! $smallWallet->links() !!}
     <hr class="main1">
     </div>
     <div class="container__featured">
