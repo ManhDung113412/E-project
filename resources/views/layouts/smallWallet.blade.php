@@ -8,10 +8,14 @@
 
         <div class="container">
             <div class="container__sideBar">
-                <div class="container__sideBar-search">
-                    <button><ion-icon name="search-outline"></ion-icon></button>
-                    <input type="text" placeholder="Search">
-                </div>
+                <form action="" method="GET">
+                    <div class="container__sideBar-search">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" placeholder="Search" name="searchBox">
+                    </div>
+                </form>
                 <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Categories</div>
                     <hr class="box1">
@@ -70,9 +74,8 @@
                 <div class="container__list-products">
                     @foreach ($smallWallet as $item)
                         <a class="container__list-products-item"
-                        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
-                            <div src=""
-                                style="background-image: url({{ $item->Main_IMG }})"
+                            href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                            <div src="" style="background-image: url({{ $item->Main_IMG }})"
                                 class="container__list-products-item-img"></div>
                             <div class="container__list-products-item-info">
                                 <p>{{ $item->Name }}</p>
@@ -91,19 +94,19 @@
         <div class="container__featured-tittle">You May Also Like</div>
         <div class="container__featured-products">
             <div class="container__featured-products">
-                @foreach($randomProduct as $item)
-                <a class="container__featured-products-items"
-                href="{{ url('/client/products/specificProduct', $item->Slug) }}">
-                    <div style="background-image: url({{ $item->Main_IMG }})"
-                        class="container__featured-products-items-img"></div>
-                    <div class="container__featured-products-items-info">
-                        <p>{{ $item->Name }}</p>
-                        <p>${{ $item->Export_Price }}</p>
-                    </div>
-                </a>
+                @foreach ($randomProduct as $item)
+                    <a class="container__featured-products-items"
+                        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                        <div style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__featured-products-items-img"></div>
+                        <div class="container__featured-products-items-info">
+                            <p>{{ $item->Name }}</p>
+                            <p>${{ $item->Export_Price }}</p>
+                        </div>
+                    </a>
                 @endforeach
+            </div>
         </div>
-    </div>
     </div>
     <div class="subscribeUs">
         <div class="subscribeUs__text">

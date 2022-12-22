@@ -288,7 +288,10 @@
     margin-top: 50px;
 }
 
-
+.container__sideBar-search:hover button ion-icon{
+    color: #303030;
+    transition: 0.3s ease-in-out;
+}
 
 
 .main__alsoLike {

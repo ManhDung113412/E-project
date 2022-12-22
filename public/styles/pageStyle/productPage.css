@@ -62,6 +62,12 @@
 
 .container__sideBar-search input:focus {
     outline: none;
+
+}
+
+.container__sideBar-search:hover button ion-icon{
+    color: #303030;
+    transition: 0.3s ease-in-out;
 }
 
 .container__sideBar-search:hover,:focus {

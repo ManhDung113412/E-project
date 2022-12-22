@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/header.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -65,8 +66,22 @@
                 </div>
             </div>
             <div id="openLog" class="header__log">
-                <div class="header__log-signIn" href="{{ url('client/login') }}">Sign In</div>
-                <a class="header__log-signOut" href="{{ url('client/logout') }}">Sign Out</a>
+                <div class="header__log-signed">
+                    <div class="header__log-signed-profile">
+                        <a href="">My Profile</a>
+                    </div>
+                    <div class="header__log-signed-signOut">
+                        <a href="{{ url('client/logout') }}">Sign Out</a>
+                    </div>
+                </div>
+                <div class="header__log-notSign">
+                    <div class="header__log-notSign-signIn">
+                        <a href="{{ url('client/login') }}">Sign In</a>
+                    </div>
+                    <div class="header__log-notSign-signUp">
+                        <a href="">Sign Up</a>
+                    </div>
+                </div>
             </div>
             <div id="shoppingCart" class="header__cart" >
                 <div class="header__cart-tittle">Shopping Cart
@@ -127,7 +142,7 @@
                         <ion-icon name="person-outline"></ion-icon>
                     </button>
                     <button id="showCart">
-                        <div class="quantityCart">20</div>
+                        <div class="quantityCart">{{ $cart_quantity }}</div>
                         <ion-icon name="cart-outline"></ion-icon>
                     </a>
                     <button>
@@ -137,8 +152,8 @@
                 </div>
             </div>
         </div>
-
     </form>
+
 </body>
 <script src="{{ asset('javascript/client/header.js') }}"></script>
 
