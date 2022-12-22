@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div id="openLog" class="header__log">
-                <div class="header__log-signed">
+                <div class="header__log-signed" style="display: none;">
                     <div class="header__log-signed-profile">
                         <a href="">My Profile</a>
                     </div>
