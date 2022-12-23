@@ -14,7 +14,7 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::paginate(10);
         return view('admin.brand.list', compact('brands'));
     }
 
@@ -91,7 +91,7 @@ class BrandController extends Controller
         $brands = DB::table('brands')
             ->where('Code', 'like', '%' . $data . '%')
             ->orWhere('Name', 'like', '%' . $data . '%')
-            ->get();
+            ->paginate(10);
         if(!count($brands)){
             $error = 'No Result';
             return view('admin.brand.list', compact('error'));
