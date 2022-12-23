@@ -163,6 +163,8 @@ Route::prefix('client')->group(function () {
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
+    Route::get('myProfile', [clientController::class, 'getProfile']);
+
 });
 
 
