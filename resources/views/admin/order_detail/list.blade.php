@@ -123,6 +123,7 @@
                     </tbody>
                 </table>
             </div>
+            {{!! $orders->links() !!}}
             @endif
             {{-- {!! $product_details->links() !!} --}}
         </div>

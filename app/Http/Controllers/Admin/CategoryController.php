@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::all();
+        $categories = Category::paginate(10);
         return view('admin.category.list', compact('categories'));
     }
 
@@ -77,7 +77,7 @@ class CategoryController extends Controller
         $categories = DB::table('categories')
             ->where('Code', 'like', '%' . $data . '%')
             ->orWhere('Name', 'like', '%' . $data . '%')
-            ->get();
+            ->paginate(10);
         if(!count($categories)){
             $error = 'No Result';
             return view('admin.category.list', compact('error'));

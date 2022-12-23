@@ -78,6 +78,7 @@ List User
                     @endforeach
                 </tbody>
             </table>
+            {!! $users->links() !!}
             @endif
         </div>
         <!-- /.row -->
