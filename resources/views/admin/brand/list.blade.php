@@ -70,6 +70,7 @@ List Brands
                     @endforeach
                 </tbody>
             </table>
+            {!! $brands->links() !!}
             @endif
         </div>
         <!-- /.row -->

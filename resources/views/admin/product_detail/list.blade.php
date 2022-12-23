@@ -92,9 +92,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                {!! $product_details->links() !!}
                 @endif
             </div>
-            {!! $product_details->links() !!}
         </div>
         <!-- /.row -->
     </div>

@@ -58,6 +58,7 @@
                                 <li><b>Code:</b> {{ $item->Code }}</p>
                                 <li><b>In Stock:</b> {{ $item->Quantity }}</li>
                             </ul>
+                            <a href="{{ url('/client/products/specificProduct/pdf', $item->Slug)  }}">Download Pdf</a>
                         </div>
                     </div>
                 </div>
