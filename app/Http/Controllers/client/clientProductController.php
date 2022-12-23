@@ -559,6 +559,8 @@ class clientProductController extends Controller
 
         $cart_quantity = session()->get('cart_quantity');
 
+
+
         $Slug = $req->Slug;
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $pro_ID = $this_product[0]->ID;
@@ -574,17 +576,17 @@ class clientProductController extends Controller
         return redirect()->back();
     }
 
-    public function getPdfFile(Request $req){
+    public function getPdfFile(Request $req)
+    {
         $Slug = $req->Slug;
         $this_product = DB::table('Products')
-        ->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')
-        ->where('product_details.Slug', $Slug)
-        ->get();
+            ->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')
+            ->where('product_details.Slug', $Slug)
+            ->get();
 
         $data = $this_product;
-        $pdf = PDF::loadview('layouts.pdf',compact('data'));
+        $pdf = PDF::loadview('layouts.pdf', compact('data'));
         // dd($data);
         return $pdf->download('layouts.pdf');
     }
-
 }

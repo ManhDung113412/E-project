@@ -75,7 +75,7 @@ class shoppingcartController extends Controller
         }
 
         // dd($this_customer[0]->id);
-
+        
         return view('clientsPage.shoppingCart', ['this_customer' => $allPro, 'customer_id' => $this_customer[0]->id,'cart_quantity' => $cart_quantity]);
     }
 
