@@ -130,6 +130,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.update');
         Route::get('delete/{id}', [ProductDetailController::class, 'delete'])
             ->name('admin.product-detail.delete');
+        Route::post('search', [ProductDetailController::class, 'search'])
+            ->name('admin.product-detail.search');
     });
 
     // User Routes
@@ -138,6 +140,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.user.index');
         Route::get('detail/{id}', [UserController::class, 'detail'])
             ->name('admin.user.detail');
+        Route::post('search', [UserController::class, 'search'])
+            ->name('admin.user.search');
     });
 });
 

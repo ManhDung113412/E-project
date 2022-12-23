@@ -14,6 +14,13 @@ List User
                         <small>List</small>
                     </h1>
                 </div>
+                <div class="form-group">
+                    <form action="{{route('admin.user.search')}}" method="post">
+                        @csrf
+                        <input name="search" class="input-search" placeholder="Search...">
+                        <button type="submit" class="btn-add-product btn btn-success">Search</button>
+                    </form>
+                </div>
                 <div class="heading-right">
                     <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
                 </div>
@@ -29,6 +36,12 @@ List User
                 </div>
             @endif
             <!-- /.col-lg-12 -->
+            @if (!empty($error))
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endif
+            @if (!empty($users))
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
@@ -65,6 +78,7 @@ List User
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
         <!-- /.row -->
     </div>

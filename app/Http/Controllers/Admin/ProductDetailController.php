@@ -9,7 +9,8 @@ use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 class ProductDetailController extends Controller
 {
     public function index()
@@ -46,7 +47,7 @@ class ProductDetailController extends Controller
             'code' => 'required|unique:product_details',
             'quantity' => 'required|numeric',
         ]);
-        
+
         $product = Product::find($request->product_id);
 
         $slug = Str::slug($product->Name . "-" . $request->color);
@@ -68,7 +69,7 @@ class ProductDetailController extends Controller
             'Is_Feature' => $request->is_feature,
             'Product_ID' => $request->product_id,
             'Quantity' => $request->quantity,
-            'Slug'=> $slug, 
+            'Slug' => $slug,
         ]);
 
         return redirect()->route('admin.product-detail.index')->with('success', 'Created Successfully');
@@ -124,9 +125,9 @@ class ProductDetailController extends Controller
             'Is_Feature' => $request->is_feature,
             'Product_ID' => $product_id,
             'Quantity' => $request->quantity + $old_quantity,
-            'Slug'=> $slug, 
+            'Slug' => $slug,
         ]);
-        
+
         return redirect()->route('admin.product-detail.index')->with('success', 'Updated Successfully');
     }
 
@@ -135,5 +136,28 @@ class ProductDetailController extends Controller
         ProductDetail::where('ID', $id)->delete();
         return redirect()->route('admin.product-detail.index')->with('success', 'Deleted Successfully');
     }
-}
 
+    public function search(Request $request)
+    {
+        $data = $request->search;
+        $product_details = DB::table('product_details As p')
+            ->select('p.*')
+            ->where('p.Code', 'like', '%' . $data . '%')
+            ->orWhere('p.Import_Price', 'like', '%' . $data . '%')
+            ->orWhere('p.Export_Price', 'like', '%' . $data . '%')
+            ->orWhere('p.Sale_Price', 'like', '%' . $data . '%')
+            ->orWhere('p.Material', 'like', '%' . $data . '%')
+            ->orWhere('p.Color', 'like', '%' . $data . '%')
+            ->orWhere('p.Quantity', 'like', '%' . $data . '%')
+            ->orWhere('p.Is_Trending', 'like', '%' . $data . '%')
+            ->orWhere('p.Is_New_Arrivals', 'like', '%' . $data . '%')
+            ->orWhere('p.Is_Feature', 'like', '%' . $data . '%')
+            ->paginate(2);
+        // dd(count($product_details));
+        if (!count($product_details)) {
+            $error = 'No Result';
+            return view('admin.product_detail.list', compact('error'));
+        }
+        return view('admin.product_detail.list', compact('product_details'));
+    }
+}

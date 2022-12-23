@@ -14,6 +14,13 @@
                         <small>List</small>
                     </h1>
                 </div>
+                <div class="form-group">
+                    <form action="{{route('admin.product-detail.search')}}" method="post">
+                        @csrf
+                        <input name="search" class="input-search" placeholder="Search...">
+                        <button type="submit" class="btn-add-product btn btn-success">Search</button>
+                    </form>
+                </div>
                 <div class="heading-right">
                     <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
                 </div>
@@ -24,6 +31,12 @@
                     </div>
             @endif
             <!-- /.col-lg-12 -->
+            @if (!empty($error))
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endif
+            @if (!empty($product_details))
             <div style="overflow: scroll; width: 100%">
                 <table style="width: 100%;" class="table table-striped table-bordered table-hover">
                     <thead>
@@ -79,6 +92,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
             {!! $product_details->links() !!}
         </div>
