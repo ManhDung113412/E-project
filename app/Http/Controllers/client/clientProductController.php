@@ -12,6 +12,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Brand;
+use PDF;
 
 class clientProductController extends Controller
 {
@@ -572,4 +573,18 @@ class clientProductController extends Controller
 
         return redirect()->back();
     }
+
+    public function getPdfFile(Request $req){
+        $Slug = $req->Slug;
+        $this_product = DB::table('Products')
+        ->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')
+        ->where('product_details.Slug', $Slug)
+        ->get();
+
+        $data = $this_product;
+        $pdf = PDF::loadview('layouts.pdf',compact('data'));
+        // dd($data);
+        return $pdf->download('layouts.pdf');
+    }
+
 }

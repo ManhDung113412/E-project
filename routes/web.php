@@ -178,8 +178,8 @@ Route::prefix('client/products')->group(function () {
     Route::get('channel', [clientProductController::class, 'getChannel']);
     Route::get('dior', [clientProductController::class, 'getDior']);
 
-
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
+    Route::get('specificProduct/pdf/{Slug}', [clientProductController::class,'getPdfFile']);
 });
 
 
