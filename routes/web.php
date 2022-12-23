@@ -19,6 +19,7 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
+use App\Http\Controllers\client\wishListController;
 
 
 Route::prefix('admin')->group(function () {
@@ -197,6 +198,7 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
     Route::post('Cart', [shoppingcartController::class, 'postShoppingCart'])->name('shoppingcart');
 
+    Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
 
