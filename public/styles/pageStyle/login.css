@@ -202,10 +202,10 @@ input:valid~label {
 .container__signIn.active{
     position: absolute;
     animation: activeForm 0.85s ease-in-out 1 forwards;
-    /* display: block; */
+
 }
 
-@keyframes activeForm {
+/* @keyframes activeForm {
     from{
         opacity: 0;
         transform: translate(-150%,0);
@@ -223,7 +223,7 @@ input:valid~label {
         opacity: 0;
         transform: translate(150%,0);
     }
-}
+} */
 
 .slideShow{
     height: 100%;
