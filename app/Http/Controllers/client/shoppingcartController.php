@@ -82,7 +82,6 @@ class shoppingcartController extends Controller
         // }
 
         // dd($this_customer[0]->id);
-
     }
 
 
