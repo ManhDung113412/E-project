@@ -19,11 +19,16 @@ class shoppingcartController extends Controller
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
         DB::enableQueryLog();
+
         $carts = DB::table('carts As c')
             ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
             ->join('products as p', 'pd.Product_ID', 'p.ID')
+            // ->select('c.*', 'pd.*', 'p.*', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal' ))
             ->where('Customer_ID', $customer_ID)
             ->get();
+
+
+        // dd($carts);
         return view('clientsPage.shoppingCart', compact('carts'));
 
 
@@ -84,32 +89,33 @@ class shoppingcartController extends Controller
         // dd($this_customer[0]->id);
     }
 
-    public function postShoppingCart(Request $request)
-    {
-        if ($request->get('product')) {
+    // public function postShoppingCart(Request $request)
+    // {
+    //     if ($request->get('product')) {
 
-            $product_id = $request->get('product');
-            $customer_id = Auth::guard('users')->id();
-            $old_quantity = DB::table('carts')
-                ->where('Customer_ID', $customer_id)
-                ->where('Product_Detail_ID', $product_id)
-                ->select('Product_quantity')
-                ->get();
-            $cart = DB::table('carts')
-                ->where('Customer_ID', $customer_id)
-                ->where('Product_Detail_ID', $product_id)
-                ->update([
-                    'Product_quantity' => $old_quantity[0]->Product_quantity + 1,
-                ]);
-            $new_item = DB::table('carts')
-                ->where('Customer_ID', $customer_id)
-                ->where('Product_Detail_ID', $product_id)
-                ->get();
-            $item = $new_item[0];
-            $output =  '<div>' . $item->Product_quantity . '</div>';
-            echo $output;
-        }
-    }
+    //         $product_id = $request->get('product');
+    //         $customer_id = Auth::guard('users')->id();
+    //         $old_quantity = DB::table('carts')
+    //             ->where('Customer_ID', $customer_id)
+    //             ->where('Product_Detail_ID', $product_id)
+    //             ->select('Product_quantity')
+    //             ->get();
+    //         $cart = DB::table('carts')
+    //             ->where('Customer_ID', $customer_id)
+    //             ->where('Product_Detail_ID', $product_id)
+    //             ->update([
+    //                 'Product_quantity' => $old_quantity[0]->Product_quantity + 1,
+    //             ]);
+    //         $new_item = DB::table('carts')
+    //             ->where('Customer_ID', $customer_id)
+    //             ->where('Product_Detail_ID', $product_id)
+    //             ->get();
+    //         $item = $new_item[0];
+    //         $output =  '<div>' . $item->Product_quantity . '</div>';
+    //         echo $output;
+    //     }
+    // }
+
 
     public function handleIncreaseQuantity(Request $request)
     {
@@ -121,21 +127,31 @@ class shoppingcartController extends Controller
                 ->where('Product_Detail_ID', $product_id)
                 ->select('Product_quantity')
                 ->get();
+
             $cart = DB::table('carts')
                 ->where('Customer_ID', $customer_id)
                 ->where('Product_Detail_ID', $product_id)
                 ->update([
                     'Product_quantity' => $old_quantity[0]->Product_quantity + 1,
                 ]);
-            $new_item = DB::table('carts')
+
+            $new_item = DB::table('carts As c')
                 ->where('Customer_ID', $customer_id)
                 ->where('Product_Detail_ID', $product_id)
+                ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
+                ->join('products as p', 'pd.Product_ID', 'p.ID')
+                ->select('c.*', 'pd.*', 'p.*', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
                 ->get();
             $item = $new_item[0];
-            $output =  '<div>' . $item->Product_quantity . '</div>';
-            echo $output;
+            $output = $item->Product_quantity;
+            $output1 = $item->subtotal;
+            $kk = [];
+            array_push($kk, $output, $output1);
+            
+            echo json_encode($kk);
         }
     }
+
 
     public function handleDecreaseQuantity(Request $request)
     {
@@ -153,17 +169,38 @@ class shoppingcartController extends Controller
                 ->update([
                     'Product_quantity' => $old_quantity[0]->Product_quantity - 1,
                 ]);
-            $new_item = DB::table('carts')
+            $new_item = DB::table('carts as c')
                 ->where('Customer_ID', $customer_id)
                 ->where('Product_Detail_ID', $product_id)
+                ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
+                ->join('products as p', 'pd.Product_ID', 'p.ID')
+                ->select('c.*', 'pd.*', 'p.*', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
                 ->get();
             $item = $new_item[0];
-            $output =  '<div>' . $item->Product_quantity . '</div>';
-            echo $output;
+
+            $output = $item->Product_quantity;
+            $output1 = $item->subtotal;
+            $kk = [];
+            array_push($kk, $output, $output1);
+
+            echo json_encode($kk);
         }
     }
 
+
+    public function removeFromCart(Request $req)
+    {
+        $productID = $req->ID;
+        $customer_ID = Auth::guard('users')->id();
+        Cart::where('Customer_ID', $customer_ID)
+            ->where('Product_Detail_ID', $productID)
+            ->delete();
+        return redirect()->route('myshoppingcart');
+    }
+
+
     public function checkOut(Request $req)
     {
+        $customer_ID = Auth::guard('users')->id();
     }
 }

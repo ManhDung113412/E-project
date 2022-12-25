@@ -36,15 +36,17 @@
                                     <div class="container__product-list-cart-quantity">
 
                                         {{-- -- --}}
-                                        <button type="button" id="decrementQuantity" value="{{ $item->Product_Detail_ID }}">
+                                        <button type="button" id="decrementQuantity"
+                                            value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon class="icon" name="remove-outline"></ion-icon>
                                         </button>
 
-                                            <div id="result">{{ $item->Product_quantity }}</div>
-                                            
+                                        <div id="result" max="5">{{ $item->Product_quantity }}</div>
+
 
                                         {{-- ++ --}}
-                                        <button type="button" id="incrementQuantity" value="{{ $item->Product_Detail_ID }}">
+                                        <button type="button" id="incrementQuantity"
+                                            value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon class="icon" name="add-outline"></ion-icon>
                                         </button>
 
@@ -52,21 +54,19 @@
 
                                     </div>
 
-                                    <div class="container__product-list-cart-total"></div>
+                                    <div class="container__product-list-cart-total" id="productSubtotal"></div>
                                     <div class="container__product-list-cart-button">
-                                        <button>Remove</button>
-                                        <button>Replace</button>
+                                        <a
+                                            href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">Remove</a>
                                     </div>
                                 </div>
-                            @endforeach
                         </div>
 
                     </div>
                 </div>
-                {{-- <div class="container__cartTotal">
+                <div class="container__cartTotal">
                     <div class="container__cartTotal-big">
                         <div class="container__cartTotal-big2">
-                            <input type="text" value="{{ $customer_id }}" id="hehe">
                             <div class="container__cartTotal-big2-tittle">Cart Totals</div>
                             <hr class="hr1">
                             <div class="container__cartTotal-big2-info">
@@ -107,8 +107,10 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
+            @endforeach
+
         </form>
         <div class="main__alsoLike">
             <p>You May Also Like</p>
@@ -164,38 +166,50 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    
-    
-    
-    
-    
-<script>
-    $(document).ready(function() {
-        $('#incrementQuantity').click(function(e){
-            var product = $(this).val();
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{route('client.shopping-cart.handle-increase-quantity')}}",
-                method:"POST",
-                data:{product:product, _token:_token},
-                success:function(data){
-                    $('#result').html(data);
-                }
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#incrementQuantity').click(function(e) {
+                var product = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('client.shopping-cart.handle-increase-quantity') }}",
+                    method: "POST",
+                    data: {
+                        product: product,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        var hehe = JSON.parse(data);
+                        $('#result').html(hehe[0]);
+                        $('#productSubtotal').html("$" + hehe[1]);
+                    }
+                })
             })
-        })
-        
-        $('#decrementQuantity').click(function(e){
-            var product = $(this).val();
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{route('client.shopping-cart.handle-decrease-quantity')}}",
-                method:"POST",
-                data:{product:product, _token:_token},
-                success:function(data){
-                    $('#result').html(data);
-                }
+
+            $('#decrementQuantity').click(function(e) {
+                var product = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('client.shopping-cart.handle-decrease-quantity') }}",
+                    method: "POST",
+                    data: {
+                        product: product,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        var hehe = JSON.parse(data);
+                        $('#result').html(hehe[0]);
+                        $('#productSubtotal').html("$" + hehe[1]);
+                    }
+                })
             })
-        })
-    });
-</script>
+
+
+        });
+    </script>
 @stop

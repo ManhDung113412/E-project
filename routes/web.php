@@ -203,7 +203,7 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
-    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
 
     Route::post('Cart/increase', [shoppingcartController::class, 'handleIncreaseQuantity'])
         ->name('client.shopping-cart.handle-increase-quantity');
