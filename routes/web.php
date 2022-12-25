@@ -1,12 +1,10 @@
 <?php
 
 // Admin Controllers
-
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ChartController;
+use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDetailController;
@@ -80,14 +78,12 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.search');
     });
 
-    // Chart Routes
-    Route::prefix('chart')->group(function () {
-        Route::get('/', [ChartController::class, 'index'])
-            ->name('admin.chart.index');
-        Route::get('bar', [ChartController::class, 'bar'])
-            ->name('admin.chart.bar');
-        Route::get('area', [ChartController::class, 'area'])
-            ->name('admin.chart.area');
+    // Dashboard Routes
+    Route::prefix('dashboard')->group(function () {
+        Route::get('revenue', [DashBoardController::class, 'revenue'])
+            ->name('admin.dashboard.revenue');
+        Route::get('keke', [DashBoardController::class, 'keke'])
+            ->name('admin.dashboard.keke');
     });
 
     // Order Routes
