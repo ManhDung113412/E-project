@@ -74,7 +74,34 @@
                     </div>
                 </div>
                 <div class="container__list-products-list">
+                    @foreach($this_customer as $item)
                     <div class="container__list-products-list-cart">
+                        <div class="container__list-products-list-cart-checkbox">
+                            <input type="checkbox" name="" value="favor">
+                        </div>
+                        <div class="container__list-products-list-cart-child">
+                            <div class="container__product-list-cart-image">
+                                <div class="container__product-list-cart-image-img">
+                                    <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;"
+                                        alt="">
+                                </div>
+                                <div class="container__product-list-cart-image-info">
+                                    <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
+                                </div>
+                            </div>
+                            <div class="container__product-list-cart-price">{{ $item->Color }}</div>
+                            {{-- <div class="container__product-list-cart-quantity">
+                               {{ $item-> }}
+                            </div> --}}
+                            <div class="container__product-list-cart-total">${{ $item->Export_Price }}</div>
+                            <div class="container__product-list-cart-button">
+                                <button>Remove</button>
+                                <button>Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    {{-- <div class="container__list-products-list-cart">
                         <div class="container__list-products-list-cart-checkbox">
                             <input type="checkbox" name="" value="favor">
                         </div>
@@ -198,32 +225,7 @@
                                 <button>Add To Cart</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="container__list-products-list-cart">
-                        <div class="container__list-products-list-cart-checkbox">
-                            <input type="checkbox" name="" value="favor">
-                        </div>
-                        <div class="container__list-products-list-cart-child">
-                            <div class="container__product-list-cart-image">
-                                <div class="container__product-list-cart-image-img">
-                                    <img src="./image/div1-right.png" style="width: 89px; height: 110px;"
-                                        alt="">
-                                </div>
-                                <div class="container__product-list-cart-image-info">
-                                    <div class="container__product-list-cart-info-name">Product Name</div>
-                                </div>
-                            </div>
-                            <div class="container__product-list-cart-price">Color</div>
-                            <div class="container__product-list-cart-quantity">
-                                Category
-                            </div>
-                            <div class="container__product-list-cart-total">$1000</div>
-                            <div class="container__product-list-cart-button">
-                                <button>Remove</button>
-                                <button>Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
