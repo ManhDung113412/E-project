@@ -74,7 +74,7 @@ List Product
                     @endforeach
                 </tbody>
             </table>
-            {{!! $products->links() !!}}
+            {!! $products->links() !!}
             @endif
         </div>
         <!-- /.row -->
