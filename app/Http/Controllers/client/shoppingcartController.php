@@ -111,10 +111,35 @@ class shoppingcartController extends Controller
         }
     }
 
+    public function handleIncreaseQuantity(Request $request)
+    {
+        if ($request->get('product')) {
+            $product_id = $request->get('product');
+            $customer_id = Auth::guard('users')->id();
+            $old_quantity = DB::table('carts')
+                ->where('Customer_ID', $customer_id)
+                ->where('Product_Detail_ID', $product_id)
+                ->select('Product_quantity')
+                ->get();
+            $cart = DB::table('carts')
+                ->where('Customer_ID', $customer_id)
+                ->where('Product_Detail_ID', $product_id)
+                ->update([
+                    'Product_quantity' => $old_quantity[0]->Product_quantity + 1,
+                ]);
+            $new_item = DB::table('carts')
+                ->where('Customer_ID', $customer_id)
+                ->where('Product_Detail_ID', $product_id)
+                ->get();
+            $item = $new_item[0];
+            $output =  '<div>' . $item->Product_quantity . '</div>';
+            echo $output;
+        }
+    }
+
     public function handleDecreaseQuantity(Request $request)
     {
         if ($request->get('product')) {
-
             $product_id = $request->get('product');
             $customer_id = Auth::guard('users')->id();
             $old_quantity = DB::table('carts')
