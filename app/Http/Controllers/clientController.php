@@ -14,7 +14,10 @@ class clientController extends Controller
     // {
     //     $this->login = new loginModel();
     // }
-
+    public function getProfile()
+    {
+        return view('clientsPage.myProfile');
+    }
     public function getMaster()
     {
         return view('layouts.master');

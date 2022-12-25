@@ -79,11 +79,6 @@ class shoppingcartController extends Controller
         return view('clientsPage.shoppingCart', ['this_customer' => $allPro, 'customer_id' => $this_customer[0]->id,'cart_quantity' => $cart_quantity]);
     }
 
-
-    // public function checkOut(Request $req){
-
-    // }
-
     public function postShoppingCart(Request $req)
     {
         if ($req->kk) {
@@ -98,5 +93,9 @@ class shoppingcartController extends Controller
                 ]);
             }
         }
+    }
+
+    public function checkOut(Request $req){
+
     }
 }

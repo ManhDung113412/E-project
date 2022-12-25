@@ -30,7 +30,7 @@ class wishListController extends Controller
 
         $cart_quantity = session()->get('cart_quantity');
 
-        $wish_list= Wishlist::where('Customer_ID', $customer_ID)->get();
+        $wish_list = Wishlist::where('Customer_ID', $customer_ID)->get();
 
         $Product_Details_ID = [];
         foreach ($wish_list as $item) {
@@ -55,12 +55,12 @@ class wishListController extends Controller
         $all_cart_products = [];
         foreach ($specific_item_slug as $item) {
             $pro = DB::table('categories')
-            ->join('Products', 'Products.category_ID', '=', 'categories.ID')
-            ->join('product_details', 'Product_Details.Product_ID', '=','Products.ID')
-            ->where('product_details.Slug',$item)
-            ->get();
-            
-            
+                ->join('Products', 'Products.category_ID', '=', 'categories.ID')
+                ->join('product_details', 'Product_Details.Product_ID', '=', 'Products.ID')
+                ->where('product_details.Slug', $item)
+                ->get();
+
+
             // where('product_details.Slug', $item)
             //     ->join('Products', 'Products.id', '=', 'product_details.Product_ID')
             //     ->join('categories', 'categories.ID', '=', 'Products.Category_ID')
@@ -73,8 +73,8 @@ class wishListController extends Controller
             array_push($allPro, $item[0]);
         }
 
-        dd($allPro);
+        // dd($allPro);
 
-        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity,'this_customer'=>$allPro]);
+        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro]);
     }
 }
