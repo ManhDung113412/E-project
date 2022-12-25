@@ -23,6 +23,11 @@ class clientController extends Controller
         return view('layouts.master');
     }
 
+    public function getProfile()
+    {
+        return view('clientsPage.myProfile');
+    }
+
     public function getHomePage()
     {
         return view('clientsPage.homePage');

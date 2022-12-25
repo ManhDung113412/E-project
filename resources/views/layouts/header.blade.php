@@ -142,7 +142,7 @@
                         <ion-icon name="person-outline"></ion-icon>
                     </button>
                     <button id="showCart">
-                        <div class="quantityCart">{{ $cart_quantity }}</div>
+                        {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
                         <ion-icon name="cart-outline"></ion-icon>
                     </a>
                     <button>
