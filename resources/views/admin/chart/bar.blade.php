@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-List Product 
+Chart Bar
 @endsection
 
 @section('content')
@@ -10,15 +10,14 @@ List Product
         <div class="row">
             <div class="heading">
                 <div>
-                    <h1 class="page-header">Products
-                        <small>List</small>
+                    <h1 class="page-header">Chart Bar
+                        {{-- <small>List</small> --}}
                     </h1>
                 </div>
                 <div class="form-group">
-                    <form action="{{route('admin.product.search')}}" method="post">
+                    <form action="{{route('admin.brand.search')}}" method="post">
                         @csrf
-                        <input name="search" class="input-search" placeholder="Search...">
-                        <button type="submit" class="btn-add-product btn btn-success">Search</button>
+                        <input  name="search" class="input-search" placeholder="Search...">
                     </form>
                 </div>
                 <div class="heading-right">
@@ -35,50 +34,48 @@ List Product
                     {{ session('success') }}
                 </div>
             @endif
+            
             <!-- /.col-lg-12 -->
             @if (!empty($error))
                 <div class="alert alert-danger">
                     {{ $error }}
                 </div>
             @endif
-            @if (!empty($products))
-            <table class="table table-striped table-bordered table-hover">
+            @if (!empty($brands))
+            <table  class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>STT</th>
                         <th>Code</th>
-                        <th>Brand</th>
-                        <th>Category</th>
                         <th>Name</th>
-                        <th>Image</th>
+                        <th>Logo</th>
+                        <th>Information</th>
                         <th>Delete</th>
                         <th>Edit</th>
-                        <th>Add</th>
-                        <th>Detail</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($products as $index => $product)
+                <tbody id="table-body-side"></tbody>
+                <tbody id="table-body-main">
+                    @foreach ($brands as $index => $brand)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index + 1}}</td>
-                        <td>{{$product->Code}}</td>
-                        <td>{{$product->Brand_Name}}</td>
-                        <td>{{$product->Category_Name}}</td>
-                        <td>{{$product->Name}}</td>
-                        <td><img width="100" src="{{$product->IMG}}" alt=""></td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->ID)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->ID)}}">Edit</a></td>
-                        <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->ID)}}">Add</a></td>
-                        <td class="center"><i class="fa fa-eye fa-fw"></i> <a href="{{route('admin.product-detail.detail', $product->ID)}}">View</a></td>
+                        <td>{{$brand->Code}}</td>
+                        <td>{{$brand->Name}}</td>
+                        <td><img width="100" src="{{$brand->Logo}}" alt=""></td>
+                        <td>{{$brand->Information}}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.brand.delete', $brand->ID)}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.brand.edit', $brand->ID)}}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {!! $products->links() !!}
             @endif
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
 </div>
+
+<script>
+</script>
 @endsection

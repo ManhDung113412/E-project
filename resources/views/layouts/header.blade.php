@@ -36,7 +36,7 @@
                                 <ion-icon name="caret-forward-outline"></ion-icon>
                             </div>
                             <div><a href="http://127.0.0.1:8000/client/Cart">My Shopping Cart</a></div>
-                            <div><a href="">My Wish List</a></div>
+                            <div><a href="{{ url('client/wishLish') }}">My Wish List</a></div>
                             <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                         <ion-icon name="person-outline"></ion-icon>
                     </button>
                     <button id="showCart">
-                        <div class="quantityCart">{{ $cart_quantity }}</div>
+                        {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
                         <ion-icon name="cart-outline"></ion-icon>
                     </a>
                     <button>

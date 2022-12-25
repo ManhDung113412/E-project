@@ -17,9 +17,10 @@ class AdminLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(Auth::guard('admins')->check()){
-        // }
-        // return redirect()->route('admin.auth.login')->with('error', 'Permission denied');
-        return $next($request);
+        // dd(Auth::guard('admins')->check());
+        if (auth()->guard('admins')) {
+            return $next($request);
+        }
+        return redirect()->route('admin.auth.login')->with('error', 'Permission denied');
     }
 }

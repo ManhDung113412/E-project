@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        // 'passwords' => 'admins',
     ],
 
     /*
@@ -36,10 +37,10 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver'    => 'session',
-            'provider' => 'userssss',
-        ],
+        // 'web' => [
+        //     'driver'    => 'session',
+        //     'provider' => 'userssss',
+        // ],
         'admins' => [ // Tên guard khi gọi ở controller
             'driver' =>  'session',
             'provider' => 'admins', // Tên bảng
@@ -109,20 +110,20 @@ return [
     //     ],
     // ],
 
-    // 'passwords' => [
-    //     'user' => [
-    //         'provider' => 'users',
-    //         'table' => 'password_resets',
-    //         'expire' => 60,
-    //         'throttle' => 60,
-    //     ],
-    //     'admins' => [ // Tên bảng
-    //         'provider' => 'admins',
-    //         'table' => 'password_resets',
-    //         'expire' => 60,
-    //         'throttle' => 60,
-    //     ],
-    // ],
+    'passwords' => [
+        'user' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [ // Tên bảng
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 1,
+            'throttle' => 1,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -135,6 +136,6 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
+    'password_timeout' => 1,
 
 ];

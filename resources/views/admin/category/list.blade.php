@@ -64,7 +64,7 @@ List Categories
                     @endforeach
                 </tbody>
             </table>
-            {{!! $categories->links() !!}}
+            {!! $categories->links() !!}
             @endif
         </div>
         <!-- /.row -->
