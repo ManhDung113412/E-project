@@ -46,7 +46,7 @@
                 </div>
             </form>
             <form action="{{ url('http://127.0.0.1:8000/client/register') }}" method="POST" id="registerForm"
-                class="container__signIn ">
+                class="container__signOut ">
                 @csrf
                 <div class="container__signIn-tittle">Register</div>
                 <div class="container__signIn-input">
@@ -115,7 +115,8 @@
         </div>
         <div id="abc" class="slideShow">
             @foreach ($img as $item)
-                <div id="formImage" class="slideShow-image show" style="background-image: url({{ $item->Before_Hover_IMG }});">
+                <div id="formImage" class="slideShow-image show"
+                    style="background-image: url({{ $item->Before_Hover_IMG }});">
                 </div>
             @endforeach
         </div>

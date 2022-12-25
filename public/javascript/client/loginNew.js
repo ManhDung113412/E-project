@@ -12,6 +12,8 @@ document.getElementById('toSignIn').onclick = function (e) {
 
 }
 
+
+
 // document.getElementById('signUp').onclick = function (e) {
 //     e.preventDefault();
 //     document.getElementById('registerForm').classList.add('active');
