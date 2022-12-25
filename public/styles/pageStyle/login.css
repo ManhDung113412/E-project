@@ -196,7 +196,7 @@ input:valid~label {
     position: absolute;
     height: 100%;
     transform: translate(150%,0);
-    transition: 0.3s ease-in-out;
+    transition: 0.7s ease-in-out;
     /* animation: nonActive 0.85s ease-in-out 1 forwards; */
     /* display: none; */
 }
@@ -204,7 +204,7 @@ input:valid~label {
 .container__signIn.active{
     position: absolute;
     transform: translate(0,0);
-    transition: 0.3s ease-in-out;
+    transition: 0.7s ease-in-out;
     /* animation: activeForm 0.85s ease-in-out 1 forwards; */
 
 }
@@ -213,7 +213,7 @@ input:valid~label {
     position: absolute;
     height: 100%;
     transform: translate(-150%,0);
-    transition: 0.3s ease-in-out;
+    transition: 0.7s ease-in-out;
     /* animation: nonActive 0.85s ease-in-out 1 forwards; */
     /* display: none; */
 }
@@ -221,7 +221,7 @@ input:valid~label {
 .container__signOut.active{
     position: absolute;
     transform: translate(0,0);
-    transition: 0.3s ease-in-out;
+    transition: 0.7s ease-in-out;
     /* animation: activeForm 0.85s ease-in-out 1 forwards; */
 
 }
