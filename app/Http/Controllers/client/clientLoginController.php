@@ -23,6 +23,14 @@ class clientLoginController extends Controller
         return view('clientsPage.login', ['img' => $slideImg]);
     }
 
+    public function getProfile()
+    {
+        // dd('hehe');
+        // $slideImg = DB::table('brand_collections')->get();
+        // dd($chanel);
+        return view('clientsPage.myProfile');
+    }
+
     public function postLogin(Request $req)
     {
 
