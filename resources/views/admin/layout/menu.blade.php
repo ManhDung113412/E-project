@@ -1,5 +1,5 @@
 <ul class="nav" id="side-menu">
-    <li class="sidebar-search">
+    {{-- <li class="sidebar-search">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search...">
             <span class="input-group-btn">
@@ -9,7 +9,7 @@
             </span>
         </div>
         <!-- /input-group -->
-    </li>
+    </li> --}}
     {{-- <li>
         <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
     </li> --}}
@@ -26,7 +26,7 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
-        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-list fa-fw"></i> Category<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
                 <a href="{{route('admin.category.index')}}">List Category</a>
@@ -38,7 +38,22 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
-        <a href="#"><i class="fa fa-shopping-cart"></i>  Order<span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Chart<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="{{route('admin.chart.index')}}">Chart</a>
+            </li>
+            <li>
+                <a href="{{route('admin.chart.bar')}}">Bar Chart</a>
+            </li>
+            <li>
+                <a href="{{route('admin.chart.area')}}">Area Chart</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-shopping-cart"></i> Order<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
                 <a href="{{route('admin.order-detail.index')}}">List Order</a>

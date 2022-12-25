@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDetailController;
@@ -77,6 +78,16 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.delete');
         Route::post('search', [CategoryController::class, 'search'])
             ->name('admin.category.search');
+    });
+
+    // Chart Routes
+    Route::prefix('chart')->group(function () {
+        Route::get('/', [ChartController::class, 'index'])
+            ->name('admin.chart.index');
+        Route::get('bar', [ChartController::class, 'bar'])
+            ->name('admin.chart.bar');
+        Route::get('area', [ChartController::class, 'area'])
+            ->name('admin.chart.area');
     });
 
     // Order Routes
@@ -199,12 +210,10 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
 
     Route::post('Cart/increase', [shoppingcartController::class, 'handleIncreaseQuantity'])
-        ->name('client.shopping-cart.handle-increase-quantity');
+    ->name('client.shopping-cart.handle-increase-quantity');
+
     Route::post('Cart/decrease', [shoppingcartController::class, 'handleDecreaseQuantity'])
-        ->name('client.shopping-cart.handle-decrease-quantity');
-    Route::get('Cart/removefromcart/{ID}', [shoppingcartController::class, 'removeFromCart']);
-
-
+    ->name('client.shopping-cart.handle-decrease-quantity');
 
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
