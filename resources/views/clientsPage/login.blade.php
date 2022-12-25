@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign</title>
-    <link rel="stylesheet" href="{{ asset('styles/pageStyle/login.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('styles/pageStyle/login.css') }}"> --}}
 
 </head>
 
@@ -115,12 +115,40 @@
         </div>
         <div id="abc" class="slideShow">
             @foreach ($img as $item)
-                <div id="formImage" class="slideShow-image show" style="background-image: url({{ $item->Before_Hover_IMG }});">
+                <div id="formImage" class="slideShow-image show"
+                    style="background-image: url({{ $item->Before_Hover_IMG }});">
                 </div>
             @endforeach
         </div>
     </div>
 </body>
-<script src="{{ asset('javascript/client/loginNew.js') }}"></script>
+{{-- <script src="{{ asset('javascript/client/loginNew.js') }}"></script> --}}
+{{-- <script>
+    document.getElementById('toRegister').onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('registerForm').classList.add('active');
+        document.getElementById('signInForm').classList.remove('active');
+
+    }
+
+    document.getElementById('toSignIn').onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('signInForm').classList.add('active');
+        document.getElementById('registerForm').classList.remove('active');
+
+    }
+
+    // document.getElementById('signUp').onclick = function (e) {
+    //     e.preventDefault();
+    //     document.getElementById('registerForm').classList.add('active');
+    //     document.getElementById('signInForm').classList.remove('active');
+
+    // }
+
+    setInterval(function() {
+        var item = document.querySelectorAll('.slideShow-image');
+        document.getElementById('abc').appendChild(item[0]);
+    }, 3000);
+</script> --}}
 
 </html>
