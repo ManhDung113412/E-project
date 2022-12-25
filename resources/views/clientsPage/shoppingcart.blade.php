@@ -183,6 +183,7 @@
                 }
             })
         })
+        
         $('#decrementQuantity').click(function(e){
             var product = $(this).val();
             var _token = $('input[name="_token"]').val();
