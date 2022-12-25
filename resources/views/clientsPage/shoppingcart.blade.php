@@ -52,21 +52,18 @@
 
                                     </div>
 
-                                    <div class="container__product-list-cart-total"></div>
+                                    <div class="container__product-list-cart-total">$ {{ $item->Export_Price * $item->Product_quantity }}</div>
                                     <div class="container__product-list-cart-button">
-                                        <button>Remove</button>
-                                        <button>Replace</button>
+                                        <a href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">Remove</a>
                                     </div>
                                 </div>
-                            @endforeach
                         </div>
 
                     </div>
                 </div>
-                {{-- <div class="container__cartTotal">
+                <div class="container__cartTotal">
                     <div class="container__cartTotal-big">
                         <div class="container__cartTotal-big2">
-                            <input type="text" value="{{ $customer_id }}" id="hehe">
                             <div class="container__cartTotal-big2-tittle">Cart Totals</div>
                             <hr class="hr1">
                             <div class="container__cartTotal-big2-info">
@@ -107,8 +104,10 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
+            @endforeach
+
         </form>
         <div class="main__alsoLike">
             <p>You May Also Like</p>

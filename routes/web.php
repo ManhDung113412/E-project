@@ -164,7 +164,6 @@ Route::prefix('client')->group(function () {
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('myProfile', [clientController::class, 'getProfile']);
-
 });
 
 
@@ -182,7 +181,7 @@ Route::prefix('client/products')->group(function () {
     Route::get('dior', [clientProductController::class, 'getDior']);
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
-    Route::get('specificProduct/pdf/{Slug}', [clientProductController::class,'getPdfFile']);
+    Route::get('specificProduct/pdf/{Slug}', [clientProductController::class, 'getPdfFile']);
 });
 
 
@@ -197,13 +196,15 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
-    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart']);
+    Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
 
     Route::post('Cart/increase', [shoppingcartController::class, 'handleIncreaseQuantity'])
-    ->name('client.shopping-cart.handle-increase-quantity');
-
+        ->name('client.shopping-cart.handle-increase-quantity');
     Route::post('Cart/decrease', [shoppingcartController::class, 'handleDecreaseQuantity'])
-    ->name('client.shopping-cart.handle-decrease-quantity');
+        ->name('client.shopping-cart.handle-decrease-quantity');
+    Route::get('Cart/removefromcart/{ID}', [shoppingcartController::class, 'removeFromCart']);
+
+
 
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
