@@ -60,7 +60,8 @@
                                             href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">Remove</a>
                                     </div>
                                 </div>
-                        </div>
+            @endforeach
+        </div>
 
                     </div>
                 </div>
@@ -109,7 +110,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
 
         </form>
         <div class="main__alsoLike">

@@ -167,7 +167,8 @@ Route::prefix('client')->group(function () {
     Route::post('login', [clientLoginController::class, 'postLogin']);
 
 
-    Route::post('register', [clientLoginController::class, 'postRegister']);
+    Route::post('register', [clientLoginController::class, 'postRegister'])
+    ->name('client.register');
 
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
