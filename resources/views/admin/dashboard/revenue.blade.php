@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-Chart Bar
+Revenue
 @endsection
 
 @section('content')
@@ -10,18 +10,13 @@ Chart Bar
         <div class="row">
             <div class="heading">
                 <div>
-                    <h1 class="page-header">Chart Bar
-                        {{-- <small>List</small> --}}
-                    </h1>
-                </div>
-                <div class="form-group">
-                    <form action="{{route('admin.brand.search')}}" method="post">
-                        @csrf
-                        <input  name="search" class="input-search" placeholder="Search...">
-                    </form>
+                    <h1 class="page-header">Revenue</h1>
                 </div>
                 <div class="heading-right">
                     <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
+                </div>
+                <div class="form-group">
+                    <input type="month">
                 </div>
             </div>
             @if (session('error'))

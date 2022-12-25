@@ -38,16 +38,13 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
-        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Chart<span class="fa arrow"></span></a>
+        <a href="#"><i class=" fa fa-dashboard fa-fw"></i> Dashboard<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
-                <a href="{{route('admin.chart.index')}}">Chart</a>
+                <a href="{{route('admin.dashboard.revenue')}}">Revenue</a>
             </li>
             <li>
-                <a href="{{route('admin.chart.bar')}}">Bar Chart</a>
-            </li>
-            <li>
-                <a href="{{route('admin.chart.area')}}">Area Chart</a>
+                <a href="{{route('admin.dashboard.keke')}}">Keke</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->
