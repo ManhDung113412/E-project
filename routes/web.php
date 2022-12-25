@@ -210,10 +210,10 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
 
     Route::post('Cart/increase', [shoppingcartController::class, 'handleIncreaseQuantity'])
-    ->name('client.shopping-cart.handle-increase-quantity');
+        ->name('client.shopping-cart.handle-increase-quantity');
 
     Route::post('Cart/decrease', [shoppingcartController::class, 'handleDecreaseQuantity'])
-    ->name('client.shopping-cart.handle-decrease-quantity');
+        ->name('client.shopping-cart.handle-decrease-quantity');
 
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
