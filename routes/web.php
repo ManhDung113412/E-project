@@ -213,8 +213,12 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
         ->name('client.shopping-cart.handle-decrease-quantity');
 
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
+    Route::get('wishlist/remove/{ID}', [wishListController::class, 'removeFromWishList']);
+    Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
+    Route::get('wishlist/addtowishlist/{ID}', [wishListController::class, 'addToWishList']);
+    Route::get('wishlist/removemultipleproducts/', [wishListController::class, 'removeMultipleProducts']);
+
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
-
-
-    Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
+    
+    // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 });

@@ -31,6 +31,8 @@ class wishListController extends Controller
         $cart_quantity = session()->get('cart_quantity');
 
         $wish_list = Wishlist::where('Customer_ID', $customer_ID)->get();
+        DB::enableQueryLog();
+
 
         $Product_Details_ID = [];
         foreach ($wish_list as $item) {
@@ -60,11 +62,6 @@ class wishListController extends Controller
                 ->where('product_details.Slug', $item)
                 ->get();
 
-
-            // where('product_details.Slug', $item)
-            //     ->join('Products', 'Products.id', '=', 'product_details.Product_ID')
-            //     ->join('categories', 'categories.ID', '=', 'Products.Category_ID')
-            //     ->get();
             array_push($all_cart_products, $pro);
         }
 
@@ -72,9 +69,75 @@ class wishListController extends Controller
         foreach ($all_cart_products as $item) {
             array_push($allPro, $item[0]);
         }
+        $total_quantity = Wishlist::where('Customer_ID', $customer_ID)
+            ->count();
+        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro, 'total' => $total_quantity]);
+    }
 
-        // dd($allPro);
+    public function removeFromWishList(Request $req)
+    {
+        $productID = $req->ID;
+        $customer_ID = Auth::guard('users')->id();
+        Wishlist::where('Customer_ID', $customer_ID)
+            ->where('Product_Detail_ID', $productID)
+            ->delete();
+        return redirect()->route('wishList');
+    }
 
-        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro]);
+    public function addToCart(Request $req)
+    {
+        $customer_ID = Auth::guard('users')->id();
+        $this_customer = User::where('id', $customer_ID)->get();
+        $customer_ID = $this_customer[0]->id;
+
+        $carts = Cart::where('Customer_ID', $customer_ID)->get();
+        session()->put('cart_quantity', count($carts));
+
+        $cart_quantity = session()->get('cart_quantity');
+
+        $pro_ID = $req->ID;
+
+        DB::table('carts')->insert([
+            'Product_quantity' => 1,
+            'Customer_ID' => $customer_ID,
+            'Product_Detail_ID' => $pro_ID
+        ]);
+
+        Wishlist::where('Customer_ID', $customer_ID)
+            ->where('Product_Detail_ID', $pro_ID)
+            ->delete();
+
+        return redirect()->back();
+    }
+
+    public function addToWishList(Request $req)
+    {
+        $customer_ID = Auth::guard('users')->id();
+        $this_customer = User::where('id', $customer_ID)->get();
+        $pro_ID = $req->ID;
+        $customer_ID = $this_customer[0]->id;
+
+        if (DB::table('wish_list')
+            ->where('customer_id', $customer_ID)
+            ->where('Product_Detail_ID', $pro_ID)
+            ->exists()
+        ) {
+            return redirect()->back();
+        } else {
+            DB::table('wish_list')
+                ->insert([
+                    'Product_Detail_ID' => $pro_ID,
+                    'Customer_ID'   => $customer_ID,
+                    'created_at' => time()
+                ]);
+            return redirect()->back();
+        }
+    }
+
+    public function removeMultipleProducts(Request $req)
+    {
+        $Products_ID = [];
+        $hihi = $req->checkBoxes;
+        dd($hihi);
     }
 }
