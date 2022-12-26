@@ -99,7 +99,7 @@
                                     <button type="button" id="discount-code_btn">
                                         <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
                                     </button>
-                                    <div id="discount">hehe</div>
+                                    <div id="discount"></div>
                                 </div>
 
                             </div>
@@ -182,18 +182,37 @@
 
 
         $(document).ready(function() {
+
+            // Total Price
             var totalPrice = 0;
             var shipPrice = +$('#ship').val();
             var subtotals = +$('.subtotals').html().replace('$', '');
             var discount = $('#discount').html()
             if (discount.includes('-') || discount.includes('%')) {
-                discount = $('#discount').html().replace('-', '');
-                discount = $('#discount').html().replace('%', '');
-                totalPrice = subtotals / discount + shipPrice;
+                var newDiscount1 = discount.replace('-', '');
+                var newDiscount2 = newDiscount1.replace('%', '');
+                var newDiscount3 = subtotals * newDiscount2 / 100;
+                totalPrice = subtotals - newDiscount3 + shipPrice;
             } else {
-                totalPrice = subtotals + shipPrice;
+                totalPrice = subtotals + shipPrice
             }
             $('.total-price').html("$" + totalPrice);
+
+            function calculatePriceTotal() {
+                var totalPrice = 0;
+                var shipPrice = +$('#ship').val();
+                var subtotals = +$('.subtotals').html().replace('$', '');
+                var discount = $('#discount').html()
+                if (discount.includes('-') || discount.includes('%')) {
+                    var newDiscount1 = discount.replace('-', '');
+                    var newDiscount2 = newDiscount1.replace('%', '');
+                    var newDiscount3 = subtotals * newDiscount2 / 100;
+                    totalPrice = subtotals - newDiscount3 + shipPrice;
+                } else {
+                    totalPrice = subtotals + shipPrice
+                }
+                $('.total-price').html("$" + totalPrice);
+            }
 
             // Increase Button
             $('.incrementQuantity').each(function(index) {
@@ -217,6 +236,7 @@
                                 productSubtotal[index].innerHTML = "$" + hehe[
                                     1];
                                 $('.subtotals').html("$" + hehe[2]);
+                                calculatePriceTotal();
                             }
                         })
                     }
@@ -245,7 +265,7 @@
                                 productSubtotal[index].innerHTML = "$" + hehe[
                                     1];
                                 $('.subtotals').html("$" + hehe[2]);
-
+                                calculatePriceTotal();
                             }
                         })
                     }
@@ -255,8 +275,10 @@
             // Ship Option
             $('#ship').on('change', function() {
                 $('.ship-money').html("$" + this.value)
+                calculatePriceTotal();
             });
 
+            // Discount Code
             $('#discount-code_btn').on('click', function() {
                 var discountCount = $('#discount-code').val();
                 if (discountCount) {
@@ -269,12 +291,11 @@
                             _token: _token
                         },
                         success: function(data) {
-                            console.log(data);
                             if (typeof data == 'object') {
                                 $('#discount').css('color', 'red').html(data['error']);
                             } else {
-                                $('#discount').removeAttr('style').html("-" + data +
-                                    "%");
+                                $('#discount').removeAttr('style').html("-" + data + "%");
+                                calculatePriceTotal();
                             }
                         }
                     })
