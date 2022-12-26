@@ -52,15 +52,10 @@ class clientLoginController extends Controller
         if ($customer == true) {
             $customer_ID = Auth::guard('users')->id();
             $this_customer = User::where('id', $customer_ID)->get();
-            // dd($this_customer);
-            // dd($this_customer);
-            // $data = session(['this_customer',$this_customer[0]]);
-            // $d = session()->get('this_customer');
+            // dd($customer);
             return redirect()->route('homepage');
         } else {
             return redirect()->back();
-            // document.getElementById('signInForm').classList.add('active');
-            // document.getElementById('registerForm').classList.remove('active');
         }
     }
 
@@ -104,6 +99,6 @@ class clientLoginController extends Controller
         // dd('asd');
         Auth::guard('users')->logout();
         $req -> session()->forget('this_customer');
-        return redirect()->route('client-login');
+        return redirect()->route('homepage');
     }
 }

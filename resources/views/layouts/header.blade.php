@@ -66,26 +66,31 @@
                 </div>
             </div>
             <div id="openLog" class="header__log">
-                <div class="header__log-signed" style="display: none;">
-                    <div class="header__log-signed-profile">
-                        <a href="">My Profile</a>
+                @if (Auth::guard('users')->check())
+                    <div class="header__log-signed" style="">
+                        <div class="header__log-signed-profile">
+                            <a href="">My Profile</a>
+                        </div>
+                        <div class="header__log-signed-signOut">
+                            <a href="{{ url('client/logout') }}">Sign Out</a>
+                        </div>
                     </div>
-                    <div class="header__log-signed-signOut">
-                        <a href="{{ url('client/logout') }}">Sign Out</a>
+                @else
+                    <div class="header__log-notSign">
+                        <div class="header__log-notSign-signIn">
+                            <a href="{{ url('client/login') }}">Sign In</a>
+                        </div>
+                        <div class="header__log-notSign-signUp">
+                            <a href="">Sign Up</a>
+                        </div>
                     </div>
-                </div>
-                <div class="header__log-notSign">
-                    <div class="header__log-notSign-signIn">
-                        <a href="{{ url('client/login') }}">Sign In</a>
-                    </div>
-                    <div class="header__log-notSign-signUp">
-                        <a href="">Sign Up</a>
-                    </div>
-                </div>
+                @endif
             </div>
-            <div id="shoppingCart" class="header__cart" >
+            <div id="shoppingCart" class="header__cart">
                 <div class="header__cart-tittle">Shopping Cart
-                    <button id="hideCart"><ion-icon name="chevron-up-outline"></ion-icon></button>
+                    <button id="hideCart">
+                        <ion-icon name="chevron-up-outline"></ion-icon>
+                    </button>
                 </div>
                 <div class="header__cart-list">
                     <div class="header__cart-list-items">
@@ -105,7 +110,9 @@
                         <div class="header__cart-list-items-info-right">
                             <div class="header__cart-list-items-info-right-price">$1000</div>
                             <div class="header__cart-list-items-info-right-action">
-                                <button><ion-icon name="trash-bin-outline"></ion-icon></button>
+                                <button>
+                                    <ion-icon name="trash-bin-outline"></ion-icon>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -144,11 +151,11 @@
                     <button id="showCart">
                         {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
                         <ion-icon name="cart-outline"></ion-icon>
-                    </a>
-                    <button>
-                        <div class="quantityCart">20</div>
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </button>
+                        </a>
+                        <button>
+                            <div class="quantityCart">20</div>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </button>
                 </div>
             </div>
         </div>

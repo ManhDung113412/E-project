@@ -250,5 +250,6 @@ class shoppingcartController extends Controller
     public function checkOut(Request $req)
     {
         $customer_ID = Auth::guard('users')->id();
+        
     }
 }
