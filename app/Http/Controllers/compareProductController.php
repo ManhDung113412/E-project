@@ -17,17 +17,43 @@ class compareProductController extends Controller
 {
     public function getCompareProduct(Request $req)
     {
-        $product_ID = $req->ID;
-        
-        $product = ProductDetail::where('product_details.ID', $product_ID)
-            ->join('Products', 'Products.ID', '=', 'product_details.Product_ID')
-            ->get();
-
-        
-        // dd($product_1_ID);
-        // $product2 = ProductDetail::where('product_details.ID', 2)
+        // $product_ID = $req->ID;
+        // $product = ProductDetail::where('product_details.ID', $product_ID)
         //     ->join('Products', 'Products.ID', '=', 'product_details.Product_ID')
         //     ->get();
-        // return view('layouts.compare', ['product_1' => $product1[0], 'product_2' => $product2[0]]);
+
+        // if (session()->has('product_1')) {
+        //     session()->put('product_2', $product[0]);
+        // } else {
+        //     session()->put('product_1', $product[0]);
+        // }
+
+        // return view('layouts.compare', ['product_1' => session()
+        //     ->get('product_1'), 'product_2' => session()->get('product_2')]);
+        if ($req->get('product')) {
+            $product_ID = $req->get('product');
+            $product =  ProductDetail::where('product_details.ID', $product_ID)
+                ->join('Products', 'Products.ID', '=', 'product_details.Product_ID')
+                ->get();
+            if (session()->has('product_1')) {
+                session()->put('product_2', $product[0]);
+            } else {
+                session()->put('product_1', $product[0]);
+            }
+            return view('layouts.compare', ['product_1' => session()
+            ->get('product_1'), 'product_2' => session()->get('product_2')]);
+        }
     }
+
+    // public function deleteProduct1(Request $req)
+    // {
+    //     session()->forget('product_1');
+    //     return redirect()->back();
+    // }
+
+    // public function deleteProduct2(Request $req)
+    // {
+    //     session()->forget('product_2');
+    //     return redirect()->back();
+    // }
 }
