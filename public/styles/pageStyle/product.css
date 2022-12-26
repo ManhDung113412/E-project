@@ -88,7 +88,7 @@
 
 .top {
     width: 100%;
-    height: 60px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -105,7 +105,6 @@
     width: 100%;
     height: 39px;
     font-size: 25px;
-
     margin-top: 20px;
 }
 
@@ -163,7 +162,8 @@ hr {
 
 .container__productInfo-main-descrip{
     width: 100%;
-    height: 200px;
+    height: 230px;
+    overflow: hidden;
 }
 
 
@@ -199,7 +199,16 @@ hr {
 .container__productInfo-main-details{
     width: 100%;
     height: 250px;
+    overflow: hidden;
+}
 
+.container__productInfo-main-details a{
+    color: black;
+    font-size: 35px;
+}
+
+.container__productInfo-main-details a ion-icon{
+    font-size: 35px;
 }
 
 .main__hr{

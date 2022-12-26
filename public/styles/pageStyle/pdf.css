@@ -64,5 +64,5 @@ table tr th{
 
 table tr th td{
     width: 150px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
