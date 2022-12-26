@@ -47,7 +47,7 @@
                         <div class="container__sideBar-box-cate-name">Low to high</div>
                     </div>
                 </div>
-                <div class="container__sideBar-box">
+                {{-- <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Collection</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
@@ -62,7 +62,7 @@
                         <input type="checkbox" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Discount</div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container__sideBar-filter">
                     <button>Filter</button>
                 </div>
