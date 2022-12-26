@@ -25,9 +25,9 @@
                         <div class="container__productInfo-main-info">
                             <div class="top">
                                 <div class="top__name">{{ $item->Name }}</div>
-                                <div class="top__favor">
+                                <a class="top__favor" href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}">
                                     <ion-icon name="heart-outline"></ion-icon>
-                                </div>
+                                </a>
                             </div>
                             <div class="price">
                                 <div class="price__official">$<b>{{ $item->Export_Price }}</b></div>

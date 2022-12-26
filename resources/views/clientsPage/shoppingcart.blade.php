@@ -21,10 +21,10 @@
                             @foreach ($carts as $index => $item)
                                 <div class="container__product-list-cart">
                                     <div class="container__product-list-cart-image">
-                                        <div class="container__product-list-cart-image-img">
+                                        <a class="container__product-list-cart-image-img" href="">
                                             <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;"
                                                 alt="">
-                                        </div>
+                                        </a>
                                         <div class="container__product-list-cart-image-info">
                                             <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
                                             <div class="container__product-list-cart-info-cate"
