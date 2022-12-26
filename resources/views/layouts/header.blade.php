@@ -69,7 +69,7 @@
                 @if (Auth::guard('users')->check())
                     <div class="header__log-signed" style="">
                         <div class="header__log-signed-profile">
-                            <a href="">My Profile</a>
+                            <a href="{{ url('client/myProfile') }}">My Profile</a>
                         </div>
                         <div class="header__log-signed-signOut">
                             <a href="{{ url('client/logout') }}">Sign Out</a>
