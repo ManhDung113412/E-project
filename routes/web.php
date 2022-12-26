@@ -219,6 +219,9 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::post('Cart/decrease', [shoppingcartController::class, 'handleDecreaseQuantity'])
         ->name('client.shopping-cart.handle-decrease-quantity');
 
+    Route::post('Cart/discount-code', [shoppingcartController::class, 'getDiscountCode'])
+        ->name('client.shopping-cart.get-discount-code');
+
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
     Route::get('wishlist/remove/{ID}', [wishListController::class, 'removeFromWishList']);
     Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
