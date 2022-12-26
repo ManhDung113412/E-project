@@ -334,11 +334,11 @@ table tr th {
 .editProfile {
     position: absolute;
 
-    left: 32%;
+    left: 37%;
     width: 500px;
     height: 650px;
     /* border: 1px solid black; */
-    background-color: rgb(217, 217, 217);
+    background-color: #e4e4e4;
     border-radius: 10px;
     /* display: none; */
 }
