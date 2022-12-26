@@ -73,6 +73,7 @@
 .container__list {
     margin: 0 auto;
     width: 80%;
+    height: auto;
 }
 
 .container__list-tittle {
@@ -103,7 +104,7 @@
 }
 
 .container__list-products-top-checkbox {
-    width: 9%;
+    width: 6%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -117,7 +118,7 @@
 }
 
 .container__list-products-top-right {
-    width: 91%;
+    width: 94%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -152,11 +153,11 @@
 }
 
 .container__list-products-top-right-button>a ion-icon{
-    border: 1px solid transparent;
-    border-radius: 50%;
+    border: 2px solid transparent;
+    border-radius: 7px;
 }
 .container__list-products-top-right-button>a ion-icon:hover{
-    border: 1px solid black;
+    border: 2px solid rgb(197, 197, 197);
     transition: 0.3s ease-in-out;
 }
 
@@ -165,23 +166,33 @@
 .container__list-products-list {
     width: 100%;
     display: flex;
+    height: 700px;
     flex-direction: column;
+    overflow: scroll;
+    margin-bottom: 50px;
 }
 
 .container__list-products-list-cart {
-    width: 100%;
+    width: calc(100% - 20px);
     display: flex;
     flex-direction: row;
-    height: 110px;
+    height: 130px;
     margin-bottom: 20px;
-
+    border: 2px solid transparent;
+    transition: 0.2s ease-in-out;
+    box-shadow: 2px 2px 4px 2px rgb(199, 199, 199);
+}
+.container__list-products-list-cart:hover{
+    border: 2px solid black;
+    transition: 0.1s ease-in-out;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px 2px transparent;
 }
 
 .container__list-products-list-cart-checkbox {
-    width: 9%;
+    width: 6%;
     height: 100%;
     display: flex;
-
     justify-content: center;
 }
 
@@ -193,11 +204,11 @@
 }
 
 .container__list-products-list-cart-child {
-    width: 91%;
+    width: 94%;
     height: 100%;
     display: flex;
     flex-direction: row;
-    box-shadow: 2px 2px 4px 2px rgb(199, 199, 199);
+
 }
 
 
@@ -277,11 +288,11 @@
 
 }
 .container__product-list-cart-button>a ion-icon{
-    border: 1px solid transparent;
-    border-radius: 50%;
+    border: 2px solid transparent;
+    border-radius: 7px;
 }
 .container__product-list-cart-button>a ion-icon:hover{
-    border: 1px solid black;
+    border: 2px solid rgb(197, 197, 197);
     transition: 0.3s ease-in-out;
 }
 

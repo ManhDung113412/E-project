@@ -3,9 +3,6 @@
     padding: 0;
     list-style-type: none;
     text-decoration: none;
-    font-family: 'Abril Fatface', cursive;
-    font-family: 'Noto Serif JP', serif;
-    font-family: 'Work Sans', sans-serif;
     color: black;
     position: relative;
 }
@@ -21,14 +18,11 @@
 .sidebar {
     background-color: white;
     width: 18%;
-    font-size: 20px;
+    font-size: 21px;
     display: flex;
     flex-direction: column;
     height: 100%;
     border-radius: 8px;
-    /* position: sticky;
-    position: -webkit-sticky;
-    top: 112px; */
 }
 
 .sidebar ul {
@@ -88,11 +82,9 @@
     width: 50%;
     height: auto;
 
-    /* overflow: hidden; */
 }.mainContent_service-storeLocation-map-item{
     width: 600px;
     height: 450px;
-    /* border: 1px solid black; */
     margin-left: 50px;
     margin-bottom: 30px;
     overflow: hidden;
@@ -102,8 +94,6 @@
 
 iframe {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    /* margin-left: 40px;
-    margin-bottom: 35px; */
 }
 
 iframe:hover {

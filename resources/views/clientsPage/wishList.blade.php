@@ -15,12 +15,13 @@
                         </div>
                         <div class="container__list-products-top-right">
                             <div class="container__list-products-top-right-total">
-                                <p>Total</p>
+                                <p>Total:</p>
                                 <p>{{ $total }} items</p>
                             </div>
                             <div class="container__list-products-top-right-button">
-                                <a href="{{ url('client/wishlist/removeMultipleProducts') }}"><ion-icon name="close-outline"></ion-icon></a>
                                 <a href=""><ion-icon name="cart-outline"></ion-icon></a>
+                                <a href="{{ url('client/wishlist/removeMultipleProducts') }}"><ion-icon name="close-outline"></ion-icon></a>
+
                             </div>
                         </div>
                     </div>
@@ -46,8 +47,9 @@
                                     </div>
                                     <div class="container__product-list-cart-total">${{ $item->Export_Price }}</div>
                                     <div class="container__product-list-cart-button">
-                                        <a href="{{ url('/client/wishlist/remove', $item->ID) }}"><ion-icon name="close-outline"></ion-icon></a>
                                         <a href="{{ url('/client/wishlist/addtocart', $item->ID) }}"><ion-icon name="cart-outline"></ion-icon></a>
+                                        <a href="{{ url('/client/wishlist/remove', $item->ID) }}"><ion-icon name="close-outline"></ion-icon></a>
+
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +58,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         {{-- <hr class="main1"> --}}
     </div>

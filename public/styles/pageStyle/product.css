@@ -100,7 +100,18 @@
 }
 .top__name,.top__favor{
     margin-top: 20px;
+    color: black;
+
 }
+.top__favor ion-icon{
+    border: 2px solid transparent;
+    border-radius: 7px;
+    font-size: 25px;
+}.top__favor ion-icon:hover{
+    border: 2px solid rgb(218, 218, 218);
+    transition: 0.3s ease-in-out;
+}
+
 .price {
     width: 100%;
     height: 39px;
@@ -204,11 +215,20 @@ hr {
 
 .container__productInfo-main-details a{
     color: black;
-    font-size: 35px;
+    /* font-size: 35px; */
+    position: absolute;
+    right: 20px;
+    bottom: 230px;
+
 }
 
 .container__productInfo-main-details a ion-icon{
-    font-size: 35px;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    font-size: 30px;
+}.container__productInfo-main-details a ion-icon:hover{
+    border: 2px solid rgb(218, 218, 218);
+    transition: 0.3s ease-in-out;
 }
 
 .main__hr{
@@ -219,7 +239,23 @@ hr {
     margin: 0 auto;
 }
 
-
+#compare{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 17px;
+    top: 60px;
+}
+#compare ion-icon{
+    /* box-shadow: 3px 3px transparent;
+     */
+     border: 2px solid transparent;
+     border-radius: 7px;
+}
+#compare ion-icon:hover{
+    transition: 0.3s ease-in-out;
+    border: 2px solid rgb(218, 218, 218);
+}
 
 .main__reivew{
     margin-top: 65px;

@@ -5,6 +5,7 @@
 @stop
 @section('content')
     <div class="main">
+        <div class="main__title">Shopping Cart</div>
         <form action="Cart" method="POST" class="ajaxform">
             @csrf
             <div class="container">
