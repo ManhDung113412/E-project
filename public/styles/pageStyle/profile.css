@@ -419,3 +419,7 @@ table tr th {
     /* background-color: white; */
     transition: 0.3s ease-in-out;
 }
+
+#offEdit{
+    font-size: 20px;
+}

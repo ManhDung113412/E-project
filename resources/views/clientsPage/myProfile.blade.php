@@ -1,6 +1,7 @@
 
 <link rel="stylesheet" href="{{ asset('styles/pageStyle/profile.css') }}">
-
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <form action="">
     <div id="showOff" class="container ">
         <div class="container__info">
@@ -18,7 +19,7 @@
                 </div>
                 <div class="container__info-top-button">
                     <button id="edit">
-                        <ion-icon name="create-outline"></ion-icon>
+                        <ion-icon name="create-outline" alt="edit"></ion-icon>
                     </button>
                 </div>
             </div>
@@ -277,7 +278,7 @@
                 <input type="text" placeholder="  Phone Number">
                 <button>Submit</button>
             </div>
-            <button id="offEdit">X</button>
+            <button id="offEdit"><ion-icon name="close-outline"></ion-icon></button>
         </div>
     </div>
 </form>
