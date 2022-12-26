@@ -18,19 +18,19 @@
                     <div class="container__sideBar-box-tittle">Brands</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="brands" id="filter" value="Gucci">
+                        <input type="radio" name="brands" id="filter" value="Gucci">
                         <div class="container__sideBar-box-cate-name">Gucci</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="brands" id="filter" value="Louis Vuitton">
+                        <input type="radio" name="brands" id="filter" value="Louis Vuitton">
                         <div class="container__sideBar-box-cate-name">Louis Vuitton</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="brands" id="filter" value="Dior">
+                        <input type="radio" name="brands" id="filter" value="Dior">
                         <div class="container__sideBar-box-cate-name">Dior</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="brands" id="filter" value="Chanel">
+                        <input type="radio" name="brands" id="filter" value="Chanel">
                         <div class="container__sideBar-box-cate-name">Chanel</div>
                     </div>
                 </div>
@@ -38,15 +38,15 @@
                     <div class="container__sideBar-box-tittle">Price</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="Price" id="filter" value="high">
+                        <input type="radio" name="Price" id="filter" value="high">
                         <div class="container__sideBar-box-cate-name">High to low</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="Price" id="filter" value="ow">
+                        <input type="radio" name="Price" id="filter" value="ow">
                         <div class="container__sideBar-box-cate-name">Low to high</div>
                     </div>
                 </div>
-                <div class="container__sideBar-box">
+                {{-- <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Collection</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
@@ -61,7 +61,7 @@
                         <input type="checkbox" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Discount</div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container__sideBar-filter">
                     <button type="submit">Filter</button>
                 </div>
