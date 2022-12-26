@@ -219,6 +219,6 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('wishlist/removemultipleproducts/', [wishListController::class, 'removeMultipleProducts']);
 
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
-    
+
     // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 });
