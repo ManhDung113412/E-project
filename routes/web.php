@@ -192,9 +192,9 @@ Route::prefix('client/products')->group(function () {
     
     Route::get('specificProduct/pdf/{Slug}', [clientProductController::class, 'getPdfFile']);
 
-    Route::get('compareproduct',[compareProductController::class, 'getCompareProduct'])
+    Route::get('compareproduct', [compareProductController::class, 'getCompareProduct'])
     ->name('compareProduct');
-
+    
     Route::get('deleteproduct1', [compareProductController::class, 'deleteProduct1']);
     Route::get('deleteproduct2', [compareProductController::class, 'deleteProduct2']);
 });
