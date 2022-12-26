@@ -40,20 +40,20 @@ class compareProductController extends Controller
             } else {
                 session()->put('product_1', $product[0]);
             }
-            return view('layouts.compare', ['product_1' => session()
-            ->get('product_1'), 'product_2' => session()->get('product_2')]);
         }
+        return view('layouts.compare', ['product_1' => session()
+            ->get('product_1'), 'product_2' => session()->get('product_2')]);
     }
 
-    // public function deleteProduct1(Request $req)
-    // {
-    //     session()->forget('product_1');
-    //     return redirect()->back();
-    // }
+    public function deleteProduct1(Request $req)
+    {
+        session()->forget('product_1');
+        return redirect()->back();
+    }
 
-    // public function deleteProduct2(Request $req)
-    // {
-    //     session()->forget('product_2');
-    //     return redirect()->back();
-    // }
+    public function deleteProduct2(Request $req)
+    {
+        session()->forget('product_2');
+        return redirect()->back();
+    }
 }

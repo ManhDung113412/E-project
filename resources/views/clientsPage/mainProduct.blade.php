@@ -39,8 +39,9 @@
                                     @endforeach
                                 </div>
                                 {{-- <a href="{{ url('/client/products/compareproduct', $item->ID) }}">so sanh</a> --}}
-                            <button id="compare"  value="{{ $item->ID }}">Compare</button>
                             </div>
+                            <button id="compare"  value="{{ $item->ID }}">Compare</button>
+
                             <div class="container__productInfo-main-add">
                                 <button type="submit">Add to cart</button>
                             </div>
@@ -114,11 +115,6 @@
 
 
     <script>
-        // var result = document.querySelectorAll("div .result");
-        // var productSubtotal = document.querySelectorAll("div .productSubtotal");
-
-        // console.log(productSubtotal);
-
         $(document).ready(function() {
             $('#compare').each(function(index) {
                 $(this).on('click', function(e) {
@@ -133,7 +129,6 @@
                             _token: _token
                         },
                         success: function(data) {
-                        //    console.log('hehe');
                         }
                     })
                 })
