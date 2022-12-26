@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ProductDetail;
 use App\Models\Product;
 use App\Models\User;
-
+use Symfony\Component\HttpFoundation\Response;
 
 class shoppingcartController extends Controller
 {
@@ -131,6 +131,10 @@ class shoppingcartController extends Controller
                 ->select('Product_quantity')
                 ->get();
 
+            if ($old_quantity[0]->Product_quantity == 5) {
+                return;
+            }
+
             $cart = DB::table('carts')
                 ->where('Customer_ID', $customer_id)
                 ->where('Product_Detail_ID', $product_id)
@@ -175,6 +179,11 @@ class shoppingcartController extends Controller
                 ->where('Product_Detail_ID', $product_id)
                 ->select('Product_quantity')
                 ->get();
+
+            if ($old_quantity[0]->Product_quantity == 0) {
+                return;
+            }
+
             $cart = DB::table('carts')
                 ->where('Customer_ID', $customer_id)
                 ->where('Product_Detail_ID', $product_id)
@@ -189,12 +198,12 @@ class shoppingcartController extends Controller
                 ->select('c.*', 'pd.*', 'p.*', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
                 ->get();
 
-                $subtotals_data = DB::table('carts As c')
+            $subtotals_data = DB::table('carts As c')
                 ->where('Customer_ID', $customer_id)
                 ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
                 ->join('products as p', 'pd.Product_ID', 'p.ID')
                 ->select(DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
-                ->get(); 
+                ->get();
 
             $item = $new_item[0];
             $output = $item->Product_quantity;
@@ -216,6 +225,25 @@ class shoppingcartController extends Controller
             ->where('Product_Detail_ID', $productID)
             ->delete();
         return redirect()->route('myshoppingcart');
+    }
+
+    public function getDiscountCode(Request $request)
+    {
+        if ($request->get('discountCount')) {
+            $code = $request->get('discountCount');
+
+            $discountCode = DB::table('codes')
+                ->where('Code', $code)
+                ->get();
+
+            if (!$discountCode->isEmpty()) {
+                $discount = $discountCode[0]->Discount;
+                echo $discount;
+            } else {
+                $error = ['error' => 'Your Discount Code Is Invalid Or Expire'];
+                return response()->json($error);
+            }
+        }
     }
 
 

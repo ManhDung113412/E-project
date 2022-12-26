@@ -164,7 +164,7 @@ Route::prefix('client')->group(function () {
 
 
     Route::post('register', [clientLoginController::class, 'postRegister'])
-    ->name('client.register');
+        ->name('client.register');
 
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
@@ -212,6 +212,9 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::post('Cart/decrease', [shoppingcartController::class, 'handleDecreaseQuantity'])
         ->name('client.shopping-cart.handle-decrease-quantity');
 
+    Route::post('Cart/discount-code', [shoppingcartController::class, 'getDiscountCode'])
+        ->name('client.shopping-cart.get-discount-code');
+
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
     Route::get('wishlist/remove/{ID}', [wishListController::class, 'removeFromWishList']);
     Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
@@ -219,6 +222,6 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('wishlist/removemultipleproducts/', [wishListController::class, 'removeMultipleProducts']);
 
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
-    
+
     // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
 });
