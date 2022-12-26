@@ -5,56 +5,7 @@
 @section('content')
     <div class="main">
         <div class="container">
-            <div class="container__sideBar">
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Category</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Long Wallet</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Small Wallet</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Cards Holder</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Price</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">High to low</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Low to high</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Collection</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">New Arrivals</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Trending</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
-                        <div class="container__sideBar-box-cate-name">Discount</div>
-                    </div>
-                </div>
-            </div>
+
             <div class="container__list">
                 <div class="container__list-tittle">Favorite List</div>
                 <div class="container__list-products">
@@ -68,8 +19,8 @@
                                 <p>{{ $total }} items</p>
                             </div>
                             <div class="container__list-products-top-right-button">
-                                <a href="{{ url('client/wishlist/removeMultipleProducts') }}">Remove</a>
-                                <a href="">Add To Cart</a>
+                                <a href="{{ url('client/wishlist/removeMultipleProducts') }}"><ion-icon name="close-outline"></ion-icon></a>
+                                <a href=""><ion-icon name="cart-outline"></ion-icon></a>
                             </div>
                         </div>
                     </div>
@@ -89,148 +40,24 @@
                                             <div class="container__product-list-cart-info-name">{{ $item->Name }}</div>
                                         </a>
                                     </div>
-                                    <div class="container__product-list-cart-price">{{ $item->Color }}</div>
-                                    {{-- <div class="container__product-list-cart-quantity">
-                               {{ $item-> }}
-                            </div> --}}
+                                    <div class="container__product-list-cart-price">
+                                        <div class="colorProduct" style="background-color: {{ $item->Color }};"></div>
+
+                                    </div>
                                     <div class="container__product-list-cart-total">${{ $item->Export_Price }}</div>
                                     <div class="container__product-list-cart-button">
-                                        <a href="{{ url('/client/wishlist/remove', $item->ID) }}">Remove</a>
-                                        <a href="{{ url('/client/wishlist/addtocart', $item->ID) }}">Add To Cart</a>
+                                        <a href="{{ url('/client/wishlist/remove', $item->ID) }}"><ion-icon name="close-outline"></ion-icon></a>
+                                        <a href="{{ url('/client/wishlist/addtocart', $item->ID) }}"><ion-icon name="cart-outline"></ion-icon></a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <div class="container__list-products-list-cart">
-                        <div class="container__list-products-list-cart-checkbox">
-                            <input type="checkbox" name="" value="favor">
-                        </div>
-                        <div class="container__list-products-list-cart-child">
-                            <div class="container__product-list-cart-image">
-                                <div class="container__product-list-cart-image-img">
-                                    <img src="./image/div1-right.png" style="width: 89px; height: 110px;"
-                                        alt="">
-                                </div>
-                                <div class="container__product-list-cart-image-info">
-                                    <div class="container__product-list-cart-info-name">Product Name</div>
-                                </div>
-                            </div>
-                            <div class="container__product-list-cart-price">Color</div>
-                            <div class="container__product-list-cart-quantity">
-                                Category
-                            </div>
-                            <div class="container__product-list-cart-total">$1000</div>
-                            <div class="container__product-list-cart-button">
-                                <button>Remove</button>
-                                <button>Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__list-products-list-cart">
-                        <div class="container__list-products-list-cart-checkbox">
-                            <input type="checkbox" name="" value="favor">
-                        </div>
-                        <div class="container__list-products-list-cart-child">
-                            <div class="container__product-list-cart-image">
-                                <div class="container__product-list-cart-image-img">
-                                    <img src="./image/div1-right.png" style="width: 89px; height: 110px;"
-                                        alt="">
-                                </div>
-                                <div class="container__product-list-cart-image-info">
-                                    <div class="container__product-list-cart-info-name">Product Name</div>
-                                </div>
-                            </div>
-                            <div class="container__product-list-cart-price">Color</div>
-                            <div class="container__product-list-cart-quantity">
-                                Category
-                            </div>
-                            <div class="container__product-list-cart-total">$1000</div>
-                            <div class="container__product-list-cart-button">
-                                <button>Remove</button>
-                                <button>Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__list-products-list-cart">
-                        <div class="container__list-products-list-cart-checkbox">
-                            <input type="checkbox" name="" value="favor">
-                        </div>
-                        <div class="container__list-products-list-cart-child">
-                            <div class="container__product-list-cart-image">
-                                <div class="container__product-list-cart-image-img">
-                                    <img src="./image/div1-right.png" style="width: 89px; height: 110px;"
-                                        alt="">
-                                </div>
-                                <div class="container__product-list-cart-image-info">
-                                    <div class="container__product-list-cart-info-name">Product Name</div>
-                                </div>
-                            </div>
-                            <div class="container__product-list-cart-price">Color</div>
-                            <div class="container__product-list-cart-quantity">
-                                Category
-                            </div>
-                            <div class="container__product-list-cart-total">$1000</div>
-                            <div class="container__product-list-cart-button">
-                                <button>Remove</button>
-                                <button>Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__list-products-list-cart">
-                        <div class="container__list-products-list-cart-checkbox">
-                            <input type="checkbox" name="" value="favor">
-                        </div>
-                        <div class="container__list-products-list-cart-child">
-                            <div class="container__product-list-cart-image">
-                                <div class="container__product-list-cart-image-img">
-                                    <img src="./image/div1-right.png" style="width: 89px; height: 110px;"
-                                        alt="">
-                                </div>
-                                <div class="container__product-list-cart-image-info">
-                                    <div class="container__product-list-cart-info-name">Product Name</div>
-                                </div>
-                            </div>
-                            <div class="container__product-list-cart-price">Color</div>
-                            <div class="container__product-list-cart-quantity">
-                                Category
-                            </div>
-                            <div class="container__product-list-cart-total">$1000</div>
-                            <div class="container__product-list-cart-button">
-                                <button>Remove</button>
-                                <button>Add To Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container__list-products-list-cart">
-                        <div class="container__list-products-list-cart-checkbox">
-                            <input type="checkbox" name="" value="favor">
-                        </div>
-                        <div class="container__list-products-list-cart-child">
-                            <div class="container__product-list-cart-image">
-                                <div class="container__product-list-cart-image-img">
-                                    <img src="./image/div1-right.png" style="width: 89px; height: 110px;"
-                                        alt="">
-                                </div>
-                                <div class="container__product-list-cart-image-info">
-                                    <div class="container__product-list-cart-info-name">Product Name</div>
-                                </div>
-                            </div>
-                            <div class="container__product-list-cart-price">Color</div>
-                            <div class="container__product-list-cart-quantity">
-                                Category
-                            </div>
-                            <div class="container__product-list-cart-total">$1000</div>
-                            <div class="container__product-list-cart-button">
-                                <button>Remove</button>
-                                <button>Add To Cart</button>
-                            </div>
-                        </div>
-                    </div> --}}
+
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="main1">
+        {{-- <hr class="main1"> --}}
     </div>
 
 @stop

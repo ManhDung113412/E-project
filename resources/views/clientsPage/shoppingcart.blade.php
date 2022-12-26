@@ -31,11 +31,10 @@
                                                 style="background-color: {{ $item->Color }}"></div>
                                         </div>
                                     </div>
-                                    <input class="container__product-list-cart-price"
-                                        value="{{ $item->Export_Price }}"></input>
-                                    <div class="container__product-list-cart-quantity">
+                                    <div class="container__product-list-cart-price">${{ $item->Export_Price }}
+                                    </div>
 
-                                        {{-- -- --}}
+                                    <div class="container__product-list-cart-quantity">
                                         <button type="button" class="decrementQuantity"
                                             value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon class="icon" name="remove-outline"></ion-icon>
@@ -43,8 +42,6 @@
 
                                         <div class="result" max="5">{{ $item->Product_quantity }}</div>
 
-
-                                        {{-- ++ --}}
                                         <button type="button" class="incrementQuantity"
                                             value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon class="icon" name="add-outline"></ion-icon>
@@ -58,7 +55,7 @@
                                         ${{ $item->subtotal }}</div>
                                     <div class="container__product-list-cart-button">
                                         <a
-                                            href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">Remove</a>
+                                            href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}"><ion-icon name="close-outline"></ion-icon></a>
                                     </div>
                                 </div>
                             @endforeach

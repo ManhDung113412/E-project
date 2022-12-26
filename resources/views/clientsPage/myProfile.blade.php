@@ -19,7 +19,7 @@
                 </div>
                 <div class="container__info-top-button">
                     <button id="edit">
-                        <ion-icon name="create-outline" alt="edit"></ion-icon>
+                        <ion-icon name="create-outline"></ion-icon>
                     </button>
                 </div>
             </div>
