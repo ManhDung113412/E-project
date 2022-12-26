@@ -38,6 +38,7 @@
                                         href="{{ url('/client/products/specificProduct', $item->Slug) }}"></a>
                                 @endforeach
                             </div>
+                            <a href="{{ url('/client/products/compareproduct', $item->ID) }}">so sanh</a>
                         </div>
                         <div class="container__productInfo-main-add">
                             <button type="submit">Add to cart</button>
