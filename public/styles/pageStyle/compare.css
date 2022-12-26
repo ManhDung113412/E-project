@@ -1,0 +1,33 @@
+table{
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+table{
+    border-collapse: collapse;
+    height: 1000px;
+    padding: 100px;
+}
+
+table td{
+    border: 1px solid black;
+}
+
+table tr{
+    border: 1px solid black;
+    height: 100px;
+    text-align: center;
+}
+
+table tr th{
+    width: 300px;
+}
+
+table a{
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    height: 100px;
+}

@@ -89,38 +89,38 @@ table tr th td{
             <div class="container__content">
                 <div class="container__content-title">Product Details</div>
                 <div class="container__content-details">
-                    <div class="container__content-details-img" style="background-image: url(); background-size:cover;">
+                    <div class="container__content-details-img" style="background-image: url({{ $data->Main_IMG }}); background-size:cover;">
 
                     </div>
                     <div class="container__content-details-info">
                         <table>
                             <tr>
                                 <th>Product:</th>
-                                <td>ABCXYZ</td>
+                                <td>{{ $data->Name }}</td>
                             </tr>
                             <tr>
                                 <th>Product Code:</th>
-                                <td>A123123</td>
+                                <td>{{ $data->Code }}</td>
                             </tr>
                             <tr>
                                 <th>Price:</th>
-                                <td>$69696969</td>
+                                <td>${{ $data->Export_Price }}</td>
                             </tr>
                             <tr>
                                 <th>Brand:</th>
-                                <td>haidz</td>
+                                <td>{{ $data->brandName }}</td>
                             </tr>
                             <tr>
                                 <th>Material:</th>
-                                <td>Titanium</td>
+                                <td>{{ $data->Material }}</td>
                             </tr>
                             <tr>
                                 <th>Size:</th>
-                                <td>69x69</td>
+                                <td>{{ $data->Size }}</td>
                             </tr>
                             <tr>
                                 <th>Information:</th>
-                                <td>aaaaaaaaaaaa aaaaaaaaaa</td>
+                                <td>{{ $data->Information }}</td>
                             </tr>
                         </table>
                     </div>
@@ -129,5 +129,4 @@ table tr th td{
         </div>
     </form>
 </body>
-
 </html>

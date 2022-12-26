@@ -580,12 +580,19 @@ class clientProductController extends Controller
     public function getPdfFile(Request $req)
     {
         $Slug = $req->Slug;
-        $this_product = DB::table('Products')
-            ->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')
-            ->where('product_details.Slug', $Slug)
-            ->get();
-
-        $data = $this_product;
+        // $this_product = DB::table('Products')
+        //     ->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')
+        //     ->join('brands','brands.ID', '=', 'Products.Brand_ID')
+        //     ->where('product_details.Slug', $Slug)
+        //     ->get();
+        $this_product = DB::table('brands As b')
+        ->join('Products As p', 'p.Brand_ID', '=', 'b.ID')
+        ->join('product_details As pd', 'pd.Product_ID', '=', 'p.ID')
+        ->select('p.Name','pd.Code','b.Name as brandName','pd.Material','pd.Size','pd.Information','pd.Main_IMG','pd.Export_Price')
+        ->where('pd.Slug', $Slug)
+        ->get();
+        $data = $this_product[0];
+        // dd($data);
         $pdf = PDF::loadview('layouts.pdf', compact('data'));
         // dd($data);
         return $pdf->download('layouts.pdf');

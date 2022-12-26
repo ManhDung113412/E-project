@@ -19,7 +19,7 @@ use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
 use App\Http\Controllers\client\wishListController;
-
+use App\Http\Controllers\compareProductController;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -164,7 +164,7 @@ Route::prefix('client')->group(function () {
 
 
     Route::post('register', [clientLoginController::class, 'postRegister'])
-    ->name('client.register');
+        ->name('client.register');
 
     Route::get('review', [reviewController::class, 'getReview']);
     Route::get('productPage', [clientController::class, 'getProductPages']);
@@ -189,7 +189,14 @@ Route::prefix('client/products')->group(function () {
     Route::get('dior', [clientProductController::class, 'getDior']);
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
+    
     Route::get('specificProduct/pdf/{Slug}', [clientProductController::class, 'getPdfFile']);
+
+    Route::get('compareproduct', [compareProductController::class, 'getCompareProduct'])
+    ->name('compareProduct');
+    
+    Route::get('deleteproduct1', [compareProductController::class, 'deleteProduct1']);
+    Route::get('deleteproduct2', [compareProductController::class, 'deleteProduct2']);
 });
 
 
