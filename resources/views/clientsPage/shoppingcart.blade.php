@@ -18,7 +18,7 @@
                             <div class="container__product-categories-button"></div>
                         </div>
                         <div class="container__product-list">
-                            @foreach ($carts as $item)
+                            @foreach ($carts as $index => $item)
                                 <div class="container__product-list-cart">
                                     <div class="container__product-list-cart-image">
                                         <a class="container__product-list-cart-image-img" href="">
@@ -32,20 +32,20 @@
                                         </div>
                                     </div>
                                     <input class="container__product-list-cart-price"
-                                        value="{{ $item->Export_Price }}">$</input>
+                                        value="{{ $item->Export_Price }}"></input>
                                     <div class="container__product-list-cart-quantity">
 
                                         {{-- -- --}}
-                                        <button type="button" id="decrementQuantity"
+                                        <button type="button" class="decrementQuantity"
                                             value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon class="icon" name="remove-outline"></ion-icon>
                                         </button>
 
-                                        <div id="result" max="5">{{ $item->Product_quantity }}</div>
+                                        <div class="result" max="5">{{ $item->Product_quantity }}</div>
 
 
                                         {{-- ++ --}}
-                                        <button type="button" id="incrementQuantity"
+                                        <button type="button" class="incrementQuantity"
                                             value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon class="icon" name="add-outline"></ion-icon>
                                         </button>
@@ -54,14 +54,15 @@
 
                                     </div>
 
-                                    <div class="container__product-list-cart-total" id="productSubtotal"></div>
+                                    <div class="productSubtotal container__product-list-cart-total">
+                                        ${{ $item->subtotal }}</div>
                                     <div class="container__product-list-cart-button">
                                         <a
                                             href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">Remove</a>
                                     </div>
                                 </div>
-            @endforeach
-        </div>
+                            @endforeach
+                        </div>
 
                     </div>
                 </div>
@@ -73,7 +74,8 @@
                             <div class="container__cartTotal-big2-info">
                                 <div class="container__cartTotal-big2-info-sub">
                                     <div class="container__cartTotal-big2-info-sub-left">Subtotals</div>
-                                    <div class="container__cartTotal-big2-info-sub-right">$</div>
+                                    <div class="subtotals container__cartTotal-big2-info-sub-right">${{ $subtotals }}
+                                    </div>
                                 </div>
                                 <div class="container__cartTotal-big2-info-ship">
                                     <div class="container__cartTotal-big2-info-left">Shipping</div>
@@ -172,43 +174,54 @@
 
 
     <script>
+        var result = document.querySelectorAll("div .result");
+        var productSubtotal = document.querySelectorAll("div .productSubtotal");
+
+        console.log(productSubtotal);
+
         $(document).ready(function() {
-            $('#incrementQuantity').click(function(e) {
-                var product = $(this).val();
-                var _token = $('input[name="_token"]').val();
-                $.ajax({
-                    url: "{{ route('client.shopping-cart.handle-increase-quantity') }}",
-                    method: "POST",
-                    data: {
-                        product: product,
-                        _token: _token
-                    },
-                    success: function(data) {
-                        var hehe = JSON.parse(data);
-                        $('#result').html(hehe[0]);
-                        $('#productSubtotal').html("$" + hehe[1]);
-                    }
+            $('.incrementQuantity').each(function(index) {
+                $(this).on('click', function() {
+                    var product = $(this).val();
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: "{{ route('client.shopping-cart.handle-increase-quantity') }}",
+                        method: "POST",
+                        data: {
+                            product: product,
+                            _token: _token
+                        },
+                        success: function(data) {
+                            var hehe = JSON.parse(data);
+                            result[index].innerHTML = hehe[0];
+                            productSubtotal[index].innerHTML = "$" + hehe[1];
+                            $('.subtotals').html("$" + hehe[2]);
+                        }
+                    })
                 })
             })
 
-            $('#decrementQuantity').click(function(e) {
-                var product = $(this).val();
-                var _token = $('input[name="_token"]').val();
-                $.ajax({
-                    url: "{{ route('client.shopping-cart.handle-decrease-quantity') }}",
-                    method: "POST",
-                    data: {
-                        product: product,
-                        _token: _token
-                    },
-                    success: function(data) {
-                        var hehe = JSON.parse(data);
-                        $('#result').html(hehe[0]);
-                        $('#productSubtotal').html("$" + hehe[1]);
-                    }
+            $('.decrementQuantity').each(function(index) {
+                $(this).on('click', function() {
+                    var product = $(this).val();
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: "{{ route('client.shopping-cart.handle-decrease-quantity') }}",
+                        method: "POST",
+                        data: {
+                            product: product,
+                            _token: _token
+                        },
+                        success: function(data) {
+                            var hehe = JSON.parse(data);
+                            result[index].innerHTML = hehe[0];
+                            productSubtotal[index].innerHTML = "$" + hehe[1];
+                            $('.subtotals').html("$" + hehe[2]);
+
+                        }
+                    })
                 })
             })
-
 
         });
     </script>
