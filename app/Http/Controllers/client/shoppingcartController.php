@@ -18,18 +18,21 @@ class shoppingcartController extends Controller
     {
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
-        DB::enableQueryLog();
+        $subtotals = 0;
 
         $carts = DB::table('carts As c')
             ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
             ->join('products as p', 'pd.Product_ID', 'p.ID')
-            ->select('Export_Price','Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID' , 'Product_quantity', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
+            ->select('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
             ->where('Customer_ID', $customer_ID)
             ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
             ->get();
-        // dd(DB::getQueryLog());
-        // dd($carts);
-        return view('clientsPage.shoppingCart', compact('carts'));
+
+        foreach ($carts as $cart) {
+            $subtotals += $cart->subtotal;
+        }
+
+        return view('clientsPage.shoppingCart', compact('carts', 'subtotals'));
 
 
 
@@ -142,12 +145,21 @@ class shoppingcartController extends Controller
                 ->join('products as p', 'pd.Product_ID', 'p.ID')
                 ->select('c.*', 'pd.*', 'p.*', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
                 ->get();
+
+            $subtotals_data = DB::table('carts As c')
+                ->where('Customer_ID', $customer_id)
+                ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
+                ->join('products as p', 'pd.Product_ID', 'p.ID')
+                ->select(DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
+                ->get();
+
             $item = $new_item[0];
             $output = $item->Product_quantity;
             $output1 = $item->subtotal;
+            $subtotals = $subtotals_data[0]->subtotal;
             $kk = [];
-            array_push($kk, $output, $output1);
-            
+            array_push($kk, $output, $output1, $subtotals);
+
             echo json_encode($kk);
         }
     }
@@ -176,12 +188,20 @@ class shoppingcartController extends Controller
                 ->join('products as p', 'pd.Product_ID', 'p.ID')
                 ->select('c.*', 'pd.*', 'p.*', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
                 ->get();
-            $item = $new_item[0];
 
+                $subtotals_data = DB::table('carts As c')
+                ->where('Customer_ID', $customer_id)
+                ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
+                ->join('products as p', 'pd.Product_ID', 'p.ID')
+                ->select(DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
+                ->get(); 
+
+            $item = $new_item[0];
             $output = $item->Product_quantity;
             $output1 = $item->subtotal;
+            $subtotals = $subtotals_data[0]->subtotal;
             $kk = [];
-            array_push($kk, $output, $output1);
+            array_push($kk, $output, $output1, $subtotals);
 
             echo json_encode($kk);
         }

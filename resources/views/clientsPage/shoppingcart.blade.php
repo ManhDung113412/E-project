@@ -42,7 +42,7 @@
                                         </button>
 
                                         <div class="result" max="5">{{ $item->Product_quantity }}</div>
-                                        
+
 
                                         {{-- ++ --}}
                                         <button type="button" class="incrementQuantity"
@@ -74,7 +74,8 @@
                             <div class="container__cartTotal-big2-info">
                                 <div class="container__cartTotal-big2-info-sub">
                                     <div class="container__cartTotal-big2-info-sub-left">Subtotals</div>
-                                    {{-- <div class="container__cartTotal-big2-info-sub-right">${{$carts[0]->subtotal}}</div> --}}
+                                    <div class="subtotals container__cartTotal-big2-info-sub-right">${{ $subtotals }}
+                                    </div>
                                 </div>
                                 <div class="container__cartTotal-big2-info-ship">
                                     <div class="container__cartTotal-big2-info-left">Shipping</div>
@@ -181,8 +182,6 @@
         $(document).ready(function() {
             $('.incrementQuantity').each(function(index) {
                 $(this).on('click', function() {
-                    // sibling = $(this).siblings(".result").html()
-                    // console.log(sibling);
                     var product = $(this).val();
                     var _token = $('input[name="_token"]').val();
                     $.ajax({
@@ -194,15 +193,9 @@
                         },
                         success: function(data) {
                             var hehe = JSON.parse(data);
-                            // $('.result').html(hehe[0]);
-                            // $('.productSubtotal').html("$" + hehe[1]);
-
                             result[index].innerHTML = hehe[0];
                             productSubtotal[index].innerHTML = "$" + hehe[1];
-
-                            // $(this).siblings(".result").html(hehe[0])
-                            // $(this).siblings(".productSubtotal").html(hehe[1])
-                            console.log(data);
+                            $('.subtotals').html("$" + hehe[2]);
                         }
                     })
                 })
@@ -210,9 +203,6 @@
 
             $('.decrementQuantity').each(function(index) {
                 $(this).on('click', function() {
-                    console.log($(this).val());
-
-
                     var product = $(this).val();
                     var _token = $('input[name="_token"]').val();
                     $.ajax({
@@ -224,11 +214,10 @@
                         },
                         success: function(data) {
                             var hehe = JSON.parse(data);
-                            // $('.result').html(hehe[0]);
-                            // $('.productSubtotal').html("$" + hehe[1]);
-
                             result[index].innerHTML = hehe[0];
                             productSubtotal[index].innerHTML = "$" + hehe[1];
+                            $('.subtotals').html("$" + hehe[2]);
+
                         }
                     })
                 })
