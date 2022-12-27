@@ -80,14 +80,13 @@
                 </a>
             </div>
         </div>
-        <<<<<<< HEAD <div class="container__newArrivals-collection">
+        <div class="container__newArrivals-collection">
             <div id="colListNew" class="container__newArrivals-collection-slide"
                 style="background-image:  url({{ $dungdeptrai[0]->IMG }}); background-size: cover; background-position: 50% 50%;">
-                =======
+              
                 <div class="container__newArrivals-collection"
                     style="background-image: url({{ $dungdeptrai[0]->IMG }});background-size: cover; background-position: 50% 50%;">
                     <div id="colListNew" class="container__newArrivals-collection-slide">
-                        >>>>>>> fb534d4050d61fb2273a59e2e422040bacdcfa0d
                         @foreach ($middle_slides_img as $middle)
                             <div class="container__newArrivals-collection-list"
                                 style="background-image: url({{ $middle->IMG }});">
