@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div id="shoppingCart" class="header__cart">
-                    <div class="header__cart-tittle">Shopping Cart
+                    <div class="header__cart-tittle"><a href="{{ url('client/Cart') }}">Shopping Cart</a>
                         <button id="hideCart">
                             <ion-icon name="chevron-up-outline"></ion-icon>
                         </button>
@@ -117,7 +117,7 @@
                         <p>$10000</p>
                     </div>
                     <div class="header__cart-checkout">
-                        <button>Check out</button>
+                        <a href="{{ url('client/Cart') }}">Check Out</a>
                     </div>
                 </div>
                 <div class="header__update">
@@ -229,10 +229,10 @@
                         </a>
                     </div>
                     <div class="header__nav-right">
-                        <a class="iconHead" id="log">
+                        <a  class="iconHead" id="log">
                             <ion-icon name="person-outline"></ion-icon>
                         </a>
-                        <a class="iconHead" id="showCart">
+                        <a class="iconHead" href="{{ url('client/login') }}">
                             {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
                             <ion-icon name="cart-outline"></ion-icon>
                         </a>
