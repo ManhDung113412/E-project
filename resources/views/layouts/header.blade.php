@@ -153,7 +153,11 @@
                 <div class="header__nav-right">
                     <div>{{ $customer_infor->Last_Name }} {{ $customer_infor->First_Name }}</div>
                     <button id="log">
+                        @if (Auth::guard('users')->check())
+                        <ion-icon name="person"></ion-icon>
+                        @else
                         <ion-icon name="person-outline"></ion-icon>
+                        @endif
                     </button>
                     <button id="showCart">
                         <div class="quantityCart">{{ $cart_quantity }}</div>

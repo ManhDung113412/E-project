@@ -40,7 +40,7 @@
                                 </div>
                                 {{-- <a href="{{ url('/client/products/compareproduct', $item->ID) }}">so sanh</a> --}}
                             </div>
-                            <button id="compare"  value="{{ $item->ID }}">Compare</button>
+                            <button id="compare" value="{{ $item->ID }}"><ion-icon name="git-compare-outline"></ion-icon></button>
 
                             <div class="container__productInfo-main-add">
                                 <button type="submit">Add to cart</button>
@@ -61,7 +61,7 @@
                                     <li><b>Code:</b> {{ $item->Code }}</p>
                                     <li><b>In Stock:</b> {{ $item->Quantity }}</li>
                                 </ul>
-                                <a href="{{ url('/client/products/specificProduct/pdf', $item->Slug) }}">Download Pdf</a>
+                                <a  href="{{ url('/client/products/specificProduct/pdf', $item->Slug) }}"><ion-icon name="download-outline"></ion-icon></a>
                             </div>
                         </div>
                     </div>

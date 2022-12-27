@@ -40,6 +40,9 @@
                             <button>
                                 <ion-icon name="heart-outline"></ion-icon>
                             </button>
+                            <button>
+                                <ion-icon name="git-compare-outline"></ion-icon>
+                            </button>
                         </div>
                         <div style="background-image: url({{ $item->Main_IMG }})"
                             class="container__featured-products-items-img"></div>
@@ -96,6 +99,9 @@
                             </button>
                             <button>
                                 <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <button>
+                                <ion-icon name="git-compare-outline"></ion-icon>
                             </button>
                         </div>
                         <div style="background-image: url({{ $item->Main_IMG }})"
