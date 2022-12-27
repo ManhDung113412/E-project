@@ -16,7 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
-        // 'passwords' => 'admins',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -117,11 +117,11 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admins' => [ // Tên bảng
+        'admin' => [ // Tên bảng
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 1,
-            'throttle' => 1,
+            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 
@@ -136,6 +136,6 @@ return [
     |
     */
 
-    'password_timeout' => 1,
+    'password_timeout' => 10800,
 
 ];
