@@ -36,7 +36,7 @@
                                 <ion-icon name="caret-forward-outline"></ion-icon>
                             </div>
                             <div><a href="{{ url('client/Cart') }}">My Shopping Cart</a></div>
-                            <div><a href="{{ url('client/wishLish') }}">My Wish List</a></div>
+                            <div><a href="{{ url('client/wishList') }}">My Wish List</a></div>
                             <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                         </div>
                     </div>

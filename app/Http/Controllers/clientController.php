@@ -24,7 +24,8 @@ class clientController extends Controller
         $user = DB::table('users As u')
             ->join('orders as o', 'u.id', 'o.Customer_ID')
             ->join('orders_details as od', 'o.ID', 'od.Order_ID')
-            ->select(DB::raw('sum(Quantity) as Total_Quantity'), DB::raw('sum(Quantity * Price) as Total_Price'), 'o.Code as Order_Code', 'o.Status', 'o.created_at', 'u.First_Name', 'u.Last_Name', 'u.username', 'u.Dob', 'u.Email', 'u.Number_Phone', 'u.Rank', 'u.Code')
+            ->select(DB::raw('sum(Quantity) as Total_Quantity'),
+            DB::raw('sum(Quantity * Price) as Total_Price'), 'o.Code as Order_Code', 'o.Status', 'o.created_at', 'u.First_Name', 'u.Last_Name', 'u.username', 'u.Dob', 'u.Email', 'u.Number_Phone', 'u.Rank', 'u.Code')
             ->groupBy('Order_Code', 'Status', 'created_at', 'First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
             ->where('u.id', $user_id)
             ->get();
@@ -47,6 +48,7 @@ class clientController extends Controller
                 'phone_number' => 'required|regex:/(01)[0-9]{9}/|unique:users'
             ]);
         }
+
         else if($old_email != $request->email){
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
@@ -56,6 +58,7 @@ class clientController extends Controller
                 'phone_number' => 'required'
             ]);
         }
+
         else if($old_number_phone != $request->phoneNumber){
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
@@ -65,6 +68,7 @@ class clientController extends Controller
                 'phone_number' => 'required|regex:/(01)[0-9]{9}/|unique:users'
             ]);
         }
+         
         else{
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
