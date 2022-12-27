@@ -590,4 +590,13 @@ class clientProductController extends Controller
         $pdf = PDF::loadview('layouts.pdf', compact('data'));
         return $pdf->download('layouts.pdf');
     }
+
+    // public function getSmallCart(Request $req){
+    //     $customer_ID = Auth::guard('users')->id();
+    //     $this_customer = User::where('id', $customer_ID)->get();
+    //     $customer_ID = $this_customer[0]->id;
+    //     $carts = Cart::where('Customer_ID', $customer_ID)->get();
+    //     // dd($carts[0]->ID);
+    //     return view('layouts.header', compact('carts'));
+    // }
 }

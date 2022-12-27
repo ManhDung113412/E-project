@@ -222,12 +222,17 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::post('Cart/discount-code', [shoppingcartController::class, 'getDiscountCode'])
         ->name('client.shopping-cart.get-discount-code');
 
+    Route::get('Cart/removefromcart/{ID}', [shoppingcartController::class, 'removeFromCart']);
+
     Route::get('wishLish', [wishListController::class, 'getWithList'])->name('wishList');
+    
+    
     Route::get('wishlist/remove/{ID}', [wishListController::class, 'removeFromWishList']);
     Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
     Route::get('wishlist/addtowishlist/{ID}', [wishListController::class, 'addToWishList']);
     Route::get('wishlist/removemultipleproducts/', [wishListController::class, 'removeMultipleProducts']);
 
+    // Route::get('getSmallCart',[clientProductController::class, 'getSmallCart']);
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
     // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);

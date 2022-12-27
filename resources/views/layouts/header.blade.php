@@ -93,29 +93,35 @@
                     </button>
                 </div>
                 <div class="header__cart-list">
+                    @foreach ($customer_cart as $item)
                     <div class="header__cart-list-items">
-                        <div class="header__cart-list-items-img" style="background-image: url(./)"></div>
-                        <div class="header__cart-list-items-info">
-                            <div class="header__cart-list-items-info-name">Product Name</div>
-                            <div class="header__cart-list-items-info-quantity">
-                                <button>
-                                    <ion-icon name="remove-outline"></ion-icon>
-                                </button>
-                                <div class="header__cart-list-items-info-quantity-num">20</div>
-                                <button>
-                                    <ion-icon name="add-outline"></ion-icon>
-                                </button>
+                            <div class="header__cart-list-items-img"
+                                style="background-image: url('{{ $item->Main_IMG }}')"></div>
+                            <div class="header__cart-list-items-info">
+                                <div class="header__cart-list-items-info-name">{{ $item->Name }}</div>
+                                <div class="header__cart-list-items-info-quantity">
+                                    <button>
+                                        <ion-icon name="remove-outline"></ion-icon>
+                                    </button>
+                                    <div class="header__cart-list-items-info-quantity-num">
+                                        {{ $item->Product_quantity }}</div>
+                                    <a >
+                                        <ion-icon name="add-outline"></ion-icon>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         <div class="header__cart-list-items-info-right">
-                            <div class="header__cart-list-items-info-right-price">$1000</div>
+                            <div class="header__cart-list-items-info-right-price">${{ $item->Export_Price }}</div>
                             <div class="header__cart-list-items-info-right-action">
-                                <button>
+                                <a href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">
                                     <ion-icon name="trash-bin-outline"></ion-icon>
-                                </button>
+                                </a>
                             </div>
                         </div>
+
                     </div>
+                    @endforeach
+
                 </div>
                 <div class="header__cart-total">
                     <p><b>Total</b></p>
@@ -145,15 +151,16 @@
                     </a>
                 </div>
                 <div class="header__nav-right">
+                    <div>{{ $customer_infor->Last_Name }} {{ $customer_infor->First_Name }}</div>
                     <button id="log">
                         <ion-icon name="person-outline"></ion-icon>
                     </button>
                     <button id="showCart">
-                        {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
+                        <div class="quantityCart">{{ $cart_quantity }}</div>
                         <ion-icon name="cart-outline"></ion-icon>
                         </a>
                         <button>
-                            <div class="quantityCart">20</div>
+                            <div class="quantityCart">{{ $wishList_quantity }}</div>
                             <ion-icon name="heart-outline"></ion-icon>
                         </button>
                 </div>

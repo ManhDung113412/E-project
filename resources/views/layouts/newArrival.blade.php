@@ -19,19 +19,19 @@
                     <div class="container__sideBar-box-tittle">Categories</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="radio" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Long Wallet</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="radio" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Small Wallet</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="radio" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Cards Holder</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="radio" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
                     </div>
                 </div>
@@ -39,11 +39,11 @@
                     <div class="container__sideBar-box-tittle">Price</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="radio" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">High to low</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="checkbox" name="" id="filter" value="filter">
+                        <input type="radio" name="" id="filter" value="filter">
                         <div class="container__sideBar-box-cate-name">Low to high</div>
                     </div>
                 </div>

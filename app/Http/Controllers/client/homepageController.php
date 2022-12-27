@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\client\test;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use App\Models\User;
 
 class homepageController extends Controller
 {
@@ -26,6 +29,7 @@ class homepageController extends Controller
 
         $cart_quantity = session()->get('cart_quantity');
 
+     
 
         return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren,'cart_quantity' => $cart_quantity]);
     }
