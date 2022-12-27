@@ -51,10 +51,6 @@ class AppServiceProvider extends ServiceProvider
 
             $cart_quantity = count($carts);
             $wishList_quantity = count(WishList::where('Customer_ID', $customer_ID)->get());
-            // foreach($this_customer as $item){
-            //     $user_name = $item->username;
-            // }
-            // dd($user_name);
             $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity,'customer'=>$this_customer]);
         });
     }
