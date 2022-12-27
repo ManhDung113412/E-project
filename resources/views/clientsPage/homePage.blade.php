@@ -31,28 +31,27 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-                    <div class="container__featured-products-items">
-                        <div class="container__featured-products-items-button">
-                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
-                                <ion-icon name="cart-outline"></ion-icon>
-                            </a>
-                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
-                               
-                                <ion-icon name="heart-outline"></ion-icon>
-                            </a>
-                            {{-- <a href="" class="iconProduct">
+                <div class="container__featured-products-items">
+                    <div class="container__featured-products-items-button">
+                        <a href="{{ url('client/Cart/addtocart',$item->ID) }}" class="iconProduct">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </a>
+                        <a href="{{ url('/client/wishlist/addtowishlist',$item->ID) }}" class="iconProduct">
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
+                        {{-- <a href="" class="iconProduct">
                             <ion-icon name="git-compare-outline"></ion-icon>
                         </a> --}}
-                        </div>
-                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
-                            style="background-image: url({{ $item->Main_IMG }})"
-                            class="container__featured-products-items-img"></a>
-                        <div class="container__featured-products-items-info">
-                            <p>{{ $item->Name }}</p>
-                            <p>${{ $item->Export_Price }}</p>
-                        </div>
                     </div>
-                @endforeach
+                    <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                        style="background-image: url({{ $item->Main_IMG }})"
+                        class="container__featured-products-items-img"></a>
+                    <div class="container__featured-products-items-info">
+                        <p>{{ $item->Name }}</p>
+                        <p>${{ $item->Export_Price }}</p>
+                    </div>
+                </div>
+            @endforeach
             </div>
         </div>
         <div class="container__newArrivals">
@@ -69,9 +68,8 @@
                     </a>
                 </div>
             </div>
-            <div class="container__newArrivals-collection">
-                <div id="colListNew" class="container__newArrivals-collection-slide"
-                    style="background-image: {{ url($dungdeptrai[0]->IMG) }}; background-size: cover; background-position: 50% 50%;">
+            <div class="container__newArrivals-collection" style="background-image: url({{ $dungdeptrai[0]->IMG }});">
+                <div id="colListNew" class="container__newArrivals-collection-slide">
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
@@ -95,10 +93,10 @@
                 @foreach ($trending as $item)
                     <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
-                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                            <a href="{{ url('client/Cart/addtocart',$item->ID) }}" class="iconProduct">
                                 <ion-icon name="cart-outline"></ion-icon>
                             </a>
-                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                            <a href="{{ url('/client/wishlist/addtowishlist',$item->ID) }}" class="iconProduct">
                                 <ion-icon name="heart-outline"></ion-icon>
                             </a>
                             {{-- <a href="" class="iconProduct">
@@ -218,16 +216,14 @@
             <ion-icon name="chevron-up-outline"></ion-icon>
         </button>
     </div>
-    @if ($compare_number > 0)
-        <div class="compareProducts">
-            <div class="compareProducts__quantity">
-                {{ $compare_number }}
-            </div>
-            <a href="{{ url('/client/products/compareproduct') }}">
-                <ion-icon name="git-compare-outline"></ion-icon>
-            </a>
+    <div class="compareProducts">
+        <div class="compareProducts__quantity">
+            2
         </div>
-    @endif
+        <a href="{{ url('/client/products/compareproduct') }}">
+            <ion-icon name="git-compare-outline"></ion-icon>
+        </a>
+    </div>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 
