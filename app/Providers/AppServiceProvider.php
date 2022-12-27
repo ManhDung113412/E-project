@@ -62,9 +62,8 @@ class AppServiceProvider extends ServiceProvider
             $b = session()->get('product_2');
             array_push($num, $a, $b);
             $compare_number = count(array_filter($num));
-
+            
             $cart_quantity = count($carts);
-
             
 
             $wishList_quantity = count(WishList::where('Customer_ID', $customer_ID)->get());

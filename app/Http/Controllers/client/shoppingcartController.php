@@ -29,11 +29,15 @@ class shoppingcartController extends Controller
             ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
             ->get();
 
+        $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+        $ran_pro = $products->take(4);
+        // dd($ran_pro[0]->Slug);
+
         foreach ($carts as $cart) {
             $subtotals += $cart->subtotal;
         }
 
-        return view('clientsPage.shoppingCart', compact('carts', 'subtotals'));
+        return view('clientsPage.shoppingCart', compact('carts', 'subtotals','ran_pro'));
 
 
 

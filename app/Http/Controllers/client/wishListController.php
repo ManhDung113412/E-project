@@ -71,7 +71,11 @@ class wishListController extends Controller
         }
         $total_quantity = Wishlist::where('Customer_ID', $customer_ID)
             ->count();
-        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro, 'total' => $total_quantity]);
+
+            $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+            $ran_pro = $products->take(4);
+
+        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro, 'total' => $total_quantity,'ran_pro' => $ran_pro]);
     }
 
     public function removeFromWishList(Request $req)
