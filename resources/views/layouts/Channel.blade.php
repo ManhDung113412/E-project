@@ -4,49 +4,49 @@
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/subsAndScroll.css') }}">
 @stop
 @section('content')
-<div class="main">
-    <div class="container">
-        <div class="container__sideBar">
-            <form action="" method="GET">
-                <div class="container__sideBar-search">
-                    <button>
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-                    <input type="text" placeholder="Search" name="searchBox">
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Categories</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="category" id="filter" value="Long Wallet">
-                        <div class="container__sideBar-box-cate-name">Long Wallet</div>
+    <div class="main">
+        <div class="container">
+            <div class="container__sideBar">
+                <form action="" method="GET">
+                    <div class="container__sideBar-search">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" placeholder="Search" name="searchBox">
                     </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="category" id="filter" value="Small Wallet">
-                        <div class="container__sideBar-box-cate-name">Small Wallet</div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Categories</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="category" id="filter" value="Long Wallet">
+                            <div class="container__sideBar-box-cate-name">Long Wallet</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="category" id="filter" value="Small Wallet">
+                            <div class="container__sideBar-box-cate-name">Small Wallet</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="category" id="filter" value="Card Holder">
+                            <div class="container__sideBar-box-cate-name">Cards Holder</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="category" id="filter" value="Chain And Strap Wallet">
+                            <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
+                        </div>
                     </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="category" id="filter" value="Card Holder">
-                        <div class="container__sideBar-box-cate-name">Cards Holder</div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Price</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="Price" id="filter" value="high">
+                            <div class="container__sideBar-box-cate-name">High to low</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="Price" id="filter" value="low">
+                            <div class="container__sideBar-box-cate-name">Low to high</div>
+                        </div>
                     </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="category" id="filter" value="Chain And Strap Wallet">
-                        <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Price</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="Price" id="filter" value="high">
-                        <div class="container__sideBar-box-cate-name">High to low</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="Price" id="filter" value="low">
-                        <div class="container__sideBar-box-cate-name">Low to high</div>
-                    </div>
-                </div>
-                {{-- <div class="container__sideBar-box">
+                    {{-- <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Collection</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
@@ -62,24 +62,34 @@
                         <div class="container__sideBar-box-cate-name">Discount</div>
                     </div>
                 </div> --}}
-                <div class="container__sideBar-filter">
-                    <button>Filter</button>
-                </div>
-            </form>
-        </div>
+                    <div class="container__sideBar-filter">
+                        <button>Filter</button>
+                    </div>
+                </form>
+            </div>
             <div class="container__list">
                 <div class="container__list-tittle">Channel</div>
                 @foreach ($Channel as $item)
-                    <a class="container__list-products" href="{{ url('/client/products/specificProduct', $item->Slug) }}">
-                        <div class="container__list-products-item">
-                            <div style="background-image: url({{ $item->Main_IMG }})"
-                                class="container__list-products-item-img"></div>
-                            <div class="container__list-products-item-info">
-                                <p>{{ $item->Name }}</p>
-                                <p>${{ $item->Export_Price }}</p>
-                            </div>
+                    <div class="container__list-products-item">
+                        <div class="container__list-products-item-button">
+                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </a>
+                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </a>
+                            {{-- <a href="" class="iconProduct">
+                            <ion-icon name="git-compare-outline"></ion-icon>
+                        </a> --}}
                         </div>
-                    </a>
+                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                            style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__list-products-item-img"></a>
+                        <div class="container__list-products-item-info">
+                            <p>{{ $item->Name }}</p>
+                            <p>${{ $item->Export_Price }}</p>
+                        </div>
+                    </div>
                 @endforeach
                 {!! $Channel->links() !!}
             </div>
@@ -90,18 +100,30 @@
     <div class="container__featured">
         <div class="container__featured-tittle">You May Also Like</div>
         <div class="container__featured-products">
-            <a class="container__featured-products" href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+            <div class="container__featured-products" href="{{ url('/client/products/specificProduct', $item->Slug) }}">
                 @foreach ($randomProduct as $item)
                     <div class="container__featured-products-items">
-                        <div style="background-image: url({{ $item->Main_IMG }})"
-                            class="container__featured-products-items-img"></div>
+                        <div class="container__featured-products-items-button">
+                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </a>
+                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </a>
+                            {{-- <a href="" class="iconProduct">
+                            <ion-icon name="git-compare-outline"></ion-icon>
+                        </a> --}}
+                        </div>
+                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                            style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__featured-products-items-img"></a>
                         <div class="container__featured-products-items-info">
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
                     </div>
                 @endforeach
-            </a>
+            </div>
         </div>
     </div>
     <div class="subscribeUs">

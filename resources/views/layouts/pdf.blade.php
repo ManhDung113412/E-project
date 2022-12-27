@@ -9,75 +9,75 @@
     {{-- <link rel="stylesheet" href="{{ asset('styles/pageStyle/pdf.css') }}"> --}}
 </head>
 <style>
+    .container {
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        /* overflow: hidden; */
+    }
 
-.container{
-    width: 90%;
-    height: 100%;
-    margin: 0 auto;
-    /* overflow: hidden; */
-}
+    .container__header {
+        width: 100%;
+        margin-top: 50px;
+    }
 
-.container__header{
-    width: 100%;
-    margin-top: 50px;
-}
+    .container__header div:nth-child(1) {
+        font-size: 35px;
+    }
 
-.container__header div:nth-child(1){
-    font-size: 35px;
-}
-.container__header div:nth-child(2){
-    font-size: 18px;
-    margin-left: 40px;
-}
+    .container__header div:nth-child(2) {
+        font-size: 18px;
+        margin-left: 40px;
+    }
 
-.container__content{
-    width: 100%;
-    margin-top: 60px;
-}
+    .container__content {
+        width: 100%;
+        margin-top: 60px;
+    }
 
-.container__content-title{
-    width: 100%;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-}
+    .container__content-title {
+        width: 100%;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+    }
 
-.container__content-details{
-    width: 100%;
-    margin-top: 40px;
-}
+    .container__content-details {
+        width: 100%;
+        margin-top: 40px;
+    }
 
-.container__content-details-img{
-    width: 30%;
-    height: 300px;
-    float: left;
-    background-color: rgb(218, 213, 213);
-}
+    .container__content-details-img {
+        width: 30%;
+        height: 300px;
+        float: left;
+        background-color: rgb(218, 213, 213);
+    }
 
-.container__content-details-info{
-    width: 70%;
-    float: left;
-}
+    .container__content-details-info {
+        width: 70%;
+        float: left;
+    }
 
-table{
-    margin-left: 20px;
-    text-align: left;
-    font-size: 18px;
-}
+    table {
+        margin-left: 20px;
+        text-align: left;
+        font-size: 18px;
+    }
 
-table tr th{
-    width: 150px;
-    height: 30px;
-    text-align: left;
-}
+    table tr th {
+        width: 150px;
+        height: 30px;
+        text-align: left;
+    }
 
-table tr th td{
-    width: 150px;
-    text-align: left;
-    /* overflow-y: auto; */
-}
-
+    table tr th td {
+        width: 150px;
+        text-align: left;
+        /* overflow-y: auto; */
+    }
 </style>
+
 <body>
     <form action="">
         <div class="container">
@@ -88,8 +88,8 @@ table tr th td{
             <div class="container__content">
                 <div class="container__content-title">Product Details</div>
                 <div class="container__content-details">
-                    <div class="container__content-details-img" style="background-image: url({{ $data->Main_IMG }}); background-size:cover; background-position: 50% 50%;background-color: rgb(218, 213, 213);">
-
+                    <div class="container__content-details-img"
+                        style="background-image: url({{ $data->Main_IMG }}); background-size:cover; background-position: 50% 50%;background-color: rgb(218, 213, 213);">
                     </div>
                     <div class="container__content-details-info">
                         <table>
@@ -128,4 +128,5 @@ table tr th td{
         </div>
     </form>
 </body>
+
 </html>

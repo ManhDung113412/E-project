@@ -230,4 +230,7 @@
     @endif
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
+
 @stop
+
+
