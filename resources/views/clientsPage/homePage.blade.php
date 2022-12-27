@@ -217,6 +217,14 @@
             <ion-icon name="chevron-up-outline"></ion-icon>
         </button>
     </div>
+    <div class="compareProducts">
+        <div class="compareProducts__quantity">
+            2
+        </div>
+        <a href="{{ url('/client/products/compareproduct') }}">
+            <ion-icon name="git-compare-outline"></ion-icon>
+        </a>
+    </div>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 @stop
