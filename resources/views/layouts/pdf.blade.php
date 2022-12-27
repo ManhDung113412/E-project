@@ -67,7 +67,7 @@ table{
 
 table tr th{
     width: 150px;
-    height: 25px;
+    height: 30px;
     text-align: left;
 }
 
@@ -88,7 +88,7 @@ table tr th td{
             <div class="container__content">
                 <div class="container__content-title">Product Details</div>
                 <div class="container__content-details">
-                    <div class="container__content-details-img" style="background-image: url({{ $data->Main_IMG }}); background-size:cover; background-position: 50% 50%;">
+                    <div class="container__content-details-img" style="background-image: url({{ $data->Main_IMG }}); background-size:cover; background-position: 50% 50%;background-color: rgb(218, 213, 213);">
 
                     </div>
                     <div class="container__content-details-info">
