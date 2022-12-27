@@ -35,7 +35,7 @@
                                 <div class="dropdown3__name">Brands</div>
                                 <ion-icon name="caret-forward-outline"></ion-icon>
                             </div>
-                            <div><a href="http://127.0.0.1:8000/client/Cart">My Shopping Cart</a></div>
+                            <div><a href="{{ url('client/Cart') }}">My Shopping Cart</a></div>
                             <div><a href="{{ url('client/wishLish') }}">My Wish List</a></div>
                             <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                         </div>
@@ -65,8 +65,8 @@
                     </div>
                 </div>
             </div>
-            <div id="openLog" class="header__log">
-                @if (Auth::guard('users')->check())
+            @if (Auth::guard('users')->check())
+                <div id="openLog" class="header__log">
                     <div class="header__log-signed" style="">
                         <div class="header__log-signed-profile">
                             <a href="{{ url('client/myProfile') }}">My Profile</a>
@@ -75,7 +75,87 @@
                             <a href="{{ url('client/logout') }}">Sign Out</a>
                         </div>
                     </div>
-                @else
+                </div>
+                <div id="shoppingCart" class="header__cart">
+                    <div class="header__cart-tittle">Shopping Cart
+                        <button id="hideCart">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="header__cart-list">
+                        @foreach ($customer_cart as $item)
+                            <div class="header__cart-list-items">
+                                <div class="header__cart-list-items-img"
+                                    style="background-image: url('{{ $item->Main_IMG }}')"></div>
+                                <div class="header__cart-list-items-info">
+                                    <div class="header__cart-list-items-info-name">{{ $item->Name }}</div>
+                                    <div class="header__cart-list-items-info-quantity">
+                                        <button>
+                                            <ion-icon name="remove-outline"></ion-icon>
+                                        </button>
+                                        <div class="header__cart-list-items-info-quantity-num">
+                                            {{ $item->Product_quantity }}</div>
+                                        <a>
+                                            <ion-icon name="add-outline"></ion-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="header__cart-list-items-info-right">
+                                    <div class="header__cart-list-items-info-right-price">${{ $item->Export_Price }}
+                                    </div>
+                                    <div class="header__cart-list-items-info-right-action">
+                                        <a href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">
+                                            <ion-icon name="trash-bin-outline"></ion-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="header__cart-total">
+                        <p><b>Total</b></p>
+                        <p>$10000</p>
+                    </div>
+                    <div class="header__cart-checkout">
+                        <button>Check out</button>
+                    </div>
+                </div>
+                <div class="header__update">
+                    <div id="topUpdate" class="header__update-all">
+                        <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a></div>
+                        <div class="header__update-1"><a style="color: white" href=""> Give code for..</a></div>
+                        <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a></div>
+                    </div>
+                </div>
+                <div class="header__nav">
+                    <div class="header__nav-menu">
+                        <button style="background-color: transparent; border: none" id="openMenu">
+                            <ion-icon style="font-size: 40px;" name="menu-outline"></ion-icon>
+                            <p>Menu</p>
+                        </button>
+                    </div>
+                    <div class="header__nav-logo">
+                        <a style="color: black" href="{{ url('client/home') }}">
+                            P U R S E L L E T
+                        </a>
+                    </div>
+                    <div class="header__nav-right">
+                        <a href="{{ url('client/myProfile') }}" class="userName">{{ $customer[0]->username }}</a>
+                        <a class="iconHead" id="log">
+                            <ion-icon name="person"></ion-icon>
+                        </a>
+                        <a class="iconHead" id="showCart">
+                            <div class="quantityCart">{{ $cart_quantity }}</div>
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </a>
+                        <a href="{{ url('client/wishList') }}" class="iconHead">
+                            <div class="quantityCart">{{ $wishList_quantity }}</div>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            @else
+                <div id="openLog" class="header__log">
                     <div class="header__log-notSign">
                         <div class="header__log-notSign-signIn">
                             <a href="{{ url('client/login') }}">Sign In</a>
@@ -84,48 +164,87 @@
                             <a href="">Sign Up</a>
                         </div>
                     </div>
-                @endif
-            </div>
-            <div id="shoppingCart" class="header__cart">
-                <div class="header__cart-tittle">Shopping Cart
-                    <button id="hideCart">
-                        <ion-icon name="chevron-up-outline"></ion-icon>
-                    </button>
                 </div>
-                <div class="header__cart-list">
-                    <div class="header__cart-list-items">
-                        <div class="header__cart-list-items-img" style="background-image: url(./)"></div>
-                        <div class="header__cart-list-items-info">
-                            <div class="header__cart-list-items-info-name">Product Name</div>
-                            <div class="header__cart-list-items-info-quantity">
-                                <button>
-                                    <ion-icon name="remove-outline"></ion-icon>
-                                </button>
-                                <div class="header__cart-list-items-info-quantity-num">20</div>
-                                <button>
-                                    <ion-icon name="add-outline"></ion-icon>
-                                </button>
+                <div id="shoppingCart" class="header__cart">
+                    <div class="header__cart-tittle"><a href="{{ url('client/Cart') }}">Shopping Cart</a>
+                        <button id="hideCart">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="header__cart-list">
+                        <div class="header__cart-list-items">
+                            <div class="header__cart-list-items-img" style="background-image: url('')"></div>
+                            <div class="header__cart-list-items-info">
+                                <div class="header__cart-list-items-info-name"></div>
+                                <div class="header__cart-list-items-info-quantity">
+                                    <button>
+                                        <ion-icon name="remove-outline"></ion-icon>
+                                    </button>
+                                    <div class="header__cart-list-items-info-quantity-num">
+                                    </div>
+                                    <a>
+                                        <ion-icon name="add-outline"></ion-icon>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="header__cart-list-items-info-right">
-                            <div class="header__cart-list-items-info-right-price">$1000</div>
-                            <div class="header__cart-list-items-info-right-action">
-                                <button>
-                                    <ion-icon name="trash-bin-outline"></ion-icon>
-                                </button>
+                            <div class="header__cart-list-items-info-right">
+                                <div class="header__cart-list-items-info-right-price">
+                                </div>
+                                <div class="header__cart-list-items-info-right-action">
+                                    <a href="">
+                                        <ion-icon name="trash-bin-outline"></ion-icon>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="header__cart-total">
+                        <p><b>Total</b></p>
+                        <p>$10000</p>
+                    </div>
+                    <div class="header__cart-checkout">
+                        <button>Check out</button>
+                    </div>
                 </div>
-                <div class="header__cart-total">
-                    <p><b>Total</b></p>
-                    <p>$10000</p>
+                <div class="header__update">
+                    <div id="topUpdate" class="header__update-all">
+                        <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a>
+                        </div>
+                        <div class="header__update-1"><a style="color: white" href=""> Give code for..</a>
+                        </div>
+                        <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="header__cart-checkout">
-                    <button>Check out</button>
+                <div class="header__nav">
+                    <div class="header__nav-menu">
+                        <button style="background-color: transparent; border: none" id="openMenu">
+                            <ion-icon style="font-size: 40px;" name="menu-outline"></ion-icon>
+                            <p>Menu</p>
+                        </button>
+                    </div>
+                    <div class="header__nav-logo">
+                        <a style="color: black" href="{{ url('client/home') }}">
+                            P U R S E L L E T
+                        </a>
+                    </div>
+                    <div class="header__nav-right">
+                        <a class="iconHead" id="log">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </a>
+                        <a class="iconHead" id="showCart">
+                            {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </a>
+                        <a href="{{ url('client/wishList') }}" class="iconHead">
+                            {{-- <div class="quantityCart">{{ $wishList_quantity }}</div> --}}
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="header__update">
+            @endif
+
+            {{-- <div class="header__update">
                 <div id="topUpdate" class="header__update-all">
                     <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a></div>
                     <div class="header__update-1"><a style="color: white" href=""> Give code for..</a></div>
@@ -145,24 +264,22 @@
                     </a>
                 </div>
                 <div class="header__nav-right">
+
                     <button id="log">
-                        @if (Auth::guard('users')->check())
-                        <ion-icon name="person"></ion-icon>
-                        @else
-                        <ion-icon name="person-outline"></ion-icon>
-                        @endif
+                            <ion-icon name="person"></ion-icon>
+                            <ion-icon name="person-outline"></ion-icon>
                     </button>
                     <button id="showCart">
-                        {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
+                            <div class="quantityCart">{{ $cart_quantity }}</div>
                         <ion-icon name="cart-outline"></ion-icon>
                         </a>
                         <button>
-                            <div class="quantityCart">20</div>
+                                <div class="quantityCart">{{ $wishList_quantity }}</div>
                             <ion-icon name="heart-outline"></ion-icon>
                         </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </form>
 
 </body>

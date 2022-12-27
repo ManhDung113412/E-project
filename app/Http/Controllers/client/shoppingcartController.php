@@ -224,7 +224,7 @@ class shoppingcartController extends Controller
         Cart::where('Customer_ID', $customer_ID)
             ->where('Product_Detail_ID', $productID)
             ->delete();
-        return redirect()->route('myshoppingcart');
+        return redirect()->back();
     }
 
     public function getDiscountCode(Request $request)
@@ -246,10 +246,36 @@ class shoppingcartController extends Controller
         }
     }
 
+    public function addToCart(Request $req)
+    {
+        // dd('gege');
+        $customer_ID = Auth::guard('users')->id();
+        $this_customer = User::where('id', $customer_ID)->get();
+        $pro_ID = $req->ID;
+        $customer_ID = $this_customer[0]->id;
+
+        if (DB::table('carts')
+            ->where('customer_id', $customer_ID)
+            ->where('Product_Detail_ID', $pro_ID)
+            ->exists()
+        ) {
+            return redirect()->back();
+        } else {
+
+            DB::table('carts')
+                ->insert([
+                    'Product_Detail_ID' => $pro_ID,
+                    'Customer_ID'   => $customer_ID,
+                    'Product_quantity' => 1,
+                    'created_at' => time()
+                ]);
+
+            return redirect()->back();
+        }
+    }
 
     public function checkOut(Request $req)
     {
         $customer_ID = Auth::guard('users')->id();
-        
     }
 }

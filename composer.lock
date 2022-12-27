@@ -1,14 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getorg/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "095b77e9b489711139486fd2ee080ea3",
-=======
-    "content-hash": "3fc817443365b4d13e8bf60faed954ed",
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -803,7 +799,7 @@
                 "psr/http-client-implementation": "1.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8.1",
+                "bamarni/-bin-plugin": "^1.8.1",
                 "ext-curl": "*",
                 "php-http/client-integration-tests": "^3.0",
                 "phpunit/phpunit": "^8.5.29 || ^9.5.23",
@@ -1014,7 +1010,7 @@
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8.1",
+                "bamarni/-bin-plugin": "^1.8.1",
                 "http-interop/http-factory-tests": "^0.9",
                 "phpunit/phpunit": "^8.5.29 || ^9.5.23"
             },
@@ -1500,7 +1496,7 @@
                 "cebe/markdown": "^1.0",
                 "commonmark/cmark": "0.30.0",
                 "commonmark/commonmark.js": "0.30.0",
-                "composer/package-versions-deprecated": "^1.8",
+                "/package-versions-deprecated": "^1.8",
                 "embed/embed": "^4.4",
                 "erusev/parsedown": "^1.0",
                 "ext-json": "*",
@@ -2461,7 +2457,7 @@
                 "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8",
+                "bamarni/-bin-plugin": "^1.8",
                 "phpunit/phpunit": "^8.5.28 || ^9.5.21"
             },
             "type": "library",
@@ -2903,7 +2899,7 @@
                 "symfony/console": "4.4.37 || 5.3.14 || 5.3.15 || 5.4.3 || 5.4.4 || 6.0.3 || 6.0.4"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.2"
+                "bamarni/-bin-plugin": "^1.2"
             },
             "suggest": {
                 "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
@@ -3017,8 +3013,8 @@
             },
             "require-dev": {
                 "captainhook/captainhook": "^5.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "ergebnis/composer-normalize": "^2.6",
+                "dealerdirect/phpcodesniffer--installer": "^0.7.0",
+                "ergebnis/-normalize": "^2.6",
                 "fakerphp/faker": "^1.5",
                 "hamcrest/hamcrest-php": "^2",
                 "jangregor/phpstan-prophecy": "^0.8",
@@ -3103,10 +3099,10 @@
             },
             "require-dev": {
                 "captainhook/captainhook": "^5.10",
-                "captainhook/plugin-composer": "^5.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "captainhook/plugin-": "^5.3",
+                "dealerdirect/phpcodesniffer--installer": "^0.7.0",
                 "doctrine/annotations": "^1.8",
-                "ergebnis/composer-normalize": "^2.15",
+                "ergebnis/-normalize": "^2.15",
                 "mockery/mockery": "^1.3",
                 "moontoast/math": "^1.1",
                 "paragonie/random-lib": "^2",
@@ -3835,7 +3831,6 @@
         },
         {
             "name": "symfony/http-client",
-<<<<<<< HEAD
             "version": "v5.4.16",
             "source": {
                 "type": "git",
@@ -3855,36 +3850,13 @@
                 "symfony/http-client-contracts": "^2.4",
                 "symfony/polyfill-php73": "^1.11",
                 "symfony/polyfill-php80": "^1.16",
-=======
-            "version": "v6.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/http-client.git",
-                "reference": "7054ad466f836309aef511789b9c697bc986d8ce"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/7054ad466f836309aef511789b9c697bc986d8ce",
-                "reference": "7054ad466f836309aef511789b9c697bc986d8ce",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "psr/log": "^1|^2|^3",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/http-client-contracts": "^3",
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
                 "symfony/service-contracts": "^1.0|^2|^3"
             },
             "provide": {
                 "php-http/async-client-implementation": "*",
                 "php-http/client-implementation": "*",
                 "psr/http-client-implementation": "1.0",
-<<<<<<< HEAD
                 "symfony/http-client-implementation": "2.4"
-=======
-                "symfony/http-client-implementation": "3.0"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "require-dev": {
                 "amphp/amp": "^2.5",
@@ -3895,17 +3867,10 @@
                 "nyholm/psr7": "^1.0",
                 "php-http/httplug": "^1.0|^2.0",
                 "psr/http-client": "^1.0",
-<<<<<<< HEAD
                 "symfony/dependency-injection": "^4.4|^5.0|^6.0",
                 "symfony/http-kernel": "^4.4.13|^5.1.5|^6.0",
                 "symfony/process": "^4.4|^5.0|^6.0",
                 "symfony/stopwatch": "^4.4|^5.0|^6.0"
-=======
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/http-kernel": "^5.4|^6.0",
-                "symfony/process": "^5.4|^6.0",
-                "symfony/stopwatch": "^5.4|^6.0"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "type": "library",
             "autoload": {
@@ -3933,11 +3898,7 @@
             "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/http-client/tree/v5.4.16"
-=======
                 "source": "https://github.com/symfony/http-client/tree/v6.2.2"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "funding": [
                 {
@@ -3953,7 +3914,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-11-09T11:27:39+00:00"
         },
         {
@@ -3972,26 +3932,6 @@
             },
             "require": {
                 "php": ">=7.2.5"
-=======
-            "time": "2022-12-14T16:11:27+00:00"
-        },
-        {
-            "name": "symfony/http-client-contracts",
-            "version": "v3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "fd038f08c623ab5d22b26e9ba35afe8c79071800"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/fd038f08c623ab5d22b26e9ba35afe8c79071800",
-                "reference": "fd038f08c623ab5d22b26e9ba35afe8c79071800",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "suggest": {
                 "symfony/http-client-implementation": ""
@@ -3999,11 +3939,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
                     "dev-main": "2.5-dev"
-=======
-                    "dev-main": "3.1-dev"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -4013,14 +3949,7 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Contracts\\HttpClient\\": ""
-<<<<<<< HEAD
                 }
-=======
-                },
-                "exclude-from-classmap": [
-                    "/Test/"
-                ]
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4047,11 +3976,7 @@
                 "standards"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-client-contracts/tree/v2.5.2"
-=======
-                "source": "https://github.com/symfony/http-client-contracts/tree/v3.1.1"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "funding": [
                 {
@@ -4067,11 +3992,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-04-12T15:48:08+00:00"
-=======
-            "time": "2022-04-22T07:30:54+00:00"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
         },
         {
             "name": "symfony/http-foundation",
@@ -4263,7 +4184,6 @@
         },
         {
             "name": "symfony/mailer",
-<<<<<<< HEAD
             "version": "v5.4.16",
             "source": {
                 "type": "git",
@@ -4274,23 +4194,10 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/mailer/zipball/501ac1c388b18390547aa138253de2c5e44e931e",
                 "reference": "501ac1c388b18390547aa138253de2c5e44e931e",
-=======
-            "version": "v6.1.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mailer.git",
-                "reference": "42eb71e4bac099cff22fef1b8eae493eb4fd058f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/42eb71e4bac099cff22fef1b8eae493eb4fd058f",
-                "reference": "42eb71e4bac099cff22fef1b8eae493eb4fd058f",
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
                 "shasum": ""
             },
             "require": {
                 "egulias/email-validator": "^2.1.10|^3",
-<<<<<<< HEAD
                 "php": ">=7.2.5",
                 "psr/event-dispatcher": "^1",
                 "psr/log": "^1|^2|^3",
@@ -4306,21 +4213,6 @@
             "require-dev": {
                 "symfony/http-client-contracts": "^1.1|^2|^3",
                 "symfony/messenger": "^4.4|^5.0|^6.0"
-=======
-                "php": ">=8.1",
-                "psr/event-dispatcher": "^1",
-                "psr/log": "^1|^2|^3",
-                "symfony/event-dispatcher": "^5.4|^6.0",
-                "symfony/mime": "^5.4|^6.0",
-                "symfony/service-contracts": "^1.1|^2|^3"
-            },
-            "conflict": {
-                "symfony/http-kernel": "<5.4"
-            },
-            "require-dev": {
-                "symfony/http-client-contracts": "^1.1|^2|^3",
-                "symfony/messenger": "^5.4|^6.0"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "type": "library",
             "autoload": {
@@ -4348,11 +4240,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/mailer/tree/v5.4.16"
-=======
-                "source": "https://github.com/symfony/mailer/tree/v6.1.8"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "funding": [
                 {
@@ -4368,7 +4256,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-11-04T07:37:26+00:00"
         },
         {
@@ -4392,30 +4279,6 @@
             },
             "require-dev": {
                 "symfony/http-client": "^4.4|^5.0|^6.0"
-=======
-            "time": "2022-11-04T07:40:42+00:00"
-        },
-        {
-            "name": "symfony/mailgun-mailer",
-            "version": "v6.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mailgun-mailer.git",
-                "reference": "c5364fbcf5581ba9eae569db12b380b9255ce238"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailgun-mailer/zipball/c5364fbcf5581ba9eae569db12b380b9255ce238",
-                "reference": "c5364fbcf5581ba9eae569db12b380b9255ce238",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/mailer": "^5.4|^6.0"
-            },
-            "require-dev": {
-                "symfony/http-client": "^5.4|^6.0"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "type": "symfony-mailer-bridge",
             "autoload": {
@@ -4443,11 +4306,7 @@
             "description": "Symfony Mailgun Mailer Bridge",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/mailgun-mailer/tree/v5.4.7"
-=======
-                "source": "https://github.com/symfony/mailgun-mailer/tree/v6.2.0"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
             },
             "funding": [
                 {
@@ -4463,11 +4322,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-03-24T17:11:08+00:00"
-=======
-            "time": "2022-10-09T08:55:40+00:00"
->>>>>>> 51df75344810eece765ce2edac5bb07d4a467cf4
         },
         {
             "name": "symfony/mime",
@@ -6032,7 +5887,7 @@
                 "symfony/polyfill-php80": "^1.23.1"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
+                "bamarni/-bin-plugin": "^1.4.1",
                 "ext-filter": "*",
                 "phpunit/phpunit": "^7.5.20 || ^8.5.30 || ^9.5.25"
             },
@@ -6515,7 +6370,7 @@
                 "fzaninotto/faker": "*"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
+                "bamarni/-bin-plugin": "^1.4.1",
                 "doctrine/persistence": "^1.3 || ^2.0",
                 "ext-intl": "*",
                 "symfony/phpunit-bridge": "^4.4 || ^5.2"

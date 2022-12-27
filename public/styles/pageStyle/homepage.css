@@ -201,7 +201,7 @@
 @keyframes addButton {
     from {
         opacity: 0;
-        transform: translate(0, -50px);
+        transform: translate(0, -70px);
     }
 
     to {
@@ -212,31 +212,16 @@
 
 .container__featured-products-items-button{
     position: absolute;
-
-    /* color: */
-
-    align-self: center;
-    opacity: 0;
-    transform: translate(0,-50px);
+    top: 20px;
+    transform: translate(0, -70px);
     z-index: 2;
-    border-radius: 5px;
-
-
+    align-self: center;
+    /* font-size: 30px; */
 }
-
-.container__featured-products-items-button button{
-    width: 100%;
-    height: 100%;
+.container__featured-products-items-button a{
     background-color: transparent;
-    border-radius: 5px;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    width: 45px;
-    height: 45px;
-    border: none;
-    /* background-color: white; */
-}.container__featured-products-items-button button ion-icon{
-    font-size: 35px;
+    color: black;
+    text-align: center;
 }
 
 .container__featured-products-items:hover {
