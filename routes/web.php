@@ -171,9 +171,8 @@ Route::prefix('client')->group(function () {
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
-    Route::get('myProfile', [clientController::class, 'getProfile']);
+    
 });
-
 
 Route::prefix('client/products')->group(function () {
     Route::get('long-wallet', [clientProductController::class, 'getLongWallet']);
@@ -231,4 +230,8 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
     // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
+
+    Route::get('myProfile', [clientController::class, 'getProfile']);
+    Route::post('editProfile', [clientController::class, 'editProfile'])
+    ->name('client.edit-profile');
 });

@@ -6,6 +6,10 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\client\loginModel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
+use Illuminate\Support\Facades\Validator;
 
 class clientController extends Controller
 {
@@ -16,8 +20,76 @@ class clientController extends Controller
     // }
     public function getProfile()
     {
-        return view('clientsPage.myProfile');
+        $user_id = Auth::guard('users')->id();
+        $user = DB::table('users As u')
+            ->join('orders as o', 'u.id', 'o.Customer_ID')
+            ->join('orders_details as od', 'o.ID', 'od.Order_ID')
+            ->select(DB::raw('sum(Quantity) as Total_Quantity'), DB::raw('sum(Quantity * Price) as Total_Price'), 'o.Code as Order_Code', 'o.Status', 'o.created_at', 'u.First_Name', 'u.Last_Name', 'u.username', 'u.Dob', 'u.Email', 'u.Number_Phone', 'u.Rank', 'u.Code')
+            ->groupBy('Order_Code', 'Status', 'created_at', 'First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
+            ->where('u.id', $user_id)
+            ->get();
+        // dd($user);
+        return view('clientsPage.myProfile', compact('user'));
     }
+
+    public function editProfile(Request $request)
+    {
+        $id_user = Auth::guard('users')->id();
+        $old_profile = DB::table('users')->where('id', $id_user)->get();
+        $old_email =  $old_profile[0]->Email;
+        $old_number_phone =  $old_profile[0]->Number_Phone;
+        if($old_email != $request->email && $old_number_phone != $request->phoneNumber){
+            $validator = Validator::make($request->all(), [
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'email' => 'required|email|unique:users',
+                'dob' => 'required',
+                'phone_number' => 'required|regex:/(01)[0-9]{9}/|unique:users'
+            ]);
+        }
+        else if($old_email != $request->email){
+            $validator = Validator::make($request->all(), [
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'email' => 'required|email|unique:users',
+                'dob' => 'required',
+                'phone_number' => 'required'
+            ]);
+        }
+        else if($old_number_phone != $request->phoneNumber){
+            $validator = Validator::make($request->all(), [
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'email' => 'required',
+                'dob' => 'required',
+                'phone_number' => 'required|regex:/(01)[0-9]{9}/|unique:users'
+            ]);
+        }
+        else{
+            $validator = Validator::make($request->all(), [
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'dob' => 'required',
+            ]);
+        }
+
+        if ($validator->passes()) {
+            DB::table('users')->where('id', $id_user)->update([
+                'First_Name'=> $request->firstname,
+                'Last_Name'=> $request->lastname,
+                'Email'=> $request->email,
+                'Dob'=> $request->dob,
+                'Number_Phone'=> $request->phoneNumber,
+                    
+            ]);
+        	return response()->json(['success'=>'Updated Succesfully!']);
+        }
+
+
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+
     public function getMaster()
     {
         return view('layouts.master');
