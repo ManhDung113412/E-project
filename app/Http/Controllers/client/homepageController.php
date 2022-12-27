@@ -30,7 +30,10 @@ class homepageController extends Controller
         $cart_quantity = session()->get('cart_quantity');
 
         
-        return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren,'cart_quantity' => $cart_quantity]);
+        $hehe_img = DB::table('sliedes')->where('Is_Top_Slide', 0)->where('Is_Middle_Slide', 1)->get()->shuffle();
+        $dungdz = $hehe_img->take(1);
+        
+        return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren,'cart_quantity' => $cart_quantity,'dungdeptrai'=>$dungdz]);
     }
 
     

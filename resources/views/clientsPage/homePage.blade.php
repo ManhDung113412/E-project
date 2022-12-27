@@ -71,7 +71,7 @@
             </div>
             <div class="container__newArrivals-collection">
                 <div id="colListNew" class="container__newArrivals-collection-slide"
-                    style="background-image: ; background-size: cover; background-position: 50% 50%;">
+                    style="background-image: {{ url($dungdeptrai[0]->IMG) }}; background-size: cover; background-position: 50% 50%;">
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
