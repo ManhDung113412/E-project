@@ -4,49 +4,49 @@
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/subsAndScroll.css') }}">
 @stop
 @section('content')
-<div class="main">
-    <div class="container">
-        <div class="container__sideBar">
-            <form action="" method="GET">
-                <div class="container__sideBar-search">
-                    <button>
-                        <ion-icon name="search-outline"></ion-icon>
-                    </button>
-                    <input type="text" placeholder="Search" name="searchBox">
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Brands</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="brands" id="filter" value="Gucci">
-                        <div class="container__sideBar-box-cate-name">Gucci</div>
+    <div class="main">
+        <div class="container">
+            <div class="container__sideBar">
+                <form action="" method="GET">
+                    <div class="container__sideBar-search">
+                        <button>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input type="text" placeholder="Search" name="searchBox">
                     </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="brands" id="filter" value="Louis Vuitton">
-                        <div class="container__sideBar-box-cate-name">Louis Vuitton</div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Brands</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="brands" id="filter" value="Gucci">
+                            <div class="container__sideBar-box-cate-name">Gucci</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="brands" id="filter" value="Louis Vuitton">
+                            <div class="container__sideBar-box-cate-name">Louis Vuitton</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="brands" id="filter" value="Dior">
+                            <div class="container__sideBar-box-cate-name">Dior</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="brands" id="filter" value="Chanel">
+                            <div class="container__sideBar-box-cate-name">Chanel</div>
+                        </div>
                     </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="brands" id="filter" value="Dior">
-                        <div class="container__sideBar-box-cate-name">Dior</div>
+                    <div class="container__sideBar-box">
+                        <div class="container__sideBar-box-tittle">Price</div>
+                        <hr class="box1">
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="Price" id="filter" value="high">
+                            <div class="container__sideBar-box-cate-name">High to low</div>
+                        </div>
+                        <div class="container__sideBar-box-cate">
+                            <input type="radio" name="Price" id="filter" value="ow">
+                            <div class="container__sideBar-box-cate-name">Low to high</div>
+                        </div>
                     </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="brands" id="filter" value="Chanel">
-                        <div class="container__sideBar-box-cate-name">Chanel</div>
-                    </div>
-                </div>
-                <div class="container__sideBar-box">
-                    <div class="container__sideBar-box-tittle">Price</div>
-                    <hr class="box1">
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="Price" id="filter" value="high">
-                        <div class="container__sideBar-box-cate-name">High to low</div>
-                    </div>
-                    <div class="container__sideBar-box-cate">
-                        <input type="radio" name="Price" id="filter" value="ow">
-                        <div class="container__sideBar-box-cate-name">Low to high</div>
-                    </div>
-                </div>
-                {{-- <div class="container__sideBar-box">
+                    {{-- <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Collection</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
@@ -62,24 +62,35 @@
                         <div class="container__sideBar-box-cate-name">Discount</div>
                     </div>
                 </div> --}}
-                <div class="container__sideBar-filter">
-                    <button type="submit">Filter</button>
-                </div>
-            </form>
-        </div>
+                    <div class="container__sideBar-filter">
+                        <button type="submit">Filter</button>
+                    </div>
+                </form>
+            </div>
             <div class="container__list">
                 <div class="container__list-tittle">Long Wallet</div>
                 <div class="container__list-products">
                     @foreach ($longWallet as $item)
-                        <a class="container__list-products-item"
-                            href="{{ url('/client/products/specificProduct', $item->Slug) }}">
-                            <div src="" style="background-image: url({{ $item->Main_IMG }})"
-                                class="container__list-products-item-img"></div>
+                        <div class="container__list-products-item">
+                            <div class="container__list-products-item-button">
+                                <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </a>
+                                <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </a>
+                                {{-- <a href="" class="iconProduct">
+                            <ion-icon name="git-compare-outline"></ion-icon>
+                        </a> --}}
+                            </div>
+                            <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                                style="background-image: url({{ $item->Main_IMG }})"
+                                class="container__list-products-item-img"></a>
                             <div class="container__list-products-item-info">
                                 <p>{{ $item->Name }}</p>
                                 <p>${{ $item->Export_Price }}</p>
                             </div>
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -91,15 +102,26 @@
         <div class="container__featured-tittle">You May Also Like</div>
         <div class="container__featured-products">
             @foreach ($randomProduct as $item)
-                <a class="container__featured-products-items"
-                    href="{{ url('/client/products/specificProduct', $item->Slug) }}">
-                    <div style="background-image: url({{ $item->Main_IMG }})"
-                        class="container__featured-products-items-img"></div>
+                <div class="container__featured-products-items">
+                    <div class="container__featured-products-items-button">
+                        <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </a>
+                        <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
+                        {{-- <a href="" class="iconProduct">
+                    <ion-icon name="git-compare-outline"></ion-icon>
+                </a> --}}
+                    </div>
+                    <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                        style="background-image: url({{ $item->Main_IMG }})"
+                        class="container__featured-products-items-img"></a>
                     <div class="container__featured-products-items-info">
                         <p>{{ $item->Name }}</p>
                         <p>${{ $item->Export_Price }}</p>
                     </div>
-                </a>
+                </div>
             @endforeach
         </div>
     </div>

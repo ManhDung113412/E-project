@@ -44,15 +44,31 @@ class AppServiceProvider extends ServiceProvider
             $carts = DB::table('carts As c')
                 ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
                 ->join('products as p', 'pd.Product_ID', 'p.ID')
-                ->select('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity',
-                DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))         
+                ->select(
+                    'Export_Price',
+                    'Sale_Price',
+                    'Main_IMG',
+                    'Name',
+                    'Color',
+                    'Product_Detail_ID',
+                    'Product_quantity',
+                    DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal')
+                )
                 ->where('Customer_ID', $customer_ID)
                 ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
                 ->get();
+            $num = [];
+            $a = session()->get('product_1');
+            $b = session()->get('product_2');
+            array_push($num, $a, $b);
+            $compare_number = count(array_filter($num));
 
             $cart_quantity = count($carts);
+
+            
+
             $wishList_quantity = count(WishList::where('Customer_ID', $customer_ID)->get());
-            $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity,'customer'=>$this_customer]);
+            $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity, 'customer' => $this_customer,'compare_number'=>$compare_number]);
         });
     }
 }

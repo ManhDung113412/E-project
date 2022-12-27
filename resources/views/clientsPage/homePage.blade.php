@@ -68,9 +68,8 @@
                     </a>
                 </div>
             </div>
-            <div class="container__newArrivals-collection">
-                <div id="colListNew" class="container__newArrivals-collection-slide"
-                    style="background-image: ; background-size: cover; background-position: 50% 50%;">
+            <div class="container__newArrivals-collection" style="background-image: url({{ $dungdeptrai[0]->IMG }});background-size: cover; background-position: 50% 50%;">
+                <div id="colListNew" class="container__newArrivals-collection-slide">
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
@@ -217,6 +216,17 @@
             <ion-icon name="chevron-up-outline"></ion-icon>
         </button>
     </div>
+    <div class="compareProducts">
+        <div class="compareProducts__quantity">
+            2
+        </div>
+        <a href="{{ url('/client/products/compareproduct') }}">
+            <ion-icon name="git-compare-outline"></ion-icon>
+        </a>
+    </div>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
+
 @stop
+
+
