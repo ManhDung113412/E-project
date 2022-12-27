@@ -142,7 +142,7 @@
                     <div class="header__nav-right">
 
                         <button id="log">
-                            <div>{{ $this_customer[0]->username }}</div>
+                            <div>{{ $customer[0]->username }}</div>
                             <ion-icon name="person"></ion-icon>
                         </button>
                         <button id="showCart">

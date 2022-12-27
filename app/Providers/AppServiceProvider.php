@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
             //     $user_name = $item->username;
             // }
             // dd($user_name);
-            $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity,'this_customer'=>$this_customer]);
+            $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity,'customer'=>$this_customer]);
         });
     }
 }
