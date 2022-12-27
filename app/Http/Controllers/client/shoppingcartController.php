@@ -11,6 +11,7 @@ use App\Models\ProductDetail;
 use App\Models\Product;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
+use Alert;
 
 class shoppingcartController extends Controller
 {
@@ -259,7 +260,9 @@ class shoppingcartController extends Controller
             ->where('Product_Detail_ID', $pro_ID)
             ->exists()
         ) {
-            return redirect()->back();
+            Alert::success('Success Title', 'Success Message');
+
+            // return redirect()->back();
         } else {
 
             DB::table('carts')
