@@ -31,26 +31,26 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-                    <a class="container__featured-products-items"
-                        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                    <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
-                            <button>
+                            <a href="" class="iconProduct">
                                 <ion-icon name="cart-outline"></ion-icon>
-                            </button>
-                            <button>
+                            </a>
+                            <a href="{{ url('/client/wishList') }}" class="iconProduct">
                                 <ion-icon name="heart-outline"></ion-icon>
-                            </button>
-                            <button>
-                                <ion-icon name="git-compare-outline"></ion-icon>
-                            </button>
+                            </a>
+                            {{-- <a href="" class="iconProduct">
+                            <ion-icon name="git-compare-outline"></ion-icon>
+                        </a> --}}
                         </div>
-                        <div style="background-image: url({{ $item->Main_IMG }})"
-                            class="container__featured-products-items-img"></div>
+                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                            style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__featured-products-items-img"></a>
                         <div class="container__featured-products-items-info">
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
-                    </a>
+                    </div>
                 @endforeach
             </div>
         </div>
@@ -69,7 +69,8 @@
                 </div>
             </div>
             <div class="container__newArrivals-collection">
-                <div id="colListNew" class="container__newArrivals-collection-slide">
+                <div id="colListNew" class="container__newArrivals-collection-slide"
+                    style="background-image: ; background-size: cover; background-position: 50% 50%;">
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
@@ -91,26 +92,26 @@
                     style="color: black">Trending Now</a> </div>
             <div class="container__featured-products">
                 @foreach ($trending as $item)
-                    <a class="container__featured-products-items"
-                        href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+                    <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
-                            <button>
+                            <a href="" class="iconProduct">
                                 <ion-icon name="cart-outline"></ion-icon>
-                            </button>
-                            <button>
+                            </a>
+                            <a href="{{ url('/client/wishList') }}" class="iconProduct">
                                 <ion-icon name="heart-outline"></ion-icon>
-                            </button>
-                            <button>
+                            </a>
+                            {{-- <a href="" class="iconProduct">
                                 <ion-icon name="git-compare-outline"></ion-icon>
-                            </button>
+                            </a> --}}
                         </div>
-                        <div style="background-image: url({{ $item->Main_IMG }})"
-                            class="container__featured-products-items-img"></div>
+                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                            style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__featured-products-items-img"></a>
                         <div class="container__featured-products-items-info">
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
-                    </a>
+                    </div>
                 @endforeach
             </div>
         </div>
