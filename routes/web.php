@@ -189,12 +189,12 @@ Route::prefix('client/products')->group(function () {
     Route::get('dior', [clientProductController::class, 'getDior']);
 
     Route::get('specificProduct/{Slug}', [clientProductController::class, 'getSpecificProduct']);
-    
+
     Route::get('specificProduct/pdf/{Slug}', [clientProductController::class, 'getPdfFile']);
 
     Route::get('compareproduct', [compareProductController::class, 'getCompareProduct'])
     ->name('compareProduct');
-    
+
     Route::get('deleteproduct1', [compareProductController::class, 'deleteProduct1']);
     Route::get('deleteproduct2', [compareProductController::class, 'deleteProduct2']);
 });
@@ -225,8 +225,8 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('Cart/removefromcart/{ID}', [shoppingcartController::class, 'removeFromCart']);
 
     Route::get('wishList', [wishListController::class, 'getWithList'])->name('wishList');
-    
-    
+
+
     Route::get('wishlist/remove/{ID}', [wishListController::class, 'removeFromWishList']);
     Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
     Route::get('wishlist/addtowishlist/{ID}', [wishListController::class, 'addToWishList']);
