@@ -21,15 +21,23 @@ class clientController extends Controller
     public function getProfile()
     {
         $user_id = Auth::guard('users')->id();
-        $user = DB::table('users As u')
+        $has_order = DB::table('orders')->where('Customer_ID', 1)->get();
+
+        if ($has_order->count() != 0) {
+            $user = DB::table('users As u')
             ->join('orders as o', 'u.id', 'o.Customer_ID')
             ->join('orders_details as od', 'o.ID', 'od.Order_ID')
             ->select(DB::raw('sum(Quantity) as Total_Quantity'),
             DB::raw('sum(Quantity * Price) as Total_Price'), 'o.Code as Order_Code', 'o.Status', 'o.created_at', 'u.First_Name', 'u.Last_Name', 'u.username', 'u.Dob', 'u.Email', 'u.Number_Phone', 'u.Rank', 'u.Code')
             ->groupBy('Order_Code', 'Status', 'created_at', 'First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
-            ->where('u.id', $user_id)
+            ->where('u.id', 1)
             ->get();
-        // dd($user);
+        } else {
+            $user = DB::table('users As u')
+            ->where('u.id', 1)
+            ->select('First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
+            ->get();
+        }
         return view('clientsPage.myProfile', compact('user'));
     }
 
@@ -39,7 +47,7 @@ class clientController extends Controller
         $old_profile = DB::table('users')->where('id', $id_user)->get();
         $old_email =  $old_profile[0]->Email;
         $old_number_phone =  $old_profile[0]->Number_Phone;
-        if($old_email != $request->email && $old_number_phone != $request->phoneNumber){
+        if ($old_email != $request->email && $old_number_phone != $request->phoneNumber) {
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -47,9 +55,7 @@ class clientController extends Controller
                 'dob' => 'required',
                 'phone_number' => 'required|regex:/(01)[0-9]{9}/|unique:users'
             ]);
-        }
-
-        else if($old_email != $request->email){
+        } else if ($old_email != $request->email) {
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -57,9 +63,7 @@ class clientController extends Controller
                 'dob' => 'required',
                 'phone_number' => 'required'
             ]);
-        }
-
-        else if($old_number_phone != $request->phoneNumber){
+        } else if ($old_number_phone != $request->phoneNumber) {
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -67,9 +71,7 @@ class clientController extends Controller
                 'dob' => 'required',
                 'phone_number' => 'required|regex:/(01)[0-9]{9}/|unique:users'
             ]);
-        }
-         
-        else{
+        } else {
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -79,18 +81,18 @@ class clientController extends Controller
 
         if ($validator->passes()) {
             DB::table('users')->where('id', $id_user)->update([
-                'First_Name'=> $request->firstname,
-                'Last_Name'=> $request->lastname,
-                'Email'=> $request->email,
-                'Dob'=> $request->dob,
-                'Number_Phone'=> $request->phoneNumber,
-                    
+                'First_Name' => $request->firstname,
+                'Last_Name' => $request->lastname,
+                'Email' => $request->email,
+                'Dob' => $request->dob,
+                'Number_Phone' => $request->phoneNumber,
+
             ]);
-        	return response()->json(['success'=>'Updated Succesfully!']);
+            return response()->json(['success' => 'Updated Succesfully!']);
         }
 
 
-        return response()->json(['error'=>$validator->errors()->all()]);
+        return response()->json(['error' => $validator->errors()->all()]);
     }
 
 

@@ -9,7 +9,9 @@
                     <div class="container__info-top-avatar-img" style="background-image: url(./hb.jpg);">
                         <div class="container__info-top-avatar-img-change">
                             <button type="button" id="changeAvatar">
-                                <input id="avt-btn" type="file">
+                                <form action="" enctype="multipart/form-data">
+                                    <input id="avt-btn" type="file">
+                                </form>
                                 Change
                             </button>
                         </div>
@@ -27,30 +29,57 @@
             </div>
             <div class="container__info-details">
                 <table>
-                    <tr>
-                        <th>Member</th>
-                        <td>{{ $user[0]->Rank }}</td>
-                    </tr>
-                    <tr>
-                        <th>First Name:</th>
-                        <td>{{ $user[0]->First_Name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name:</th>
-                        <td>{{ $user[0]->Last_Name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Email:</th>
-                        <td>{{ $user[0]->Email }}</td>
-                    </tr>
-                    <tr>
-                        <th>Phone:</th>
-                        <td>{{ $user[0]->Number_Phone }}</td>
-                    </tr>
-                    <tr>
-                        <th>DOB:</th>
-                        <td>{{ $user[0]->Dob }}</td>
-                    </tr>
+                    @if (!empty($user->Rank))
+                        <tr>
+                            <th>Member</th>
+                            <td>{{ $user->Rank }}</td>
+                        </tr>
+                        <tr>
+                            <th>First Name:</th>
+                            <td>{{ $user->First_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>{{ $user->Last_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ $user->Email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>{{ $user->Number_Phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>DOB:</th>
+                            <td>{{ $user->Dob }}</td>
+                        </tr>
+                    @else
+                        <tr>
+                            <th>Member</th>
+                            <td>{{ $user[0]->Rank }}</td>
+                        </tr>
+                        <tr>
+                            <th>First Name:</th>
+                            <td>{{ $user[0]->First_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>{{ $user[0]->Last_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ $user[0]->Email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>{{ $user[0]->Number_Phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>DOB:</th>
+                            <td>{{ $user[0]->Dob }}</td>
+                        </tr>
+                    @endif
                 </table>
             </div>
         </div>
@@ -59,39 +88,42 @@
                 <p>Shopping History</p>
             </div>
             <div class="container__history-list">
-                @foreach ($user as $user)
-                    <div class="container__history-list-item">
-                        <div class="container__history-list-item-title">
-                            <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
-                            <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
-                        </div>
-                        <div class="container__history-list-item-content">
-                            <div class="container__history-list-item-content-status">
-                                @if ($user->Status == 'Pending')
-                                    <div class="container__history-list-item-content-status-color"
-                                        style="background-color: rgb(5, 150, 150);"></div>
-                                @elseif ($user->Status == 'Done')
-                                    <div class="container__history-list-item-content-status-color"
-                                        style="background-color: #28a745;"></div>
-                                @else
-                                    <div class="container__history-list-item-content-status-color"
-                                        style="background-color: #6c757d;"></div>
-                                @endif
-                                <div class="container__history-list-item-content-status-text">{{ $user->Status }}</div>
+                @if (!empty($user[0]->Order_Code))
+                    @foreach ($user as $user)
+                        <div class="container__history-list-item">
+                            <div class="container__history-list-item-title">
+                                <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
+                                <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
                             </div>
-                            <div class="container__history-list-item-content-details">
-                                <div class="container__history-list-item-content-details-quantity">
-                                    <div>Total quantity</div>
-                                    <div>{{ $user->Total_Quantity }}</div>
+                            <div class="container__history-list-item-content">
+                                <div class="container__history-list-item-content-status">
+                                    @if ($user->Status == 'Pending')
+                                        <div class="container__history-list-item-content-status-color"
+                                            style="background-color: rgb(5, 150, 150);"></div>
+                                    @elseif ($user->Status == 'Done')
+                                        <div class="container__history-list-item-content-status-color"
+                                            style="background-color: #28a745;"></div>
+                                    @else
+                                        <div class="container__history-list-item-content-status-color"
+                                            style="background-color: #6c757d;"></div>
+                                    @endif
+                                    <div class="container__history-list-item-content-status-text">{{ $user->Status }}
+                                    </div>
                                 </div>
-                                <div class="container__history-list-item-content-details-totalPrice">
-                                    <div>Total price</div>
-                                    <div>${{ $user->Total_Price }}</div>
+                                <div class="container__history-list-item-content-details">
+                                    <div class="container__history-list-item-content-details-quantity">
+                                        <div>Total quantity</div>
+                                        <div>{{ $user->Total_Quantity }}</div>
+                                    </div>
+                                    <div class="container__history-list-item-content-details-totalPrice">
+                                        <div>Total price</div>
+                                        <div>${{ $user->Total_Price }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -103,12 +135,24 @@
                 <div class="alert alert-danger print-error-msg" style="display:none">
                     <ul></ul>
                 </div>
-                <input id="firstname" type="text" value="{{ $user->First_Name }}" placeholder="  Firstname">
-                <input id="lastname" type="text" value="{{ $user->Last_Name }}" placeholder="  Lastname">
-                <input id="email" type="text" value="{{ $user->Email }}" placeholder="  Email">
-                <input id="dob" type="date" value="{{ $user->Dob }}" placeholder="  DOB">
-                <input id="phone_number" type="text" value="{{ $user->Number_Phone }}" placeholder="  Phone Number">
-                <button id="btn" type="button">Submit</button>
+                @if (!empty($user->First_Name))
+                    <input id="firstname" type="text" value="{{ $user->First_Name }}" placeholder="  Firstname">
+                    <input id="lastname" type="text" value="{{ $user->Last_Name }}" placeholder="  Lastname">
+                    <input id="email" type="text" value="{{ $user->Email }}" placeholder="  Email">
+                    <input id="dob" type="date" value="{{ $user->Dob }}" placeholder="  DOB">
+                    <input id="phone_number" type="text" value="{{ $user->Number_Phone }}"
+                        placeholder="  Phone Number">
+                    <button id="btn" type="button">Submit</button>
+                @else
+                    <input id="firstname" type="text" value="{{ $user[0]->First_Name }}" placeholder="  Firstname">
+                    <input id="lastname" type="text" value="{{ $user[0]->Last_Name }}" placeholder="  Lastname">
+                    <input id="email" type="text" value="{{ $user[0]->Email }}" placeholder="  Email">
+                    <input id="dob" type="date" value="{{ $user[0]->Dob }}" placeholder="  DOB">
+                    <input id="phone_number" type="text" value="{{ $user[0]->Number_Phone }}"
+                        placeholder="  Phone Number">
+                    <button id="btn" type="button">Submit</button>
+                @endif
+
             </div>
             <button id="offEdit">
                 <ion-icon name="close-outline"></ion-icon>
@@ -121,6 +165,8 @@
 
 <script src="{{ asset('javascript/client/profile.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src='https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.js' type='text/javascript'></script>
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
 <script>
     $(document).ready(function() {
@@ -165,17 +211,26 @@
         }
 
         // Edit Avatar 
-        $('#avt-btn').change(function(){
-            var test = $(this)[0].files[0]
-            if(test){
+        $('#avt-btn').change(function() {
+            var file = $(this)[0].files[0]
+            if (test) {
                 console.log('hehe');
                 console.log(test);
-                var fileReader = new FileReader();
-                fileReader.onload = function () {
-                    var data = fileReader.result;  
-                };
-                fileReader.readAsDataURL($(this).prop('files')[0]);
-            }else{
+                var formData = new FormData();
+                formData.append('file', file)
+                formData.append('upload_preset', 'kem7hhjd')
+
+                $.ajax({
+                    url: "https://api.cloudinary.com/v1_1/dsqiav317/image/upload" + formData,
+                    method: "POST",
+                    data: {
+                        _token: _token
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
+                })
+            } else {
                 console.log('khong hehe');
                 console.log(test);
             }
