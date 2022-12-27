@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div id="shoppingCart" class="header__cart">
-                    <div class="header__cart-tittle"><a href="{{ url('client/Cart') }}">Shopping Cart</a>
+                    <div class="header__cart-tittle">Shopping Cart
                         <button id="hideCart">
                             <ion-icon name="chevron-up-outline"></ion-icon>
                         </button>
@@ -116,9 +116,9 @@
                         <p><b>Total</b></p>
                         <p>$10000</p>
                     </div>
-                    <a href="{{ url('client/Cart') }}" class="header__cart-checkout">
+                    <div class="header__cart-checkout">
                         <button>Check out</button>
-                    </a>
+                    </div>
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
@@ -141,16 +141,17 @@
                     </div>
                     <div class="header__nav-right">
                         <a href="{{ url('client/myProfile') }}" class="userName">{{ $customer[0]->username }}</a>
-                        <button id="log">
+                        <a class="iconHead" id="log">
                             <ion-icon name="person"></ion-icon>
-                        </button>
-                        <button id="showCart">
+                        </a>
+                        <a class="iconHead" id="showCart">
                             <div class="quantityCart">{{ $cart_quantity }}</div>
                             <ion-icon name="cart-outline"></ion-icon>
-                            <button>
-                                <div class="quantityCart">{{ $wishList_quantity }}</div>
-                                <a href="{{ url('client/wishLish') }}"><ion-icon name="heart-outline"></ion-icon></a>
-                            </button>
+                        </a>
+                        <a href="{{ url('client/wishList') }}" class="iconHead">
+                            <div class="quantityCart">{{ $wishList_quantity }}</div>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
                     </div>
                 </div>
             @else
@@ -201,9 +202,9 @@
                         <p><b>Total</b></p>
                         <p>$10000</p>
                     </div>
-                    <a href="{{ url('client/Cart') }}" class="header__cart-checkout">
+                    <div class="header__cart-checkout">
                         <button>Check out</button>
-                    </a>
+                    </div>
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
@@ -228,16 +229,17 @@
                         </a>
                     </div>
                     <div class="header__nav-right">
-                        <button id="log">
+                        <a class="iconHead" id="log">
                             <ion-icon name="person-outline"></ion-icon>
-                        </button>
-                        <button id="showCart">
-                            <div class="quantityCart">{{ $cart_quantity }}</div>
+                        </a>
+                        <a class="iconHead" id="showCart">
+                            {{-- <div class="quantityCart">{{ $cart_quantity }}</div> --}}
                             <ion-icon name="cart-outline"></ion-icon>
-                            <button>
-                                <div class="quantityCart">{{ $wishList_quantity }}</div>
-                                <a href="{{ url('client/wishLish') }}"><ion-icon name="heart-outline"></ion-icon></a>
-                            </button>
+                        </a>
+                        <a href="{{ url('client/wishList') }}" class="iconHead">
+                            {{-- <div class="quantityCart">{{ $wishList_quantity }}</div> --}}
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
                     </div>
                 </div>
             @endif

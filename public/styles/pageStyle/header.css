@@ -469,30 +469,43 @@ ion-icon {
     margin-top: 10px;
 }
 
-.header__nav-right button .quantityCart {
+.header__nav-right .iconHead{
+    border: 1px solid transparent;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    position: relative;
+    align-content: center;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.header__nav-right .iconHead .quantityCart {
     position: absolute;
-    /* border: 1px solid black; */
     height: 18px;
     background-color: rgb(255, 61, 61);
-    font-size: 10px;
+    font-size: 12px;
     width: 18px;
     border-radius: 50%;
-    display: inline-block;
+    /* display: inline-block; */
     color: white;
     font-weight: bold;
     right: 0;
     margin-top: 3px;
     line-height: 18px;
-    margin-left: 10px;
+    text-align: center;
+    /* margin-left: 30px; */
     z-index: 1;
 }
 
-.header__nav-right button ion-icon {
+.header__nav-right .iconHead ion-icon {
     width: 30px;
     float: left;
     height: 40px;
     margin-top: 8px;
-}.header__nav-right button a{
+}
+.header__nav-right a{
     color: black;
 }
 
