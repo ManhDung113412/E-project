@@ -31,8 +31,7 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-<<<<<<< HEAD
-                    <div class="container__featured-products-items">
+                    <<<<<<< HEAD <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
                             <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
                                 <ion-icon name="cart-outline"></ion-icon>
@@ -55,72 +54,6 @@
 >>>>>>> fb534d4050d61fb2273a59e2e422040bacdcfa0d
                             <ion-icon name="git-compare-outline"></ion-icon>
                         </a> --}}
-                    </div>
-                    <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
-                        style="background-image: url({{ $item->Main_IMG }})"
-                        class="container__featured-products-items-img"></a>
-                    <div class="container__featured-products-items-info">
-                        <p>{{ $item->Name }}</p>
-                        <p>${{ $item->Export_Price }}</p>
-                    </div>
-                </div>
-            @endforeach
-            </div>
-        </div>
-        <div class="container__newArrivals">
-            <div class="container__newArrivals-content">
-                <div class="container__newArrivals-content-tittle">
-                    <a href="{{ url('client/new-arrival') }}">New Arrivals</a>
-                </div>
-                <div class="container__newArrivals-content-text">
-                    Make bold fashion choices with our latest Purse and Wallets
-                </div>
-                <div class="container__newArrivals-content-button">
-                    <a href="{{ url('/client/products/new-arrival') }}">
-                        <p>Shop Now</p>
-                    </a>
-                </div>
-            </div>
-<<<<<<< HEAD
-            <div class="container__newArrivals-collection">
-                <div id="colListNew" class="container__newArrivals-collection-slide"
-                    style="background-image:  url({{ $dungdeptrai[0]->IMG }}); background-size: cover; background-position: 50% 50%;">
-=======
-            <div class="container__newArrivals-collection" style="background-image: url({{ $dungdeptrai[0]->IMG }});background-size: cover; background-position: 50% 50%;">
-                <div id="colListNew" class="container__newArrivals-collection-slide">
->>>>>>> fb534d4050d61fb2273a59e2e422040bacdcfa0d
-                    @foreach ($middle_slides_img as $middle)
-                        <div class="container__newArrivals-collection-list"
-                            style="background-image: url({{ $middle->IMG }});">
-                        </div>
-                    @endforeach
-                    <div class="container__newArrivals-collection-button">
-                        <button id="prevNew">
-                            <ion-icon name="chevron-back-outline"></ion-icon>
-                        </button>
-                        <button id="nextNew">
-                            <ion-icon name="chevron-forward-outline"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container__featured">
-            <div class="container__featured-tittle"><a href="url('/client/products/trending') "
-                    style="color: black">Trending Now</a> </div>
-            <div class="container__featured-products">
-                @foreach ($trending as $item)
-                    <div class="container__featured-products-items">
-                        <div class="container__featured-products-items-button">
-                            <a href="{{ url('client/Cart/addtocart',$item->ID) }}" class="iconProduct">
-                                <ion-icon name="cart-outline"></ion-icon>
-                            </a>
-                            <a href="{{ url('/client/wishlist/addtowishlist',$item->ID) }}" class="iconProduct">
-                                <ion-icon name="heart-outline"></ion-icon>
-                            </a>
-                            {{-- <a href="" class="iconProduct">
-                                <ion-icon name="git-compare-outline"></ion-icon>
-                            </a> --}}
                         </div>
                         <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
                             style="background-image: url({{ $item->Main_IMG }})"
@@ -129,12 +62,91 @@
                             <p>{{ $item->Name }}</p>
                             <p>${{ $item->Export_Price }}</p>
                         </div>
-                    </div>
-                @endforeach
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="container__newArrivals">
+        <div class="container__newArrivals-content">
+            <div class="container__newArrivals-content-tittle">
+                <a href="{{ url('client/new-arrival') }}">New Arrivals</a>
+            </div>
+            <div class="container__newArrivals-content-text">
+                Make bold fashion choices with our latest Purse and Wallets
+            </div>
+            <div class="container__newArrivals-content-button">
+                <a href="{{ url('/client/products/new-arrival') }}">
+                    <p>Shop Now</p>
+                </a>
             </div>
         </div>
-        @foreach ($channel as $item)
-            <div class="container__listCol">
+        <<<<<<< HEAD <div class="container__newArrivals-collection">
+            <div id="colListNew" class="container__newArrivals-collection-slide"
+                style="background-image:  url({{ $dungdeptrai[0]->IMG }}); background-size: cover; background-position: 50% 50%;">
+                =======
+                <div class="container__newArrivals-collection"
+                    style="background-image: url({{ $dungdeptrai[0]->IMG }});background-size: cover; background-position: 50% 50%;">
+                    <div id="colListNew" class="container__newArrivals-collection-slide">
+                        >>>>>>> fb534d4050d61fb2273a59e2e422040bacdcfa0d
+                        @foreach ($middle_slides_img as $middle)
+                            <div class="container__newArrivals-collection-list"
+                                style="background-image: url({{ $middle->IMG }});">
+                            </div>
+                        @endforeach
+                        <div class="container__newArrivals-collection-button">
+                            <button id="prevNew">
+                                <ion-icon name="chevron-back-outline"></ion-icon>
+                            </button>
+                            <button id="nextNew">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__featured">
+                <div class="container__featured-tittle"><a href="url('/client/products/trending') "
+                        style="color: black">Trending Now</a> </div>
+                <div class="container__featured-products">
+                    @foreach ($trending as $item)
+                        <div class="container__featured-products-items">
+                            <div class="container__featured-products-items-button">
+                                <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </a>
+                                <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </a>
+                                {{-- <a href="" class="iconProduct">
+                                <ion-icon name="git-compare-outline"></ion-icon>
+                            </a> --}}
+                            </div>
+                            <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                                style="background-image: url({{ $item->Main_IMG }})"
+                                class="container__featured-products-items-img"></a>
+                            <div class="container__featured-products-items-info">
+                                <p>{{ $item->Name }}</p>
+                                <p>${{ $item->Export_Price }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @foreach ($channel as $item)
+                <div class="container__listCol">
+                    <div class="container__listCol-items">
+                        <div class="container__listCol-items-img">
+                            <div class="container__listCol-items-img-child"
+                                style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
+                            <div class="container__listCol-items-img-child"
+                                style="background-image: url({{ $item->After_Hover_IMG }});"></div>
+                            <div class="container__listCol-items-tittle">
+                                <button onclick="location.href='{{ url('client/products/channel') }}'">View More</button>
+                            </div>
+                        </div>
+                    </div>
+            @endforeach
+            @foreach ($dior as $item)
                 <div class="container__listCol-items">
                     <div class="container__listCol-items-img">
                         <div class="container__listCol-items-img-child"
@@ -142,51 +154,38 @@
                         <div class="container__listCol-items-img-child"
                             style="background-image: url({{ $item->After_Hover_IMG }});"></div>
                         <div class="container__listCol-items-tittle">
-                            <button onclick="location.href='{{ url('client/products/channel') }}'">View More</button>
+                            <button onclick="location.href='{{ url('client/products/dior') }}'">View More</button>
                         </div>
                     </div>
                 </div>
-        @endforeach
-        @foreach ($dior as $item)
-            <div class="container__listCol-items">
-                <div class="container__listCol-items-img">
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->After_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-tittle">
-                        <button onclick="location.href='{{ url('client/products/dior') }}'">View More</button>
+            @endforeach
+            @foreach ($gucci as $item)
+                <div class="container__listCol-items">
+                    <div class="container__listCol-items-img">
+                        <div class="container__listCol-items-img-child"
+                            style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
+                        <div class="container__listCol-items-img-child"
+                            style="background-image: url({{ $item->After_Hover_IMG }});">
+                        </div>
+                        <div class="container__listCol-items-tittle">
+                            <button onclick="location.href='{{ url('client/products/gucci') }}'">View More</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-        @foreach ($gucci as $item)
-            <div class="container__listCol-items">
-                <div class="container__listCol-items-img">
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->After_Hover_IMG }});">
-                    </div>
-                    <div class="container__listCol-items-tittle">
-                        <button onclick="location.href='{{ url('client/products/gucci') }}'">View More</button>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-        @foreach ($LV as $item)
-            <div class="container__listCol-items">
-                <div class="container__listCol-items-img">
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-img-child"
-                        style="background-image: url({{ $item->After_Hover_IMG }});"></div>
-                    <div class="container__listCol-items-tittle">
-                        <button onclick="location.href='{{ url('client/products/louis-vuiton') }}'">View More</button>
+            @endforeach
+            @foreach ($LV as $item)
+                <div class="container__listCol-items">
+                    <div class="container__listCol-items-img">
+                        <div class="container__listCol-items-img-child"
+                            style="background-image: url({{ $item->Before_Hover_IMG }});"></div>
+                        <div class="container__listCol-items-img-child"
+                            style="background-image: url({{ $item->After_Hover_IMG }});"></div>
+                        <div class="container__listCol-items-tittle">
+                            <button onclick="location.href='{{ url('client/products/louis-vuiton') }}'">View More</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
     </div>
     <div class="brands">
         @foreach ($channel as $item)
@@ -239,7 +238,8 @@
         <div class="compareProducts">
             <div class="compareProducts__quantity">
                 {{ $compare_number }}
-            </div>asdfasdfasdf
+            </div>
+
             <a href="{{ url('/client/products/compareproduct') }}">
                 <ion-icon name="git-compare-outline"></ion-icon>
             </a>
@@ -247,7 +247,8 @@
         <a href="{{ url('/client/products/compareproduct') }}">
             <ion-icon name="git-compare-outline"></ion-icon>
         </a>
-    </div>
+        </div>
+    @endif
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 
