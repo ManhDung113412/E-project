@@ -29,30 +29,57 @@
             </div>
             <div class="container__info-details">
                 <table>
-                    <tr>
-                        <th>Member</th>
-                        <td>{{ $user[0]->Rank }}</td>
-                    </tr>
-                    <tr>
-                        <th>First Name:</th>
-                        <td>{{ $user[0]->First_Name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name:</th>
-                        <td>{{ $user[0]->Last_Name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Email:</th>
-                        <td>{{ $user[0]->Email }}</td>
-                    </tr>
-                    <tr>
-                        <th>Phone:</th>
-                        <td>{{ $user[0]->Number_Phone }}</td>
-                    </tr>
-                    <tr>
-                        <th>DOB:</th>
-                        <td>{{ $user[0]->Dob }}</td>
-                    </tr>
+                    @if (!empty($user->Rank))
+                        <tr>
+                            <th>Member</th>
+                            <td>{{ $user->Rank }}</td>
+                        </tr>
+                        <tr>
+                            <th>First Name:</th>
+                            <td>{{ $user->First_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>{{ $user->Last_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ $user->Email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>{{ $user->Number_Phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>DOB:</th>
+                            <td>{{ $user->Dob }}</td>
+                        </tr>
+                    @else
+                        <tr>
+                            <th>Member</th>
+                            <td>{{ $user[0]->Rank }}</td>
+                        </tr>
+                        <tr>
+                            <th>First Name:</th>
+                            <td>{{ $user[0]->First_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>{{ $user[0]->Last_Name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ $user[0]->Email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>{{ $user[0]->Number_Phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>DOB:</th>
+                            <td>{{ $user[0]->Dob }}</td>
+                        </tr>
+                    @endif
                 </table>
             </div>
         </div>
@@ -62,39 +89,40 @@
             </div>
             <div class="container__history-list">
                 @if (!empty($user[0]->Order_Code))
-                @foreach ($user as $user)
-                <div class="container__history-list-item">
-                    <div class="container__history-list-item-title">
-                        <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
-                        <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
-                    </div>
-                    <div class="container__history-list-item-content">
-                        <div class="container__history-list-item-content-status">
-                            @if ($user->Status == 'Pending')
-                                <div class="container__history-list-item-content-status-color"
-                                    style="background-color: rgb(5, 150, 150);"></div>
-                            @elseif ($user->Status == 'Done')
-                                <div class="container__history-list-item-content-status-color"
-                                    style="background-color: #28a745;"></div>
-                            @else
-                                <div class="container__history-list-item-content-status-color"
-                                    style="background-color: #6c757d;"></div>
-                            @endif
-                            <div class="container__history-list-item-content-status-text">{{ $user->Status }}</div>
-                        </div>
-                        <div class="container__history-list-item-content-details">
-                            <div class="container__history-list-item-content-details-quantity">
-                                <div>Total quantity</div>
-                                <div>{{ $user->Total_Quantity }}</div>
+                    @foreach ($user as $user)
+                        <div class="container__history-list-item">
+                            <div class="container__history-list-item-title">
+                                <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
+                                <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
                             </div>
-                            <div class="container__history-list-item-content-details-totalPrice">
-                                <div>Total price</div>
-                                <div>${{ $user->Total_Price }}</div>
+                            <div class="container__history-list-item-content">
+                                <div class="container__history-list-item-content-status">
+                                    @if ($user->Status == 'Pending')
+                                        <div class="container__history-list-item-content-status-color"
+                                            style="background-color: rgb(5, 150, 150);"></div>
+                                    @elseif ($user->Status == 'Done')
+                                        <div class="container__history-list-item-content-status-color"
+                                            style="background-color: #28a745;"></div>
+                                    @else
+                                        <div class="container__history-list-item-content-status-color"
+                                            style="background-color: #6c757d;"></div>
+                                    @endif
+                                    <div class="container__history-list-item-content-status-text">{{ $user->Status }}
+                                    </div>
+                                </div>
+                                <div class="container__history-list-item-content-details">
+                                    <div class="container__history-list-item-content-details-quantity">
+                                        <div>Total quantity</div>
+                                        <div>{{ $user->Total_Quantity }}</div>
+                                    </div>
+                                    <div class="container__history-list-item-content-details-totalPrice">
+                                        <div>Total price</div>
+                                        <div>${{ $user->Total_Price }}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            @endforeach
+                    @endforeach
                 @endif
             </div>
         </div>
@@ -112,17 +140,19 @@
                     <input id="lastname" type="text" value="{{ $user->Last_Name }}" placeholder="  Lastname">
                     <input id="email" type="text" value="{{ $user->Email }}" placeholder="  Email">
                     <input id="dob" type="date" value="{{ $user->Dob }}" placeholder="  DOB">
-                    <input id="phone_number" type="text" value="{{ $user->Number_Phone }}" placeholder="  Phone Number">
+                    <input id="phone_number" type="text" value="{{ $user->Number_Phone }}"
+                        placeholder="  Phone Number">
                     <button id="btn" type="button">Submit</button>
                 @else
                     <input id="firstname" type="text" value="{{ $user[0]->First_Name }}" placeholder="  Firstname">
                     <input id="lastname" type="text" value="{{ $user[0]->Last_Name }}" placeholder="  Lastname">
                     <input id="email" type="text" value="{{ $user[0]->Email }}" placeholder="  Email">
                     <input id="dob" type="date" value="{{ $user[0]->Dob }}" placeholder="  DOB">
-                    <input id="phone_number" type="text" value="{{ $user[0]->Number_Phone }}" placeholder="  Phone Number">
+                    <input id="phone_number" type="text" value="{{ $user[0]->Number_Phone }}"
+                        placeholder="  Phone Number">
                     <button id="btn" type="button">Submit</button>
                 @endif
-                
+
             </div>
             <button id="offEdit">
                 <ion-icon name="close-outline"></ion-icon>
@@ -196,7 +226,7 @@
                     data: {
                         _token: _token
                     },
-                    success: function(data) { 
+                    success: function(data) {
                         console.log(data);
                     }
                 })
