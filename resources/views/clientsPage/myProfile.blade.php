@@ -142,7 +142,6 @@
                     <input id="dob" type="date" value="{{ $user->Dob }}" placeholder="  DOB">
                     <input id="phone_number" type="text" value="{{ $user->Number_Phone }}"
                         placeholder="  Phone Number">
-                    <button id="btn" type="button">Submit</button>
                 @else
                     <input id="firstname" type="text" value="{{ $user[0]->First_Name }}" placeholder="  Firstname">
                     <input id="lastname" type="text" value="{{ $user[0]->Last_Name }}" placeholder="  Lastname">
@@ -150,8 +149,8 @@
                     <input id="dob" type="date" value="{{ $user[0]->Dob }}" placeholder="  DOB">
                     <input id="phone_number" type="text" value="{{ $user[0]->Number_Phone }}"
                         placeholder="  Phone Number">
-                    <button id="btn" type="button">Submit</button>
                 @endif
+                <button id="btn" type="button">Submit</button>
 
             </div>
             <button id="offEdit">
@@ -178,7 +177,6 @@
             var dob = $('#dob').val()
             var phoneNumber = $('#phone_number').val()
             var _token = $('input[name="_token"]').val()
-
             $.ajax({
                 url: "{{ route('client.edit-profile') }}",
                 method: "POST",
@@ -197,6 +195,7 @@
                     } else {
                         printErrorMsg(data.error);
                     }
+                    // console.log(data);
                 }
             })
         })
