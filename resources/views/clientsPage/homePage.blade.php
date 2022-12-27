@@ -31,7 +31,6 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-<<<<<<< HEAD
                     <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
                             <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
@@ -42,7 +41,6 @@
                                 <ion-icon name="heart-outline"></ion-icon>
                             </a>
                             {{-- <a href="" class="iconProduct">
-=======
                 <div class="container__featured-products-items">
                     <div class="container__featured-products-items-button">
                         <a href="{{ url('client/Cart/addtocart',$item->ID) }}" class="iconProduct">
@@ -52,7 +50,6 @@
                             <ion-icon name="heart-outline"></ion-icon>
                         </a>
                         {{-- <a href="" class="iconProduct">
->>>>>>> fb534d4050d61fb2273a59e2e422040bacdcfa0d
                             <ion-icon name="git-compare-outline"></ion-icon>
                         </a> --}}
                     </div>
@@ -81,14 +78,8 @@
                     </a>
                 </div>
             </div>
-<<<<<<< HEAD
-            <div class="container__newArrivals-collection">
-                <div id="colListNew" class="container__newArrivals-collection-slide"
-                    style="background-image:  url({{ $dungdeptrai[0]->IMG }}); background-size: cover; background-position: 50% 50%;">
-=======
             <div class="container__newArrivals-collection" style="background-image: url({{ $dungdeptrai[0]->IMG }});background-size: cover; background-position: 50% 50%;">
                 <div id="colListNew" class="container__newArrivals-collection-slide">
->>>>>>> fb534d4050d61fb2273a59e2e422040bacdcfa0d
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
@@ -239,7 +230,7 @@
         <div class="compareProducts">
             <div class="compareProducts__quantity">
                 {{ $compare_number }}
-            </div>asdfasdfasdf
+            </div>
             <a href="{{ url('/client/products/compareproduct') }}">
                 <ion-icon name="git-compare-outline"></ion-icon>
             </a>
@@ -248,6 +239,7 @@
             <ion-icon name="git-compare-outline"></ion-icon>
         </a>
     </div>
+    @endif
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 
