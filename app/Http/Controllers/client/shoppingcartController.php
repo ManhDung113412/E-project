@@ -224,7 +224,7 @@ class shoppingcartController extends Controller
         Cart::where('Customer_ID', $customer_ID)
             ->where('Product_Detail_ID', $productID)
             ->delete();
-        return redirect()->route('myshoppingcart');
+        return redirect()->back();
     }
 
     public function getDiscountCode(Request $request)
