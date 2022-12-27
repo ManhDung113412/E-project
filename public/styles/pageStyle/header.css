@@ -54,6 +54,14 @@ form {
 
 }
 
+.userName{
+    align-self: center;
+    color: black;
+}
+.userName:hover{
+    text-decoration: underline;
+}
+
 .header__log-signed div{
     width: 100%;
     height: 50%;
@@ -484,6 +492,8 @@ ion-icon {
     float: left;
     height: 40px;
     margin-top: 8px;
+}.header__nav-right button a{
+    color: black;
 }
 
 /* cart */
@@ -521,6 +531,9 @@ ion-icon {
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
+.header__cart-tittle a{
+    color: black;
+}
 
 .header__cart-tittle button{
     position: absolute;
@@ -549,6 +562,12 @@ ion-icon {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     margin: 0 auto;
     margin-top: 10px;
+    border: 2px solid whitesmoke;
+}
+.header__cart-list-items:hover{
+    border: 2px solid black;
+    transition: 0.1s ease-in-out;
+    border-radius: 5px;
 }
 
 .header__cart-list-items-img{
@@ -556,6 +575,7 @@ ion-icon {
     background-size: cover;
     background-color: rgb(241, 241, 241);
     height: 100%;
+    background-position: 50% 50%;
 }
 
 .header__cart-list-items-info{
@@ -578,15 +598,20 @@ ion-icon {
 
 .header__cart-list-items-info-right-action{
     width: 100%;
+    height: 40px;
 }
-.header__cart-list-items-info-right-action button{
-    width: 100%;
-    height: 30px;
-    font-size: 20px;
+.header__cart-list-items-info-right-action a{
+    color: black;
     text-align: center;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     background-color: transparent;
+    /* border-radius: 50%; */
 }
+
+/* .header__cart-list-items-info-right-action a:hover{
+    border: 2px solid rgb(197, 197, 197);
+    transition: 0.3s ease-in-out;
+} */
 
 .header__cart-list-items-info-name{
     font-size: 15px;

@@ -35,7 +35,7 @@
                                 <div class="dropdown3__name">Brands</div>
                                 <ion-icon name="caret-forward-outline"></ion-icon>
                             </div>
-                            <div><a href="http://127.0.0.1:8000/client/Cart">My Shopping Cart</a></div>
+                            <div><a href="{{ url('client/Cart') }}">My Shopping Cart</a></div>
                             <div><a href="{{ url('client/wishLish') }}">My Wish List</a></div>
                             <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                         </div>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div id="shoppingCart" class="header__cart">
-                    <div class="header__cart-tittle">Shopping Cart
+                    <div class="header__cart-tittle"><a href="{{ url('client/Cart') }}">Shopping Cart</a>
                         <button id="hideCart">
                             <ion-icon name="chevron-up-outline"></ion-icon>
                         </button>
@@ -116,9 +116,9 @@
                         <p><b>Total</b></p>
                         <p>$10000</p>
                     </div>
-                    <div class="header__cart-checkout">
+                    <a href="{{ url('client/Cart') }}" class="header__cart-checkout">
                         <button>Check out</button>
-                    </div>
+                    </a>
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
@@ -140,24 +140,20 @@
                         </a>
                     </div>
                     <div class="header__nav-right">
-
+                        <a href="{{ url('client/myProfile') }}" class="userName">{{ $customer[0]->username }}</a>
                         <button id="log">
-                            <div>{{ $customer[0]->username }}</div>
                             <ion-icon name="person"></ion-icon>
                         </button>
                         <button id="showCart">
                             <div class="quantityCart">{{ $cart_quantity }}</div>
                             <ion-icon name="cart-outline"></ion-icon>
-                            </a>
                             <button>
                                 <div class="quantityCart">{{ $wishList_quantity }}</div>
-                                <ion-icon name="heart-outline"></ion-icon>
+                                <a href="{{ url('client/wishLish') }}"><ion-icon name="heart-outline"></ion-icon></a>
                             </button>
                     </div>
                 </div>
-
             @else
-
                 <div id="openLog" class="header__log">
                     <div class="header__log-notSign">
                         <div class="header__log-notSign-signIn">
@@ -169,7 +165,7 @@
                     </div>
                 </div>
                 <div id="shoppingCart" class="header__cart">
-                    <div class="header__cart-tittle">Shopping Cart
+                    <div class="header__cart-tittle"><a href="{{ url('client/Cart') }}">Shopping Cart</a>
                         <button id="hideCart">
                             <ion-icon name="chevron-up-outline"></ion-icon>
                         </button>
@@ -205,9 +201,9 @@
                         <p><b>Total</b></p>
                         <p>$10000</p>
                     </div>
-                    <div class="header__cart-checkout">
+                    <a href="{{ url('client/Cart') }}" class="header__cart-checkout">
                         <button>Check out</button>
-                    </div>
+                    </a>
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
@@ -232,17 +228,15 @@
                         </a>
                     </div>
                     <div class="header__nav-right">
-
                         <button id="log">
                             <ion-icon name="person-outline"></ion-icon>
                         </button>
                         <button id="showCart">
                             <div class="quantityCart">{{ $cart_quantity }}</div>
                             <ion-icon name="cart-outline"></ion-icon>
-                            </a>
                             <button>
                                 <div class="quantityCart">{{ $wishList_quantity }}</div>
-                                <ion-icon name="heart-outline"></ion-icon>
+                                <a href="{{ url('client/wishLish') }}"><ion-icon name="heart-outline"></ion-icon></a>
                             </button>
                     </div>
                 </div>
