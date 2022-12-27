@@ -37,7 +37,7 @@
                                 <ion-icon name="cart-outline"></ion-icon>
                             </a>
                             <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
-                               
+
                                 <ion-icon name="heart-outline"></ion-icon>
                             </a>
                             {{-- <a href="" class="iconProduct">
@@ -71,7 +71,7 @@
             </div>
             <div class="container__newArrivals-collection">
                 <div id="colListNew" class="container__newArrivals-collection-slide"
-                    style="background-image: {{ url($dungdeptrai[0]->IMG) }}; background-size: cover; background-position: 50% 50%;">
+                    style="background-image:  url({{ $dungdeptrai[0]->IMG }}); background-size: cover; background-position: 50% 50%;">
                     @foreach ($middle_slides_img as $middle)
                         <div class="container__newArrivals-collection-list"
                             style="background-image: url({{ $middle->IMG }});">
@@ -222,7 +222,7 @@
         <div class="compareProducts">
             <div class="compareProducts__quantity">
                 {{ $compare_number }}
-            </div>
+            </div>asdfasdfasdf
             <a href="{{ url('/client/products/compareproduct') }}">
                 <ion-icon name="git-compare-outline"></ion-icon>
             </a>
@@ -232,5 +232,3 @@
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 
 @stop
-
-
