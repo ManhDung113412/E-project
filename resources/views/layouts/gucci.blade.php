@@ -17,10 +17,10 @@
                     <div class="container__sideBar-box">
                         <div class="container__sideBar-box-tittle">Categories</div>
                         <hr class="box1">
-                        <d class="container__sideBar-box-cate">
+                        <div class="container__sideBar-box-cate">
                             <input type="radio" name="category" id="filter" value="Long Wallet">
                             <div class="container__sideBar-box-cate-name">Long Wallet</div>
-                        </d>
+                        </div>
                         <div class="container__sideBar-box-cate">
                             <input type="radio" name="category" id="filter" value="Small Wallet">
                             <div class="container__sideBar-box-cate-name">Small Wallet</div>
@@ -32,7 +32,7 @@
                         <div class="container__sideBar-box-cate">
                             <input type="radio" name="category" id="filter" value="Chain And Strap Wallet">
                             <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
-                        </div>iv
+                        </div>
                     </div>
                     <div class="container__sideBar-box">
                         <div class="container__sideBar-box-tittle">Price</div>
@@ -72,15 +72,26 @@
 
                 <div class="container__list-products">
                     @foreach ($gucci as $item)
-                        <a class="container__list-products-item"
-                            href="{{ url('/client/products/specificProduct', $item->Slug) }}">
-                            <div style="background-image: url({{ $item->Main_IMG }})"
-                                class="container__list-products-item-img"></div>
+                        <div class="container__list-products-item">
+                            <div class="container__list-products-item-button">
+                                <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </a>
+                                <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </a>
+                                {{-- <a href="" class="iconProduct">
+                        <ion-icon name="git-compare-outline"></ion-icon>
+                    </a> --}}
+                            </div>
+                            <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                                style="background-image: url({{ $item->Main_IMG }})"
+                                class="container__list-products-item-img"></a>
                             <div class="container__list-products-item-info">
                                 <p>{{ $item->Name }}</p>
                                 <p>${{ $item->Export_Price }}</p>
                             </div>
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
