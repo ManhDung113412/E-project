@@ -752,7 +752,7 @@
 
 .compareProducts{
     position: fixed;
-    bottom: 100px;
+    bottom: 70px;
     left: 30px;
     z-index: 99999999;
     cursor: pointer;
