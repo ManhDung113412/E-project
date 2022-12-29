@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use Alert;
 use App\Mail\changePassword;
-// use Mail;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\SweetAlertServiceProvider;
 
 class EmailController extends Controller
 {
@@ -40,8 +40,6 @@ class EmailController extends Controller
             ->where('username',$this_username)
             ->get('Email');
 
-          
-
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $randomString = ''; 
             $n = 10;
@@ -66,6 +64,7 @@ class EmailController extends Controller
             dd('gui roi');
         }
         else{
+            Alert::error('This username does not exist');
             return redirect()->back();
         }
     }

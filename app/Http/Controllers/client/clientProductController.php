@@ -567,15 +567,33 @@ class clientProductController extends Controller
         $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
         $pro_ID = $this_product[0]->ID;
 
+        if (DB::table('carts')
+        ->where('customer_id', $customer_ID)
+        ->where('Product_Detail_ID', $pro_ID)
+        ->exists()
+    ) {
+        Alert::error('This Item Has Already Existed In Shopping Cart')->autoclose(1500);
+        return redirect()->back();
+    } else {
 
-
-        DB::table('carts')->insert([
-            'Product_quantity' => 1,
-            'Customer_ID' => $customer_ID,
-            'Product_Detail_ID' => $pro_ID
-        ]);
-        // dd($this_product[0]->Name);
+        DB::table('carts')
+            ->insert([
+                'Product_Detail_ID' => $pro_ID,
+                'Customer_ID'   => $customer_ID,
+                'Product_quantity' => 1,
+                'created_at' => time()
+            ]);
         Alert::success('Added To Shopping Cart')->autoclose(1500);
+        return redirect()->back();
+    }
+
+        // DB::table('carts')->insert([
+        //     'Product_quantity' => 1,
+        //     'Customer_ID' => $customer_ID,
+        //     'Product_Detail_ID' => $pro_ID
+        // ]);
+        // // dd($this_product[0]->Name);
+        // Alert::success('Added To Shopping Cart')->autoclose(1500);
 
         return redirect()->back();
     }
