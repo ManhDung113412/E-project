@@ -13,7 +13,13 @@ use App\Models\User;
 
 class clientLoginController extends Controller
 {
-
+    public function getPassword()
+    {
+        // dd('hehe');
+        $slideImg = DB::table('brand_collections')->get();
+        // dd($chanel);
+        return view('clientsPage.changePassword', ['img' => $slideImg]);
+    }
 
     public function getLogin()
     {
