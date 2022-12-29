@@ -23,7 +23,7 @@
                                 <div class="container__product-list-cart">
                                     <div class="container__product-list-cart-image">
                                         <a class="container__product-list-cart-image-img" href="">
-                                            <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;"
+                                            <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 90px;"
                                                 alt="">
                                         </a>
                                         <div class="container__product-list-cart-image-info">
