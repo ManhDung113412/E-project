@@ -21,6 +21,7 @@ form {
     border-radius: 15px;
     display: flex;
     flex-direction: row;
+    margin-bottom: 50px;
 }
 
 .container.off {
@@ -317,7 +318,7 @@ table tr th {
 
 .container__edit{
     position: absolute;
-    top: 25%;
+    top: 20%;
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -422,4 +423,11 @@ table tr th {
 
 #offEdit{
     font-size: 20px;
+}
+
+#offEdit ion-icon{
+    position: absolute;
+    /* left: 15px; */
+    right: 1px;
+    top: 1.5px;
 }

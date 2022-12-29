@@ -88,20 +88,29 @@
                                         <option value="12">Priority - $12</option>
                                     </select>
                                 </div>
-                                <div class="container__cartTotal-big2-info-give">
-                                    <div class="container__cartTotal-big2-info-give-left">Give Code</div>
-                                    <div class="container__cartTotal-big2-info-give-right">Free Ship</div>
-                                </div>
-                                <div>
+                                {{-- <div class="container__cartTotal-big2-info-address">
+                                    <div class="container__cartTotal-big2-info-address-name">Address:</div>
                                     <p>Address:</p>
                                     <input type="text" Name="Adress">
+                                </div> --}}
+                                <div class="container__cartTotal-big2-info-give">
+                                    <div class="container__cartTotal-big2-info-give-left">Address</div>
+                                </div>
+                                <div id="aF" class="container__cartTotal-big2-info-code">
+                                    <input type="text" placeholder="   Enter Your Address" name="Adress">
+
+                                    {{-- <div ></div> --}}
+                                </div>
+                                <div class="container__cartTotal-big2-info-give">
+                                    <div class="container__cartTotal-big2-info-give-left">Give Code</div>
+                                    <div class="container__cartTotal-big2-info-give-right" id="discount"></div>
                                 </div>
                                 <div class="container__cartTotal-big2-info-code">
-                                    <input id="discount-code" type="text" placeholder="    Enter Your Code" name="discount">
+                                    <input id="discount-code" type="text" placeholder="   Enter Your Code" name="discount">
                                     <button type="button" id="discount-code_btn">
                                         <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
                                     </button>
-                                    <div id="discount"></div>
+                                    {{-- <div ></div> --}}
                                 </div>
 
                             </div>

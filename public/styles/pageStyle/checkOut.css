@@ -143,10 +143,10 @@
 }
 
 .container__product-list-cart-info-cate {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 10px;
 }
 
@@ -251,7 +251,7 @@
 
 .container__cartTotal-big2-info {
     width: 240px;
-    height: 190px;
+    height: 260px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -300,7 +300,9 @@
     font-size: 16px;
     font-weight: bold;
 }
-
+#aF{
+    margin-bottom: 15px;
+}
 .container__cartTotal-big2-info-code{
     width: 100%;
     display: flex;

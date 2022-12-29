@@ -40,7 +40,7 @@
 }
 
 .container__productImage-preview-image {
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(236, 236, 236);
     width: 1005;
     height: 261px;
     background-size: cover;
@@ -55,7 +55,7 @@
 .container__productImage-mainImage {
     width: 633px;
     height: calc(100% - 2px);
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(236, 236, 236);
     float: right;
     background-size: cover;
     background-position: 50% 50%;

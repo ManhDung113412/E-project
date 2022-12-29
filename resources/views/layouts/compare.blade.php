@@ -45,10 +45,10 @@
                             Color
                         </th>
                         <td>
-                            {{ $product_1->Color }}
+                            <div class="color" style="background-color: {{ $product_1->Color }}"></div>
                         </td>
                         <td>
-                            {{ $product_2->Color }}
+                            <div class="color" style="background-color: {{ $product_2->Color }}"></div>
                         </td>
                     </tr>
                     <tr>

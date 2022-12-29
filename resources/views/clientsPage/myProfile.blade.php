@@ -214,7 +214,7 @@
             });
         }
 
-        // Edit Avatar 
+        // Edit Avatar
         $('#avt-btn').change(function() {
             var file = $(this)[0].files[0]
             if (test) {
