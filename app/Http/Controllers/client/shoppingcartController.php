@@ -283,6 +283,16 @@ class shoppingcartController extends Controller
 
     public function checkOut(Request $req)
     {
+        $rules = [
+            'Adress' => 'required'
+        ];
+
+        $messages = [
+            'required' => 'You Must Provie Your Adress'
+        ];
+
+        $req->validate($rules,$messages);
+        
         $total = $req->total_price;
         $customer_ID = Auth::guard('users')->id();
         $customer_address = $req->Adress;

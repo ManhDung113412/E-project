@@ -98,6 +98,9 @@
                                 </div>
                                 <div id="aF" class="container__cartTotal-big2-info-code">
                                     <input type="text" placeholder="   Enter Your Address" name="Adress">
+                                    @error('address')
+                                        <small>{{ $message }}</small>
+                                    @enderror
 
                                     {{-- <div ></div> --}}
                                 </div>

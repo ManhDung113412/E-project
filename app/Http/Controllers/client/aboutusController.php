@@ -14,7 +14,6 @@ class aboutusController extends Controller
     {
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
-        $customer_ID = $this_customer[0]->id;
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
         session()->put('cart_quantity',count($carts));
         $cart_quantity = session()->get('cart_quantity');
