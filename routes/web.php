@@ -171,7 +171,9 @@ Route::prefix('client')->group(function () {
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
-    
+
+    Route::get('password', [clientLoginController::class, 'getPassword']);
+
 });
 
 Route::prefix('client/products')->group(function () {
