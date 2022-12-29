@@ -90,7 +90,7 @@ class clientProductController extends Controller
         $brand_name = $req->brands;
         $price = $req->Price;
 
-        if ($brand_name == null && strlen($keyWord) == 0 && $pric   e == null) {
+        if ($brand_name == null && strlen($keyWord) == 0 && $price == null) {
             $smallWallet = DB::table('categories')
                 ->join('Products', 'Products.Category_ID', '=', 'categories.ID')
                 ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')

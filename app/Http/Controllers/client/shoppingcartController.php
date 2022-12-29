@@ -292,13 +292,14 @@ class shoppingcartController extends Controller
         ];
 
         $req->validate($rules,$messages);
+
+
         
         $total = $req->total_price;
         $customer_ID = Auth::guard('users')->id();
         $customer_address = $req->Adress;
         $shipping = $req->ship;
         $discount_code =$req->discount;
-        // dd($discount_code);
         $order_code = 'OD'.rand(1000,9999);
 
         $customer_cart = DB::table('carts As c')
