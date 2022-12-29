@@ -58,7 +58,7 @@ class EmailController extends Controller
             ->update(['password' => $new_password]);
             
             $details = [
-                'title' => 'Recover Your Password From Pursellet'
+                'title' => 'khanh an lon'
                 ,'body' => 'Your new password is:'.$randomString
             ];
 
