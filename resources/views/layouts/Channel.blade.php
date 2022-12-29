@@ -100,7 +100,7 @@
     <div class="container__featured">
         <div class="container__featured-tittle">You May Also Like</div>
         <div class="container__featured-products">
-            <div class="container__featured-products" href="{{ url('/client/products/specificProduct', $item->Slug) }}">
+            <div class="container__featured-products">
                 @foreach ($randomProduct as $item)
                     <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
