@@ -210,7 +210,7 @@ table tr th {
     border-radius: 15px;
     margin: 0 auto;
     margin-top: 30px;
-    overflow: scroll;
+    overflow-y: scroll;
 
 }
 
