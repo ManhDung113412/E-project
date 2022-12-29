@@ -30,6 +30,6 @@ class changePassword extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Change Password')->view('clientsPage.email');
+        return $this->subject('Pursellet')->view('clientsPage.email');
     }
 }

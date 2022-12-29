@@ -292,7 +292,7 @@ class shoppingcartController extends Controller
         ];
 
         $req->validate($rules, $messages);
-        
+
         $total = $req->total_price;
         $customer_ID = Auth::guard('users')->id();
         $customer_address = $req->Adress;
@@ -402,6 +402,7 @@ class shoppingcartController extends Controller
                     ->delete();
             }
         }
+        
         else{
             Alert::error('There Is No Items In Cart')->autoclose(1500);
             return redirect()->back();
