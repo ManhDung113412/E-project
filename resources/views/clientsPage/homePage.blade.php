@@ -204,10 +204,13 @@
                 our
                 latest arrivals, upcoming launches, special promotions and trend-focused editorials.
             </div>
+        <form action="">
             <div class="subscribeUs__text-input">
-                <input type="text" placeholder="Email address" autocomplete="off">
-                <button>Subscribe</button>
+                <input type="text" placeholder="Email address" name="subscribe_email" autocomplete="off">
+                <button type="submit">Subscribe</button>
             </div>
+        </form>
+
         </div>
     </div>
     </div>
@@ -225,6 +228,7 @@
             <ion-icon name="git-compare-outline"></ion-icon>
         </a>
     </div>
+
     @endif
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
