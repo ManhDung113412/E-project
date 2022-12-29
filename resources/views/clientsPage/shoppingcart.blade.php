@@ -96,7 +96,7 @@
                                 <div class="container__cartTotal-big2-info-give">
                                     <div class="container__cartTotal-big2-info-give-left">Address</div>
                                 </div>
-                                <div id="aF" class="container__cartTotal-big2-info-code">
+                                <div id="aF" class="container__cartTotal-big2-info-addr">
                                     <input type="text" placeholder="   Enter Your Address" name="Adress">
                                     @error('Adress')
                                         <small>{{ $message }}</small>
@@ -108,7 +108,8 @@
                                     <div class="container__cartTotal-big2-info-give-right" id="discount"></div>
                                 </div>
                                 <div class="container__cartTotal-big2-info-code">
-                                    <input id="discount-code" type="text" placeholder="   Enter Your Code" name="discount">
+                                    <input id="discount-code" type="text" placeholder="   Enter Your Code"
+                                        name="discount">
                                     <button type="button" id="discount-code_btn">
                                         <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
                                     </button>
@@ -119,7 +120,8 @@
                             <hr class="hr1">
                             <div class="container__cartTotal-big2-totalPrice">
                                 <div class="container__cartTotal-big2-totalPrice-left">Total Price</div>
-                                <div class="total-price container__cartTotal-big2-totalPrice-right" name="total_price"></div>
+                                <div class="total-price container__cartTotal-big2-totalPrice-right" name="total_price">
+                                </div>
                             </div>
                             <div class="container__cartTotal-big2-button">
                                 <button type="submit">Check Out</button>
