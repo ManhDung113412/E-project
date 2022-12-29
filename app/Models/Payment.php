@@ -13,7 +13,8 @@ class Payment extends Model
 
     protected $fillable = [
         'Method',
-        'Price'
+        'Price',
+        'created_at',
     ];
 
     public function orders(){

@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 use Alert;
+use Payment;
 
 class shoppingcartController extends Controller
 {
@@ -282,7 +283,14 @@ class shoppingcartController extends Controller
 
     public function checkOut(Request $req)
     {
+        $total = $req->total_price;
         $customer_ID = Auth::guard('users')->id();
+        $customer_address = $req->Adress;
+        $shipping = $req->ship;
+        $discount_code =$req->discount;
+        // dd($discount_code);
+        $order_code = 'OD'.rand(1000,9999);
+
         $customer_cart = DB::table('carts As c')
             ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
             ->join('products as p', 'pd.Product_ID', 'p.ID')
@@ -290,17 +298,103 @@ class shoppingcartController extends Controller
             ->where('Customer_ID', $customer_ID)
             ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
             ->get();
-        // DB::table('orders')
-        // ->insert([
-        //     'Code'
-        //     'Customer_ID'
-        //     'Shop_ID'
-        //     'Code_ID'
-        //     'Location'
-        //     'Payment_ID'
-        //     'Status'
-        //     'created_at' => 
 
-        // ])
+        $price_array = [];
+
+        foreach ($customer_cart as $item) {
+            array_push($price_array, ($item->Export_Price * $item->Product_quantity));
+        }
+
+
+        $final_price = array_sum($price_array) + $shipping;
+
+        $discount_percentage = 0;
+        
+        if ($discount_code !== null ) {
+            
+            $kk = DB::table('codes')
+                ->where('Code', $discount_code)
+                ->select('Discount', 'ID')
+                ->get();
+          
+            if(isset($kk[0])){
+
+                $discount_percentage = $kk[0]->Discount;
+                $discount_code = $kk[0]->ID;
+    
+    
+                $final_price = ((array_sum($price_array) + $shipping) - (array_sum($price_array) + $shipping) * ($discount_percentage / 100));
+    
+                DB::table('orders')
+                    ->insert([
+                        'Code'  =>   $order_code
+                        , 'Customer_ID' => $customer_ID
+                        , 'Payment_ID' => 1
+                        , 'Code_ID'  => $discount_code
+                        , 'Location' => $customer_address
+                        , 'Status' => 'Pending'
+                        , 'created_at' => time()
+                        , 'Total_Paid'  => $final_price
+                    ]);
+    
+                $hihi = DB::table('orders')
+                ->orderBy('ID', 'desc')
+                ->first();
+                
+                $Order_ID=$hihi->ID;
+                foreach ($customer_cart as $item) {
+                    DB::table('orders_details')
+                        ->insert([
+                            'Product_Detail_ID' => $item->Product_Detail_ID
+                            , 'Quantity' => $item->Product_quantity
+                            , 'Price'    => $item->Export_Price
+                            , 'Order_ID' => $Order_ID
+                        ]);
+                }
+    
+                DB::table('carts')
+                    ->where('Customer_ID', $customer_ID)
+                    ->delete();
+            }
+            else{
+                Alert::error('Discount Code is invalid')->autoclose(1500);
+                return redirect()->back();
+            }
+        }
+
+        else{
+            DB::table('orders')
+            ->insert([
+                'Code'  =>   $order_code
+                , 'Customer_ID' => $customer_ID
+                , 'Payment_ID' => 1
+                , 'Code_ID'  => null
+                , 'Location' => $customer_address
+                , 'Status' => 'Pending'
+                , 'created_at' => time()
+                , 'Total_Paid'  => $final_price
+            ]);
+
+         $hihi = DB::table('orders')
+        ->orderBy('ID', 'desc')
+        ->first();
+        
+        $Order_ID=$hihi->ID;
+        foreach ($customer_cart as $item) {
+            DB::table('orders_details')
+                ->insert([
+                    'Product_Detail_ID' => $item->Product_Detail_ID
+                    , 'Quantity' => $item->Product_quantity
+                    , 'Price'    => $item->Export_Price
+                    , 'Order_ID' => $Order_ID
+                ]);
+        }
+
+        DB::table('carts')
+            ->where('Customer_ID', $customer_ID)
+            ->delete();
+        }
+
+
     }
 }

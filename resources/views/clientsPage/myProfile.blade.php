@@ -196,6 +196,7 @@
                     if ($.isEmptyObject(data.error)) {
                         printErrorMsg();
                         alert(data.success);
+                        location.reload();
                     } else {
                         printErrorMsg(data.error);
                     }

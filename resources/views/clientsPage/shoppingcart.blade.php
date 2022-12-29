@@ -92,9 +92,12 @@
                                     <div class="container__cartTotal-big2-info-give-left">Give Code</div>
                                     <div class="container__cartTotal-big2-info-give-right">Free Ship</div>
                                 </div>
-
+                                <div>
+                                    <p>Address:</p>
+                                    <input type="text" Name="Adress">
+                                </div>
                                 <div class="container__cartTotal-big2-info-code">
-                                    <input id="discount-code" type="text" placeholder="    Enter Your Code">
+                                    <input id="discount-code" type="text" placeholder="    Enter Your Code" name="discount">
                                     <button type="button" id="discount-code_btn">
                                         <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
                                     </button>
@@ -105,7 +108,7 @@
                             <hr class="hr1">
                             <div class="container__cartTotal-big2-totalPrice">
                                 <div class="container__cartTotal-big2-totalPrice-left">Total Price</div>
-                                <div class="total-price container__cartTotal-big2-totalPrice-right"></div>
+                                <div class="total-price container__cartTotal-big2-totalPrice-right" name="total_price"></div>
                             </div>
                             <div class="container__cartTotal-big2-button">
                                 <button type="submit">Check Out</button>
@@ -192,7 +195,7 @@
                 var totalPrice = 0;
                 var shipPrice = +$('#ship').val();
                 var subtotals = +$('.subtotals').html().replace('$', '');
-                var discount = $('#discount').html()
+                var discount = $('#discount').html();
                 if (discount.includes('-') || discount.includes('%')) {
                     var newDiscount1 = discount.replace('-', '');
                     var newDiscount2 = newDiscount1.replace('%', '');

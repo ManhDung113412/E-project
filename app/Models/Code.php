@@ -14,6 +14,7 @@ class Code extends Model
     protected $fillable = [
         'Code',
         'Discount'
+        ,'ID'
     ];
 
     public function orders(){
