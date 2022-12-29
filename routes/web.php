@@ -21,6 +21,7 @@ use App\Http\Controllers\client\clientProductController;
 use App\Http\Controllers\client\wishListController;
 use App\Http\Controllers\compareProductController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\subscribeController;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -157,12 +158,14 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 Route::prefix('client')->group(function () {
 
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
+    Route::post('home', [homepageController::class,'subscribe']);
+   
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
     Route::get('forgetPassword', [EmailController::class, 'getRecoverPassword']);
     Route::post('forgetPassword', [EmailController::class, 'postRecoverPassword']);
 
-    Route::get('login', [clientLoginController::class, 'getLogin'])->name('client-login');
+    Route::get('login', [clientLoginController::class, 'getLogin'])->name('client.login');
     Route::post('login', [clientLoginController::class, 'postLogin']);
 
 
