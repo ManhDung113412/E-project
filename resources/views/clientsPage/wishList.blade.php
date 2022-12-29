@@ -59,7 +59,7 @@
             </div>
 
         </div>
-        
+
     </div>
     <div class="container__featured">
         <div class="container__featured-tittle">You May Also Like</div>
