@@ -17,7 +17,7 @@ List Brands
                 <div class="form-group">
                     <form action="{{route('admin.brand.search')}}" method="post">
                         @csrf
-                        <input  name="search" class="input-search" placeholder="Search...">
+                        <input  name="search" class="input-search" placeholder="Search Code / Name ">
                         <button type="submit" class="btn-add-product btn btn-success">Search</button>
                     </form>
                 </div>

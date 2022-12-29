@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-    
+    Create Discount Code
 @endsection
 
 @section('content')
@@ -9,8 +9,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Category
-                    <small>Edit</small>
+                <h1 class="page-header">Discount Code
+                    <small>Add</small>
                 </h1>
             </div>
             @if (session('success'))
@@ -20,46 +20,45 @@
                 @endif
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{{route('admin.brand.update', $brand->ID)}}" method="POST">
+                <form action="{{route('admin.discount.store')}}" method="POST">
                     @csrf
-                    @method('put')
                     <div class="form-group">
-                        <label>Brand Name</label>
-                        <input class="form-control" value="{{$brand->Name}}" name="name" placeholder="Please Enter Brand Name" />
-                        @error('name')
+                        <label>Code</label>
+                        <input class="form-control" name="code" placeholder="Please Enter Code" />
+                        @error('code')
                         <div class="alert alert-danger">
                             {{$message}}
                         </div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Brand Logo</label>
-                        <input class="form-control" value="{{$brand->Logo}}" name="logo" placeholder="Please Enter Brand Logo Source" />
-                        @error('logo')
+                        <label>Discount %</label>
+                        <input class="form-control" name="discount" placeholder="Please Enter Discount %" />
+                        @error('discount')
                             <div class="alert alert-danger">
                                 {{$message}}
                             </div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Brand Infomation</label>
-                        <input class="form-control" value="{{$brand->Information}}" name="information" placeholder="Please Enter Brand Information" />
-                        @error('information')
+                        <label>Start Date</label>
+                        <input type="date" class="form-control" name="date_start" placeholder="Please Enter Start Date" />
+                        @error('date_start')
                             <div class="alert alert-danger">
                                 {{$message}}
                             </div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Brand Code</label>
-                        <input class="form-control" value="{{$brand->Code}}" name="code" placeholder="Please Enter Brand Code" />
-                        @error('code')
+                        <label>End Date</label>
+                        <input type="date" class="form-control" name="date_end" placeholder="Please Enter End Date" />
+                        @error('date_end')
                             <div class="alert alert-danger">
                                 {{$message}}
                             </div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-default">Brand Edit</button>
+                    <button type="submit" class="btn btn-default">Discount Code Add</button>
                 <form>
             </div>
         </div>

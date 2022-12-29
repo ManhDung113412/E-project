@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-List Payment
+List Title
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ List Payment
         <div class="row">
             <div class="heading">
                 <div>
-                    <h1 class="page-header">Payment
+                    <h1 class="page-header">Title
                         <small>List</small>
                     </h1>
                 </div>

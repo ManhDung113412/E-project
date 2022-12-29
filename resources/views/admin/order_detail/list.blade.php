@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <form action="{{route('admin.order-detail.search')}}" method="post">
                         @csrf
-                        <input name="search" class="input-search" placeholder="Search...">
+                        <input name="search" class="input-search" placeholder="Order Code / Method / Status / Location / Date">
                         <button type="submit" class="btn-add-product btn btn-success">Search</button>
                     </form>
                 </div>

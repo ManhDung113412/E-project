@@ -5,9 +5,11 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashBoardController;
+use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDetailController;
+use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\client\aboutusController;
@@ -20,6 +22,7 @@ use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
 use App\Http\Controllers\client\wishListController;
 use App\Http\Controllers\compareProductController;
+use App\Models\Payment;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -56,8 +59,6 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.brand.delete');
         Route::post('search', [BrandController::class, 'search'])
             ->name('admin.brand.search');
-        // Route::post('search', [BrandController::class, 'search'])
-        //     ->name('admin.brand.search');
     });
 
     // Category Routes
@@ -86,6 +87,24 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.dashboard.keke');
     });
 
+    // Discount Code Routes
+    Route::prefix('discount')->group(function () {
+        Route::get('', [DiscountCodeController::class, 'index'])
+            ->name('admin.discount.index');
+        Route::get('create', [DiscountCodeController::class, 'create'])
+            ->name('admin.discount.create');
+        Route::post('store', [DiscountCodeController::class, 'store'])
+            ->name('admin.discount.store');
+        Route::get('edit/{id}', [DiscountCodeController::class, 'edit'])
+            ->name('admin.discount.edit');
+        Route::put('update/{id}', [DiscountCodeController::class, 'update'])
+            ->name('admin.discount.update');
+        Route::get('delete/{id}', [DiscountCodeController::class, 'delete'])
+            ->name('admin.discount.delete');
+        Route::post('search', [DiscountCodeController::class, 'search'])
+            ->name('admin.discount.search');
+    });
+
     // Order Routes
     Route::prefix('order')->group(function () {
         Route::get('', [OrderDetailController::class, 'index'])
@@ -98,6 +117,24 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.order-detail.detail');
         Route::post('search', [OrderDetailController::class, 'search'])
             ->name('admin.order-detail.search');
+    });
+
+    // Payment Code Routes
+    Route::prefix('slide')->group(function () {
+        Route::get('', [SlideController::class, 'index'])
+            ->name('admin.slide.index');
+        Route::get('create', [SlideController::class, 'create'])
+            ->name('admin.slide.create');
+        Route::post('store', [SlideController::class, 'store'])
+            ->name('admin.slide.store');
+        Route::get('edit/{id}', [SlideController::class, 'edit'])
+            ->name('admin.slide.edit');
+        Route::put('update/{id}', [SlideController::class, 'update'])
+            ->name('admin.slide.update');
+        Route::get('delete/{id}', [SlideController::class, 'delete'])
+            ->name('admin.slide.delete');
+        Route::post('search', [SlideController::class, 'search'])
+            ->name('admin.slide.search');
     });
 
     // Product Routes
@@ -140,6 +177,24 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.delete');
         Route::post('search', [ProductDetailController::class, 'search'])
             ->name('admin.product-detail.search');
+    });
+
+    // Slide Code Routes
+    Route::prefix('payment')->group(function () {
+        Route::get('', [Payment::class, 'index'])
+            ->name('admin.payment.index');
+        Route::get('create', [Payment::class, 'create'])
+            ->name('admin.payment.create');
+        Route::post('store', [Payment::class, 'store'])
+            ->name('admin.payment.store');
+        Route::get('edit/{id}', [Payment::class, 'edit'])
+            ->name('admin.payment.edit');
+        Route::put('update/{id}', [Payment::class, 'update'])
+            ->name('admin.payment.update');
+        Route::get('delete/{id}', [Payment::class, 'delete'])
+            ->name('admin.payment.delete');
+        Route::post('search', [Payment::class, 'search'])
+            ->name('admin.payment.search');
     });
 
     // User Routes

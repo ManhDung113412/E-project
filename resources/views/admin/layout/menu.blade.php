@@ -1,18 +1,4 @@
 <ul class="nav" id="side-menu">
-    {{-- <li class="sidebar-search">
-        <div class="input-group custom-search-form">
-            <input type="text" class="form-control" placeholder="Search...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
-        </div>
-        <!-- /input-group -->
-    </li> --}}
-    {{-- <li>
-        <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-    </li> --}}
     <li>
         <a href="#"><i class="fa fa-th-large fa-fw"></i> Brand<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
@@ -45,6 +31,18 @@
             </li>
             <li>
                 <a href="{{route('admin.dashboard.keke')}}">Keke</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-money fa-fw"></i> Discount Code<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="{{route('admin.discount.index')}}">List Discount Code</a>
+            </li>
+            <li>
+                <a href="{{route('admin.discount.create')}}">Add Discount Code</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->

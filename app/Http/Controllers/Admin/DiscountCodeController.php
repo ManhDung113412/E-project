@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Code;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PaymentController extends Controller
+class DiscountCodeController extends Controller
 {
     public function index()
     {

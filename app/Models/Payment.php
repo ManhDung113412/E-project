@@ -13,6 +13,8 @@ class Payment extends Model
 
     protected $fillable = [
         'Method',
+        'Method',
+        'Method',
         'Price'
     ];
 

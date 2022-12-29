@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-List Product 
+List Discounts Code
 @endsection
 
 @section('content')
@@ -10,14 +10,14 @@ List Product
         <div class="row">
             <div class="heading">
                 <div>
-                    <h1 class="page-header">Products
+                    <h1 class="page-header">Discounts Code
                         <small>List</small>
                     </h1>
                 </div>
                 <div class="form-group">
-                    <form action="{{route('admin.product.search')}}" method="post">
+                    <form action="{{route('admin.discount.search')}}" method="post">
                         @csrf
-                        <input name="search" class="input-search" placeholder="Search Code / Product / Brand / Category">
+                        <input  name="search" class="input-search" placeholder="Search Code / Discount / Date">
                         <button type="submit" class="btn-add-product btn btn-success">Search</button>
                     </form>
                 </div>
@@ -35,50 +35,52 @@ List Product
                     {{ session('success') }}
                 </div>
             @endif
+            
             <!-- /.col-lg-12 -->
             @if (!empty($error))
                 <div class="alert alert-danger">
                     {{ $error }}
                 </div>
             @endif
-            @if (!empty($products))
-            <table class="table table-striped table-bordered table-hover">
+            @if (!empty($codes))
+            <table  class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr align="center">
                         <th>STT</th>
                         <th>Code</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Name</th>
-                        <th>Image</th>
+                        <th>Discount</th>
+                        <th>Created At</th>
+                        <th>Date Start</th>
+                        <th>Date End</th>
                         <th>Delete</th>
                         <th>Edit</th>
-                        <th>Add</th>
-                        <th>Detail</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($products as $index => $product)
+                <tbody id="table-body-side"></tbody>
+                <tbody id="table-body-main">
+                    @foreach ($codes as $index => $code)
                     <tr class="odd gradeX" align="center">
                         <td>{{$index + 1}}</td>
-                        <td>{{$product->Code}}</td>
-                        <td>{{$product->Brand_Name}}</td>
-                        <td>{{$product->Category_Name}}</td>
-                        <td>{{$product->Name}}</td>
-                        <td><img width="100" src="{{$product->IMG}}" alt=""></td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.product.delete', $product->ID)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit', $product->ID)}}">Edit</a></td>
-                        <td class="center"><i class="fa fa-plus fa-fw"></i> <a href="{{route('admin.product-detail.create', $product->ID)}}">Add</a></td>
-                        <td class="center"><i class="fa fa-eye fa-fw"></i> <a href="{{route('admin.product-detail.detail', $product->ID)}}">View</a></td>
+                        <td>{{$code->Code}}</td>
+                        <td>{{$code->Discount}}%</td>
+                        <td>{{$code->created_at}}</td>
+                        <td>{{$code->Date_Start}}</td>
+                        <td>{{$code->Date_End}}</td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.discount.delete', $code->ID)}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.discount.edit', $code->ID)}}">Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {!! $products->links() !!}
             @endif
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
 </div>
+
+<script>
+    
+</script>
 @endsection
