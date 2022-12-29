@@ -20,6 +20,7 @@ use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
 use App\Http\Controllers\client\wishListController;
 use App\Http\Controllers\compareProductController;
+use App\Http\Controllers\EmailController;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -158,6 +159,8 @@ Route::prefix('client')->group(function () {
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
+    Route::get('forgetPassword', [EmailController::class, 'getRecoverPassword']);
+    Route::post('forgetPassword', [EmailController::class, 'postRecoverPassword']);
 
     Route::get('login', [clientLoginController::class, 'getLogin'])->name('client-login');
     Route::post('login', [clientLoginController::class, 'postLogin']);

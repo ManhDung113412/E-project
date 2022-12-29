@@ -13,7 +13,7 @@
 <body>
     <div class="frm" action="">
         <div class="container">
-            <form action="{{ url('http://127.0.0.1:8000/client/login') }}" id="signInForm" method="POST"
+            <form action="" id="signInForm" method="POST"
                 class="container__signIn active">
                 @csrf
                 <div class="container__signIn-tittle">Find Your Password</div>
@@ -38,11 +38,11 @@
             </form>
         </div>
         <div id="abc" class="slideShow">
-            @foreach ($img as $item)
+            {{-- @foreach ($img as $item)
                 <div id="formImage" class="slideShow-image show"
                     style="background-image: url({{ $item->Before_Hover_IMG }});">
                 </div>
-            @endforeach
+            @endforeach --}}
         </div>
     </div>
 </body>
