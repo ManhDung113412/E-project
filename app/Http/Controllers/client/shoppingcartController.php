@@ -394,7 +394,5 @@ class shoppingcartController extends Controller
             ->where('Customer_ID', $customer_ID)
             ->delete();
         }
-
-
     }
 }
