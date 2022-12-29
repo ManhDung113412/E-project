@@ -37,7 +37,7 @@ class shoppingcartController extends Controller
             $subtotals += $cart->subtotal;
         }
 
-        return view('clientsPage.shoppingCart', compact('carts', 'subtotals','ran_pro'));
+        return view('clientsPage.shoppingCart', compact('carts', 'subtotals', 'ran_pro'));
 
 
 
@@ -264,9 +264,8 @@ class shoppingcartController extends Controller
             ->where('Product_Detail_ID', $pro_ID)
             ->exists()
         ) {
-            Alert::success('Success Title', 'Success Message');
-
-            // return redirect()->back();
+            Alert::error('This Item Has Already Existed In Shopping Cart')->autoclose(1500);
+            return redirect()->back();
         } else {
 
             DB::table('carts')
@@ -276,7 +275,7 @@ class shoppingcartController extends Controller
                     'Product_quantity' => 1,
                     'created_at' => time()
                 ]);
-
+            Alert::success('Added To Shopping Cart')->autoclose(1500);
             return redirect()->back();
         }
     }
@@ -284,5 +283,24 @@ class shoppingcartController extends Controller
     public function checkOut(Request $req)
     {
         $customer_ID = Auth::guard('users')->id();
+        $customer_cart = DB::table('carts As c')
+            ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
+            ->join('products as p', 'pd.Product_ID', 'p.ID')
+            ->select('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
+            ->where('Customer_ID', $customer_ID)
+            ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
+            ->get();
+        // DB::table('orders')
+        // ->insert([
+        //     'Code'
+        //     'Customer_ID'
+        //     'Shop_ID'
+        //     'Code_ID'
+        //     'Location'
+        //     'Payment_ID'
+        //     'Status'
+        //     'created_at' => 
+
+        // ])
     }
 }

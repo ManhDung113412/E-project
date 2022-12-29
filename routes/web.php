@@ -211,7 +211,9 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
+    Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
+    
     Route::post('Cart/increase', [shoppingcartController::class, 'handleIncreaseQuantity'])
         ->name('client.shopping-cart.handle-increase-quantity');
 
@@ -231,10 +233,11 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('wishlist/addtowishlist/{ID}', [wishListController::class, 'addToWishList']);
     Route::get('wishlist/removemultipleproducts/', [wishListController::class, 'removeMultipleProducts']);
 
-    // Route::get('getSmallCart',[clientProductController::class, 'getSmallCart']);
-    // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
-    // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
+
+    // Route::get('getSmallCart',[clientProductController::class, 'getSmallCart']);
+
+    Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
 
     Route::get('myProfile', [clientController::class, 'getProfile']);
     Route::post('editProfile', [clientController::class, 'editProfile'])

@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Brand;
 use PDF;
 use App\Models\Wishlist;
+use Alert;
 
 
 class wishListController extends Controller
@@ -72,10 +73,10 @@ class wishListController extends Controller
         $total_quantity = Wishlist::where('Customer_ID', $customer_ID)
             ->count();
 
-            $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
-            $ran_pro = $products->take(4);
+        $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+        $ran_pro = $products->take(4);
 
-        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro, 'total' => $total_quantity,'ran_pro' => $ran_pro]);
+        return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro, 'total' => $total_quantity, 'ran_pro' => $ran_pro]);
     }
 
     public function removeFromWishList(Request $req)
@@ -90,10 +91,11 @@ class wishListController extends Controller
 
     public function addToCart(Request $req)
     {
+        // dd('asd');
+
         $customer_ID = Auth::guard('users')->id();
         $this_customer = User::where('id', $customer_ID)->get();
         $customer_ID = $this_customer[0]->id;
-
         $carts = Cart::where('Customer_ID', $customer_ID)->get();
         session()->put('cart_quantity', count($carts));
 
@@ -126,6 +128,7 @@ class wishListController extends Controller
             ->where('Product_Detail_ID', $pro_ID)
             ->exists()
         ) {
+            Alert::error('This Item Has Already Existed')->autoclose(1500);
             return redirect()->back();
         } else {
             DB::table('wish_list')
@@ -134,6 +137,7 @@ class wishListController extends Controller
                     'Customer_ID'   => $customer_ID,
                     'created_at' => time()
                 ]);
+            Alert::success('Added To Wish List')->autoclose(1500);
             return redirect()->back();
         }
     }

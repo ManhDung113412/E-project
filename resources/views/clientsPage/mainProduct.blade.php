@@ -1,7 +1,9 @@
 @extends('layouts.master')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/product.css') }}">
-@stop
+    <link rel="stylesheet" href="{{ asset('styles/pageStyle/subsAndScroll.css') }}">
+
+    @stop
 @section('content')
     <div class="main">
         <form action="" method="POST">
@@ -107,6 +109,16 @@
             </div>
         </div>
     </div>
+    @if ($compare_number > 0)
+    <div class="compareProducts">
+        <div class="compareProducts__quantity">
+            {{ $compare_number }}
+        </div>
+        <a href="{{ url('/client/products/compareproduct') }}">
+            <ion-icon name="git-compare-outline"></ion-icon>
+        </a>
+    </div>
+    @endif
     <script src="{{ asset('javascript/client/product.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
@@ -129,6 +141,7 @@
                             _token: _token
                         },
                         success: function(data) {
+                            location.reload();
                         }
                     })
                 })

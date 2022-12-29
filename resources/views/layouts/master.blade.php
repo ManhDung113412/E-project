@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    {{-- <div>@include('sweetalert::alert')</div> --}}
+    @include('sweetalert::alert')
     <div>@include('layouts.header')</div>
     <div>
         @yield('content')
