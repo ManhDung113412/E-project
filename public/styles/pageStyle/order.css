@@ -10,6 +10,8 @@ form{
     height: 850px;
     border-radius: 15px;
     overflow: hidden;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .container__info{

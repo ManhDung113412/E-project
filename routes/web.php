@@ -26,6 +26,8 @@ use App\Http\Controllers\client\wishListController;
 use App\Http\Controllers\compareProductController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\subscribeController;
+use App\Http\Controllers\orderController;
+
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -244,11 +246,11 @@ Route::prefix('client')->group(function () {
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
-    Route::get('Order', [shoppingcartController::class, 'getOrder']);
     Route::get('password', [clientLoginController::class, 'getPassword']);
 });
 
 Route::prefix('client/products')->group(function () {
+
     Route::get('long-wallet', [clientProductController::class, 'getLongWallet']);
     Route::get('small-wallet', [clientProductController::class, 'getSmallWallet']);
     Route::get('cards-holder', [clientProductController::class, 'getCardsHolder']);
@@ -284,6 +286,9 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
+    Route::get('orders/{Code}',[orderController::class,'getOrder']);
+
+    
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
     Route::post('Cart', [shoppingcartController::class, 'checkOut'])->name('check.out');
 

@@ -94,7 +94,7 @@
             <div class="container__history-list">
                 @if (!empty($user[0]->Order_Code))
                     @foreach ($user as $user)
-                        <div class="container__history-list-item">
+                        <A class="container__history-list-item" href="{{ url('client/orders',$user->Order_Code) }}">
                             <div class="container__history-list-item-title">
                                 <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
                                 <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </A>
                     @endforeach
                 @endif
             </div>
