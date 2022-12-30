@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-    Chart
+Export By Day
 @endsection
 
 @section('content')
@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="heading">
                     <div>
-                        <h1 class="page-header">Revenue
-                            <small>Chart</small>
+                        <h1 class="page-header">Export
+                            <small>By Day</small>
                         </h1>
                     </div>
                 </div>
@@ -19,23 +19,27 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr align="center">
-                                <th>Revenue by day</th>
-                                <th>Profit by day</th>
-                                <th>Revenue by week</th>
-                                <th>Revenue by year</th>
+                                <th>Total Quantity</th>
+                                <th>1st Sale</th>
+                                <th>2nd Sale</th>
+                                <th>3rd Sale</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="odd gradeX" align="center">
-                                <td>${{ $total_revenue }}</td>
+                                <td>${{ $total_quantity }}</td>
+                                @foreach ($top_product as $product)
                                 <td>${{ $total_revenue - $total_capital }}</td>
+                                <td>${{ $total_revenue - $total_capital }}</td>
+                                <td>${{ $total_revenue - $total_capital }}</td>
+                                @endforeach
                                 <td class="center">
                                     <i class="fa fa-trash-o  fa-fw"></i>
-                                    <a> See more</a>
+                                    <a href="{{route('admin.dashboard.revenue-by-month')}}"> See more</a>
                                 </td>
                                 <td class="center">
                                     <i class="fa fa-pencil fa-fw"></i>
-                                    <a> See more</a>
+                                    <a href="{{route('admin.dashboard.revenue-by-year')}}"> See more</a>
                                 </td>
                             </tr>
                         </tbody>

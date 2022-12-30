@@ -22,7 +22,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Revenue
                             </h1>
-                            <a href="{{route('admin.dashboard.revenue')}}" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.revenue-by-day')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
@@ -31,9 +31,9 @@
                             <img class="card-img-top" style="width:200px" src="{{ asset('admin/img/Revenue.jpg') }}" alt="Card image">
                             <h1 class="card-title">
                                 <i class="fa fa-money fa-fw"></i>
-                                Số lượng sản phẩm bán ra 
+                                Export 
                             </h1>
-                            <a href="{{route('admin.dashboard.export')}}" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.export-by-day')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
