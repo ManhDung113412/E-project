@@ -17,13 +17,8 @@ class Code extends Model
         'Discount',
         'Date_Start',
         'Date_End',
+        'ID'
     ];
-
-    // public function setDateAttribute($value)
-    // {
-    //     $this->attributes['Date_Start'] = Carbon::parse($value)->format('Y-m-d');
-    //     $this->attributes['Date_End'] = Carbon::parse($value)->format('Y-m-d');
-    // }
 
     public function orders(){
         return $this->hasMany(OrderDetail::class, 'Code_ID', 'ID');

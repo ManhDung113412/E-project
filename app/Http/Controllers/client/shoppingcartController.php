@@ -12,6 +12,9 @@ use App\Models\Product;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 use Alert;
+use Carbon\Carbon;
+use Payment;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class shoppingcartController extends Controller
 {
@@ -29,11 +32,14 @@ class shoppingcartController extends Controller
             ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
             ->get();
 
+        $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+        $ran_pro = $products->take(4);
+        // dd($ran_pro[0]->Slug);
         foreach ($carts as $cart) {
             $subtotals += $cart->subtotal;
         }
 
-        return view('clientsPage.shoppingCart', compact('carts', 'subtotals'));
+        return view('clientsPage.shoppingCart', compact('carts', 'subtotals', 'ran_pro'));
 
 
 
@@ -231,10 +237,12 @@ class shoppingcartController extends Controller
     public function getDiscountCode(Request $request)
     {
         if ($request->get('discountCount')) {
+            $time = Carbon::now()->toDateString();
             $code = $request->get('discountCount');
 
             $discountCode = DB::table('codes')
                 ->where('Code', $code)
+                ->where('Status', 'On')
                 ->get();
 
             if (!$discountCode->isEmpty()) {
@@ -260,9 +268,8 @@ class shoppingcartController extends Controller
             ->where('Product_Detail_ID', $pro_ID)
             ->exists()
         ) {
-            Alert::success('Success Title', 'Success Message');
-
-            // return redirect()->back();
+            Alert::error('This Item Has Already Existed In Shopping Cart')->autoclose(1500);
+            return redirect()->back();
         } else {
 
             DB::table('carts')
@@ -272,13 +279,136 @@ class shoppingcartController extends Controller
                     'Product_quantity' => 1,
                     'created_at' => time()
                 ]);
-
+            Alert::success('Added To Shopping Cart')->autoclose(1500);
             return redirect()->back();
         }
     }
 
     public function checkOut(Request $req)
     {
+        $rules = [
+            'Adress' => 'required'
+        ];
+
+        $messages = [
+            'required' => 'You Must Provide Your Address'
+        ];
+
+        $req->validate($rules, $messages);
+
+        $total = $req->total_price;
         $customer_ID = Auth::guard('users')->id();
+        $customer_address = $req->Adress;
+        $shipping = $req->ship;
+        $discount_code = $req->discount;
+        $order_code = 'OD' . rand(1000, 9999);
+
+
+        $customer_cart = DB::table('carts As c')
+            ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
+            ->join('products as p', 'pd.Product_ID', 'p.ID')
+            ->select('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
+            ->where('Customer_ID', $customer_ID)
+            ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
+            ->get();
+
+        if (isset($customer_cart[0])) {
+            $price_array = [];
+            foreach ($customer_cart as $item) {
+                array_push($price_array, ($item->Export_Price * $item->Product_quantity));
+            }
+
+
+            $final_price = array_sum($price_array) + $shipping;
+
+            $discount_percentage = 0;
+
+            if ($discount_code !== null) {
+
+                $kk = DB::table('codes')
+                    ->where('Code', $discount_code)
+                    ->select('Discount', 'ID')
+                    ->get();
+
+                if (isset($kk[0])) {
+
+                    $discount_percentage = $kk[0]->Discount;
+                    $discount_code = $kk[0]->ID;
+
+
+                    $final_price = ((array_sum($price_array) + $shipping) - (array_sum($price_array) + $shipping) * ($discount_percentage / 100));
+
+                    DB::table('orders')
+                        ->insert([
+                            'Code'  =>   $order_code
+                            , 'Customer_ID' => $customer_ID
+                            , 'Payment_ID' => 1
+                            , 'Code_ID'  => $discount_code
+                            , 'Location' => $customer_address
+                            , 'Status' => 'Pending'
+                            , 'created_at' => time()
+                            , 'Total_Paid'  => $final_price
+                        ]);
+
+                    $hihi = DB::table('orders')
+                        ->orderBy('ID', 'desc')
+                        ->first();
+
+                    $Order_ID = $hihi->ID;
+                    foreach ($customer_cart as $item) {
+                        DB::table('orders_details')
+                            ->insert([
+                                'Product_Detail_ID' => $item->Product_Detail_ID
+                                , 'Quantity' => $item->Product_quantity
+                                , 'Price'    => $item->Export_Price
+                                , 'Order_ID' => $Order_ID
+                            ]);
+                    }
+
+                    DB::table('carts')
+                        ->where('Customer_ID', $customer_ID)
+                        ->delete();
+                } else {
+                    Alert::error('Discount Code is invalid')->autoclose(1500);
+                    return redirect()->back();
+                }
+            } else {
+                DB::table('orders')
+                    ->insert([
+                        'Code'  =>   $order_code
+                        , 'Customer_ID' => $customer_ID
+                        , 'Payment_ID' => 1
+                        , 'Code_ID'  => null
+                        , 'Location' => $customer_address
+                        , 'Status' => 'Pending'
+                        , 'created_at' => time()
+                        , 'Total_Paid'  => $final_price
+                    ]);
+
+                $hihi = DB::table('orders')
+                    ->orderBy('ID', 'desc')
+                    ->first();
+
+                $Order_ID = $hihi->ID;
+                foreach ($customer_cart as $item) {
+                    DB::table('orders_details')
+                        ->insert([
+                            'Product_Detail_ID' => $item->Product_Detail_ID
+                            , 'Quantity' => $item->Product_quantity
+                            , 'Price'    => $item->Export_Price
+                            , 'Order_ID' => $Order_ID
+                        ]);
+                }
+
+                DB::table('carts')
+                    ->where('Customer_ID', $customer_ID)
+                    ->delete();
+            }
+        }
+        
+        else{
+            Alert::error('There Is No Items In Cart')->autoclose(1500);
+            return redirect()->back();
+        }
     }
 }

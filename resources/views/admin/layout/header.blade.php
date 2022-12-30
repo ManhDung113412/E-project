@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"> Admin</a>
+        <a class="navbar-brand" href="{{route('admin.home.index')}}"> Admin</a>
     </div>
     <!-- /.navbar-header -->
 

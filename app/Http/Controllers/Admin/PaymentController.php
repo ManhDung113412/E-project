@@ -3,94 +3,78 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
     public function index()
     {
-        $codes = Code::all();
-        return view('admin.discount_code.list', compact('codes'));
+        $payments = Payment::all();
+        return view('admin.payment.list', compact('payments'));
     }
 
     public function create()
     {
-        return view('admin.discount_code.create');
+        return view('admin.payment.create');
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'code' => 'required|unique:codes',
-            'discount' => 'required|numeric|min:1|max:50',
-            'date_start' => 'required|date|before_or_equal:date_end',
-            'date_end' => 'required|date|after_or_equal:date_start',
+            'method' => 'required|unique:payments',
         ]);
 
-        Code::create([
-            'Code' => $request->code,
-            'Discount' => $request->discount,
-            'Date_Start' => $request->date_start,
-            'Date_End' => $request->date_end,
+        Payment::create([
+            'Method' => $request->method,
         ]);
 
-        return redirect()->route('admin.discount.index')->with('success', 'Created Successfully');
+        return redirect()->route('admin.payment.index')->with('success', 'Created Successfully');
     }
 
     public function edit($id)
     {
-        $code = Code::find($id);
-        return view('admin.discount_code.edit', compact('code'));
+        $payment = Payment::find($id);
+        return view('admin.payment.edit', compact('payment'));
     }
 
     public function update(Request $request, $id)
     {
-        $code = Code::find($id);
-        $oldCode = $code->Code;
-        if($request->code == $oldCode){
+        $payment = Payment::find($id);
+        $oldMethod = $payment->Method;
+
+        if($request->method != $oldMethod){
             $this->validate($request, [
-                'discount' => 'required|numeric|min:1|max:50',
-                'date_start' => 'required|date|before_or_equal:date_end',
-                'date_end' => 'required|date|after_or_equal:date_start',
-            ]);
-        }else{
-            $this->validate($request, [
-                'code' => 'required|unique:codes',
-                'discount' => 'required|numeric|min:1|max:50',
-                'date_start' => 'required|date|before_or_equal:date_end',
-                'date_end' => 'required|date|after_or_equal:date_start',
+                'method' => 'required|unique:payments',
             ]);
         }
 
-        Code::where('ID', $id)->update([
-            'Code' => $request->code,
-            'Discount' => $request->discount,
-            'Date_Start' => $request->date_start,
-            'Date_End' => $request->date_end,
+        Payment::where('ID', $id)->update([
+            'Method' => $request->method,
         ]);
 
-        return redirect()->route('admin.discount.edit', $id)->with('success', 'Updated Successfully');
+        return redirect()->route('admin.payment.edit', $id)->with('success', 'Updated Successfully');
     }
 
     public function delete($id)
     {
-        Code::where('ID', $id)->delete();
-        return redirect()->route('admin.discount.index')->with('success', 'Deleted Successfully!');
+        Payment::where('ID', $id)->delete();
+        return redirect()->route('admin.payment.index')->with('success', 'Deleted Successfully!');
     }
 
-    public function search(Request $request)
-    {
-        $codes = DB::table('codes')
-        ->where('Code', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Discount', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Date_Start', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Date_End', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('created_at', 'LIKE', '%'. $request->search . '%')
-        ->get();
-        if(!count($codes)){
-            $error = 'No Result';
-            return view('admin.discount_code.list', compact('error'));
-        }
-        return view('admin.discount_code.list', compact('codes'));
-    }
+    // public function search(Request $request)
+    // {
+    //     $codes = DB::table('codes')
+    //     ->where('Code', 'LIKE', '%'. $request->search . '%')
+    //     ->orWhere('Discount', 'LIKE', '%'. $request->search . '%')
+    //     ->orWhere('Date_Start', 'LIKE', '%'. $request->search . '%')
+    //     ->orWhere('Date_End', 'LIKE', '%'. $request->search . '%')
+    //     ->orWhere('created_at', 'LIKE', '%'. $request->search . '%')
+    //     ->get();
+    //     if(!count($codes)){
+    //         $error = 'No Result';
+    //         return view('admin.discount_code.list', compact('error'));
+    //     }
+    //     return view('admin.discount_code.list', compact('codes'));
+    // }
 }

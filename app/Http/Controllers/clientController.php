@@ -51,6 +51,7 @@ class clientController extends Controller
                 ->select('First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
                 ->get();
         }
+        // dd($user);
         return view('clientsPage.myProfile', compact('user'));
     }
 

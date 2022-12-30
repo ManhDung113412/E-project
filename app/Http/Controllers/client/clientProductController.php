@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Brand;
 use PDF;
+Use Alert;
 
 class clientProductController extends Controller
 {
@@ -93,7 +94,7 @@ class clientProductController extends Controller
             $smallWallet = DB::table('categories')
                 ->join('Products', 'Products.Category_ID', '=', 'categories.ID')
                 ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
-                ->where('categories.ID', 3)
+                ->where('categories.ID', 4)
                 ->groupBy('Product_details.Product_ID')
                 ->paginate(13);
         } else {
@@ -573,6 +574,8 @@ class clientProductController extends Controller
             'Customer_ID' => $customer_ID,
             'Product_Detail_ID' => $pro_ID
         ]);
+        // dd($this_product[0]->Name);
+        Alert::success('Added To Shopping Cart')->autoclose(1500);
 
         return redirect()->back();
     }

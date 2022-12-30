@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Code;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -49,13 +50,13 @@ class DiscountCodeController extends Controller
     {
         $code = Code::find($id);
         $oldCode = $code->Code;
-        if($request->code == $oldCode){
+        if ($request->code == $oldCode) {
             $this->validate($request, [
                 'discount' => 'required|numeric|min:1|max:50',
                 'date_start' => 'required|date|before_or_equal:date_end',
                 'date_end' => 'required|date|after_or_equal:date_start',
             ]);
-        }else{
+        } else {
             $this->validate($request, [
                 'code' => 'required|unique:codes',
                 'discount' => 'required|numeric|min:1|max:50',
@@ -83,16 +84,34 @@ class DiscountCodeController extends Controller
     public function search(Request $request)
     {
         $codes = DB::table('codes')
-        ->where('Code', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Discount', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Date_Start', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Date_End', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('created_at', 'LIKE', '%'. $request->search . '%')
-        ->get();
-        if(!count($codes)){
+            ->where('Code', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Discount', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Date_Start', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Date_End', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Status', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('created_at', 'LIKE', '%' . $request->search . '%')
+            ->get();
+        if (!count($codes)) {
             $error = 'No Result';
             return view('admin.discount_code.list', compact('error'));
         }
         return view('admin.discount_code.list', compact('codes'));
+    }
+
+    public function check()
+    {
+        $now = Carbon::now()->toDateString();
+
+        Code::where('Date_Start', '>', $now)->update([
+            'Status' => 'Upcoming',
+        ]);
+
+        Code::where('Date_Start', '=', $now)->update([
+            'Status' => 'On',
+        ]);
+
+        Code::where('Date_End', '<', $now)->update([
+            'Status' => 'Off',
+        ]);
     }
 }

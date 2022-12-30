@@ -103,14 +103,16 @@
                             <td>{{$order->Username}}</td>
                             <td>{{$order->TotalQuantity}}</td>
                             <td>{{$order->TotalPrice}}</td>
-                            <th>
+                            <th
                                 @if ($order->Status == 'Pending')
-                                <a class="badge badge-warning">Pending</a>                               
+                                    class="click btn-success"
                                 @elseif ($order->Status == 'Cancel')
-                                <span class="badge badge-danger">Cancel</span>  
+                                    class="click btn-danger"
                                 @elseif ($order->Status == 'Done')
-                                <span class="badge badge-success">Done</span>  
+                                    class="click btn-warning"
                                 @endif
+                            >
+                                {{$order->Status}}
                             </th>
                             <td>{{$order->Location}}</td>
                             <td>{{$order->Method}}</td>

@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\DiscountCodeController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProductDetailController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
@@ -22,7 +24,7 @@ use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
 use App\Http\Controllers\client\wishListController;
 use App\Http\Controllers\compareProductController;
-use App\Models\Payment;
+use App\Http\Controllers\EmailController;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -42,6 +44,13 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
     Route::get('logout', [AuthController::class, 'logout'])
         ->name('admin.auth.logout');
+
+    // Home Routes
+    Route::prefix('home')->group(function () {
+        Route::get('', [HomeController::class, 'index'])
+            ->name('admin.home.index');
+    });
+
 
     // Brand Routes
     Route::prefix('brand')->group(function () {
@@ -79,14 +88,6 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.category.search');
     });
 
-    // Dashboard Routes
-    Route::prefix('dashboard')->group(function () {
-        Route::get('revenue', [DashBoardController::class, 'revenue'])
-            ->name('admin.dashboard.revenue');
-        Route::get('keke', [DashBoardController::class, 'keke'])
-            ->name('admin.dashboard.keke');
-    });
-
     // Discount Code Routes
     Route::prefix('discount')->group(function () {
         Route::get('', [DiscountCodeController::class, 'index'])
@@ -103,6 +104,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.discount.delete');
         Route::post('search', [DiscountCodeController::class, 'search'])
             ->name('admin.discount.search');
+        Route::post('check', [DiscountCodeController::class, 'check'])
+            ->name('admin.discount.check');
     });
 
     // Order Routes
@@ -120,21 +123,21 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     });
 
     // Payment Code Routes
-    Route::prefix('slide')->group(function () {
-        Route::get('', [SlideController::class, 'index'])
-            ->name('admin.slide.index');
-        Route::get('create', [SlideController::class, 'create'])
-            ->name('admin.slide.create');
-        Route::post('store', [SlideController::class, 'store'])
-            ->name('admin.slide.store');
-        Route::get('edit/{id}', [SlideController::class, 'edit'])
-            ->name('admin.slide.edit');
-        Route::put('update/{id}', [SlideController::class, 'update'])
-            ->name('admin.slide.update');
-        Route::get('delete/{id}', [SlideController::class, 'delete'])
-            ->name('admin.slide.delete');
-        Route::post('search', [SlideController::class, 'search'])
-            ->name('admin.slide.search');
+    Route::prefix('payment')->group(function () {
+        Route::get('', [PaymentController::class, 'index'])
+            ->name('admin.payment.index');
+        Route::get('create', [PaymentController::class, 'create'])
+            ->name('admin.payment.create');
+        Route::post('store', [PaymentController::class, 'store'])
+            ->name('admin.payment.store');
+        Route::get('edit/{id}', [PaymentController::class, 'edit'])
+            ->name('admin.payment.edit');
+        Route::put('update/{id}', [PaymentController::class, 'update'])
+            ->name('admin.payment.update');
+        Route::get('delete/{id}', [PaymentController::class, 'delete'])
+            ->name('admin.payment.delete');
+        Route::post('search', [PaymentController::class, 'search'])
+            ->name('admin.payment.search');
     });
 
     // Product Routes
@@ -180,21 +183,21 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     });
 
     // Slide Code Routes
-    Route::prefix('payment')->group(function () {
-        Route::get('', [Payment::class, 'index'])
-            ->name('admin.payment.index');
-        Route::get('create', [Payment::class, 'create'])
-            ->name('admin.payment.create');
-        Route::post('store', [Payment::class, 'store'])
-            ->name('admin.payment.store');
-        Route::get('edit/{id}', [Payment::class, 'edit'])
-            ->name('admin.payment.edit');
-        Route::put('update/{id}', [Payment::class, 'update'])
-            ->name('admin.payment.update');
-        Route::get('delete/{id}', [Payment::class, 'delete'])
-            ->name('admin.payment.delete');
-        Route::post('search', [Payment::class, 'search'])
-            ->name('admin.payment.search');
+    Route::prefix('slide')->group(function () {
+        Route::get('', [SlideController::class, 'index'])
+            ->name('admin.slide.index');
+        Route::get('create', [SlideController::class, 'create'])
+            ->name('admin.slide.create');
+        Route::post('store', [SlideController::class, 'store'])
+            ->name('admin.slide.store');
+        Route::get('edit/{id}', [SlideController::class, 'edit'])
+            ->name('admin.slide.edit');
+        Route::put('update/{id}', [SlideController::class, 'update'])
+            ->name('admin.slide.update');
+        Route::get('delete/{id}', [SlideController::class, 'delete'])
+            ->name('admin.slide.delete');
+        Route::post('search', [SlideController::class, 'search'])
+            ->name('admin.slide.search');
     });
 
     // User Routes
@@ -213,6 +216,8 @@ Route::prefix('client')->group(function () {
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
+    Route::get('forgetPassword', [EmailController::class, 'getRecoverPassword']);
+    Route::post('forgetPassword', [EmailController::class, 'postRecoverPassword']);
 
     Route::get('login', [clientLoginController::class, 'getLogin'])->name('client-login');
     Route::post('login', [clientLoginController::class, 'postLogin']);
@@ -226,7 +231,8 @@ Route::prefix('client')->group(function () {
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
     Route::get('Product', [mainproductController::class, 'getMainProduct']);
     Route::get('Favorite', [shoppingcartController::class, 'getWishList']);
-    
+
+    Route::get('password', [clientLoginController::class, 'getPassword']);
 });
 
 Route::prefix('client/products')->group(function () {
@@ -247,7 +253,7 @@ Route::prefix('client/products')->group(function () {
     Route::get('specificProduct/pdf/{Slug}', [clientProductController::class, 'getPdfFile']);
 
     Route::get('compareproduct', [compareProductController::class, 'getCompareProduct'])
-    ->name('compareProduct');
+        ->name('compareProduct');
 
     Route::get('deleteproduct1', [compareProductController::class, 'deleteProduct1']);
     Route::get('deleteproduct2', [compareProductController::class, 'deleteProduct2']);
@@ -266,6 +272,8 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
+    Route::post('Cart', [shoppingcartController::class, 'checkOut'])->name('check.out');
+
 
     Route::post('Cart/increase', [shoppingcartController::class, 'handleIncreaseQuantity'])
         ->name('client.shopping-cart.handle-increase-quantity');
@@ -286,12 +294,13 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('wishlist/addtowishlist/{ID}', [wishListController::class, 'addToWishList']);
     Route::get('wishlist/removemultipleproducts/', [wishListController::class, 'removeMultipleProducts']);
 
-    // Route::get('getSmallCart',[clientProductController::class, 'getSmallCart']);
-    // Route::post('Cart', [shoppingcartController::class, 'checkOut']);
 
-    // Route::get('mywishlist', [shoppingcartController::class, 'getWishList']);
+
+    // Route::get('getSmallCart',[clientProductController::class, 'getSmallCart']);
+
+    Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
 
     Route::get('myProfile', [clientController::class, 'getProfile']);
     Route::post('editProfile', [clientController::class, 'editProfile'])
-    ->name('client.edit-profile');
+        ->name('client.edit-profile');
 });

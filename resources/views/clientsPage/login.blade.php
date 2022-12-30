@@ -40,7 +40,7 @@
                 <div class="container__signIn-button">
                     <button id="" type="submit">Sign in</button>
                 </div>
-                <div class="container__signIn-forget"><a href="">Forgotten password?</a></div>
+                <div class="container__signIn-forget"><a href="http://127.0.0.1:8000/client/forgetPassword">Forgotten password?</a></div>
                 <div class="container__signIn-change">
                     <button id="toRegister">Register</button>
                 </div>

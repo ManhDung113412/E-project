@@ -1,17 +1,21 @@
+@extends('layouts.master')
+@section('styles')
 <link rel="stylesheet" href="{{ asset('styles/pageStyle/profile.css') }}">
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+@stop
+@section('content')
 <form action="">
     <div id="showOff" class="container ">
         <div class="container__info">
             <div class="container__info-top">
                 <div class="container__info-top-avatar">
-                    <div class="container__info-top-avatar-img" style="background-image: url(./hb.jpg);">
+                    <div class="container__info-top-avatar-img" style="background-image: url({{ asset('assets/image/dungdeptrai.jpg') }});">
                         <div class="container__info-top-avatar-img-change">
                             <button type="button" id="changeAvatar">
-                                <form action="" enctype="multipart/form-data">
+                                {{-- <form action="" enctype="multipart/form-data">
                                     <input id="avt-btn" type="file">
-                                </form>
+                                </form> --}}
                                 Change
                             </button>
                         </div>
@@ -192,6 +196,7 @@
                     if ($.isEmptyObject(data.error)) {
                         printErrorMsg();
                         alert(data.success);
+                        location.reload();
                     } else {
                         printErrorMsg(data.error);
                     }
@@ -209,7 +214,7 @@
             });
         }
 
-        // Edit Avatar 
+        // Edit Avatar
         $('#avt-btn').change(function() {
             var file = $(this)[0].files[0]
             if (test) {
@@ -236,3 +241,4 @@
         })
     })
 </script>
+@stop

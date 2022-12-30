@@ -23,7 +23,7 @@
                                 <div class="container__product-list-cart">
                                     <div class="container__product-list-cart-image">
                                         <a class="container__product-list-cart-image-img" href="">
-                                            <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 110px;"
+                                            <img src="{{ $item->Main_IMG }}" style="width: 89px; height: 90px;"
                                                 alt="">
                                         </a>
                                         <div class="container__product-list-cart-image-info">
@@ -55,8 +55,9 @@
                                     <div class="productSubtotal container__product-list-cart-total">
                                         ${{ $item->subtotal }}</div>
                                     <div class="container__product-list-cart-button">
-                                        <a
-                                            href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}"><ion-icon name="close-outline"></ion-icon></a>
+                                        <a href="{{ url('/client/Cart/removefromcart', $item->Product_Detail_ID) }}">
+                                            <ion-icon name="close-outline"></ion-icon>
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
@@ -87,24 +88,40 @@
                                         <option value="12">Priority - $12</option>
                                     </select>
                                 </div>
+                                {{-- <div class="container__cartTotal-big2-info-address">
+                                    <div class="container__cartTotal-big2-info-address-name">Address:</div>
+                                    <p>Address:</p>
+                                    <input type="text" Name="Adress">
+                                </div> --}}
+                                <div class="container__cartTotal-big2-info-give">
+                                    <div class="container__cartTotal-big2-info-give-left">Address</div>
+                                </div>
+                                <div id="aF" class="container__cartTotal-big2-info-addr">
+                                    <input type="text" placeholder="   Enter Your Address" name="Adress">
+                                    @error('Adress')
+                                        <small>{{ $message }}</small>
+                                    @enderror
+                                    {{-- <div ></div> --}}
+                                </div>
                                 <div class="container__cartTotal-big2-info-give">
                                     <div class="container__cartTotal-big2-info-give-left">Give Code</div>
-                                    <div class="container__cartTotal-big2-info-give-right">Free Ship</div>
+                                    <div class="container__cartTotal-big2-info-give-right" id="discount"></div>
                                 </div>
-
                                 <div class="container__cartTotal-big2-info-code">
-                                    <input id="discount-code" type="text" placeholder="    Enter Your Code">
+                                    <input id="discount-code" type="text" placeholder="   Enter Your Code"
+                                        name="discount">
                                     <button type="button" id="discount-code_btn">
                                         <ion-icon alt="Enter Your Code" name="arrow-forward-outline"></ion-icon>
                                     </button>
-                                    <div id="discount"></div>
+                                    {{-- <div ></div> --}}
                                 </div>
 
                             </div>
                             <hr class="hr1">
                             <div class="container__cartTotal-big2-totalPrice">
                                 <div class="container__cartTotal-big2-totalPrice-left">Total Price</div>
-                                <div class="total-price container__cartTotal-big2-totalPrice-right"></div>
+                                <div class="total-price container__cartTotal-big2-totalPrice-right" name="total_price">
+                                </div>
                             </div>
                             <div class="container__cartTotal-big2-button">
                                 <button type="submit">Check Out</button>
@@ -115,45 +132,36 @@
             </div>
 
         </form>
-        <div class="main__alsoLike">
-            <p>You May Also Like</p>
-            <div class="main__alsoLike-product">
-                <div class="main__alsoLike-product-card">
-                    <div class="main__alsoLike-product-card-image">
-                        <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
+
+    </div>
+    </div>
+    </div>
+    <div class="container__featured">
+        <div class="container__featured-tittle">You May Also Like</div>
+        <div class="container__featured-products">
+            <div class="container__featured-products">
+                @foreach ($ran_pro as $item)
+                    <div class="container__featured-products-items">
+                        <div class="container__featured-products-items-button">
+                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </a>
+                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </a>
+                            {{-- <a href="" class="iconProduct">
+                    <ion-icon name="git-compare-outline"></ion-icon>
+                </a> --}}
+                        </div>
+                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                            style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__featured-products-items-img"></a>
+                        <div class="container__featured-products-items-info">
+                            <p>{{ $item->Name }}</p>
+                            <p>${{ $item->Export_Price }}</p>
+                        </div>
                     </div>
-                    <div class="main__alsoLike-product-card-info">
-                        <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                        <div class="main__alsoLike-product-card-info-price">Price</div>
-                    </div>
-                </div>
-                <div class="main__alsoLike-product-card">
-                    <div class="main__alsoLike-product-card-image">
-                        <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                    </div>
-                    <div class="main__alsoLike-product-card-info">
-                        <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                        <div class="main__alsoLike-product-card-info-price">Price</div>
-                    </div>
-                </div>
-                <div class="main__alsoLike-product-card">
-                    <div class="main__alsoLike-product-card-image">
-                        <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                    </div>
-                    <div class="main__alsoLike-product-card-info">
-                        <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                        <div class="main__alsoLike-product-card-info-price">Price</div>
-                    </div>
-                </div>
-                <div class="main__alsoLike-product-card">
-                    <div class="main__alsoLike-product-card-image">
-                        <img src="./image/div1-right.png" style="width: 281px; height: 375px;" alt="">
-                    </div>
-                    <div class="main__alsoLike-product-card-info">
-                        <div class="main__alsoLike-product-card-info-name">Product Name</div>
-                        <div class="main__alsoLike-product-card-info-price">Price</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -200,7 +208,7 @@
                 var totalPrice = 0;
                 var shipPrice = +$('#ship').val();
                 var subtotals = +$('.subtotals').html().replace('$', '');
-                var discount = $('#discount').html()
+                var discount = $('#discount').html();
                 if (discount.includes('-') || discount.includes('%')) {
                     var newDiscount1 = discount.replace('-', '');
                     var newDiscount2 = newDiscount1.replace('%', '');

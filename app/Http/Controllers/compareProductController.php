@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Brand;
 use PDF;
+use Alert;
 
 class compareProductController extends Controller
 {

@@ -3,94 +3,90 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Slide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SlideController extends Controller
 {
     public function index()
     {
-        $codes = Code::all();
-        return view('admin.discount_code.list', compact('codes'));
+        $slides = DB::table('sliedes As s')
+            ->join('brands as b', 's.Brand_ID', 'b.ID')
+            ->select('s.*', 'b.Name')
+            ->paginate(10);
+        return view('admin.slide.list', compact('slides'));
     }
 
     public function create()
     {
-        return view('admin.discount_code.create');
+        $brands = Brand::all();
+        return view('admin.slide.create', compact('brands'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'code' => 'required|unique:codes',
-            'discount' => 'required|numeric|min:1|max:50',
-            'date_start' => 'required|date|before_or_equal:date_end',
-            'date_end' => 'required|date|after_or_equal:date_start',
+            'title' => 'required',
+            'image' => 'required',
         ]);
 
-        Code::create([
-            'Code' => $request->code,
-            'Discount' => $request->discount,
-            'Date_Start' => $request->date_start,
-            'Date_End' => $request->date_end,
+        Slide::create([
+            'Brand_ID' => $request->brand,
+            'Tittle' => $request->title,
+            'IMG' => $request->image,
+            'Is_Top_Slide' => $request->top_or_middle_slide == 'top_slide' ? 1 : '',
+            'Is_Middle_Slide' => $request->top_or_middle_slide == 'middle_slide' ? 1 : '',
         ]);
 
-        return redirect()->route('admin.discount.index')->with('success', 'Created Successfully');
+        return redirect()->route('admin.slide.index')->with('success', 'Created Successfully');
     }
 
     public function edit($id)
     {
-        $code = Code::find($id);
-        return view('admin.discount_code.edit', compact('code'));
+        $slide = Slide::find($id);
+        $brands = Brand::all();
+        return view('admin.slide.edit', compact('slide', 'brands'));
     }
 
     public function update(Request $request, $id)
     {
-        $code = Code::find($id);
-        $oldCode = $code->Code;
-        if($request->code == $oldCode){
-            $this->validate($request, [
-                'discount' => 'required|numeric|min:1|max:50',
-                'date_start' => 'required|date|before_or_equal:date_end',
-                'date_end' => 'required|date|after_or_equal:date_start',
-            ]);
-        }else{
-            $this->validate($request, [
-                'code' => 'required|unique:codes',
-                'discount' => 'required|numeric|min:1|max:50',
-                'date_start' => 'required|date|before_or_equal:date_end',
-                'date_end' => 'required|date|after_or_equal:date_start',
-            ]);
-        }
-
-        Code::where('ID', $id)->update([
-            'Code' => $request->code,
-            'Discount' => $request->discount,
-            'Date_Start' => $request->date_start,
-            'Date_End' => $request->date_end,
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'required',
         ]);
 
-        return redirect()->route('admin.discount.edit', $id)->with('success', 'Updated Successfully');
+        Slide::where('ID', $id)->update([
+            'Brand_ID' => $request->brand,
+            'Tittle' => $request->title,
+            'IMG' => $request->image,
+            'Is_Top_Slide' => $request->top_or_middle_slide == 'top_slide' ? 1 : '',
+            'Is_Middle_Slide' => $request->top_or_middle_slide == 'middle_slide' ? 1 : '',
+        ]);
+
+        return redirect()->route('admin.slide.edit', $id)->with('success', 'Updated Successfully');
     }
 
     public function delete($id)
     {
-        Code::where('ID', $id)->delete();
-        return redirect()->route('admin.discount.index')->with('success', 'Deleted Successfully!');
+        Slide::where('ID', $id)->delete();
+        return redirect()->route('admin.slide.index')->with('success', 'Deleted Successfully!');
     }
 
     public function search(Request $request)
     {
-        $codes = DB::table('codes')
-        ->where('Code', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Discount', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Date_Start', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('Date_End', 'LIKE', '%'. $request->search . '%')
-        ->orWhere('created_at', 'LIKE', '%'. $request->search . '%')
-        ->get();
-        if(!count($codes)){
+        $slides = DB::table('sliedes As s')
+        ->join('brands as b', 's.Brand_ID', 'b.ID')
+        ->where('Name', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('Tittle', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('Is_Top_Slide', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('Is_Middle_Slide', 'LIKE', '%'. $request->search . '%')
+        ->paginate(10);
+        if(!count($slides)){
             $error = 'No Result';
-            return view('admin.discount_code.list', compact('error'));
+            return view('admin.slide.list', compact('error'));
         }
-        return view('admin.discount_code.list', compact('codes'));
+        return view('admin.slide.list', compact('slides'));
     }
 }

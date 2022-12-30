@@ -24,18 +24,6 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
-        <a href="#"><i class=" fa fa-dashboard fa-fw"></i> Dashboard<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-            <li>
-                <a href="{{route('admin.dashboard.revenue')}}">Revenue</a>
-            </li>
-            <li>
-                <a href="{{route('admin.dashboard.keke')}}">Keke</a>
-            </li>
-        </ul>
-        <!-- /.nav-second-level -->
-    </li>
-    <li>
         <a href="#"><i class="fa fa-money fa-fw"></i> Discount Code<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
@@ -48,10 +36,22 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
-        <a href="#"><i class="fa fa-shopping-cart"></i> Order<span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Order<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
                 <a href="{{route('admin.order-detail.index')}}">List Order</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-credit-card fa-fw"></i> Payment<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="{{route('admin.payment.index')}}">List Payment</a>
+            </li>
+            <li>
+                <a href="{{route('admin.payment.create')}}">Add Payment</a>
             </li>
         </ul>
         <!-- /.nav-second-level -->
@@ -77,6 +77,18 @@
             {{-- <li>
                 <a href="{{route('admin.product-detail.create')}}">Add Product Detail</a>
             </li> --}}
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-file-image-o fa-fw"></i> Slide<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="{{route('admin.slide.index')}}">List Slide</a>
+            </li>
+            <li>
+                <a href="{{route('admin.slide.create')}}">Add Slide</a>
+            </li>
         </ul>
         <!-- /.nav-second-level -->
     </li>
