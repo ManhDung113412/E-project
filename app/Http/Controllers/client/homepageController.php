@@ -40,4 +40,5 @@ class homepageController extends Controller
         $mail= $req->subscribe_email;
         return redirect()->route('client.login');
     }
+    
 }
