@@ -27,10 +27,10 @@
         <a href="#"><i class="fa fa-tachometer fa-fw"></i> Dashboard<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
-                <a href="{{route('admin.dashboard.revenue')}}">Revenue</a>
+                <a href="{{route('admin.dashboard.revenue-by-day')}}">Revenue</a>
             </li>
             <li>
-                <a href="{{route('admin.dashboard.export')}}">Export</a>
+                <a href="{{route('admin.dashboard.export-by-day')}}">Export</a>
             </li>
             <li>
                 <a href="{{route('admin.dashboard.order')}}">Order</a>

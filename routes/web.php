@@ -50,10 +50,23 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('home')->group(function () {
         Route::get('', [DashBoardController::class, 'index'])
             ->name('admin.dashboard.index');
-        Route::get('revenue', [DashBoardController::class, 'revenue'])
-            ->name('admin.dashboard.revenue');
-        Route::get('export', [DashBoardController::class, 'export'])
-            ->name('admin.dashboard.export');
+
+        // Revenue Routes
+        Route::get('revenue-by-day', [DashBoardController::class, 'revenueByDay'])
+            ->name('admin.dashboard.revenue-by-day');
+        Route::get('revenue-by-month', [DashBoardController::class, 'revenueByMonth'])
+            ->name('admin.dashboard.revenue-by-month');
+        Route::get('revenue-by-year', [DashBoardController::class, 'revenueByYear'])
+            ->name('admin.dashboard.revenue-by-year');
+
+        // Export Routes
+        Route::get('export-by-day', [DashBoardController::class, 'exportByDay'])
+            ->name('admin.dashboard.export-by-day');
+        Route::get('export-by-month', [DashBoardController::class, 'exportByMonth'])
+            ->name('admin.dashboard.export-by-month');
+        Route::get('export-by-year', [DashBoardController::class, 'exportByYear'])
+            ->name('admin.dashboard.export-by-year');
+
         Route::get('order', [DashBoardController::class, 'order'])
             ->name('admin.dashboard.order');
         Route::get('user', [DashBoardController::class, 'user'])
