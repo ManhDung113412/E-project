@@ -45,7 +45,11 @@
                     </div> --}}
                             <div class="givecode">
                                 <div id="div1">Offer</div>
+                                @if(isset($discount[0]))
+                                <div id="div2">{{ $discount[0]->Discount }}%</div>
+                                @else
                                 <div id="div2">None</div>
+                                @endif
                             </div>
                         </div>
                         <div class="container__details-total-right">
@@ -54,7 +58,7 @@
                         </div>
                     </div>
                     <div class="container__details-button">
-                        <a href="">Cancel Order</a>
+                        <button type="submit">Cancel Order</button>
                     </div>
                 </div>
                 @endforeach
