@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Wishlist;
+use Carbon\Carbon;
+use App\Models\Code;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,8 +36,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+
         Paginator::useBootstrap();
         View::composer('*', function ($view) {
+            $now = Carbon::now()->toDateString();
+
+            Code::where('Date_Start', '>', $now)->update([
+                'Status' => 'Upcoming',
+            ]);
+    
+            Code::where('Date_Start', '=', $now)->update([
+                'Status' => 'On',
+            ]);
+    
+            Code::where('Date_End', '<', $now)->update([
+                'Status' => 'Off',
+            ]);
+
             $customer_ID = Auth::guard('users')->id();
             $this_customer = DB::table('users')
                 ->where('id', $customer_ID)
@@ -68,6 +86,7 @@ class AppServiceProvider extends ServiceProvider
 
             $wishList_quantity = count(WishList::where('Customer_ID', $customer_ID)->get());
             $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity, 'customer' => $this_customer,'compare_number'=>$compare_number]);
+        
         });
     }
 }

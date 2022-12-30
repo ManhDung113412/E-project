@@ -284,7 +284,7 @@ class shoppingcartController extends Controller
                     'Product_Detail_ID' => $pro_ID,
                     'Customer_ID'   => $customer_ID,
                     'Product_quantity' => 1,
-                    'created_at' => time()
+                    'created_at' => Carbon::now()
                 ]);
             Alert::success('Added To Shopping Cart')->autoclose(1500);
             return redirect()->back();
@@ -353,7 +353,7 @@ class shoppingcartController extends Controller
                             , 'Code_ID'  => $discount_code
                             , 'Location' => $customer_address
                             , 'Status' => 'Pending'
-                            , 'created_at' => time()
+                            , 'created_at' => Carbon::now()
                             , 'Total_Paid'  => $final_price
                         ]);
 
@@ -388,7 +388,7 @@ class shoppingcartController extends Controller
                         , 'Code_ID'  => null
                         , 'Location' => $customer_address
                         , 'Status' => 'Pending'
-                        , 'created_at' => time()
+                        , 'created_at' => Carbon::now()
                         , 'Total_Paid'  => $final_price
                     ]);
 
@@ -411,6 +411,8 @@ class shoppingcartController extends Controller
                     ->where('Customer_ID', $customer_ID)
                     ->delete();
             }
+            Alert::success('Order Successfully!')->autoclose(1500);   
+            return redirect()->back();
         }
 
         else{
