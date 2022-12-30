@@ -450,17 +450,33 @@ table tr th {
     border-radius: 50%;
 }
 
-.editProfile #offEdit,#offChange:hover {
+.editProfile #offChange:hover {
+    border: 1px solid black;
+    /* background-color: white; */
+    transition: 0.3s ease-in-out;
+}
+.editProfile #offEdit:hover {
     border: 1px solid black;
     /* background-color: white; */
     transition: 0.3s ease-in-out;
 }
 
-#offEdit,#offChange {
+#offChange {
     font-size: 20px;
 }
 
-#offEdit,#offChange ion-icon {
+#offChange ion-icon {
+    position: absolute;
+    /* left: 15px; */
+    right: 1px;
+    top: 1.5px;
+}
+
+#offEdit {
+    font-size: 20px;
+}
+
+#offEdit ion-icon {
     position: absolute;
     /* left: 15px; */
     right: 1px;
