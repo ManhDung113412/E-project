@@ -24,6 +24,27 @@
         <!-- /.nav-second-level -->
     </li>
     <li>
+        <a href="#"><i class="fa fa-tachometer fa-fw"></i> Dashboard<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="{{route('admin.dashboard.revenue')}}">Revenue</a>
+            </li>
+            <li>
+                <a href="{{route('admin.dashboard.export')}}">Export</a>
+            </li>
+            <li>
+                <a href="{{route('admin.dashboard.order')}}">Order</a>
+            </li>
+            <li>
+                <a href="{{route('admin.dashboard.user')}}">User</a>
+            </li>
+            <li>
+                <a href="{{route('admin.dashboard.trending-product')}}">Trending Product</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+    <li>
         <a href="#"><i class="fa fa-money fa-fw"></i> Discount Code<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>

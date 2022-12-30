@@ -22,7 +22,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Revenue
                             </h1>
-                            <a href="#" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.revenue')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
@@ -33,7 +33,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Số lượng sản phẩm bán ra 
                             </h1>
-                            <a href="#" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.export')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Orders
                             </h1>
-                            <a href="#" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.order')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Users
                             </h1>
-                            <a href="#" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.user')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Trending Product
                             </h1>
-                            <a href="#" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.trending-product')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
                     

@@ -1,76 +1,94 @@
 @extends('admin.layout.master')
 
 @section('title')
-Revenue
+    Chart
 @endsection
 
 @section('content')
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="heading">
+    <div id="page-wrapper" data-order="{{ $orders }}">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="heading">
+                    <div>
+                        <h1 class="page-header">Revenue
+                            <small>Chart</small>
+                        </h1>
+                    </div>
+                </div>
                 <div>
-                    <h1 class="page-header">Revenue</h1>
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr align="center">
+                                <th>Revenue by day</th>
+                                <th>Profit by day</th>
+                                <th>Revenue by week</th>
+                                <th>Revenue by year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX" align="center">
+                                <td>${{ $total_revenue }}</td>
+                                <td>${{ $total_revenue - $total_capital }}</td>
+                                <td class="center">
+                                    <i class="fa fa-trash-o  fa-fw"></i>
+                                    <a> See more</a>
+                                </td>
+                                <td class="center">
+                                    <i class="fa fa-pencil fa-fw"></i>
+                                    <a> See more</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <canvas style="width: " id="myChart"></canvas>
                 </div>
-                <div class="heading-right">
-                    <a href="{{route('admin.product.create')}}" class="btn-add-product btn btn-warning">Add Product</a>
-                </div>
-                <div class="form-group">
-                    <input type="month">
-                </div>
+                <!-- /.row -->
             </div>
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-            
-            <!-- /.col-lg-12 -->
-            @if (!empty($error))
-                <div class="alert alert-danger">
-                    {{ $error }}
-                </div>
-            @endif
-            @if (!empty($brands))
-            <table  class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr align="center">
-                        <th>STT</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Logo</th>
-                        <th>Information</th>
-                        <th>Delete</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body-side"></tbody>
-                <tbody id="table-body-main">
-                    @foreach ($brands as $index => $brand)
-                    <tr class="odd gradeX" align="center">
-                        <td>{{$index + 1}}</td>
-                        <td>{{$brand->Code}}</td>
-                        <td>{{$brand->Name}}</td>
-                        <td><img width="100" src="{{$brand->Logo}}" alt=""></td>
-                        <td>{{$brand->Information}}</td>
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('admin.brand.delete', $brand->ID)}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.brand.edit', $brand->ID)}}">Edit</a></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @endif
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-</div>
+            <!-- /.container-fluid -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.min.js"></script> --}}
 
-<script>
-</script>
-@endsection
+            <script>
+                $(document).ready(function() {
+                    var orders = $('#page-wrapper').data('order')
+                    var listOfRevenue = []
+                    var listOfProfit = []
+                    var listOfHours = []
+
+                    orders.forEach(function(element) {
+                        listOfRevenue.push(element.Total_Revenue);
+                        listOfProfit.push(element.Total_Profit);
+                        listOfHours.push(element.time);
+                    });
+
+                    const ctx = document.getElementById('myChart');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: listOfHours,
+                            datasets: [{
+                                    label: 'Profit',
+                                    data: listOfProfit,
+                                    borderWidth: 1
+                                },
+                                {
+                                    label: 'Revenue',
+                                    data: listOfRevenue,
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                })
+            </script>
+        </div>
+    @endsection

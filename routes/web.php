@@ -48,8 +48,18 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
     // Home Routes
     Route::prefix('home')->group(function () {
-        Route::get('', [HomeController::class, 'index'])
-            ->name('admin.home.index');
+        Route::get('', [DashBoardController::class, 'index'])
+            ->name('admin.dashboard.index');
+        Route::get('revenue', [DashBoardController::class, 'revenue'])
+            ->name('admin.dashboard.revenue');
+        Route::get('export', [DashBoardController::class, 'export'])
+            ->name('admin.dashboard.export');
+        Route::get('order', [DashBoardController::class, 'order'])
+            ->name('admin.dashboard.order');
+        Route::get('user', [DashBoardController::class, 'user'])
+            ->name('admin.dashboard.user');
+        Route::get('trending-product', [DashBoardController::class, 'trendingProduct'])
+            ->name('admin.dashboard.trending-product');
     });
 
 
@@ -215,8 +225,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 Route::prefix('client')->group(function () {
 
     Route::get('home', [homepageController::class, 'getHomePage'])->name('homepage');
-    Route::post('home', [homepageController::class,'subscribe']);
-   
+    Route::post('home', [homepageController::class, 'subscribe']);
+
     Route::get('aboutUs', [aboutusController::class, 'getAboutUs']);
 
     Route::get('forgetPassword', [EmailController::class, 'getRecoverPassword']);
