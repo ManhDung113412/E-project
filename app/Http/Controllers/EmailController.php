@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Alert;
+Use Alert;
+
 use App\Mail\changePassword;
-// use Mail;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\SweetAlertServiceProvider;
 
 class EmailController extends Controller
 {
@@ -16,7 +17,6 @@ class EmailController extends Controller
     }
 
     public function postRecoverPassword(Request $req){
-
        $all_username = DB::table('users')
         ->get('username');
 
@@ -40,8 +40,6 @@ class EmailController extends Controller
             ->where('username',$this_username)
             ->get('Email');
 
-          
-
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $randomString = ''; 
             $n = 10;
@@ -58,14 +56,17 @@ class EmailController extends Controller
             ->update(['password' => $new_password]);
             
             $details = [
-                'title' => 'khanh an lon'
+                'title' => 'Recover Your Password From Pursellet'
                 ,'body' => 'Your new password is:'.$randomString
             ];
+            Alert::success('Email Sent Successfully')->autoclose(1500);
 
             Mail::to($user_email[0]->Email)->send(new changePassword($details));
-            dd('gui roi');
+            return redirect()->route('client.login');
         }
+
         else{
+            Alert::error('This username does not exist')->autoclose(1500);
             return redirect()->back();
         }
     }

@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="frm" action="">
         <div class="container">
             <form action="" id="signInForm" method="POST"
@@ -33,7 +34,7 @@
                     <button id="" type="submit">Submit</button>
                 </div>
                 <div class="container__signIn-change">
-                    <a id="toRegister">Sign In</a>
+                    <a id="toRegister" href="http://127.0.0.1:8000/client/login">Sign In</a>
                 </div>
             </form>
         </div>

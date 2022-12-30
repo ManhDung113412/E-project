@@ -18,6 +18,12 @@ use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class shoppingcartController extends Controller
 {
+
+    public function getOrder(){
+        return view('clientsPage.order');
+    }
+
+
     public function getShoppingCart(Request $req)
     {
         $customer_ID = Auth::guard('users')->id();
@@ -40,6 +46,7 @@ class shoppingcartController extends Controller
         }
 
         return view('clientsPage.shoppingCart', compact('carts', 'subtotals', 'ran_pro'));
+
 
 
 
@@ -405,10 +412,14 @@ class shoppingcartController extends Controller
                     ->delete();
             }
         }
-        
+
         else{
             Alert::error('There Is No Items In Cart')->autoclose(1500);
             return redirect()->back();
         }
     }
+
+
+
 }
+
