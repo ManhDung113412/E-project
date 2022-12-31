@@ -69,10 +69,22 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
         Route::get('export-by-year', [DashBoardController::class, 'exportByYear'])
             ->name('admin.dashboard.export-by-year');
 
-        Route::get('order', [DashBoardController::class, 'order'])
-            ->name('admin.dashboard.order');
-        Route::get('user', [DashBoardController::class, 'user'])
-            ->name('admin.dashboard.user');
+        // Order Routes
+        Route::get('order-by-day', [DashBoardController::class, 'orderByDay'])
+            ->name('admin.dashboard.order-by-day');
+        Route::get('order-by-month', [DashBoardController::class, 'orderByMonth'])
+            ->name('admin.dashboard.order-by-month');
+        Route::get('order-by-year', [DashBoardController::class, 'orderByYear'])
+            ->name('admin.dashboard.order-by-year');
+
+        // User Routes
+        Route::get('user-by-day', [DashBoardController::class, 'userByDay'])
+            ->name('admin.dashboard.user-by-day');
+        Route::get('user-by-month', [DashBoardController::class, 'userByMonth'])
+            ->name('admin.dashboard.user-by-month');
+        Route::get('user-by-year', [DashBoardController::class, 'userByYear'])
+            ->name('admin.dashboard.user-by-year');
+            
         Route::get('trending-product', [DashBoardController::class, 'trendingProduct'])
             ->name('admin.dashboard.trending-product');
     });
@@ -299,8 +311,8 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
-    Route::get('orders/{Code}',[orderController::class,'getOrder']);
-    Route::post('orders/{Code}',[orderController::class,'cancelOrder']);
+    Route::get('orders/{Code}', [orderController::class, 'getOrder']);
+    Route::post('orders/{Code}', [orderController::class, 'cancelOrder']);
 
 
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');

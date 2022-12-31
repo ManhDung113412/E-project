@@ -33,10 +33,10 @@
                 <a href="{{route('admin.dashboard.export-by-day')}}">Export</a>
             </li>
             <li>
-                <a href="{{route('admin.dashboard.order')}}">Order</a>
+                <a href="{{route('admin.dashboard.order-by-day')}}">Order</a>
             </li>
             <li>
-                <a href="{{route('admin.dashboard.user')}}">User</a>
+                <a href="{{route('admin.dashboard.user-by-day')}}">User</a>
             </li>
             <li>
                 <a href="{{route('admin.dashboard.trending-product')}}">Trending Product</a>

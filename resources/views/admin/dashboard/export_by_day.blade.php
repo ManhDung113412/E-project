@@ -1,11 +1,11 @@
 @extends('admin.layout.master')
 
 @section('title')
-Export By Day
+    Export By Day
 @endsection
 
 @section('content')
-    <div id="page-wrapper" data-order="{{ $orders }}">
+    <div id="page-wrapper" data-product="{{ $top_products }}">
         <div class="container-fluid">
             <div class="row">
                 <div class="heading">
@@ -27,20 +27,20 @@ Export By Day
                         </thead>
                         <tbody>
                             <tr class="odd gradeX" align="center">
-                                <td>${{ $total_quantity }}</td>
-                                @foreach ($top_product as $product)
-                                <td>${{ $total_revenue - $total_capital }}</td>
-                                <td>${{ $total_revenue - $total_capital }}</td>
-                                <td>${{ $total_revenue - $total_capital }}</td>
-                                @endforeach
-                                <td class="center">
+                                <td>{{ $total_quantity }}</td>
+                                {{-- @foreach ($top_products as $product) --}}
+                                    <td>{{ $top_products[0]->Product_Detail_ID }}: {{$top_products[0]->top_products}} Products</td>
+                                    <td>{{ $top_products[1]->Product_Detail_ID }}: {{$top_products[1]->top_products}} Products</td>
+                                    <td>{{ $top_products[2]->Product_Detail_ID }}: {{$top_products[2]->top_products}} Products</td>
+                                {{-- @endforeach --}}
+                                {{-- <td class="center">
                                     <i class="fa fa-trash-o  fa-fw"></i>
-                                    <a href="{{route('admin.dashboard.revenue-by-month')}}"> See more</a>
+                                    <a href="{{route('adm   in.dashboard.revenue-by-month')}}"> See more</a>
                                 </td>
                                 <td class="center">
                                     <i class="fa fa-pencil fa-fw"></i>
                                     <a href="{{route('admin.dashboard.revenue-by-year')}}"> See more</a>
-                                </td>
+                                </td> --}}
                             </tr>
                         </tbody>
                     </table>
@@ -55,21 +55,22 @@ Export By Day
 
             <script>
                 $(document).ready(function() {
-                    var orders = $('#page-wrapper').data('order')
-                    var listOfRevenue = []
-                    var listOfProfit = []
-                    var listOfHours = []
+                    var top_products = $('#page-wrapper').data('product')
 
-                    orders.forEach(function(element) {
+                    console.log(top_products);
+
+                    var listOfRevenue = []
+
+                    top_products.forEach(function(element) {
                         listOfRevenue.push(element.Total_Revenue);
                         listOfProfit.push(element.Total_Profit);
                         listOfHours.push(element.time);
                     });
 
-                    const ctx = document.getElementById('myChart');
+                    // const ctx = document.getElementById('myChart');
 
                     new Chart(ctx, {
-                        type: 'bar',
+                        type: 'pie',
                         data: {
                             labels: listOfHours,
                             datasets: [{
