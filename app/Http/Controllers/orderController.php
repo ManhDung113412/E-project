@@ -22,12 +22,12 @@ class orderController extends Controller
         ->where('orders.Code', $oder_code)
         ->select('orders.Code','orders.created_at','orders.Status','orders_details.Price','orders_details.Quantity','product_details.Main_IMG','Products.Name','orders.Location','orders.Total_Paid','orders_details.Quantity','orders.Code_ID')
         ->get();
-        
+
         $this_order = DB::table('orders')
         ->where('customer_id', $customer_ID)
         ->where('Code',$oder_code)
         ->get();
-        
+
 
         $kk = [];
 
@@ -53,7 +53,7 @@ class orderController extends Controller
         DB::table('orders')
         ->where('orders.Code',$oder_code)
         ->where('customer_ID',$customer_ID)
-        ->update(['orders.Status' => 'Cancelled By Customer']);
+        ->update(['orders.Status' => 'Cancel']);
 
         Alert::success('Cancel Order Successfully!');
         return redirect()->back();

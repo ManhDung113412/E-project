@@ -20,7 +20,7 @@ class clientMiddleware
         if (Auth::guard('users')->check()) {
             return $next($request);
         } else {
-            return redirect()->route('client-login')
+            return redirect()->route('client.login')
             ->with('error', 'You Have To Sign In To Continue');
         };
     }
