@@ -102,17 +102,8 @@ class DashboardController extends Controller
             $total_quantity += $item->Total_Quantity;
         }
 
-        $top_products = DB::table('orders As o')
-            ->leftJoin('orders_details as od', 'o.ID', 'od.Order_ID')
-            ->leftJoin('product_details as pd', 'od.Product_Detail_ID', 'pd.ID')
-            ->select(DB::raw('sum(od.Quantity) as top_products'), 'od.Product_Detail_ID', 'od.Order_ID')
-            ->whereDate('updated_at', $time)
-            ->where('Status', 'Done')
-            ->groupBy('Product_Detail_ID')
-            ->orderBy('top_products', 'DESC')
-            ->take(3)
-            ->get();
-
+        $top_products = DB::select(DB::raw("SELECT p.Name, SUM(od.Quantity) as Quantity, od.Product_Detail_ID FROM orders as o LEFT JOIN orders_details as od ON o.ID = od.Order_ID LEFT JOIN product_details as pd ON od.Product_Detail_ID = pd.ID LEFT JOIN products as p ON pd.Product_ID = p.ID WHERE o.updated_at LIKE '2022-12-31%' AND o.Status = 'Done' GROUP BY Name, Product_Detail_ID ORDER BY Quantity DESC LIMIT 3"));
+    // dd($top_products);
         return view('admin.dashboard.export_by_day', compact('orders', 'top_products', 'total_quantity'));
     }
 

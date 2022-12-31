@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div id="page-wrapper" data-product="{{ $top_products }}">
+    <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="heading">
@@ -28,10 +28,13 @@
                         <tbody>
                             <tr class="odd gradeX" align="center">
                                 <td>{{ $total_quantity }}</td>
+                                {{-- @php
+                                    dd($top_products);
+                                @endphp --}}
                                 {{-- @foreach ($top_products as $product) --}}
-                                    <td>{{ $top_products[0]->Product_Detail_ID }}: {{$top_products[0]->top_products}} Products</td>
-                                    <td>{{ $top_products[1]->Product_Detail_ID }}: {{$top_products[1]->top_products}} Products</td>
-                                    <td>{{ $top_products[2]->Product_Detail_ID }}: {{$top_products[2]->top_products}} Products</td>
+                                    <td>{{ $top_products[0]->Name }}: {{ $top_products[0]->Quantity }} Products</td>
+                                    <td>{{ $top_products[1]->Name }}: {{ $top_products[1]->Quantity }} Products</td>
+                                    <td>{{ $top_products[2]->Name }}: {{ $top_products[2]->Quantity }} Products</td>
                                 {{-- @endforeach --}}
                                 {{-- <td class="center">
                                     <i class="fa fa-trash-o  fa-fw"></i>
@@ -53,7 +56,7 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.min.js"></script> --}}
 
-            <script>
+            {{-- <script>
                 $(document).ready(function() {
                     var top_products = $('#page-wrapper').data('product')
 
@@ -94,6 +97,6 @@
                         }
                     });
                 })
-            </script>
+            </script> --}}
         </div>
     @endsection
