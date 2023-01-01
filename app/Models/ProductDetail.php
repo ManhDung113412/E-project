@@ -11,6 +11,8 @@ class ProductDetail extends Model
 
     protected $table = 'product_details';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'Import_Price', 
         'Export_Price', 
@@ -30,6 +32,8 @@ class ProductDetail extends Model
         'Quantity',
         'Slug', 
     ];
+
+   
 
     public function product(){
         return $this->belongsTo(Product::class, 'Product_ID', 'ID');
