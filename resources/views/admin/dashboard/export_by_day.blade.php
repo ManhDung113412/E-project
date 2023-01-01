@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('title')
-    Export By Day
+    Sales By Day
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="heading">
                     <div>
-                        <h1 class="page-header">Export
+                        <h1 class="page-header">Sales
                             <small>By Day</small>
                         </h1>
                     </div>
@@ -23,8 +23,8 @@
                                 <th>1st Sale</th>
                                 <th>2nd Sale</th>
                                 <th>3rd Sale</th>
-                                <th>Export By Month</th>
-                                <th>Export By Year</th>
+                                <th>Sales By Month</th>
+                                <th>Sales By Year</th>
                             </tr>
                         </thead>
                         <tbody>
