@@ -166,9 +166,9 @@
             </div>
         </div>
     </form>
-    <form action="{{ url('http://127.0.0.1:8000/client/changepassword') }}" >
+    <form id="showChange" class="container__edit" action="{{ url('http://127.0.0.1:8000/client/changepassword') }}" >
      @csrf
-        <div id="showChange" class="container__edit ">
+        <div  class=" ">
             <div class="editProfile">
                 <div class="editProfile__title">Change Password</div>
                 <div class="profile editProfile__content">

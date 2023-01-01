@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div id="page-wrapper">
+    <div id="page-wrapper" data-user="{{ $users }}">
         <div class="container-fluid">
             <div class="row">
                 <div class="heading">
@@ -40,44 +40,51 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div id="chart_div" style="width: 100%; height: 500px;"></div>  
+                    <canvas style="width: " id="myChart"></canvas>
                 </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
 
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
-                google.charts.load('current', {
-                    'packages': ['corechart']
-                });
-                google.charts.setOnLoadCallback(drawChart);
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.min.js"></script> --}}
 
+            <script>
+                $(document).ready(function() {
+                    var users = $('#page-wrapper').data('user')
+                    var listOfHours = []
+                    var listOfUsers = []
 
+                    users.forEach(function(element) {
+                        listOfHours.push(element.time);
+                        listOfUsers.push(element.total_users);
+                    });
 
-                function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                        ['Users',  'Users'],
-                        <?php echo $users; ?>
+                    console.log(listOfHours);
+                    console.log(listOfUsers);
 
-                    ]);
+                    const ctx = document.getElementById('myChart');
 
-                    var options = {
-                        title: "Today' new users",
-                        hAxis: {
-                            title: 'User',
-                            titleTextStyle: {
-                                color: '#333'
-                            }
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: listOfHours,
+                            datasets: [{
+                                label: 'User',
+                                data: listOfUsers,
+                                borderWidth: 1
+                            }, ]
                         },
-                        vAxis: {
-                            minValue: 0
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
                         }
-                    };
-
-                    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-                    chart.draw(data, options);
-                }
+                    });
+                })
             </script>
         </div>
     @endsection
