@@ -26,7 +26,7 @@ class homepageController extends Controller
        
         $products = DB::table('products')
         ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-        ->where('Products.Category_ID',3)
+        ->where('product_details.Is_Feature','Feature')
         ->get()
         ->shuffle();
 
@@ -66,7 +66,7 @@ class homepageController extends Controller
         ->get()
         ->shuffle();
 
-        $dungdz = $hehe_img->take(1);
+        // $dungdz = $hehe_img->take(1);
         
         return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img
         , 'top_slides_img' => $top_slides_img
@@ -76,8 +76,7 @@ class homepageController extends Controller
         , 'LV' => $LV
         , 'gucci' => $Gucci
         , 'trending' => $tren
-        ,'cart_quantity' => $cart_quantity
-        ,'dungdeptrai'=>$dungdz]);
+        ,'cart_quantity' => $cart_quantity]);
     }
 
 
