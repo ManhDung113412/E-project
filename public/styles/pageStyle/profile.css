@@ -360,6 +360,9 @@ table tr th {
     background-color: transparent;
     display: none;
 }
+#showChange{
+    top: 35%;
+}
 
 .container__edit.active {
     display: block;
@@ -369,7 +372,6 @@ table tr th {
 
 .editProfile {
     position: absolute;
-
     left: 37%;
     width: 500px;
     height: 650px;
