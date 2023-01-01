@@ -30,7 +30,7 @@ Revenue By Day
                                 <td>${{ $total_revenue }}</td>
                                 <td>${{ $total_revenue - $total_capital }}</td>
                                 <td class="center">
-                                    <i class="fa fa-trash-o  fa-fw"></i>
+                                    <i class="fa fa-pencil-o  fa-fw"></i>
                                     <a href="{{route('admin.dashboard.revenue-by-month')}}"> See more</a>
                                 </td>
                                 <td class="center">

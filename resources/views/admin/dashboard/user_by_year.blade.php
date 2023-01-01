@@ -30,7 +30,7 @@
                                 <td>{{ $total_users[0]->total_users }}</td>
                                 <td>{{ $new_users }}</td>
                                 <td class="center">
-                                    <i class="fa fa-trash-o  fa-fw"></i>
+                                    <i class="fa fa-pencil-o  fa-fw"></i>
                                     <a href="{{ route('admin.dashboard.user-by-day') }}"> See more</a>
                                 </td>
                                 <td class="center">

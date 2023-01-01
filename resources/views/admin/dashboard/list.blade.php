@@ -14,12 +14,10 @@
                     </div>
                 </div>
 
-                <div style="display: inline-grid;">
-                    <div class="card" style="width: 50%;">
+                <div class="container-chart">
+                    <div class="card">
                         <div class="card-body">
-                            <img class="card-img-top" style="width:200px" src="{{ asset('admin/img/Revenue.jpg') }}" alt="Card image">
                             <h1 class="card-title">
-                                <i class="fa fa-money fa-fw"></i>
                                 Revenue
                             </h1>
                             <a href="{{route('admin.dashboard.revenue-by-day')}}" class="btn btn-primary">See Detail</a>
@@ -28,9 +26,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <img class="card-img-top" style="width:200px" src="{{ asset('admin/img/Revenue.jpg') }}" alt="Card image">
                             <h1 class="card-title">
-                                <i class="fa fa-money fa-fw"></i>
                                 Export 
                             </h1>
                             <a href="{{route('admin.dashboard.export-by-day')}}" class="btn btn-primary">See Detail</a>
@@ -39,9 +35,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <img class="card-img-top" style="width:200px" src="{{ asset('admin/img/Revenue.jpg') }}" alt="Card image">
                             <h1 class="card-title">
-                                <i class="fa fa-money fa-fw"></i>
                                 Orders
                             </h1>
                             <a href="{{route('admin.dashboard.order-by-day')}}" class="btn btn-primary">See Detail</a>
@@ -50,9 +44,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <img class="card-img-top" style="width:200px" src="{{ asset('admin/img/Revenue.jpg') }}" alt="Card image">
                             <h1 class="card-title">
-                                <i class="fa fa-money fa-fw"></i>
                                 Users
                             </h1>
                             <a href="{{route('admin.dashboard.user-by-day')}}" class="btn btn-primary">See Detail</a>
@@ -61,9 +53,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <img class="card-img-top" style="width:200px" src="{{ asset('admin/img/Revenue.jpg') }}" alt="Card image">
                             <h1 class="card-title">
-                                <i class="fa fa-money fa-fw"></i>
                                 Trending Product
                             </h1>
                             <a href="{{route('admin.dashboard.trending-product')}}" class="btn btn-primary">See Detail</a>

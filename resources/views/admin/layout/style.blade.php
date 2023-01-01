@@ -23,3 +23,6 @@
 
 {{-- Add Product Button  LÂM--}} 
 <link rel="stylesheet" href="/styles/adminStyle/addProduct.css">
+
+{{-- Add Product Button  LÂM--}} 
+<link rel="stylesheet" href="/styles/adminStyle/listChart.css">
