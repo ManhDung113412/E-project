@@ -68,8 +68,7 @@ class clientController extends Controller
                 'email' => 'required|email|unique:users',
                 // 'dob' => 'required',
             ]);
-        } 
-        else {
+        } else {
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -215,5 +214,12 @@ class clientController extends Controller
     public function getShoppingCart()
     {
         return view('clientsPage.shippingCart');
+    }
+
+
+    public function changePassword(Request $req)
+    {
+        $old_pass = $req->current_pass;
+        dd('asdfads');
     }
 }

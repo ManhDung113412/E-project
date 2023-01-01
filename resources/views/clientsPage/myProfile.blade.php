@@ -6,6 +6,7 @@
 @stop
 @section('content')
     <form action="">
+        @csrf
         <div id="showOff" class="container ">
             <div class="container__info">
                 <div class="container__info-top">
@@ -164,6 +165,8 @@
                 </button>
             </div>
         </div>
+    <form action="{{ url('http://127.0.0.1:8000/client/changepassword') }}" method="POST">
+     @csrf
         <div id="showChange" class="container__edit ">
             <div class="editProfile">
                 <div class="editProfile__title">Change Password</div>
@@ -171,19 +174,17 @@
                     <div class="alert alert-danger print-error-msg" style="display:none">
                         <ul></ul>
                     </div>
-                    <input id="" type="text" value="" placeholder="  Current Password">
-                    <input id="" type="text" value="" placeholder="  New Password">
-                    <input id="" type="text" value="" placeholder="  Confirm New Password">
-                    <button id="" type="button">Submit</button>
+                    <input id="" type="text" value="" placeholder="  Current Password" name="current_pass">
+                    <input id="" type="text" value="" placeholder="  New Password" name="new_pass">
+                    <input id="" type="text" value="" placeholder="  Confirm New Password" name="Cnew_pass">
+                    <button id="" type="submit">Submit</button>
                 </div>
-                <button id="offChange">
+                <button id="offChange" type="">
                     <ion-icon name="close-outline"></ion-icon>
                 </button>
             </div>
         </div>
     </form>
-
-
 
     <script src="{{ asset('javascript/client/profile.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
