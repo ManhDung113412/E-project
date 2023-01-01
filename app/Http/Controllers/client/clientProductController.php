@@ -150,7 +150,7 @@ class clientProductController extends Controller
                 ->join('Products', 'Products.Category_ID', '=', 'categories.ID')
                 ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
                 ->where('categories.ID', 1)
-                ->groupBy('Product_details.Prod1uct_ID')
+                ->groupBy('Product_details.Product_ID')
                 ->paginate(13);
         } else {
             switch ($price) {

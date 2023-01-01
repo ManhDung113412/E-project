@@ -26,7 +26,7 @@ class homepageController extends Controller
        
         $products = DB::table('products')
         ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-        ->where('Products.Category_ID',3)
+        ->where('product_details.Is_Feature','Feature')
         ->get()
         ->shuffle();
 
