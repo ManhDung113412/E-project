@@ -3,7 +3,8 @@
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/order.css') }}">
 @stop
 @section('content')
-    <form action="">
+    <form action="" method="POST">
+        @csrf
         <div class="container">
             <div class="container__info">
                 <div class="container__info-title">
@@ -65,14 +66,13 @@
                             <div>${{ $item->Total_Paid }}</div>
                         </div>
                     </div>
-
+                    @if( $this_order[0]->Status == 'Pending')
+                    <button class="cancel_button" type="submit">Cancel Order</button>
+                    @else
                     <div class="container__details-button">
                         Cancel Order
-                        @if( $this_order[0]->Status == 'Pending')
-                        <button type="submit">Cancel Order</button>
-                        @endif
                     </div>
-
+                    @endif
                 </div>
             @endforeach
         </div>

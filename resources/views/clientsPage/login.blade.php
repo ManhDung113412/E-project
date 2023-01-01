@@ -123,5 +123,4 @@
     </div>
 </body>
 <script src="{{ asset('javascript/client/loginNew.js') }}"></script>
-
 </html>

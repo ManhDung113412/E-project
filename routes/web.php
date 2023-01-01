@@ -343,4 +343,7 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('myProfile', [clientController::class, 'getProfile']);
     Route::post('editProfile', [clientController::class, 'editProfile'])
         ->name('client.edit-profile');
+
+
+    Route::get('changepassword', [clientController::class, 'changePassword']);
 });
