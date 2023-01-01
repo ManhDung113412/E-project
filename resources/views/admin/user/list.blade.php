@@ -15,7 +15,7 @@ List User
                     </h1>
                 </div>
                 <div class="form-group">
-                    <form action="{{route('admin.user.search')}}" method="post">
+                    <form action="{{route('admin.user.search')}}" method="GET">
                         @csrf
                         <input name="search" class="input-search" placeholder="Search...">
                         <button type="submit" class="btn-add-product btn btn-success">Search</button>
@@ -78,7 +78,7 @@ List User
                     @endforeach
                 </tbody>
             </table>
-            {!! $users->links() !!}
+            {!! $users->appends($_GET)->links() !!}
             @endif
         </div>
         <!-- /.row -->

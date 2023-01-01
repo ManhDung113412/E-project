@@ -156,7 +156,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.order-detail.update');
         Route::get('detail/{id}', [OrderDetailController::class, 'detail'])
             ->name('admin.order-detail.detail');
-        Route::post('search', [OrderDetailController::class, 'search'])
+        Route::get('search', [OrderDetailController::class, 'search'])
             ->name('admin.order-detail.search');
     });
 
@@ -216,7 +216,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.product-detail.update');
         Route::get('delete/{id}', [ProductDetailController::class, 'delete'])
             ->name('admin.product-detail.delete');
-        Route::post('search', [ProductDetailController::class, 'search'])
+        Route::get('search', [ProductDetailController::class, 'search'])
             ->name('admin.product-detail.search');
     });
 
@@ -234,7 +234,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.slide.update');
         Route::get('delete/{id}', [SlideController::class, 'delete'])
             ->name('admin.slide.delete');
-        Route::post('search', [SlideController::class, 'search'])
+        Route::get('search', [SlideController::class, 'search'])
             ->name('admin.slide.search');
     });
 
@@ -244,7 +244,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.user.index');
         Route::get('detail/{id}', [UserController::class, 'detail'])
             ->name('admin.user.detail');
-        Route::post('search', [UserController::class, 'search'])
+        Route::get('search', [UserController::class, 'search'])
             ->name('admin.user.search');
     });
 });

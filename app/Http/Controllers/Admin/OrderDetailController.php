@@ -114,7 +114,8 @@ class OrderDetailController extends Controller
             ->orWhere('o.Location', 'like', '%' . $data . '%')
             ->orWhereDate('o.created_at', 'like', '%' . $data . '%')
             ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'o.created_at')
-            ->paginate(10);
+            ->paginate(10)
+            ->appends(request()->query());
         if(!count($orders)){
             $error = 'No Result';
             return view('admin.order_detail.list', compact('error'));

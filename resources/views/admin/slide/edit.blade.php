@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label>Is Top Slide? </label><br>
                             <label class="radio-inline">
-                                <input name="top_or_middle_slide" @if ($slide->Is_Top_Slide == 1) checked @endif value="top_slide" type="radio">
+                                <input name="top_or_middle_slide" @if ($slide->Is_Top_Slide == 'Top Slide') checked @endif value="top_slide" type="radio">
                             </label>
                             @error('top_or_middle_slide')
                                 <div class="alert alert-danger">
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label>Is Middle Slide? </label><br>
                             <label class="radio-inline">
-                                <input name="top_or_middle_slide" @if ($slide->Is_Middle_Slide == 1) checked @endif value="middle_slide" type="radio">
+                                <input name="top_or_middle_slide" @if ($slide->Is_Middle_Slide == 'Middle Slide') checked @endif value="middle_slide" type="radio">
                             </label>
                             @error('top_or_middle_slide')
                                 <div class="alert alert-danger">

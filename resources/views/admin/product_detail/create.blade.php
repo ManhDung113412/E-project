@@ -164,7 +164,7 @@
                             <input name="is_trending" value="0" checked type="radio">No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_trending" value="1" type="radio">Yes
+                            <input name="is_trending" value="Trending" type="radio">Yes
                         </label>
                     </div>
 
@@ -174,7 +174,7 @@
                             <input name="is_feature" value="0" checked type="radio">No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_feature" value="1" type="radio">Yes 
+                            <input name="is_feature" value="Feature" type="radio">Yes 
                         </label>
                     </div>
 
@@ -184,7 +184,7 @@
                             <input name="is_arrivals" value="0" checked type="radio">No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_arrivals" value="1" type="radio">Yes
+                            <input name="is_arrivals" value="New Arrivals" type="radio">Yes
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Create</button>
