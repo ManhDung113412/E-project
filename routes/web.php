@@ -22,6 +22,7 @@ use App\Http\Controllers\client\reviewController;
 use App\Http\Controllers\client\shoppingcartController;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\client\clientProductController;
+use App\Http\Controllers\client\smallShoppingCartController;
 use App\Http\Controllers\client\wishListController;
 use App\Http\Controllers\compareProductController;
 use App\Http\Controllers\EmailController;
@@ -84,7 +85,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.dashboard.user-by-month');
         Route::get('user-by-year', [DashBoardController::class, 'userByYear'])
             ->name('admin.dashboard.user-by-year');
-            
+
         Route::get('trending-product', [DashBoardController::class, 'trendingProduct'])
             ->name('admin.dashboard.trending-product');
     });
@@ -324,6 +325,12 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 
     Route::post('Cart/decrease', [shoppingcartController::class, 'handleDecreaseQuantity'])
         ->name('client.shopping-cart.handle-decrease-quantity');
+
+    Route::post('small-cart/increase', [smallShoppingCartController::class, 'handleIncreaseQuantity'])
+        ->name('client.small-shopping-cart.handle-increase-quantity');
+
+    Route::post('small-cart/decrease', [smallShoppingCartController::class, 'handleDecreaseQuantity'])
+        ->name('client.small-shopping-cart.handle-decrease-quantity');
 
     Route::post('Cart/discount-code', [shoppingcartController::class, 'getDiscountCode'])
         ->name('client.shopping-cart.get-discount-code');

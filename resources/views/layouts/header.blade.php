@@ -82,6 +82,7 @@
                             <ion-icon name="chevron-up-outline"></ion-icon>
                         </button>
                     </div>
+
                     <div class="header__cart-list">
                         @foreach ($customer_cart as $item)
                             <div class="header__cart-list-items">
@@ -90,14 +91,23 @@
                                 <div class="header__cart-list-items-info">
                                     <div class="header__cart-list-items-info-name">{{ $item->Name }}</div>
                                     <div class="header__cart-list-items-info-quantity">
-                                        <button>
+
+                                        {{-- -- --}}
+                                        <button type="button" class="decrease-quantity-btn"
+                                            value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon name="remove-outline"></ion-icon>
                                         </button>
-                                        <div class="header__cart-list-items-info-quantity-num">
+
+                                        <div class="result" class="header__cart-list-items-info-quantity-num">
                                             {{ $item->Product_quantity }}</div>
-                                        <a>
+
+                                        {{-- ++ --}}
+                                        <button type="button" class="increase-quantity-btn"
+                                            value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon name="add-outline"></ion-icon>
-                                        </a>
+                                        </button>
+                                        {{ csrf_field() }}
+
                                     </div>
                                 </div>
                                 <div class="header__cart-list-items-info-right">
@@ -112,9 +122,10 @@
                             </div>
                         @endforeach
                     </div>
+
                     <div class="header__cart-total">
                         <p><b>Total</b></p>
-                        <p>$10000</p>
+                        <p class="total-price">${{$total_price}}</p>
                     </div>
                     <div class="header__cart-checkout">
                         <a href="{{ url('client/Cart') }}">Check Out</a>
@@ -122,9 +133,12 @@
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
-                        <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a></div>
-                        <div class="header__update-1"><a style="color: white" href=""> Give code for..</a></div>
-                        <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a></div>
+                        <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a>
+                        </div>
+                        <div class="header__update-1"><a style="color: white" href=""> Give code for..</a>
+                        </div>
+                        <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a>
+                        </div>
                     </div>
                 </div>
                 <div class="header__nav">
@@ -229,7 +243,7 @@
                         </a>
                     </div>
                     <div class="header__nav-right">
-                        <a  class="iconHead" id="log">
+                        <a class="iconHead" id="log">
                             <ion-icon name="person-outline"></ion-icon>
                         </a>
                         <a class="iconHead" href="{{ url('client/login') }}">
@@ -282,7 +296,67 @@
         </div> --}}
     </form>
 
+    <script src="{{ asset('javascript/client/header.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+
+    <script>
+        var result = document.querySelectorAll("div .result");
+        $(document).ready(function() {
+
+            // Increase 
+            $('.increase-quantity-btn').each(function(index) {
+                $(this).on('click', function() {
+                    var product = $(this).val();
+                    var quantity = result[index].innerHTML
+                    if (quantity == 5) {
+                        return;
+                    } else {
+                        var _token = $('input[name="_token"]').val();
+                        $.ajax({
+                            url: "{{ route('client.small-shopping-cart.handle-increase-quantity') }}",
+                            method: "POST",
+                            data: {
+                                product: product,
+                                _token: _token
+                            },
+                            success: function(data) {
+                                var hehe = JSON.parse(data);
+                                result[index].innerHTML = hehe[1];
+                                $('.total-price').html("$" + hehe[0].subtotal);
+                            }
+                        })
+                    }
+                })
+            })
+
+            // Decrease
+            $('.decrease-quantity-btn').each(function(index) {
+                $(this).on('click', function() {
+                    var product = $(this).val();
+                    var quantity = result[index].innerHTML
+                    if (quantity == 0) {
+                        return;
+                    } else {
+                        var _token = $('input[name="_token"]').val();
+                        $.ajax({
+                            url: "{{ route('client.small-shopping-cart.handle-decrease-quantity') }}",
+                            method: "POST",
+                            data: {
+                                product: product,
+                                _token: _token
+                            },
+                            success: function(data) {
+                                var hehe = JSON.parse(data);
+                                result[index].innerHTML = hehe[1];
+                                $('.total-price').html("$" + hehe[0].subtotal);
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
 </body>
-<script src="{{ asset('javascript/client/header.js') }}"></script>
+
 
 </html>

@@ -7,7 +7,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use App\Providers\ComposerServiceProvider;
 use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\ProductDetail;
 use Illuminate\Support\Facades\Auth;
@@ -40,25 +40,30 @@ class AppServiceProvider extends ServiceProvider
 
         Paginator::useBootstrap();
         View::composer('*', function ($view) {
+
+            // Discount Code
             $now = Carbon::now()->toDateString();
 
             Code::where('Date_Start', '>', $now)->update([
                 'Status' => 'Upcoming',
             ]);
-    
+
             Code::where('Date_Start', '=', $now)->update([
                 'Status' => 'On',
             ]);
-    
+
             Code::where('Date_End', '<', $now)->update([
                 'Status' => 'Off',
             ]);
+
 
             $customer_ID = Auth::guard('users')->id();
             $this_customer = DB::table('users')
                 ->where('id', $customer_ID)
                 ->get();
 
+
+            // Begin
             $carts = DB::table('carts As c')
                 ->join('product_details as pd', 'c.Product_Detail_ID', 'pd.ID')
                 ->join('products as p', 'pd.Product_ID', 'p.ID')
@@ -75,18 +80,25 @@ class AppServiceProvider extends ServiceProvider
                 ->where('Customer_ID', $customer_ID)
                 ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
                 ->get();
+
+            $total_price = 0;
+            foreach($carts as $cart){
+                $total_price += $cart->subtotal;
+            }
+            // End 
+
+
             $num = [];
             $a = session()->get('product_1');
             $b = session()->get('product_2');
             array_push($num, $a, $b);
             $compare_number = count(array_filter($num));
-            
+
             $cart_quantity = count($carts);
-            
+
 
             $wishList_quantity = count(WishList::where('Customer_ID', $customer_ID)->get());
-            $view->with(['customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity, 'customer' => $this_customer,'compare_number'=>$compare_number]);
-        
+            $view->with(['total_price' => $total_price, 'customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity, 'customer' => $this_customer, 'compare_number' => $compare_number]);
         });
     }
 }
