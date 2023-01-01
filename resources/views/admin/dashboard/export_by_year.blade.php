@@ -1,17 +1,17 @@
 @extends('admin.layout.master')
 
 @section('title')
-Revenue By Day
+    Export By Year
 @endsection
 
 @section('content')
-    <div id="page-wrapper" data-order="{{ $orders }}">
+    <div id="page-wrapper" data-order="{{$orders}}">
         <div class="container-fluid">
             <div class="row">
                 <div class="heading">
                     <div>
-                        <h1 class="page-header">Revenue
-                            <small>By Day</small>
+                        <h1 class="page-header">Export
+                            <small>By Year</small>
                         </h1>
                     </div>
                 </div>
@@ -19,23 +19,39 @@ Revenue By Day
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr align="center">
-                                <th>Revenue By Day</th>
-                                <th>Profit By Day</th>
-                                <th>Revenue By Month</th>
-                                <th>Revenue By Year</th>
+                                <th>Total Quantity</th>
+                                <th>1st Sale</th>
+                                <th>2nd Sale</th>
+                                <th>3rd Sale</th>
+                                <th>Export By Day</th>
+                                <th>Export By Month</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="odd gradeX" align="center">
-                                <td>${{ $total_revenue }}</td>
-                                <td>${{ $total_revenue - $total_capital }}</td>
+                                    <td>{{ $total_quantity }}</td>
+                                    <td>
+                                        @if(!empty($top_products[0]->Name)) 
+                                            {{$top_products[0]->Name}} :{{$top_products[0]->Quantity}} Products
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(!empty($top_products[1]->Name)) 
+                                            {{$top_products[1]->Name}} :{{$top_products[1]->Quantity}} Products
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(!empty($top_products[2]->Name)) 
+                                            {{$top_products[2]->Name}} :{{$top_products[2]->Quantity}} Products
+                                        @endif
+                                    </td>
                                 <td class="center">
                                     <i class="fa fa-trash-o  fa-fw"></i>
-                                    <a href="{{route('admin.dashboard.revenue-by-month')}}"> See more</a>
+                                    <a href="{{ route('admin.dashboard.export-by-day') }}"> See more</a>
                                 </td>
                                 <td class="center">
                                     <i class="fa fa-pencil fa-fw"></i>
-                                    <a href="{{route('admin.dashboard.revenue-by-year')}}"> See more</a>
+                                    <a href="{{ route('admin.dashboard.export-by-month') }}"> See more</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -52,13 +68,12 @@ Revenue By Day
             <script>
                 $(document).ready(function() {
                     var orders = $('#page-wrapper').data('order')
-                    var listOfRevenue = []
-                    var listOfProfit = []
+
+                    var listOfQuantity = []
                     var listOfHours = []
 
                     orders.forEach(function(element) {
-                        listOfRevenue.push(element.Total_Revenue);
-                        listOfProfit.push(element.Total_Profit);
+                        listOfQuantity.push(element.Total_Quantity);
                         listOfHours.push(element.time);
                     });
 
@@ -69,15 +84,10 @@ Revenue By Day
                         data: {
                             labels: listOfHours,
                             datasets: [{
-                                    label: 'Profit',
-                                    data: listOfProfit,
+                                    label: 'Quantity',
+                                    data: listOfQuantity,
                                     borderWidth: 1
                                 },
-                                {
-                                    label: 'Revenue',
-                                    data: listOfRevenue,
-                                    borderWidth: 1
-                                }
                             ]
                         },
                         options: {
