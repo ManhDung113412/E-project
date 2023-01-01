@@ -76,8 +76,7 @@ class homepageController extends Controller
         , 'LV' => $LV
         , 'gucci' => $Gucci
         , 'trending' => $tren
-        ,'cart_quantity' => $cart_quantity
-        ,'dungdeptrai'=>$dungdz]);
+        ,'cart_quantity' => $cart_quantity]);
     }
 
 
