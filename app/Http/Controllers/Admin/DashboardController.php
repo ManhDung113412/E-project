@@ -39,13 +39,14 @@ class DashboardController extends Controller
 
     public function revenueByMonth()
     {
-        $month = Carbon::now()->format('Y-m');
+        $now = Carbon::now()->toDateString();
+        $month = Carbon::now()->format('Y-m-01');
 
         $orders = DB::table('orders As o')
             ->join('orders_details as od', 'o.ID', 'od.Order_ID')
             ->leftJoin('product_details as pd', 'od.Product_Detail_ID', 'pd.ID')
             ->select(DB::raw('DATE_FORMAT(o.updated_at, "%d") as time'), DB::raw('sum(od.Quantity * Export_Price) as Total_Revenue'), DB::raw('sum(od.Quantity * Import_Price) as Total_Capital'), DB::raw('sum((od.Quantity * Export_Price) - (od.Quantity * Import_Price)) as Total_Profit'))
-            ->whereDate('updated_at', 'LIKE', '%' . $month . '%')
+            ->whereDate('updated_at', 'between', $month. '%' <= $now. '%' )
             ->where('Status', 'Done')
             ->groupBy('time')
             ->get();
@@ -182,9 +183,9 @@ class DashboardController extends Controller
     public function orderByMonth()
     {
         $time = Carbon::now();
-        $month = $time->format('Y-m');
+        $month = $time->format('Y-m-01');
 
-        $data = DB::select(DB::raw("select count(ID) as order_quantity, Status from orders where updated_at Like '$month%' Group By Status"));
+        $data = DB::select(DB::raw("select count(ID) as order_quantity, Status from orders where updated_at BETWEEN '$month%' and '$time%' Group By Status"));
 
         $pending = 0;
         $done = 0;

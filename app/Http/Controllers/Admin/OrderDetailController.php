@@ -29,6 +29,7 @@ class OrderDetailController extends Controller
     {
         $order = Order::find($id);
         $user = User::find($order->Customer_ID);
+        // dd($order->Code);
         return view('admin.order_detail.edit', compact('order', 'user'));
     }
 
