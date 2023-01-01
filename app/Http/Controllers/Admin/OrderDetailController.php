@@ -46,6 +46,16 @@ class OrderDetailController extends Controller
 
         // Done
         if($request->status == 'Done'){
+            $list_products = DB::select(DB::raw("SELECT od.Product_Detail_ID, od.Quantity FROM orders as o LEFT JOIN orders_details as od ON o.ID = od.Order_ID WHERE od.Order_ID = 1"));
+            
+            foreach($list_products as $product){
+                $product_detail = ProductDetail::where('ID', $product->Product_Detail_ID)->get();
+                $oldQuantity = $product_detail[0]->Quantity;
+                ProductDetail::where('ID', $product->Product_Detail_ID)->update([
+                    'Quantity' => $oldQuantity - $product->Quantity
+                ]);
+            }
+
             $order->where('ID', $id)->update([
                 'Status' => 'Done'
             ]);
