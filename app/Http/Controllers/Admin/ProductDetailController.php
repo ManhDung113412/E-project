@@ -152,8 +152,8 @@ class ProductDetailController extends Controller
             ->orWhere('p.Is_Trending', 'like', '%' . $data . '%')
             ->orWhere('p.Is_New_Arrivals', 'like', '%' . $data . '%')
             ->orWhere('p.Is_Feature', 'like', '%' . $data . '%')
-            ->paginate(5);
-        // dd(count($product_details));
+            ->paginate(5)
+            ->appends(request()->query());
         if (!count($product_details)) {
             $error = 'No Result';
             return view('admin.product_detail.list', compact('error'));

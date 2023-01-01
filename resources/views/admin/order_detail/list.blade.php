@@ -15,7 +15,7 @@
                     </h1>
                 </div>
                 <div class="form-group">
-                    <form action="{{route('admin.order-detail.search')}}" method="post">
+                    <form action="{{route('admin.order-detail.search')}}" method="GET">
                         @csrf
                         <input name="search" class="input-search" placeholder="Order Code / Method / Status / Location / Date">
                         <button type="submit" class="btn-add-product btn btn-success">Search</button>
@@ -124,9 +124,8 @@
                     </tbody>
                 </table>
             </div>
-            {!! $orders->links() !!}
+            {!! $orders->appends($_GET)->links() !!}
             @endif
-            {{-- {!! $product_details->links() !!} --}}
         </div>
         <!-- /.row -->
     </div>

@@ -110,7 +110,8 @@ class ProductController extends Controller
         ->orWhere('b.Name', 'like', '%' . $data . '%')
         ->orWhere('c.Name', 'like', '%' . $data . '%')
         ->orWhere('p.Name', 'like', '%' . $data . '%')
-        ->paginate(10);
+        ->paginate(10)
+        ->appends(request()->query());
         if(!count($products)){
             $error = 'No Result';
             return view('admin.product.list', compact('error'));

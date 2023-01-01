@@ -44,7 +44,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Orders
                             </h1>
-                            <a href="{{route('admin.dashboard.order')}}" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.order-by-day')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                                 <i class="fa fa-money fa-fw"></i>
                                 Users
                             </h1>
-                            <a href="{{route('admin.dashboard.user')}}" class="btn btn-primary">See Detail</a>
+                            <a href="{{route('admin.dashboard.user-by-day')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 

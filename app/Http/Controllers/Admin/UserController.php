@@ -34,7 +34,8 @@ class UserController extends Controller
             ->orWhere('Rank', 'like', '%' . $data . '%')
             ->orWhere('Total_Amount_Spent', 'like', '%' . $data . '%')
             ->orWhereDate('created_at', 'like', '%' . $data . '%')
-            ->paginate(10);
+            ->paginate(10)
+            ->appends(request()->query());
         if (!count($users)) {
             $error = 'No Result';
             return view('admin.user.list', compact('error'));

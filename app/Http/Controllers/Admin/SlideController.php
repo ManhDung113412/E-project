@@ -36,8 +36,8 @@ class SlideController extends Controller
             'Brand_ID' => $request->brand,
             'Tittle' => $request->title,
             'IMG' => $request->image,
-            'Is_Top_Slide' => $request->top_or_middle_slide == 'top_slide' ? 1 : '',
-            'Is_Middle_Slide' => $request->top_or_middle_slide == 'middle_slide' ? 1 : '',
+            'Is_Top_Slide' => $request->top_or_middle_slide == 'top_slide' ? 'Top Slide' : '',
+            'Is_Middle_Slide' => $request->top_or_middle_slide == 'middle_slide' ? 'Middle Slide' : '',
         ]);
 
         return redirect()->route('admin.slide.index')->with('success', 'Created Successfully');
@@ -82,7 +82,8 @@ class SlideController extends Controller
         ->orWhere('Tittle', 'LIKE', '%'. $request->search . '%')
         ->orWhere('Is_Top_Slide', 'LIKE', '%'. $request->search . '%')
         ->orWhere('Is_Middle_Slide', 'LIKE', '%'. $request->search . '%')
-        ->paginate(10);
+        ->paginate(10)
+        ->appends(request()->query());
         if(!count($slides)){
             $error = 'No Result';
             return view('admin.slide.list', compact('error'));

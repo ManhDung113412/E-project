@@ -165,7 +165,7 @@
                             <input name="is_trending" value="0" type="radio" @if ($product_detail->Is_Trending == 0) checked @endif>No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_trending" value="1" type="radio" @if ($product_detail->Is_Trending == 1) checked @endif>Yes
+                            <input name="is_trending" value="Trending" type="radio" @if ($product_detail->Is_Trending == 'Trending') checked @endif>Yes
                         </label>
                     </div>
 
@@ -175,7 +175,7 @@
                             <input name="is_feature" value="0" type="radio" @if ($product_detail->Is_Feature == 0) checked @endif>No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_feature" value="1" type="radio" @if ($product_detail->Is_Feature == 1) checked @endif>Yes 
+                            <input name="is_feature" value="Feature" type="radio" @if ($product_detail->Is_Feature == 'Feature') checked @endif>Yes 
                         </label>
                     </div>
                     
@@ -185,7 +185,7 @@
                             <input name="is_arrivals" value="0" type="radio" @if ($product_detail->Is_Arrivals == 0) checked @endif>No
                         </label>
                         <label class="radio-inline">
-                            <input name="is_arrivals" value="1" type="radio" @if ($product_detail->Is_Arrivals == 1) checked @endif>Yes
+                            <input name="is_arrivals" value="New Arrivals" type="radio" @if ($product_detail->Is_New_Arrivals == 'New Arrivals') checked @endif>Yes
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Edit Product Detail</button>
