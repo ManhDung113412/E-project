@@ -341,9 +341,9 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('wishlist/addtocart/{ID}', [wishListController::class, 'addToCart']);
 
     Route::get('myProfile', [clientController::class, 'getProfile']);
- 
     Route::post('editProfile', [clientController::class, 'editProfile'])
         ->name('client.edit-profile');
 
-    Route::post('changepassword', [clientController::class, 'changePassword']);
+
+    Route::get('changepassword', [clientController::class, 'changePassword']);
 });

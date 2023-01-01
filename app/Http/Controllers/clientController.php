@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Alert;
 
 class clientController extends Controller
 {
@@ -219,7 +221,45 @@ class clientController extends Controller
 
     public function changePassword(Request $req)
     {
-        $old_pass = $req->current_pass;
-        dd('asdfads');
+        $rules = [
+            'current_pass' => 'required'
+            ,'new_pass'  => 'required'
+            ,'Cnew_pass' => 'same:new_pass'
+
+        ];
+        $messages = [
+            'required'  => 'This Field Is Required'
+            ,'Cnew_pass.same' => 'Confirm Password Must Match With Password'
+        ];
+        $req->validate($rules,$messages);
+
+        $user_id = Auth::guard('users')->id();
+        $this_user_password = DB::table('users')
+        ->where('id', $user_id)
+        ->get('password');
+        
+        $ID = DB::table('users')
+        ->where('id', $user_id)
+        ->get('id');
+
+        $this_user_ID = $ID[0]->id;
+
+        $user_password= $this_user_password[0]->password;
+
+        $curren_password = $req->current_pass;
+
+        $new_password = bcrypt($req->Cnew_pass);
+        
+       if(Hash::check($curren_password, $user_password)){
+            DB::table('users')
+            ->where('id', $this_user_ID)
+            ->update(['password' => $new_password]);
+
+            Alert::success('Changing password successfully')->autoclose(2000);
+            return redirect()->back();
+        }
+
+       
     }
+
 }

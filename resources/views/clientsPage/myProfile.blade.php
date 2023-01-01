@@ -165,7 +165,8 @@
                 </button>
             </div>
         </div>
-    <form action="{{ url('http://127.0.0.1:8000/client/changepassword') }}" method="POST">
+    </form>
+    <form action="{{ url('http://127.0.0.1:8000/client/changepassword') }}" >
      @csrf
         <div id="showChange" class="container__edit ">
             <div class="editProfile">
@@ -174,9 +175,24 @@
                     <div class="alert alert-danger print-error-msg" style="display:none">
                         <ul></ul>
                     </div>
-                    <input id="" type="text" value="" placeholder="  Current Password" name="current_pass">
-                    <input id="" type="text" value="" placeholder="  New Password" name="new_pass">
-                    <input id="" type="text" value="" placeholder="  Confirm New Password" name="Cnew_pass">
+                    <input id="" type="password" value="" placeholder="  Current Password" name="current_pass">
+                    <small>
+                        @error('current_pass')
+                        {{ $message }}
+                        @enderror
+                    </small>
+                    <input id="" type="password" value="" placeholder="  New Password" name="new_pass">
+                    <small>
+                        @error('new_pass')
+                        {{ $message }}
+                        @enderror
+                    </small>
+                    <input id="" type="password" value="" placeholder="  Confirm New Password" name="Cnew_pass">
+                    <small>
+                        @error('Cnew_pass')
+                        {{ $message }}
+                        @enderror
+                    </small>
                     <button id="" type="submit">Submit</button>
                 </div>
                 <button id="offChange" type="">

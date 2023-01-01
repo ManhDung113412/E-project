@@ -68,8 +68,7 @@
                     </div>
                     @if( $this_order[0]->Status == 'Pending')
                     <button class="cancel_button" type="submit">Cancel Order</button>
-                    @endif
-                    @if($this_order[0]->Status !== 'Pending')
+                    @else
                     <div class="container__details-button">
                         Cancel Order
                     </div>
