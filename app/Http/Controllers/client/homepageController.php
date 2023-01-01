@@ -16,11 +16,11 @@ class homepageController extends Controller
     {
         $middle_slides_img = DB::table('sliedes')
         ->where('Is_Top_Slide', 0)
-        ->where('Is_Middle_Slide', 1)
+        ->where('Is_Middle_Slide', 'Middle Slide')
         ->get();
         
         $top_slides_img = DB::table('sliedes')
-        ->where('Is_Top_Slide', 1)
+        ->where('Is_Top_Slide', 'Top Slide')
         ->where('Is_Middle_Slide', 0)
         ->get();
        
@@ -50,7 +50,7 @@ class homepageController extends Controller
 
         $trendings = DB::table('products')
         ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-        ->where('product_details.Is_Trending', 1)
+        ->where('product_details.Is_Trending', 'Trending')
         ->groupBy('Product_details.Product_ID')
         ->get()
         ->shuffle();
@@ -62,16 +62,24 @@ class homepageController extends Controller
         
         $hehe_img = DB::table('sliedes')
         ->where('Is_Top_Slide', 0)
-        ->where('Is_Middle_Slide', 1)
+        ->where('Is_Middle_Slide', 'Middle Slide')
         ->get()
         ->shuffle();
 
         $dungdz = $hehe_img->take(1);
         
-
-
-        return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren,'cart_quantity' => $cart_quantity,'dungdeptrai'=>$dungdz]);
+        return view('clientsPage.homePage', ['middle_slides_img' => $middle_slides_img
+        , 'top_slides_img' => $top_slides_img
+        , 'randomPro' => $p
+        , 'dior' => $dior
+        , 'channel' => $chanel
+        , 'LV' => $LV
+        , 'gucci' => $Gucci
+        , 'trending' => $tren
+        ,'cart_quantity' => $cart_quantity
+        ,'dungdeptrai'=>$dungdz]);
     }
+
 
     public function subscribe(Request $req){
         $mail= $req->subscribe_email;
