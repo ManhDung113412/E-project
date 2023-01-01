@@ -128,7 +128,7 @@ class DashboardController extends Controller
 
         $top_products = DB::select(DB::raw("SELECT p.Name, SUM(od.Quantity) as Quantity, od.Product_Detail_ID FROM orders as o LEFT JOIN orders_details as od ON o.ID = od.Order_ID LEFT JOIN product_details as pd ON od.Product_Detail_ID = pd.ID LEFT JOIN products as p ON pd.Product_ID = p.ID WHERE o.updated_at LIKE '$month%' AND o.Status = 'Done' GROUP BY Name, Product_Detail_ID ORDER BY Quantity DESC LIMIT 3"));
 
-        return view('admin.dashboard.export_by_day', compact('orders', 'top_products', 'total_quantity'));
+        return view('admin.dashboard.export_by_month', compact('orders', 'top_products', 'total_quantity'));
     }
 
     public function exportByYear()
@@ -152,7 +152,7 @@ class DashboardController extends Controller
 
         $top_products = DB::select(DB::raw("SELECT p.Name, SUM(od.Quantity) as Quantity, od.Product_Detail_ID FROM orders as o LEFT JOIN orders_details as od ON o.ID = od.Order_ID LEFT JOIN product_details as pd ON od.Product_Detail_ID = pd.ID LEFT JOIN products as p ON pd.Product_ID = p.ID WHERE o.updated_at LIKE '$year%' AND o.Status = 'Done' GROUP BY Name, Product_Detail_ID ORDER BY Quantity DESC LIMIT 3"));
 
-        return view('admin.dashboard.export_by_day', compact('orders', 'top_products', 'total_quantity'));
+        return view('admin.dashboard.export_by_year', compact('orders', 'top_products', 'total_quantity'));
     }
 
     public function orderByDay()
