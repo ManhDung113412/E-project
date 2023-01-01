@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="container-chart">
-                    <div class="card">
+                    <div class="card item-chart">
                         <div class="card-body">
                             <h1 class="card-title">
                                 Revenue
@@ -24,16 +24,16 @@
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card item-chart">
                         <div class="card-body">
                             <h1 class="card-title">
-                                Export 
+                                Sales 
                             </h1>
                             <a href="{{route('admin.dashboard.export-by-day')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card item-chart">
                         <div class="card-body">
                             <h1 class="card-title">
                                 Orders
@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card item-chart">
                         <div class="card-body">
                             <h1 class="card-title">
                                 Users
@@ -50,16 +50,6 @@
                             <a href="{{route('admin.dashboard.user-by-day')}}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h1 class="card-title">
-                                Trending Product
-                            </h1>
-                            <a href="{{route('admin.dashboard.trending-product')}}" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                    
                 </div>
                 <!-- /.row -->
             </div>

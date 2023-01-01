@@ -1,7 +1,11 @@
-.container-chart{
+.container-chart {
     display: flex;
 }
 
-.item-chart{
-    width: ;
+.item-chart {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 10px;
 }

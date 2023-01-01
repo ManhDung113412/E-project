@@ -30,7 +30,7 @@
                 <a href="{{route('admin.dashboard.revenue-by-day')}}">Revenue</a>
             </li>
             <li>
-                <a href="{{route('admin.dashboard.export-by-day')}}">Export</a>
+                <a href="{{route('admin.dashboard.export-by-day')}}">Sales</a>
             </li>
             <li>
                 <a href="{{route('admin.dashboard.order-by-day')}}">Order</a>
