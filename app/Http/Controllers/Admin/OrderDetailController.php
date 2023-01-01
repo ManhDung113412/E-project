@@ -24,7 +24,7 @@ class OrderDetailController extends Controller
             ->paginate(10);
         return view('admin.order_detail.list', compact('orders'));
     }
-// DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price) as TotalPrice'),
+    
     public function edit($id)
     {
         $order = Order::find($id);
