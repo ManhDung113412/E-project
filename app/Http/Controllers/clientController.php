@@ -12,6 +12,7 @@ use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Alert;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class clientController extends Controller
 {
@@ -92,6 +93,28 @@ class clientController extends Controller
 
 
         return response()->json(['error' => $validator->errors()->all()]);
+    }
+
+    public function editAvatar(Request $request)
+    {
+        echo $request->formData;
+        $validator = Validator::make($request->all(), [
+            'select_file' => 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
+        ]);
+
+        if ($validator->passes()) {
+            $uploadedFileUrl = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();            return response()->json([
+                'message' => 'Avatar Upload Successfully',
+                'uploaded_image' => 'ok',
+                'class_name' => 'alert-success'
+            ]);
+        } else {
+            return response()->json([
+                'message' => $validator->errors()->all(),
+                'uploaded_image' => '',
+                'class_name' => 'alert-danger'
+            ]);
+        }
     }
 
 
@@ -222,44 +245,38 @@ class clientController extends Controller
     public function changePassword(Request $req)
     {
         $rules = [
-            'current_pass' => 'required'
-            ,'new_pass'  => 'required'
-            ,'Cnew_pass' => 'same:new_pass'
+            'current_pass' => 'required', 'new_pass'  => 'required', 'Cnew_pass' => 'same:new_pass'
 
         ];
         $messages = [
-            'required'  => 'This Field Is Required'
-            ,'Cnew_pass.same' => 'Confirm Password Must Match With Password'
+            'required'  => 'This Field Is Required', 'Cnew_pass.same' => 'Confirm Password Must Match With Password'
         ];
-        $req->validate($rules,$messages);
+        $req->validate($rules, $messages);
 
         $user_id = Auth::guard('users')->id();
         $this_user_password = DB::table('users')
-        ->where('id', $user_id)
-        ->get('password');
-        
+            ->where('id', $user_id)
+            ->get('password');
+
         $ID = DB::table('users')
-        ->where('id', $user_id)
-        ->get('id');
+            ->where('id', $user_id)
+            ->get('id');
 
         $this_user_ID = $ID[0]->id;
 
-        $user_password= $this_user_password[0]->password;
+        $user_password = $this_user_password[0]->password;
 
         $curren_password = $req->current_pass;
 
         $new_password = bcrypt($req->Cnew_pass);
-        
-       if(Hash::check($curren_password, $user_password)){
+
+        if (Hash::check($curren_password, $user_password)) {
             DB::table('users')
-            ->where('id', $this_user_ID)
-            ->update(['password' => $new_password]);
+                ->where('id', $this_user_ID)
+                ->update(['password' => $new_password]);
 
             Alert::success('Changing password successfully')->autoclose(2000);
             return redirect()->back();
         }
-
-       
     }
-
 }

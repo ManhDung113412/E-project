@@ -5,13 +5,12 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @stop
 @section('content')
-    <form action="">
         @csrf
         <div id="showOff" class="container ">
             <div class="container__info">
                 <div class="container__info-top">
-                    <div class="container__info-top-avatar">
-                        <div class="container__info-top-avatar-img"
+                    <div class="container__info-top-avatar ">
+                        <div class="container__info-top-avatar-img uploaded_image"
                             style="background-image: url({{ asset('assets/image/dungdeptrai.jpg') }});">
                             <div class="container__info-top-avatar-img-change">
                                 <button type="button" id="changeAvatar">
@@ -19,6 +18,12 @@
                                 </button>
                             </div>
                         </div>
+                        <form method="post" id="upload_form" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input type="file" name="select_file" id="select_file">
+                            <button type="submit" id="upload" name="upload" value="submit">Submit</button>
+                            <div class="alert" id="message" style="display: none"></div>
+                        </form>
                     </div>
                     <div class="container__info-top-username">
                         <div class="username">{{ $user[0]->username }}</div>
@@ -165,32 +170,33 @@
                 </button>
             </div>
         </div>
-    </form>
-    <form id="showChange" class="container__edit" action="{{ url('http://127.0.0.1:8000/client/changepassword') }}" >
-     @csrf
-        <div  class=" ">
+    <form id="showChange" class="container__edit" action="{{ url('http://127.0.0.1:8000/client/changepassword') }}">
+        @csrf
+        <div class=" ">
             <div class="editProfile">
                 <div class="editProfile__title">Change Password</div>
                 <div class="profile editProfile__content">
                     <div class="alert alert-danger print-error-msg" style="display:none">
                         <ul></ul>
                     </div>
-                    <input id="" type="password" value="" placeholder="  Current Password" name="current_pass">
+                    <input id="" type="password" value="" placeholder="  Current Password"
+                        name="current_pass">
                     <small>
                         @error('current_pass')
-                        {{ $message }}
+                            {{ $message }}
                         @enderror
                     </small>
                     <input id="" type="password" value="" placeholder="  New Password" name="new_pass">
                     <small>
                         @error('new_pass')
-                        {{ $message }}
+                            {{ $message }}
                         @enderror
                     </small>
-                    <input id="" type="password" value="" placeholder="  Confirm New Password" name="Cnew_pass">
+                    <input id="" type="password" value="" placeholder="  Confirm New Password"
+                        name="Cnew_pass">
                     <small>
                         @error('Cnew_pass')
-                        {{ $message }}
+                            {{ $message }}
                         @enderror
                     </small>
                     <button id="" type="submit">Submit</button>
@@ -251,29 +257,23 @@
             }
 
             // Edit Avatar
-            $('#avt-btn').change(function() {
-                var file = $(this)[0].files[0]
-                if (test) {
-                    console.log('hehe');
-                    console.log(test);
-                    var formData = new FormData();
-                    formData.append('file', file)
-                    formData.append('upload_preset', 'kem7hhjd')
-
-                    $.ajax({
-                        url: "https://api.cloudinary.com/v1_1/dsqiav317/image/upload" + formData,
-                        method: "POST",
-                        data: {
-                            _token: _token
-                        },
-                        success: function(data) {
-                            console.log(data);
-                        }
-                    })
-                } else {
-                    console.log('khong hehe');
-                    console.log(test);
-                }
+            $('#upload_form').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "{{ route('client.edit-avatar') }}",
+                    method: "POST",
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data){
+                        console.log(data.message);
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
+                        $('#message').addClass(data.class_name);
+                    }
+                })
             })
         })
     </script>
