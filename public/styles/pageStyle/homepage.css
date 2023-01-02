@@ -799,3 +799,264 @@
     margin-bottom: 3px;
 
 }
+
+
+
+/* play game */
+
+
+.PlayGame{
+    width: 304px;
+    height: 346px;
+    background-color: whitesmoke;
+    position: absolute;
+    right: 0px;
+    top: 200px;
+    position: fixed;
+    transform: translate(304px,0);
+    z-index: 2;
+    transition: 0.3s ease-in-out;
+}
+
+.PlayGame.open{
+    transform: translate(0,0);
+    transition: 0.3s ease-in-out;
+}
+
+.title {
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    /* top: 50px;
+    left: 100px; */
+    /* background-color: whitesmoke; */
+    background-image: linear-gradient(to bottom ,rgb(253, 234, 234), transparent);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid whitesmoke;
+}
+
+.title__left {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.gameTitle{
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    top: 30%;
+    font-weight: bold;
+    animation: gameTitle 0.3s ease infinite alternate;
+}
+
+@keyframes gameTitle{
+    from{
+        color: black;
+    }to{
+        color: rgb(255, 221, 221);
+    }
+}
+
+.title__left ion-icon {
+    font-size: 30px;
+    align-self: center;
+    margin-left: 5px;
+}
+
+.title__point {
+    font-size: 25px;
+    line-height: 50px;
+    margin-right: 10px;
+}
+
+.game {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(250, 250, 250);
+    position: absolute;
+    top: 50px;
+    /* left: 100px; */
+    border: 2px solid whitesmoke;
+}
+
+#time {
+    font-size: 25px;
+    line-height: 50px;
+    margin-left: 5px;
+}
+
+#click {
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    top: 29%;
+    border-radius: 50%;
+    background-color: aquamarine;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    /* animation: show 0.5s ease-in-out 1 infinite; */
+}
+
+.result {
+    width: 300px;
+    height: 350px;
+    background-image: linear-gradient(to top ,rgb(255, 236, 236), transparent);
+    position: absolute;
+    /* top: 50px;
+    left: 100px; */
+    display: none;
+    border: 2px solid whitesmoke;
+}
+
+.scoreBoard {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 40%;
+    left: 39%;
+
+}
+
+.scoreBoard__result {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    font-weight: bold;
+}
+
+.scoreBoard__result div {
+    height: 20px;
+    margin: 5px;
+    /* float: left; */
+}
+
+.scoreBoard__code {
+    position: absolute;
+    top: 48%;
+    width: 300px;
+    text-align: center;
+    font-weight: bold;
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.scoreBoard__code1 {
+    position: absolute;
+    top: 55%;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-weight: bold;
+    left: 45%;
+}
+
+.scoreBoard__code p {
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+}
+.scoreBoard__button{
+    position: absolute;
+    top: 65%;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    left: 15%;
+}
+
+.scoreBoard__button button{
+    margin: 10px;
+    background-color: black;
+    color: white;
+    width: 80px;
+    font-size: 12px;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.scoreBoard__button button:hover{
+    background-color: white;
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+
+.start{
+    width: 300px;
+    height: 300px;
+    /* background-color: rgb(0, 0, 0); */
+    position: absolute;
+    top: 50px;
+    background-image: linear-gradient(to top ,rgb(255, 236, 236), transparent);
+    z-index: 1;
+    /* left: 100px; */
+    display: block;
+    border: 2px solid whitesmoke;
+
+    display: block;
+}
+.start__content{
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.start button{
+    opacity: 1;
+    background-color: black;
+    color: white;
+    width: 80px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 20%;
+    margin-left: 35%;
+}
+.start button:hover{
+    background-color: transparent;
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+
+.openBoardGame{
+    position: absolute;
+    top: 0;
+    left: -80px;
+    width: 80px;
+    height: 30px;
+    background-color: #f7ebeb;
+    border: 2px solid transparent;
+    font-weight: bold;
+}
+
+.openBoardGame div{
+    width: 100%;
+    height: 100%;
+    line-height: 30px;
+}
+
+.openBoardGame div:nth-child(1){
+    background-color: #ffe8e8;
+}
+.openBoardGame div:nth-child(2){
+    position: absolute;
+    top: 0;
+    background-color: #97ceff;
+    /* animation: play 0.5s ease infinite alternate; */
+}
+
+
+
