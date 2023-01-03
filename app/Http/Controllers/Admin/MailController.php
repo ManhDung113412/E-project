@@ -25,7 +25,7 @@ class MailController extends Controller
     {
 
         $mail_content = $req->mail;
-        dd($mail_content);
+        
         $details = [
             'title' => 'Email from Pursellet'
             ,'body' => $mail_content
