@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
                 'Status' => 'Upcoming',
             ]);
 
-            Code::where('Date_Start', '=', $now)->update([
+            Code::where('Date_Start', '<=', $now)->where('Date_End', '>=', $now)->update([
                 'Status' => 'On',
             ]);
 

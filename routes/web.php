@@ -28,7 +28,7 @@ use App\Http\Controllers\compareProductController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\subscribeController;
 use App\Http\Controllers\orderController;
-
+use GuzzleHttp\Psr7\Request;
 
 Route::prefix('admin')->group(function () {
     Route::get('register', [AuthController::class, 'register'])
@@ -353,6 +353,8 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::post('editAvart', [clientController::class, 'editAvatar'])
         ->name('client.edit-avatar');
 
+    Route::post('get-code', [homepageController::class, 'getCode'])
+        ->name('client-home-page.get-code');
 
     Route::get('changepassword', [clientController::class, 'changePassword']);
 });
