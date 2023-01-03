@@ -64,7 +64,7 @@ class EmailController extends Controller
             Mail::to($user_email[0]->Email)->send(new changePassword($details));
             return redirect()->route('client.login');
         }
-
+        
         else{
             Alert::error('This username does not exist')->autoclose(1500);
             return redirect()->back();

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\subscriberMail;
 use Illuminate\Http\Request;
-use App\Models\Mail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
-
+use Alert;
 class MailController extends Controller
 {
     public function index()
@@ -15,13 +16,30 @@ class MailController extends Controller
         return view('admin.mail.list', compact('mails'));
     }
 
-    public function mail()
+    public function getSendMail()
     {
         return view('admin.mail.mail');
     }
 
-    public function sendMail()
+    public function PostSendMail(Request $req)
     {
+
+        $mail_content = $req->mail;
+        dd($mail_content);
+        $details = [
+            'title' => 'Email from Pursellet'
+            ,'body' => $mail_content
+        ];
+
+        $subscriber = DB::table('subscriber')
+        ->get('email');
+
+        foreach($subscriber as $item){
+            Mail::to($item->email)->send(new subscriberMail($details));
+        };
+
+        Alert::success('sending mails successfully');
+        return redirect()->back();
     }
 
     public function search(Request $request)
@@ -30,6 +48,7 @@ class MailController extends Controller
         $mails = DB::table('subscribe')
             ->where('email', 'like', '%' . $data . '%')
             ->paginate(10);
+
         if(!count($mails)){
             $error = 'No Result';
             return view('admin.mail.list', compact('error'));

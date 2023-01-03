@@ -152,10 +152,13 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('mail')->group(function () {
         Route::get('', [MailController::class, 'index'])
             ->name('admin.mail.index');
-        Route::get('mail', [MailController::class, 'mail'])
+
+        Route::get('sendMail', [MailController::class, 'getSendMail'])
             ->name('admin.mail.mail');
-        Route::post('send', [MailController::class, 'sendMail'])
+        
+        Route::post('send', [MailController::class, 'PostSendMail'])
             ->name('admin.mail.send-mail');
+
         Route::post('search', [MailController::class, 'search'])
             ->name('admin.mail.search');
     });

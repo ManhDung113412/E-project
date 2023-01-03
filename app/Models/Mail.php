@@ -9,7 +9,7 @@ class Mail extends Model
 {
     use HasFactory;
 
-    protected $table = 'subscribe';
+    protected $table = 'subscriber';
 
     protected $fillable = [
         'email'

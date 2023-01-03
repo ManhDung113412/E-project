@@ -13,7 +13,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.mail.send-mail') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Content</label>
