@@ -55,10 +55,7 @@ class homepageController extends Controller
         $tr = count(DB::table('product_details')
         ->where('Monthly_Orders','>=','10')
         ->get());
-        $products = DB::table('products')
-        ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-        ->get()
-        ->shuffle();
+
         $trendings = [];
 
         if($tr >= 4){
@@ -70,11 +67,13 @@ class homepageController extends Controller
             ->shuffle();
         }
         else{
-            $trendings == $products;
+            $trendings == DB::table('products')
+            ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+            ->get()
+            ->shuffle();
         }
 
         $tren = $trendings->take(4);
-        
         $cart_quantity = session()->get('cart_quantity');
 
 
