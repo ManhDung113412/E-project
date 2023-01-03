@@ -42,7 +42,7 @@ var x;
 var a;
 var b;
 var i = 0;
-var c = 5;
+var c = 15;
 var d = 0;
 var gameOver = false;
 
@@ -70,7 +70,7 @@ document.getElementById("startGame").onclick = function (e) {
         x.style.left = a + "px";
         x.style.top = b + "px";
         x.style.background = "aquamarine";
-    }, 1000);
+    }, 550);
     var z = setInterval(function () {
         if (document.getElementById("time").innerHTML > 0) {
             document.getElementById("time").innerHTML = --c;
@@ -91,7 +91,7 @@ document.getElementById("restartGame").onclick = function (e) {
     e.preventDefault();
     gameOver = false;
     document.getElementById("resultBoard").style.display = "none";
-    c = 5;
+    c = 15;
     d = 0;
     document.getElementById("time").innerHTML = c;
     document.getElementById("point").innerHTML = 0;
@@ -106,7 +106,7 @@ document.getElementById("restartGame").onclick = function (e) {
         x.style.left = a + "px";
         x.style.top = b + "px";
         x.style.background = "aquamarine";
-    }, 1000);
+    }, 550);
     var z = setInterval(function () {
         if (document.getElementById("time").innerHTML > 0) {
             document.getElementById("time").innerHTML = --c;
