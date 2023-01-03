@@ -102,22 +102,15 @@ class homepageController extends Controller
         $this_mail = $req->subscribe_email;
 
         $existed_email = DB::table('subscriber')
-            ->get('email');
+        ->where('email', '=', $this_mail)
+        ->get('email');
 
-        if (isset($existed_email[0])) {
-            foreach ($existed_email as $item) {
-                if ($this_mail == $item->email) {
-                    Alert::error('This email is already subscribed');
-                } else {
-                    DB::table('subscriber')
-                        ->insert(['email' => $this_mail]);
-                    Alert::success('Subscribe successfully')->autoclose(2000);
-                }
-            }
-        } else {
+        if(isset($existed_email[0])){
+            Alert::error('This email already exists');
+        }else{
             DB::table('subscriber')
-                ->insert(['email' => $this_mail]);
-            Alert::success('Subscribe successfully')->autoclose(2000);
+            ->insert(['email' => $this_mail]);
+            Alert::success('Subscribe successfully');
         }
 
         return redirect()->route('homepage');
