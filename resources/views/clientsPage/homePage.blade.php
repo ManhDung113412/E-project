@@ -214,6 +214,7 @@
         </div>
     </div>
     </div>
+
     <div class="scrollBackToTop">
         <button id="scrollUp">
             <ion-icon name="chevron-up-outline"></ion-icon>
@@ -228,8 +229,52 @@
             <ion-icon name="git-compare-outline"></ion-icon>
         </a>
     </div>
-
     @endif
+    <div id="openGame" class="PlayGame">
+        <button id="openBoardGame" class="openBoardGame">
+            <div>Play</div>
+            <div id="flag">Game</div>
+        </button>
+        <div id="startBoard" class="start">
+            <div class="start__content">
+                <div>You will get 1 point with 1 click to the ball</div>
+                <div>1 point = 1% discount on your checkout</div>
+                <div>You have 15 seconds for 1 turn</div>
+                <div>You can play again if you want to get higher point!</div>
+                <div>You can only get the code 1 time</div>
+            </div>
+            <button id="startGame">Play</button>
+        </div>
+        <div class="title">
+            <div class="gameTitle">PURSELLET GAME</div>
+            <div class="title__left">
+                <ion-icon name="alarm-outline"></ion-icon>
+                <div id="time" class="timerCount"></div>
+            </div>
+            <div id="point" class="title__point"></div>
+        </div>
+        <div id="boardGame" class="game">
+            <button type="button" id="click"></button>
+        </div>
+        <div id="resultBoard" class="result">
+            <div id="score" class="scoreBoard">
+                <div class="scoreBoard__result">
+                    <div>Score:</div>
+                    <div id="pointResult"></div>
+                </div>
+            </div>
+            <div class="scoreBoard__code">
+                You will get a discount code
+            </div>
+            <div class="scoreBoard__code1">
+                <div id="percent"></div>%
+            </div>
+            <div class="scoreBoard__button">
+                <button id="restartGame">Play Again</button>
+                <button id="restartGame">Get Code</button>
+            </div>
+        </div>
+    </div>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
 
