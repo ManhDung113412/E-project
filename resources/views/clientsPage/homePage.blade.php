@@ -31,27 +31,27 @@
             <div class="container__featured-tittle">Featured Products</div>
             <div class="container__featured-products">
                 @foreach ($randomPro as $item)
-                <div class="container__featured-products-items">
-                    <div class="container__featured-products-items-button">
-                        <a href="{{ url('client/Cart/addtocart',$item->ID) }}" class="iconProduct">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </a>
-                        <a href="{{ url('/client/wishlist/addtowishlist',$item->ID) }}" class="iconProduct">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </a>
-                        {{-- <a href="" class="iconProduct">
+                    <div class="container__featured-products-items">
+                        <div class="container__featured-products-items-button">
+                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </a>
+                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </a>
+                            {{-- <a href="" class="iconProduct">
                             <ion-icon name="git-compare-outline"></ion-icon>
                         </a> --}}
+                        </div>
+                        <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
+                            style="background-image: url({{ $item->Main_IMG }})"
+                            class="container__featured-products-items-img"></a>
+                        <div class="container__featured-products-items-info">
+                            <p>{{ $item->Name }}</p>
+                            <p>${{ $item->Export_Price }}</p>
+                        </div>
                     </div>
-                    <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
-                        style="background-image: url({{ $item->Main_IMG }})"
-                        class="container__featured-products-items-img"></a>
-                    <div class="container__featured-products-items-info">
-                        <p>{{ $item->Name }}</p>
-                        <p>${{ $item->Export_Price }}</p>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
             </div>
         </div>
         <div class="container__newArrivals">
@@ -93,10 +93,10 @@
                 @foreach ($trending as $item)
                     <div class="container__featured-products-items">
                         <div class="container__featured-products-items-button">
-                            <a href="{{ url('client/Cart/addtocart',$item->ID) }}" class="iconProduct">
+                            <a href="{{ url('client/Cart/addtocart', $item->ID) }}" class="iconProduct">
                                 <ion-icon name="cart-outline"></ion-icon>
                             </a>
-                            <a href="{{ url('/client/wishlist/addtowishlist',$item->ID) }}" class="iconProduct">
+                            <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
                                 <ion-icon name="heart-outline"></ion-icon>
                             </a>
                             {{-- <a href="" class="iconProduct">
@@ -204,12 +204,12 @@
                 our
                 latest arrivals, upcoming launches, special promotions and trend-focused editorials.
             </div>
-        <form action="">
-            <div class="subscribeUs__text-input">
-                <input type="text" placeholder="Email address" name="subscribe_email" autocomplete="off">
-                <button type="submit">Subscribe</button>
-            </div>
-        </form>
+            <form action="">
+                <div class="subscribeUs__text-input">
+                    <input type="text" placeholder="Email address" name="subscribe_email" autocomplete="off">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </form>
 
         </div>
     </div>
@@ -221,14 +221,14 @@
         </button>
     </div>
     @if ($compare_number > 0)
-    <div class="compareProducts">
-        <div class="compareProducts__quantity">
-            {{ $compare_number }}
+        <div class="compareProducts">
+            <div class="compareProducts__quantity">
+                {{ $compare_number }}
+            </div>
+            <a href="{{ url('/client/products/compareproduct') }}">
+                <ion-icon name="git-compare-outline"></ion-icon>
+            </a>
         </div>
-        <a href="{{ url('/client/products/compareproduct') }}">
-            <ion-icon name="git-compare-outline"></ion-icon>
-        </a>
-    </div>
     @endif
     <div id="openGame" class="PlayGame">
         <button id="openBoardGame" class="openBoardGame">
@@ -271,13 +271,32 @@
             </div>
             <div class="scoreBoard__button">
                 <button id="restartGame">Play Again</button>
-                <button id="restartGame">Get Code</button>
+                <button id="getCode">Get Code</button>
+                {{ csrf_field() }}
             </div>
         </div>
     </div>
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+                $('#getCode').click(function() {
+                    var discount = $('#percent').html();
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: "{{ route('client-home-page.get-code') }}",
+                        method: "POST",
+                        data: {
+                            discount: discount,
+                            _token: _token
+                        },
+                        success: function(data) {
+                            console.log(data);
+                        }
+                    })
+                })
+        })
+    </script>
 @stop
-
-
