@@ -472,9 +472,9 @@ class clientProductController extends Controller
         if (strlen($keyWord) > 0) {
             $products = Product::where('Products.Name', 'like', '%' . $keyWord . '%')
                 ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-                ->where('product_details.Is_New_Arrivals', 1)->get();
+                ->where('product_details.Is_New_Arrivals', 'New Arrivals')->get();
         } else {
-            $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_New_Arrivals', 1)->paginate(13);
+            $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_New_Arrivals', 'New Arrivals')->paginate(13);
         }
 
         return view('layouts.newArrival', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
@@ -497,12 +497,12 @@ class clientProductController extends Controller
         if (strlen($keyWord) > 0) {
             $products = Product::where('Products.Name', 'like', '%' . $keyWord . '%')
                 ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-                ->where('product_details.Is_Trending', 1)
+                ->where('product_details.Is_Trending', 'Trending')
                 ->groupBy('Product_details.Product_ID')->get();
         } else {
             $products = DB::table('products')
                 ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-                ->where('product_details.Is_Trending', 1)
+                ->where('product_details.Is_Trending', 'Trending')
                 ->groupBy('Product_details.Product_ID')
                 ->paginate(13);
         }
@@ -585,8 +585,6 @@ class clientProductController extends Controller
         Alert::success('Added To Shopping Cart')->autoclose(1500);
         return redirect()->back();
     }
-
-
         return redirect()->back();
     }
 

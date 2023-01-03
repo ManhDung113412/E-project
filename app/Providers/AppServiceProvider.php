@@ -36,8 +36,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-
         Paginator::useBootstrap();
         View::composer('*', function ($view) {
 
@@ -55,6 +53,24 @@ class AppServiceProvider extends ServiceProvider
             Code::where('Date_End', '<', $now)->update([
                 'Status' => 'Off',
             ]);
+
+
+            // $trending_products = DB::table('product_details')
+            // ->where('Monthly_orders','>=','10')
+            // ->get();
+            
+            if(date('Y-M-d')==date('Y-M-01')){
+                DB::table('product_details')
+                ->update(['Monthly_orders' => 0]);
+            }
+
+            DB::table('product_details')
+                ->where('Monthly_orders', '>=', '10')
+                ->update(['Is_Trending' => 'Trending']);
+
+            DB::table('product_details')
+            ->where('Monthly_orders','<','10')
+            ->update(['Is_Trending' => '0']);
 
 
             $customer_ID = Auth::guard('users')->id();
@@ -82,7 +98,7 @@ class AppServiceProvider extends ServiceProvider
                 ->get();
 
             $total_price = 0;
-            foreach($carts as $cart){
+            foreach ($carts as $cart) {
                 $total_price += $cart->subtotal;
             }
             // End 
