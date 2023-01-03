@@ -67,12 +67,12 @@ class homepageController extends Controller
             ->shuffle();
         }
         else{
-            $trendings == DB::table('products')
+            $trendings = DB::table('products')
             ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
             ->get()
             ->shuffle();
         }
-        dd($products);
+        // dd($products);
         // $tren = $trendings->take(4);
 
         $tren = $trendings->take(4);
