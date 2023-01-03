@@ -44,4 +44,9 @@ class User extends Authenticatable
     public function orders(){
         return $this->hasMany(Order::class, 'Customer_ID', 'ID');
     }
+
+    public function imageUrl()
+    {
+        return '/images/avatar/' . $this->image;
+    }
 }

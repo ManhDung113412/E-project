@@ -12,7 +12,9 @@ use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Alert;
+use App\Models\User;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Str;
 
 class clientController extends Controller
 {
@@ -43,7 +45,8 @@ class clientController extends Controller
                     'u.Email',
                     'u.Number_Phone',
                     'u.Rank',
-                    'u.Code'
+                    'u.Code',
+                    'u.Avatar',
                 )
                 ->groupBy('Order_Code', 'Status', 'created_at', 'First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
                 ->where('u.id', $user_id)
@@ -97,13 +100,28 @@ class clientController extends Controller
 
     public function editAvatar(Request $request)
     {
-        echo $request->formData;
         $validator = Validator::make($request->all(), [
             'select_file' => 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
         ]);
 
+        $user_id = Auth::guard('users')->id();
+
         if ($validator->passes()) {
-            $path = cloudinary()->upload($request->file('select_file')->getRealPath())->getSecurePath();         
+            $file = $request->file('select_file');
+            $name_file = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            if (strcasecmp($extension, 'jpg') === 0 || strcasecmp($extension, 'png') === 0 || strcasecmp($extension, 'jpeg') === 0) {
+                $image = Str::random(5) . "-" . $name_file;
+                while (file_exists("image/post" . $image)) {
+                    $image = Str::random(5) . "-" . $name_file;
+                }
+                $file->move('images/avatar', $image);
+            }
+
+            User::where('id', $user_id)->update([
+                'Avatar' => $image,
+            ]);
+
             return response()->json([
                 'message' => 'Avatar Upload Successfully',
                 'uploaded_image' => 'ok',
