@@ -103,7 +103,8 @@ class clientController extends Controller
         ]);
 
         if ($validator->passes()) {
-            $uploadedFileUrl = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();            return response()->json([
+            $path = cloudinary()->upload($request->file('select_file')->getRealPath())->getSecurePath();         
+            return response()->json([
                 'message' => 'Avatar Upload Successfully',
                 'uploaded_image' => 'ok',
                 'class_name' => 'alert-success'
