@@ -52,15 +52,29 @@ class homepageController extends Controller
             ->where('Brand_ID', 4)
             ->get();
 
+        $tr = count(DB::table('product_details')
+        ->where('Monthly_Orders','>=','10')
+        ->get());
+        $products = DB::table('products')
+        ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+        ->get()
+        ->shuffle();
+        $trendings = [];
+
+        if($tr >= 4){
         $trendings = DB::table('products')
             ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
             ->where('product_details.Is_Trending', 'Trending')
             ->groupBy('Product_details.Product_ID')
             ->get()
             ->shuffle();
+        }
+        else{
+            $trendings == $products;
+        }
 
         $tren = $trendings->take(4);
-
+        
         $cart_quantity = session()->get('cart_quantity');
 
 
@@ -69,7 +83,6 @@ class homepageController extends Controller
             ->where('Is_Middle_Slide', 'Middle Slide')
             ->get()
             ->shuffle();
-
 
         return view('clientsPage.homePage', [
             'middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren, 'cart_quantity' => $cart_quantity
@@ -103,7 +116,7 @@ class homepageController extends Controller
                 Alert::success('Subscribe successfully')->autoclose(2000);
             }
         }
-        
+
         return redirect()->route('homepage');
     }
 
