@@ -10,8 +10,9 @@
         <div class="container__info">
             <div class="container__info-top">
                 <div class="container__info-top-avatar ">
-                    <div class="container__info-top-avatar-img uploaded_image"
-                        style='background-image: url({{ asset("images/avatar/". $user[0]->Avatar ) }});'>
+                    <div class="container__info-top-avatar-img">
+                        <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt="">
+
                         <div class="container__info-top-avatar-img-change">
                             <button type="button" id="changeAvatar">
                                 Change
@@ -255,6 +256,7 @@
                 });
             }
 
+            var avatar = document.getElementsByClassName('uploaded_image');
             // Edit Avatar
             $('#upload_form').submit(function(event) {
                 event.preventDefault();
@@ -270,10 +272,10 @@
                     processData: false,
                     success: function(data) {
                         console.log(data);
-                        // console.log(data.message);
                         $('#message').css('display', 'block');
                         $('#message').html(data.message);
                         $('#message').addClass(data.class_name);
+                        $(".uploaded_image").attr("src", data.avatar);
                     }
                 })
             })

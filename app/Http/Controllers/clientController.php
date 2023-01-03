@@ -122,10 +122,14 @@ class clientController extends Controller
                 'Avatar' => $image,
             ]);
 
+            $user = User::where('id', $user_id)->get();
+            $avatar = $user[0]->Avatar;
+
             return response()->json([
                 'message' => 'Avatar Upload Successfully',
                 'uploaded_image' => 'ok',
-                'class_name' => 'alert-success'
+                'class_name' => 'alert-success',
+                'avatar' => 'http://127.0.0.1:8000/images/avatar/' . $avatar,
             ]);
         } else {
             return response()->json([
