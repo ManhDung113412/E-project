@@ -74,7 +74,7 @@ class clientProductController extends Controller
                     break;
             }
         }
-
+        
         return view('layouts.longWallet', ['longWallet' => $longWallet, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
 
@@ -85,7 +85,7 @@ class clientProductController extends Controller
 
         $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
         $cart_quantity = session()->get('cart_quantity');
-        $ran_pro = $products->take(4);
+        $ran_pro = $products->take(4);      
 
         $brand_name = $req->brands;
         $price = $req->Price;
@@ -523,7 +523,6 @@ class clientProductController extends Controller
         $ran_pro = $products->take(4);
         $cart_quantity = session()->get('cart_quantity');
 
-        // $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_Discounted', 1)->groupBy('Product_details.Product_ID')->paginate(13);
         return view('layouts.discountProduct', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
     }
 

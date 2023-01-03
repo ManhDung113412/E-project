@@ -58,7 +58,6 @@ class clientLoginController extends Controller
         if ($customer == true) {
             $customer_ID = Auth::guard('users')->id();
             $this_customer = User::where('id', $customer_ID)->get();
-            // dd($customer);
             return redirect()->route('homepage');
         } else {
             return redirect()->back();
@@ -87,13 +86,13 @@ class clientLoginController extends Controller
         ];
 
         $request->validate($rules, $messages);
+
         DB::table('users')->insert(
             [
-                'First_Name'
-                => $request->first_name, 'Last_Name'
-                => $request->last_name, 'Email'
-                => $request->mail, 'username'
-                => $request->user_name, 'password'
+                'First_Name' => $request->first_name
+                ,'Last_Name'=> $request->last_name,
+                'Email'=> $request->mail,
+                'username' => $request->user_name, 'password'
                 => bcrypt($request->password), 'rank' => 1
             ]
         );

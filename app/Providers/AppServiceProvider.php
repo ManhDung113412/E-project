@@ -87,7 +87,6 @@ class AppServiceProvider extends ServiceProvider
             }
             // End 
 
-
             $num = [];
             $a = session()->get('product_1');
             $b = session()->get('product_2');
@@ -95,7 +94,6 @@ class AppServiceProvider extends ServiceProvider
             $compare_number = count(array_filter($num));
 
             $cart_quantity = count($carts);
-
 
             $wishList_quantity = count(WishList::where('Customer_ID', $customer_ID)->get());
             $view->with(['total_price' => $total_price, 'customer_cart' => $carts, 'cart_quantity' => $cart_quantity, 'wishList_quantity' => $wishList_quantity, 'customer' => $this_customer, 'compare_number' => $compare_number]);
