@@ -113,7 +113,7 @@ class homepageController extends Controller
 
         $discount = $request->discount;
         $user_id = Auth::guard('users')->id();
-        $date_end = Carbon::now()->addMonth(2)->toDateString();
+        $date_end = Carbon::now()->addDay(14)->toDateString();
         $today = Carbon::now()->toDateString();
 
         echo $today;

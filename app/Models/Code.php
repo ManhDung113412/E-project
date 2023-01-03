@@ -17,6 +17,7 @@ class Code extends Model
         'Discount',
         'Date_Start',
         'Date_End',
+        'Temporary',
         'ID'
     ];
 

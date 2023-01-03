@@ -50,51 +50,13 @@
                             <th>Status</th>
                             <th>Location</th>
                             <th>Payment</th>
+                            <th>Discount Code</th>
                             <th>Date</th>
                             <th>Detail</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($orders as $index => $order)
-                        <tr class="odd gradeX" align="center">
-                            <td>{{$index + 1}}</td>
-                            <td>{{$order->Code}}</td>
-                            <td>
-                                @php
-                                    $user = App\Models\User::where('id', $order->Customer_ID)->get();
-                                    echo $user[0]->Code;
-                                @endphp    
-                            </td>
-                            <td>{{$order->customer->Last_Name}}</td>
-                            <td>{{ App\Models\OrderDetail::where('Order_ID', $order->ID)->sum('Quantity') }}</td>
-                            <td>
-                                @php
-                                    $orderPrice = DB::table('orders_details')
-                                                ->select(DB::raw('sum(Price * Quantity) as totalPrice'))
-                                    ->where('Order_ID', $order->ID)
-                                    ->get();
-                                    echo '$'.$orderPrice[0]->totalPrice;
-                                @endphp 
-                            </td>
-                            <th 
-                            @if ($order->Status == 'Pending')
-                                class="btn-success"
-                            @elseif ($order->Status == 'Cancel')
-                                class="btn-danger"
-                            @elseif ($order->Status == 'Done')
-                                class="btn-warning"
-                            @endif
-                            >{{$order->Status}}
-                            </th>
-                            <td>{{$order->Location}}</td>
-                            <td>{{$order->payment->Method}}</td>
-                            <td>{{$order->created_at}}</td>
-                            <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order-detail.detail', $order->ID)}}"> View</a></td>
-                            <td class="center"><i class="fa fa-pencil  fa-fw"></i><a href="{{route('admin.order-detail.edit', $order->ID)}}"> Edit</a></td>
-                        </tr>
-                        @endforeach --}}
-
                         @foreach ($orders as $index => $order)
                         <tr class="odd gradeX" align="center">
                             <td>{{$index + 1}}</td>
@@ -116,6 +78,7 @@
                             </th>
                             <td>{{$order->Location}}</td>
                             <td>{{$order->Method}}</td>
+                            <td>{{$order->Code}}</td>
                             <td>{{$order->created_at}}</td>
                             <td class="center"><i class="fa fa-eye  fa-fw"></i><a href="{{route('admin.order-detail.detail', $order->ID)}}"> View</a></td>
                             <td class="center"><i class="fa fa-pencil  fa-fw"></i><a href="{{route('admin.order-detail.edit', $order->ID)}}"> Edit</a></td>

@@ -54,6 +54,7 @@
                                 <th>Created At</th>
                                 <th>Date Start</th>
                                 <th>Date End</th>
+                                <th>Temporary</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -77,6 +78,7 @@
                                     <td>{{ $code->created_at }}</td>
                                     <td>{{ $code->Date_Start }}</td>
                                     <td>{{ $code->Date_End }}</td>
+                                    <td>{{ $code->Temporary ? 'V' : '' }}</td>
                                     <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
                                             href="{{ route('admin.discount.delete', $code->ID) }}"> Delete</a></td>
                                     <td class="center"><i class="fa fa-pencil fa-fw"></i> <a

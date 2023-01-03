@@ -19,8 +19,9 @@ class OrderDetailController extends Controller
             ->join('users as u', 'o.Customer_ID', '=', 'u.id')
             ->join('orders_details as od', 'o.ID', '=', 'od.Order_ID')
             ->join('payments as p', 'o.Payment_ID', '=', 'p.ID')
-            ->select('o.ID','o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'o.created_at',DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
-            ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'o.created_at')
+            ->join('codes as c', 'o.Code_ID', '=', 'c.ID')
+            ->select('o.ID','o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'c.Code','o.created_at',DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
+            ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'c.Code', 'o.created_at')
             ->paginate(10);
         return view('admin.order_detail.list', compact('orders'));
     }
@@ -52,8 +53,10 @@ class OrderDetailController extends Controller
             foreach($list_products as $product){
                 $product_detail = ProductDetail::where('ID', $product->Product_Detail_ID)->get();
                 $oldQuantity = $product_detail[0]->Quantity;
+                $oldMonthlyOrder = $product_detail[0]->Monthly_orders;
                 ProductDetail::where('ID', $product->Product_Detail_ID)->update([
-                    'Quantity' => $oldQuantity - $product->Quantity
+                    'Quantity' => $oldQuantity - $product->Quantity,
+                    'Monthly_orders' => $oldMonthlyOrder + 1,
                 ]);
             }
 
@@ -97,7 +100,7 @@ class OrderDetailController extends Controller
         $order = Order::find($id);
         $order_detail = OrderDetail::where('Order_ID', $id)->get();
         $user = User::find($order->Customer_ID);
-        // dd($order->ID);
+        
         return view('admin.order_detail.detail', compact('order_detail', 'order', 'user'));
     }
 
