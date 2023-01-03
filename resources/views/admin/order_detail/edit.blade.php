@@ -81,7 +81,7 @@
                         </div>
                         <div class="form-group">
                             <h1 class="form-control">
-                                <label>Discount Code</label>:
+                                <label>Status</label>:
                                 @php
                                     if ($order->Status == 'Done' || $order->Status == 'Cancel') {
                                         echo $order->Status;

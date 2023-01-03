@@ -23,6 +23,7 @@ class DiscountCodeController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->temporary);
         $this->validate($request, [
             'code' => 'required|unique:codes',
             'discount' => 'required|numeric|min:1|max:50',
@@ -35,6 +36,7 @@ class DiscountCodeController extends Controller
             'Discount' => $request->discount,
             'Date_Start' => $request->date_start,
             'Date_End' => $request->date_end,
+            'Temporary' => $request->temporary,
         ]);
 
         return redirect()->route('admin.discount.index')->with('success', 'Created Successfully');
@@ -70,6 +72,7 @@ class DiscountCodeController extends Controller
             'Discount' => $request->discount,
             'Date_Start' => $request->date_start,
             'Date_End' => $request->date_end,
+            'Temporary' => $request->temporary,
         ]);
 
         return redirect()->route('admin.discount.edit', $id)->with('success', 'Updated Successfully');
@@ -90,6 +93,7 @@ class DiscountCodeController extends Controller
             ->orWhere('Date_End', 'LIKE', '%' . $request->search . '%')
             ->orWhere('Status', 'LIKE', '%' . $request->search . '%')
             ->orWhere('created_at', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Temporary', 'LIKE', '%' . $request->search . '%')
             ->get();
         if (!count($codes)) {
             $error = 'No Result';

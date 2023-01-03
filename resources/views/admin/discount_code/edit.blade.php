@@ -61,6 +61,15 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Temporary?</label> <br>
+                            <input type="checkbox" name="temporary" value="Temporary" @if ($code->Temporary == 'Temporary') checked @endif/>
+                            @error('temporary')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-default">Discount Code Edit </button>
                         <form>
                 </div>
