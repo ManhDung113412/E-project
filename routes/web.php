@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PaymentController;
@@ -145,6 +146,18 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
             ->name('admin.discount.search');
         Route::post('check', [DiscountCodeController::class, 'check'])
             ->name('admin.discount.check');
+    });
+
+    // Mail Routes
+    Route::prefix('mail')->group(function () {
+        Route::get('', [MailController::class, 'index'])
+            ->name('admin.mail.index');
+        Route::get('mail', [MailController::class, 'mail'])
+            ->name('admin.mail.mail');
+        Route::post('send', [MailController::class, 'sendMail'])
+            ->name('admin.mail.send-mail');
+        Route::post('search', [MailController::class, 'search'])
+            ->name('admin.mail.search');
     });
 
     // Order Routes
