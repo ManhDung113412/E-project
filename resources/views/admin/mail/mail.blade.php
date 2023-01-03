@@ -3,7 +3,7 @@
 @section('title')
     Mail
 @endsection
-
+@include('sweetalert::alert')
 @section('content')
     <div id="page-wrapper">
         <div class="container-fluid">
