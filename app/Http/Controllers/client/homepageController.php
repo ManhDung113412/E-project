@@ -53,27 +53,24 @@ class homepageController extends Controller
             ->get();
 
         $tr = count(DB::table('product_details')
-        ->where('Monthly_Orders','>=','10')
-        ->get());
+            ->where('Monthly_Orders', '>=', '10')
+            ->get());
 
         $trendings = [];
 
-        if($tr >= 4){
-        $trendings = DB::table('products')
-            ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-            ->where('product_details.Is_Trending', 'Trending')
-            ->groupBy('Product_details.Product_ID')
-            ->get()
-            ->shuffle();
-        }
-        else{
+        if ($tr >= 4) {
             $trendings = DB::table('products')
-            ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-            ->get()
-            ->shuffle();
+                ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+                ->where('product_details.Is_Trending', 'Trending')
+                ->groupBy('Product_details.Product_ID')
+                ->get()
+                ->shuffle();
+        } else {
+            $trendings = DB::table('products')
+                ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+                ->get()
+                ->shuffle();
         }
-        // dd($products);
-        // $tren = $trendings->take(4);
 
         $tren = $trendings->take(4);
         $cart_quantity = session()->get('cart_quantity');
@@ -97,8 +94,7 @@ class homepageController extends Controller
             'subscribe_email'   => 'required|email'
         ];
         $messages = [
-            'required' => 'Email cannot be empty'
-            ,'subscribe_email.email' => 'Incorrect email format'
+            'required' => 'Email cannot be empty', 'subscribe_email.email' => 'Incorrect email format'
         ];
 
         $req->validate($rules, $messages);
@@ -108,14 +104,20 @@ class homepageController extends Controller
         $existed_email = DB::table('subscriber')
             ->get('email');
 
-        foreach ($existed_email as $item) {
-            if ($this_mail == $item->email) {
-                Alert::error('This email is already subscribed');
-            } else {
-                DB::table('subscriber')
-                    ->insert(['email' => $this_mail]);
-                Alert::success('Subscribe successfully')->autoclose(2000);
+        if (isset($existed_email[0])) {
+            foreach ($existed_email as $item) {
+                if ($this_mail == $item->email) {
+                    Alert::error('This email is already subscribed');
+                } else {
+                    DB::table('subscriber')
+                        ->insert(['email' => $this_mail]);
+                    Alert::success('Subscribe successfully')->autoclose(2000);
+                }
             }
+        } else {
+            DB::table('subscriber')
+                ->insert(['email' => $this_mail]);
+            Alert::success('Subscribe successfully')->autoclose(2000);
         }
 
         return redirect()->route('homepage');
