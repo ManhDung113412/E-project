@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\subscriberMail;
 use Illuminate\Http\Request;
+use App\Models\subscriber;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\DB;
 use Alert;
+
 class MailController extends Controller
 {
     public function index()
     {
-        $mails = Mail::paginate(10);
+        $mails = subscriber::paginate(10);
         return view('admin.mail.list', compact('mails'));
     }
 
@@ -25,12 +26,12 @@ class MailController extends Controller
     {
 
         $mail_content = $req->mail;
-        
+
         $details = [
             'title' => 'Email from Pursellet'
             ,'body' => $mail_content
         ];
-
+        
         $subscriber = DB::table('subscriber')
         ->get('email');
 
