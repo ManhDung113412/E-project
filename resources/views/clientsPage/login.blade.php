@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign</title>
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/login.css') }}">
-
 </head>
 
 <body>
+    @include('sweetalert::alert')
+
     <div class="frm" action="">
         <div class="container">
             <form action="{{ url('http://127.0.0.1:8000/client/login') }}" id="signInForm" method="POST"

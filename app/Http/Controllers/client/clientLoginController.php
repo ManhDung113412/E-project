@@ -8,32 +8,26 @@ use App\Models\client\loginModel;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Models\User;
-
+use Alert;
 
 
 class clientLoginController extends Controller
 {
     public function getPassword()
     {
-        // dd('hehe');
         $slideImg = DB::table('brand_collections')->get();
-        // dd($chanel);
         return view('clientsPage.changePassword', ['img' => $slideImg]);
     }
 
     public function getLogin()
     {
-        // dd('hehe');
         $slideImg = DB::table('brand_collections')->get();
-        // dd($chanel);
         return view('clientsPage.login', ['img' => $slideImg]);
     }
 
     public function getProfile()
     {
-        // dd('hehe');
-        // $slideImg = DB::table('brand_collections')->get();
-        // dd($chanel);
+       
         return view('clientsPage.myProfile');
     }
 
@@ -60,6 +54,7 @@ class clientLoginController extends Controller
             $this_customer = User::where('id', $customer_ID)->get();
             return redirect()->route('homepage');
         } else {
+            Alert::error('Username or password is incorrect')->autoclose(2000);
             return redirect()->back();
         }
     }
@@ -96,12 +91,12 @@ class clientLoginController extends Controller
                 => bcrypt($request->password), 'rank' => 1
             ]
         );
+        Alert::success('resigtered successfully')->autoclose(2000);
         return redirect()->back();
     }
 
     public function logOut(Request $req)
     {
-        // dd('asd');
         Auth::guard('users')->logout();
         $req -> session()->forget('this_customer');
         return redirect()->route('homepage');

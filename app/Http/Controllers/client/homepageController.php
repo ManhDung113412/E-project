@@ -12,6 +12,7 @@ use App\Models\Code;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Alert;
 
 class homepageController extends Controller
 {
@@ -69,7 +70,6 @@ class homepageController extends Controller
             ->get()
             ->shuffle();
 
-        // $dungdz = $hehe_img->take(1);
 
         return view('clientsPage.homePage', [
             'middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren, 'cart_quantity' => $cart_quantity
@@ -79,14 +79,38 @@ class homepageController extends Controller
 
     public function subscribe(Request $req)
     {
-        $mail = $req->subscribe_email;
-        return redirect()->route('client.login');
+        $rules = [
+            'subscribe_email'   => 'required|email'
+        ];
+        $messages = [
+            'required' => 'Email cannot be empty'
+            ,'subscribe_email.email' => 'Incorrect email format'
+        ];
+
+        $req->validate($rules, $messages);
+
+        $this_mail = $req->subscribe_email;
+
+        $existed_email = DB::table('subscriber')
+            ->get('email');
+
+        foreach ($existed_email as $item) {
+            if ($this_mail == $item->email) {
+                Alert::error('This email is already subscribed');
+            } else {
+                DB::table('subscriber')
+                    ->insert(['email' => $this_mail]);
+                Alert::success('Subscribe successfully')->autoclose(2000);
+            }
+        }
+        
+        return redirect()->route('homepage');
     }
 
     public function getCode(Request $request)
     {
 
-        
+
         $discount = $request->discount;
         $user_id = Auth::guard('users')->id();
         $date_end = Carbon::now()->addMonth(2)->toDateString();
@@ -99,7 +123,7 @@ class homepageController extends Controller
             . mt_rand(1000000, 9999999)
             . $characters[rand(0, strlen($characters) - 1)];
         $string = str_shuffle($pin);
-        
+
         $oldDiscountCode = Code::where('Code', $string)->get();
 
         if (count($oldDiscountCode) == 1) {

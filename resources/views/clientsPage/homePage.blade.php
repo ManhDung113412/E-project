@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{ asset('styles/pageStyle/homepage.css') }}">
 @stop
 @section('content')
+
     <div class="container">
         <div class="container__slideCol">
             <div id="slideS" class="container__slideCol-list">
@@ -204,10 +205,14 @@
                 our
                 latest arrivals, upcoming launches, special promotions and trend-focused editorials.
             </div>
-            <form action="">
+            <form action="" method="POST">
+                @csrf
                 <div class="subscribeUs__text-input">
                     <input type="text" placeholder="Email address" name="subscribe_email" autocomplete="off">
                     <button type="submit">Subscribe</button>
+                    @error('subscribe_email')
+                        {{ $message }}
+                    @enderror
                 </div>
             </form>
 
@@ -282,21 +287,21 @@
 
     <script>
         $(document).ready(function() {
-                $('#getCode').click(function() {
-                    var discount = $('#percent').html();
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url: "{{ route('client-home-page.get-code') }}",
-                        method: "POST",
-                        data: {
-                            discount: discount,
-                            _token: _token
-                        },
-                        success: function(data) {
-                            console.log(data);
-                        }
-                    })
+            $('#getCode').click(function() {
+                var discount = $('#percent').html();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('client-home-page.get-code') }}",
+                    method: "POST",
+                    data: {
+                        discount: discount,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
                 })
+            })
         })
     </script>
 @stop
