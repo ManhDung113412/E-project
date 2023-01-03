@@ -72,9 +72,9 @@ class homepageController extends Controller
         else{
             $trendings == $products;
         }
+        dd($products);
+        // $tren = $trendings->take(4);
 
-        $tren = $trendings->take(4);
-        
         $cart_quantity = session()->get('cart_quantity');
 
 
