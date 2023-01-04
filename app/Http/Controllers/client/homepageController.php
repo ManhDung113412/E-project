@@ -83,7 +83,14 @@ class homepageController extends Controller
             ->shuffle();
 
         return view('clientsPage.homePage', [
-            'middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren, 'cart_quantity' => $cart_quantity
+            'middle_slides_img' => $middle_slides_img
+            , 'top_slides_img' => $top_slides_img
+            , 'randomPro' => $p, 'dior' => $dior
+            , 'channel' => $chanel
+            , 'LV' => $LV
+            , 'gucci' => $Gucci
+            , 'trending' => $tren
+            , 'cart_quantity' => $cart_quantity
         ]);
     }
 

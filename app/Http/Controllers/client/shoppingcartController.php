@@ -13,13 +13,15 @@ use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 use Alert;
 use Carbon\Carbon;
+use Illuminate\Support\Carbon as SupportCarbon;
 use Payment;
 use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class shoppingcartController extends Controller
 {
 
-    public function getOrder(){
+    public function getOrder()
+    {
         return view('clientsPage.order');
     }
 
@@ -41,12 +43,12 @@ class shoppingcartController extends Controller
 
 
         $products = DB::table('products')
-        ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-        ->get()
-        ->shuffle();
+            ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+            ->get()
+            ->shuffle();
 
         $ran_pro = $products->take(4);
-        
+
         foreach ($carts as $cart) {
             $subtotals += $cart->subtotal;
         }
@@ -340,9 +342,23 @@ class shoppingcartController extends Controller
 
                 $kk = DB::table('codes')
                     ->where('Code', $discount_code)
-                    ->select('Discount', 'ID')
+                    ->select('Discount', 'ID',)
                     ->get();
 
+                $now = Carbon::now();
+                $prev_day = date("Y-m-d", strtotime('-1 day', strtotime($now)));
+
+                $code_Id = $kk[0]->ID;
+                $this_code = DB::table('codes')
+                    ->where('ID', $code_Id)
+                    ->get();
+
+                if ($this_code[0]->Temporary == 1) {
+                    DB::table('codes')
+                        ->where('ID', $code_Id)
+                        ->update(['Date_Start' => $prev_day, 'Date_End' => $prev_day]);
+                }
+            
                 if (isset($kk[0])) {
 
                     $discount_percentage = $kk[0]->Discount;
@@ -419,15 +435,9 @@ class shoppingcartController extends Controller
             }
             Alert::success('Order Successfully!')->autoclose(1500);   
             return redirect()->back();
-        }
-
-        else{
+        } else {
             Alert::error('There Is No Items In Cart')->autoclose(1500);
             return redirect()->back();
         }
     }
-
-
-
 }
-
