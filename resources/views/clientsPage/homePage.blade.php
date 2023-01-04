@@ -239,6 +239,9 @@
             <div>Play</div>
             <div id="flag">Game</div>
         </button>
+        <button id="openBoardGame2" class="PlayGame__logo">
+            <ion-icon name="game-controller"></ion-icon>
+        </button>
         <div id="startBoard" class="start">
             <div class="start__content">
                 <div>You will get 1 point with 1 click to the ball</div>

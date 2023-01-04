@@ -27,10 +27,12 @@
     animation: slide 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes slide{
-    from{
+@keyframes slide {
+    from {
         opacity: 0;
-    }to{
+    }
+
+    to {
         opacity: 1;
     }
 }
@@ -62,6 +64,7 @@
     opacity: 0;
     animation: showTittle 0.5s ease-in-out 1 forwards;
 }
+
 @keyframes showTittle {
     from {
         opacity: 0;
@@ -75,6 +78,7 @@
         filter: blur(0);
     }
 }
+
 @keyframes slideTopCollectionImg {
     from {
         background-position: 50% 50%;
@@ -201,12 +205,12 @@
     overflow: hidden;
 }
 
-.container__featured-products-items:hover .container__featured-products-items-img{
+.container__featured-products-items:hover .container__featured-products-items-img {
     /* filter: brightness(80%); */
     transition: 0.3s ease-in-out;
 }
 
-.container__featured-products-items:hover .container__featured-products-items-button{
+.container__featured-products-items:hover .container__featured-products-items-button {
     animation: addButton 0.3s ease-in-out 1 forwards;
 }
 
@@ -224,7 +228,7 @@
     }
 }
 
-.container__featured-products-items-button{
+.container__featured-products-items-button {
     position: absolute;
     top: 20px;
     transform: translate(0, -70px);
@@ -233,7 +237,7 @@
     /* font-size: 30px; */
 }
 
-.container__featured-products-items-button a{
+.container__featured-products-items-button a {
     background-color: transparent;
     color: black;
     text-align: center;
@@ -271,7 +275,9 @@
     transition: 0.5s ease-in-out;
     opacity: 0;
     justify-content: center;
-}.container__featured-products-items-info p {
+}
+
+.container__featured-products-items-info p {
     text-transform: uppercase;
     font-size: 15px;
     height: 30px;
@@ -764,7 +770,7 @@
 
 /* compare */
 
-.compareProducts{
+.compareProducts {
     position: fixed;
     bottom: 70px;
     left: 30px;
@@ -780,13 +786,13 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.compareProducts:hover{
+.compareProducts:hover {
     background-color: transparent;
     border: 1px solid black;
     transition: 0.3s ease-in-out;
 }
 
-.compareProducts__quantity{
+.compareProducts__quantity {
     position: absolute;
     right: -5px;
     top: -10px;
@@ -800,7 +806,7 @@
     background-color: rgb(255, 61, 61);
 }
 
-.compareProducts a{
+.compareProducts a {
     color: black;
     font-size: 50px;
     width: 60px;
@@ -808,7 +814,7 @@
     font-weight: bold;
 }
 
-.compareProducts a ion-icon{
+.compareProducts a ion-icon {
     margin-left: 17px;
     margin-bottom: 3px;
 
@@ -819,7 +825,7 @@
 /* play game */
 
 
-.PlayGame{
+.PlayGame {
     width: 304px;
     height: 346px;
     background-color: whitesmoke;
@@ -827,13 +833,13 @@
     right: 0px;
     top: 200px;
     position: fixed;
-    transform: translate(304px,0);
+    transform: translate(304px, 0);
     z-index: 1;
     transition: 0.3s ease-in-out;
 }
 
-.PlayGame.open{
-    transform: translate(0,0);
+.PlayGame.open {
+    transform: translate(0, 0);
     transition: 0.3s ease-in-out;
 }
 
@@ -844,7 +850,7 @@
     /* top: 50px;
     left: 100px; */
     /* background-color: whitesmoke; */
-    background-image: linear-gradient(to bottom ,rgb(253, 234, 234), transparent);
+    background-image: linear-gradient(to bottom, rgb(253, 234, 234), transparent);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -859,7 +865,7 @@
 
 }
 
-.gameTitle{
+.gameTitle {
     position: absolute;
     text-align: center;
     z-index: 2;
@@ -869,10 +875,12 @@
     animation: gameTitle 0.3s ease infinite alternate;
 }
 
-@keyframes gameTitle{
-    from{
+@keyframes gameTitle {
+    from {
         color: black;
-    }to{
+    }
+
+    to {
         color: rgb(255, 221, 221);
     }
 }
@@ -921,7 +929,7 @@
 .result {
     width: 300px;
     height: 350px;
-    background-image: linear-gradient(to top ,rgb(255, 236, 236), transparent);
+    background-image: linear-gradient(to top, rgb(255, 236, 236), transparent);
     position: absolute;
     /* top: 50px;
     left: 100px; */
@@ -978,7 +986,8 @@
     height: 30px;
     font-weight: bold;
 }
-.scoreBoard__button{
+
+.scoreBoard__button {
     position: absolute;
     top: 65%;
     width: 300px;
@@ -989,7 +998,7 @@
     left: 15%;
 }
 
-.scoreBoard__button button{
+.scoreBoard__button button {
     margin: 10px;
     background-color: black;
     color: white;
@@ -1001,19 +1010,19 @@
     border: 1px solid black;
 }
 
-.scoreBoard__button button:hover{
+.scoreBoard__button button:hover {
     background-color: white;
     color: black;
     transition: 0.3s ease-in-out;
 }
 
-.start{
+.start {
     width: 300px;
     height: 300px;
     /* background-color: rgb(0, 0, 0); */
     position: absolute;
     top: 50px;
-    background-image: linear-gradient(to top ,rgb(255, 236, 236), transparent);
+    background-image: linear-gradient(to top, rgb(255, 236, 236), transparent);
     z-index: 1;
     /* left: 100px; */
     display: block;
@@ -1021,12 +1030,13 @@
 
     display: block;
 }
-.start__content{
+
+.start__content {
     font-size: 14px;
     margin-left: 10px;
 }
 
-.start button{
+.start button {
     opacity: 1;
     background-color: black;
     color: white;
@@ -1039,13 +1049,14 @@
     margin-top: 20%;
     margin-left: 35%;
 }
-.start button:hover{
+
+.start button:hover {
     background-color: transparent;
     color: black;
     transition: 0.3s ease-in-out;
 }
 
-.openBoardGame{
+.openBoardGame {
     position: absolute;
     top: 0;
     left: -80px;
@@ -1056,21 +1067,51 @@
     font-weight: bold;
 }
 
-.openBoardGame div{
+.PlayGame__logo {
+    position: absolute;
+    top: 40px;
+    left: -70px;
+    border: none;
+    background-color: transparent;
+    /* width: 40px;
+    height: 40px; */
+    /* background-color: #f7ebeb; */
+    /* border: 2px solid black; */
+    /* font-weight: bold; */
+}
+
+.PlayGame__logo ion-icon {
+    font-size: 40px;
+    color: #97ceff;
+    transform: rotate(-20deg);
+    animation: logo 0.5s infinite alternate-reverse;
+}
+
+@keyframes logo {
+    from {
+        color: #97ceff;
+        transform: rotate(-20deg);
+    }
+
+    to {
+        color: #ffe8e8;
+        transform: rotate(20deg);
+    }
+}
+
+.openBoardGame div {
     width: 100%;
     height: 100%;
     line-height: 30px;
 }
 
-.openBoardGame div:nth-child(1){
+.openBoardGame div:nth-child(1) {
     background-color: #ffe8e8;
 }
-.openBoardGame div:nth-child(2){
+
+.openBoardGame div:nth-child(2) {
     position: absolute;
     top: 0;
     background-color: #97ceff;
     /* animation: play 0.5s ease infinite alternate; */
 }
-
-
-

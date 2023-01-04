@@ -135,5 +135,9 @@ document.getElementById("openBoardGame").onclick = function (e) {
     e.preventDefault();
     document.getElementById("openGame").classList.toggle("open");
 };
+document.getElementById("openBoardGame2").onclick = function (e) {
+    e.preventDefault();
+    document.getElementById("openGame").classList.toggle("open");
+};
 
 
