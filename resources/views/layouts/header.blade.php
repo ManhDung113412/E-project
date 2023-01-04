@@ -156,7 +156,8 @@
                     <div class="header__nav-right">
                         <a href="{{ url('client/myProfile') }}" class="userName">{{ $customer[0]->username }}</a>
                         <a class="iconHead" id="log">
-                            <ion-icon name="person"></ion-icon>
+                            {{-- <ion-icon name="person"></ion-icon> --}}
+                            <div class="avatarUser" style="background-image:url('')"></div>
                         </a>
                         <a class="iconHead" id="showCart">
                             <div class="quantityCart">{{ $cart_quantity }}</div>

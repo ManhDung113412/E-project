@@ -67,8 +67,8 @@ form {
     border-radius: 50%;
     overflow: hidden;
     background-position: 50% 50%;
-    background-size: cover;
-    background-size: 170%;
+    /* background-size: cover; */
+    background-size: 110%;
     display: flex;
     justify-content: center;
 }
@@ -137,7 +137,6 @@ form {
 }
 
 .container__info-top-menu.abc {
-    animation: ;
     display: block;
     /* transition: 0.2s ease-in-out; */
     animation: showMenu 0.2s ease-in-out 1 forwards;
@@ -546,6 +545,7 @@ table tr th {
     z-index: 1;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.2s ease-in-out;
 }
 
 .formAvatar__change:hover .textChoose {
@@ -564,18 +564,20 @@ table tr th {
     opacity: 0;
     margin-right: 5px;
     /* transform: translate(60px,0); */
+    transition: 0.2s ease-in-out;
 }
 
 .formAvatar__change input {
     /* margin-left: 10px;
     margin-top: 15px; */
-    width: 70%;
+    width: 100%;
+
     height: 35px;
     opacity: 0;
     z-index: 2;
     position: absolute;
-    right: 30px;
-    top: 10px;
+    /* right: 30px; */
+    /* top: 10px; */
     cursor: pointer;
     font-size: 15px;
     /* border: 1px solid black; */
