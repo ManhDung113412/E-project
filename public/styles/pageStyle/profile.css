@@ -67,7 +67,7 @@ form {
     border-radius: 50%;
     overflow: hidden;
     background-position: 50% 50%;
-    /* background-size: cover; */
+    background-size: cover;
     background-size: 110%;
     display: flex;
     justify-content: center;
