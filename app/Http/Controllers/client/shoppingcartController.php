@@ -37,6 +37,7 @@ class shoppingcartController extends Controller
             ->join('products as p', 'pd.Product_ID', 'p.ID')
             ->select('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity', DB::raw('sum(c.Product_quantity * pd.Export_Price) as subtotal'))
             ->where('Customer_ID', $customer_ID)
+            ->orderBy('c.created_at','DESC')
             ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
             ->get();
 
@@ -48,6 +49,8 @@ class shoppingcartController extends Controller
             ->shuffle();
 
         $ran_pro = $products->take(4);
+
+        // dd(reverse($carts));
 
         foreach ($carts as $cart) {
             $subtotals += $cart->subtotal;

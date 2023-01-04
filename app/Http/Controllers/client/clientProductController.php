@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Brand;
 use PDF;
 Use Alert;
+use Carbon\Carbon;
 
 class clientProductController extends Controller
 {
@@ -566,7 +567,11 @@ class clientProductController extends Controller
 
 
         $Slug = $req->Slug;
-        $this_product = DB::table('Products')->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')->where('product_details.Slug', $Slug)->get();
+        $this_product = DB::table('Products')
+        ->join('Product_details', 'Products.ID', '=', 'product_details.Product_ID')
+        ->where('product_details.Slug', $Slug)
+        ->get();
+
         $pro_ID = $this_product[0]->ID;
 
         if (DB::table('carts')
@@ -583,8 +588,9 @@ class clientProductController extends Controller
                 'Product_Detail_ID' => $pro_ID,
                 'Customer_ID'   => $customer_ID,
                 'Product_quantity' => 1,
-                'created_at' => time()
+                'created_at' => Carbon::now()
             ]);
+
         Alert::success('Added To Shopping Cart')->autoclose(1500);
         return redirect()->back();
     }

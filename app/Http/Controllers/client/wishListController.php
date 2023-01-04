@@ -15,7 +15,7 @@ use App\Models\Brand;
 use PDF;
 use App\Models\Wishlist;
 use Alert;
-
+use Carbon\Carbon;
 
 class wishListController extends Controller
 {
@@ -31,7 +31,9 @@ class wishListController extends Controller
 
         $cart_quantity = session()->get('cart_quantity');
 
-        $wish_list = Wishlist::where('Customer_ID', $customer_ID)->get();
+        $wish_list = Wishlist::where('Customer_ID', $customer_ID)
+        ->get();
+
         DB::enableQueryLog();
 
 
@@ -70,10 +72,15 @@ class wishListController extends Controller
         foreach ($all_cart_products as $item) {
             array_push($allPro, $item[0]);
         }
+        $allPro = (array_reverse($allPro));
         $total_quantity = Wishlist::where('Customer_ID', $customer_ID)
-            ->count();
+        ->count();
 
-        $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+        $products = DB::table('products')
+        ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+        ->get()
+        ->shuffle();
+
         $ran_pro = $products->take(4);
 
         return view('clientsPage.wishList', ['cart_quantity' => $cart_quantity, 'this_customer' => $allPro, 'total' => $total_quantity, 'ran_pro' => $ran_pro]);
@@ -106,7 +113,8 @@ class wishListController extends Controller
         DB::table('carts')->insert([
             'Product_quantity' => 1,
             'Customer_ID' => $customer_ID,
-            'Product_Detail_ID' => $pro_ID
+            'Product_Detail_ID' => $pro_ID,
+            'created_at' => Carbon::now()   
         ]);
 
         Wishlist::where('Customer_ID', $customer_ID)
@@ -135,7 +143,7 @@ class wishListController extends Controller
                 ->insert([
                     'Product_Detail_ID' => $pro_ID,
                     'Customer_ID'   => $customer_ID,
-                    'created_at' => time()
+                    'created_at' =>  Carbon::now()
                 ]);
             Alert::success('Added To Wish List')->autoclose(1500);
             return redirect()->back();

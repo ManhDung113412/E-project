@@ -95,8 +95,8 @@ class AppServiceProvider extends ServiceProvider
                 )
                 ->where('Customer_ID', $customer_ID)
                 ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
+                ->orderBy('c.created_at','DESC')   
                 ->get();
-
             $total_price = 0;
             foreach ($carts as $cart) {
                 $total_price += $cart->subtotal;

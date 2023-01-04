@@ -13,6 +13,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Alert;
+use App\Mail\DiscountMail;
+use Illuminate\Support\Facades\Mail;
 
 class homepageController extends Controller
 {
@@ -125,12 +127,15 @@ class homepageController extends Controller
 
     public function getCode(Request $request)
     {
-
-
         $discount = $request->discount;
         $user_id = Auth::guard('users')->id();
+        $user_mail = DB::table('users')
+        ->where('id',$user_id)
+        ->get();
+
         $date_end = Carbon::now()->addDay(14)->toDateString();
         $today = Carbon::now()->toDateString();
+
 
         echo $today;
 
@@ -156,6 +161,16 @@ class homepageController extends Controller
                 'Date_End' => $date_end,
                 'Temporary' => 1,
             ]);
+
+            // $details = [
+            //     'title' => 'Recover Your Password From Pursellet'
+            //     ,'body' => 'Your discounted code is:'.$string 
+            // ];
+    
+            // Alert::success('Please check your email for discount code')->autoclose(2000);
+
+            // Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
+
             return response()->json([
                 'discount' => $discount,
                 'code' => $string,
@@ -170,6 +185,15 @@ class homepageController extends Controller
             'Date_End' => $date_end,
             'Temporary' => 1,
         ]);
+
+        // $details = [
+        //     'title' => 'Recover Your Password From Pursellet'
+        //     ,'body' => 'Your discounted code is:'.$string
+        // ];
+
+        // Alert::success('Please check your email for discount code')->autoclose(2000);
+
+        // Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
 
         return response()->json([
             'discount' => $discount,
