@@ -43,10 +43,13 @@
     background-size: 130%;
     transition: 1s;
     animation: slideTopCollection 0.5s ease-in-out 1 forwards;
+    /* animation: slideTopCollectionImg 5s ease 1 forwards; */
 }
 
 .container__slideCol-item:hover {
     background-size: 150%;
+    /* background-position: 50% 40%; */
+    /* transition: 5s ease-in-out; */
 }
 
 .container__slideCol-item-content {
@@ -70,6 +73,17 @@
         opacity: 1;
         transform: translate(0, 0);
         filter: blur(0);
+    }
+}
+@keyframes slideTopCollectionImg {
+    from {
+        background-position: 50% 50%;
+        /* background-size: 130%; */
+    }
+
+    to {
+        background-position: 40% 50%;
+        /* background-size: 140%; */
     }
 }
 
