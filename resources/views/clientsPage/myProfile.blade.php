@@ -10,8 +10,8 @@
         <div class="container__info">
             <div class="container__info-top">
                 <div class="container__info-top-avatar ">
-                    <div class="container__info-top-avatar-img">
-                        <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt="">
+                    <div class="container__info-top-avatar-img" style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
+                        {{-- <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt=""> --}}
 
                         <div class="container__info-top-avatar-img-change">
                             <button type="button" id="changeAvatar">
@@ -19,12 +19,7 @@
                             </button>
                         </div>
                     </div>
-                    <form method="post" id="upload_form" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <input type="file" name="select_file" id="select_file">
-                        <button type="submit" id="upload" name="upload" value="submit">Submit</button>
-                        <div class="alert" id="message" style="display: none"></div>
-                    </form>
+
                 </div>
                 <div class="container__info-top-username">
                     <div class="username">{{ $user[0]->username }}</div>
@@ -39,6 +34,17 @@
                     <button id="edit">Edit Profile</button>
                     <button id="change">Change Password</button>
                 </div>
+                <form method="post" id="upload_form" class="formAvatar" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="formAvatar__change">
+                        <ion-icon name="image-outline" id="imageChange"></ion-icon>
+                        <div class="textChoose">Choose File</div>
+                        <input type="file" name="select_file" id="select_file">
+                    </div>
+
+                    <button type="submit" id="upload" name="upload" value="submit">Confirm</button>
+                    <div class="alert" id="message" style="display: none"></div>
+                </form>
             </div>
             <div class="container__info-details">
                 <table>
