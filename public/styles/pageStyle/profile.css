@@ -68,6 +68,7 @@ form {
     overflow: hidden;
     background-position: 50% 50%;
     background-size: cover;
+    background-size: 170%;
     display: flex;
     justify-content: center;
 }
@@ -135,13 +136,26 @@ form {
     right: 40px;
 }
 
-.container__info-top-menu.abc{
-    opacity: 1;
-    transform: translate(0,0);
+.container__info-top-menu.abc {
+    animation: ;
     display: block;
-
+    /* transition: 0.2s ease-in-out; */
+    animation: showMenu 0.2s ease-in-out 1 forwards;
 }
-.container__info-top-menu{
+
+@keyframes showMenu {
+    from {
+        opacity: 0;
+        transform: translate(0, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.container__info-top-menu {
     width: 115px;
     height: 60px;
     border: 1px solid rgb(224, 224, 224);
@@ -149,10 +163,9 @@ form {
     position: absolute;
     right: 40px;
     top: 90px;
-    opacity: 0;
-    /* transform: translate(0,-20px); */
+
     display: none;
-    transition: 0.3s ease-in-out;
+    /* transition: 0.2s ease-in-out; */
 }
 
 .container__info-top-menu button {
@@ -360,7 +373,8 @@ table tr th {
     background-color: transparent;
     display: none;
 }
-#showChange{
+
+#showChange {
     top: 35%;
 }
 
@@ -440,7 +454,8 @@ table tr th {
     transition: 0.3s ease-in-out;
 }
 
-.editProfile #offEdit,#offChange {
+.editProfile #offEdit,
+#offChange {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -457,6 +472,7 @@ table tr th {
     /* background-color: white; */
     transition: 0.3s ease-in-out;
 }
+
 .editProfile #offEdit:hover {
     border: 1px solid black;
     /* background-color: white; */
@@ -483,4 +499,120 @@ table tr th {
     /* left: 15px; */
     right: 1px;
     top: 1.5px;
+}
+
+
+.formAvatar {
+    width: 200px;
+    height: 120px;
+    /* border: 1px solid black; */
+    position: absolute;
+    right: 180px;
+    top: 180px;
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    display: none;
+    transition: 0.3s ease-in-out;
+
+}
+
+.formAvatar.on {
+    display: block;
+    transition: 0.3s ease-in-out;
+
+}
+
+.formAvatar__change {
+    width: 70%;
+    height: 35px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 30px;
+    z-index: 1;
+    background-color: #e4e4e4;
+    overflow: hidden;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    animation: changeAvatar 0.2s ease-in-out 1 forwards;
+    opacity: 0;
+}
+
+.textChoose {
+    font-size: 15px;
+    align-self: center;
+    z-index: 1;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.formAvatar__change:hover .textChoose {
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.formAvatar__change:hover #imageChange {
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+}
+
+#imageChange {
+    position: absolute;
+    align-self: center;
+    opacity: 0;
+    margin-right: 5px;
+    /* transform: translate(60px,0); */
+}
+
+.formAvatar__change input {
+    /* margin-left: 10px;
+    margin-top: 15px; */
+    width: 70%;
+    height: 35px;
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    /* border: 1px solid black; */
+}
+
+.formAvatar button {
+    background-color: black;
+    color: white;
+    width: 70%;
+    height: 35px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-weight: bold;
+    animation: changeAvatar 0.3s ease-in-out 1 forwards;
+}
+
+.formAvatar button:hover {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+
+.formAvatar .alert {
+    color: red;
+}
+
+@keyframes changeAvatar {
+    from {
+        transform: translate(0, 20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
 }

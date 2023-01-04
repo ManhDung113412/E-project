@@ -26,3 +26,8 @@ document.getElementById('showMenu').onclick = function (e) {
     e.preventDefault();
     document.getElementById('menu').classList.toggle('abc');
 }
+
+document.getElementById('changeAvatar').onclick = function (e) {
+    e.preventDefault();
+    document.getElementById('upload_form').classList.toggle('on');
+}
