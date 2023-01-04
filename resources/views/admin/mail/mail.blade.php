@@ -17,7 +17,7 @@
                         @csrf
                         <div class="form-group">
                             <label>Content</label>
-                            <textarea id="demo" name="mail"></textarea>
+                            <textarea id="demo" name="mail" style="width:1000px;height:500px"></textarea>
                             @error('mail')
                                 <div class="alert alert-danger">
                                     {{ $message }}

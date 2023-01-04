@@ -509,7 +509,10 @@ class clientProductController extends Controller
 
 
 
-        return view('layouts.trending', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
+        return view('layouts.trending'
+        ,['products' => $products
+        ,'randomProduct' => $ran_pro
+        ,'cart_quantity' => $cart_quantity]);
     }
 
 
