@@ -54,7 +54,7 @@ class clientController extends Controller
         } else {
             $user = DB::table('users As u')
                 ->where('u.id', $user_id)
-                ->select('First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
+                ->select('First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code','Avatar')
                 ->get();
         }
         // dd($user);

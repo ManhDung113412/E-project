@@ -157,7 +157,11 @@
                         <a href="{{ url('client/myProfile') }}" class="userName">{{ $customer[0]->username }}</a>
                         <a class="iconHead" id="log">
                             {{-- <ion-icon name="person"></ion-icon> --}}
-                            <div class="avatarUser" style="background-image:url('')"></div>
+                            @if($customer[0]->Avatar !== null)
+                            <div class="avatarUser" style="background-image:url('{{ asset('images/avatar/' . $customer[0]->Avatar) }}')"></div>
+                            @else
+                            <div class="avatarUser" style="background-image:url('{{ asset('images/avatar/GOp5a-421-4212341_default-avatar-svg-h.jpg') }}')"></div>
+                            @endif
                         </a>
                         <a class="iconHead" id="showCart">
                             <div class="quantityCart">{{ $cart_quantity }}</div>

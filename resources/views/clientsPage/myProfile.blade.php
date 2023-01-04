@@ -10,141 +10,146 @@
         <div class="container__info">
             <div class="container__info-top">
                 <div class="container__info-top-avatar ">
-                    <div class="container__info-top-avatar-img" style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
-                        {{-- <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt=""> --}}
-
-                        <div class="container__info-top-avatar-img-change">
-                            <button type="button" id="changeAvatar">
-                                Change
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="container__info-top-username">
-                    <div class="username">{{ $user[0]->username }}</div>
-                    <div class="usercode">{{ $user[0]->Code }}</div>
-                </div>
-                <div class="container__info-top-button">
-                    <button id="showMenu">
-                        <ion-icon name="create-outline"></ion-icon>
-                    </button>
-                </div>
-                <div id="menu" class="container__info-top-menu ">
-                    <button id="edit">Edit Profile</button>
-                    <button id="change">Change Password</button>
-                </div>
-                <form method="post" id="upload_form" class="formAvatar" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="formAvatar__change">
-                        <ion-icon name="image-outline" id="imageChange"></ion-icon>
-                        <div class="textChoose">Choose File</div>
-                        <input type="file" name="select_file" id="select_file">
-                    </div>
-
-                    <button type="submit" id="upload" name="upload" value="submit">Confirm</button>
-                    <div class="alert" id="message" style="display: none"></div>
-                </form>
-            </div>
-            <div class="container__info-details">
-                <table>
-                    @if (!empty($user->Rank))
-                        <tr>
-                            <th>Member</th>
-                            <td>{{ $user->Rank }}</td>
-                        </tr>
-                        <tr>
-                            <th>First Name:</th>
-                            <td>{{ $user->First_Name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Last Name:</th>
-                            <td>{{ $user->Last_Name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Email:</th>
-                            <td>{{ $user->Email }}</td>
-                        </tr>
-                        <tr>
-                            <th>Phone:</th>
-                            <td>{{ $user->Number_Phone }}</td>
-                        </tr>
-                        <tr>
-                            <th>DOB:</th>
-                            <td>{{ $user->Dob }}</td>
-                        </tr>
-                    @else
-                        <tr>
-                            <th>Member</th>
-                            <td>{{ $user[0]->Rank }}</td>
-                        </tr>
-                        <tr>
-                            <th>First Name:</th>
-                            <td>{{ $user[0]->First_Name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Last Name:</th>
-                            <td>{{ $user[0]->Last_Name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Email:</th>
-                            <td>{{ $user[0]->Email }}</td>
-                        </tr>
-                        <tr>
-                            <th>Phone:</th>
-                            <td>{{ $user[0]->Number_Phone }}</td>
-                        </tr>
-                        <tr>
-                            <th>DOB:</th>
-                            <td>{{ $user[0]->Dob }}</td>
-                        </tr>
+                    @if ($user[0]->Avatar !== null)
+                        <div class="container__info-top-avatar-img"
+                            style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
+                            {{-- <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt=""> --}}
+                        @else
+                            <div class="container__info-top-avatar-img"
+                                style="background-image: url('{{ asset('images/avatar/GOp5a-421-4212341_default-avatar-svg-h.jpg') }}')">
                     @endif
-                </table>
+                    <div class="container__info-top-avatar-img-change">
+                        <button type="button" id="changeAvatar">
+                            Change
+                        </button>
+                    </div>
+                </div>
+
             </div>
+            <div class="container__info-top-username">
+                <div class="username">{{ $user[0]->username }}</div>
+                <div class="usercode">{{ $user[0]->Code }}</div>
+            </div>
+            <div class="container__info-top-button">
+                <button id="showMenu">
+                    <ion-icon name="create-outline"></ion-icon>
+                </button>
+            </div>
+            <div id="menu" class="container__info-top-menu ">
+                <button id="edit">Edit Profile</button>
+                <button id="change">Change Password</button>
+            </div>
+            <form method="post" id="upload_form" class="formAvatar" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="formAvatar__change">
+                    <ion-icon name="image-outline" id="imageChange"></ion-icon>
+                    <div class="textChoose">Choose File</div>
+                    <input type="file" name="select_file" id="select_file">
+                </div>
+
+                <button type="submit" id="upload" name="upload" value="submit">Confirm</button>
+                <div class="alert" id="message" style="display: none"></div>
+            </form>
         </div>
-        <div class="container__history">
-            <div class="container__history-title">
-                <p>Shopping History</p>
-            </div>
-            <div class="container__history-list">
-                @if (!empty($user[0]->Order_Code))
-                    @foreach ($user as $user)
-                        <A class="container__history-list-item" href="{{ url('client/orders', $user->Order_Code) }}">
-                            <div class="container__history-list-item-title">
-                                <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
-                                <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
-                            </div>
-                            <div class="container__history-list-item-content">
-                                <div class="container__history-list-item-content-status">
-                                    @if ($user->Status == 'Pending')
-                                        <div class="container__history-list-item-content-status-color"
-                                            style="background-color: rgb(5, 150, 150);"></div>
-                                    @elseif ($user->Status == 'Done')
-                                        <div class="container__history-list-item-content-status-color"
-                                            style="background-color: #28a745;"></div>
-                                    @else
-                                        <div class="container__history-list-item-content-status-color"
-                                            style="background-color: #6c757d;"></div>
-                                    @endif
-                                    <div class="container__history-list-item-content-status-text">{{ $user->Status }}
-                                    </div>
-                                </div>
-                                <div class="container__history-list-item-content-details">
-                                    <div class="container__history-list-item-content-details-quantity">
-                                        <div>Total quantity</div>
-                                        <div>{{ $user->Total_Quantity }}</div>
-                                    </div>
-                                    <div class="container__history-list-item-content-details-totalPrice">
-                                        <div>Total price</div>
-                                        <div>${{ $user->Total_Price }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </A>
-                    @endforeach
+        <div class="container__info-details">
+            <table>
+                @if (!empty($user->Rank))
+                    <tr>
+                        <th>Member</th>
+                        <td>{{ $user->Rank }}</td>
+                    </tr>
+                    <tr>
+                        <th>First Name:</th>
+                        <td>{{ $user->First_Name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td>{{ $user->Last_Name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>{{ $user->Email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone:</th>
+                        <td>{{ $user->Number_Phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>DOB:</th>
+                        <td>{{ $user->Dob }}</td>
+                    </tr>
+                @else
+                    <tr>
+                        <th>Member</th>
+                        <td>{{ $user[0]->Rank }}</td>
+                    </tr>
+                    <tr>
+                        <th>First Name:</th>
+                        <td>{{ $user[0]->First_Name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td>{{ $user[0]->Last_Name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>{{ $user[0]->Email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone:</th>
+                        <td>{{ $user[0]->Number_Phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>DOB:</th>
+                        <td>{{ $user[0]->Dob }}</td>
+                    </tr>
                 @endif
-            </div>
+            </table>
         </div>
+    </div>
+    <div class="container__history">
+        <div class="container__history-title">
+            <p>Shopping History</p>
+        </div>
+        <div class="container__history-list">
+            @if (!empty($user[0]->Order_Code))
+                @foreach ($user as $user)
+                    <A class="container__history-list-item" href="{{ url('client/orders', $user->Order_Code) }}">
+                        <div class="container__history-list-item-title">
+                            <div class="container__history-list-item-title-userCode">{{ $user->Order_Code }}</div>
+                            <div class="container__history-list-item-title-date">{{ $user->created_at }}</div>
+                        </div>
+                        <div class="container__history-list-item-content">
+                            <div class="container__history-list-item-content-status">
+                                @if ($user->Status == 'Pending')
+                                    <div class="container__history-list-item-content-status-color"
+                                        style="background-color: rgb(5, 150, 150);"></div>
+                                @elseif ($user->Status == 'Done')
+                                    <div class="container__history-list-item-content-status-color"
+                                        style="background-color: #28a745;"></div>
+                                @else
+                                    <div class="container__history-list-item-content-status-color"
+                                        style="background-color: #6c757d;"></div>
+                                @endif
+                                <div class="container__history-list-item-content-status-text">{{ $user->Status }}
+                                </div>
+                            </div>
+                            <div class="container__history-list-item-content-details">
+                                <div class="container__history-list-item-content-details-quantity">
+                                    <div>Total quantity</div>
+                                    <div>{{ $user->Total_Quantity }}</div>
+                                </div>
+                                <div class="container__history-list-item-content-details-totalPrice">
+                                    <div>Total price</div>
+                                    <div>${{ $user->Total_Price }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </A>
+                @endforeach
+            @endif
+        </div>
+    </div>
     </div>
     <div id="showEdit" class="container__edit ">
         <div class="editProfile">
