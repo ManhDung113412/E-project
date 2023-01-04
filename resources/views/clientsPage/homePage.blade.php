@@ -11,7 +11,7 @@
                     <div style="background-image: url({{ $top->IMG }})" class="container__slideCol-item">
                         <div class="container__slideCol-item-content">
                             <p class="container__left-frame-text-p1">Best Fashion For You..</p>
-                            <p class="container__left-frame-text-p2">New Fashion Collection Trends in 2022</p>
+                            <p class="container__left-frame-text-p2">New Fashion Collection Trends in 2023</p>
                             <a href="">Shop Now</a>
                         </div>
                     </div>

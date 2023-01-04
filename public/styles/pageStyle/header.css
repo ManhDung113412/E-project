@@ -17,9 +17,9 @@ form {
     height: 112px;
     display: flex;
     flex-direction: column;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
+    /* position: fixed; */
+    /* position: -webkit-sticky; */
+    /* top: 0; */
     background-color: white;
     z-index: 1111111;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;

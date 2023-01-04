@@ -133,11 +133,11 @@
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
-                        <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a>
+                        <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and play a game to collect a discounted up to 20% code</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Give code for..</a>
+                        <div class="header__update-1"><a style="color: white" href=""> Use code bananhhai to discount 10% on your bill</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a>
+                        <div class="header__update-1"><a style="color: white" href=""> New collection is coming soon</a>
                         </div>
                     </div>
                 </div>
@@ -222,11 +222,11 @@
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
-                        <div class="header__update-1"><a style="color: white" href=""> Sale up to 50%..</a>
+                        <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and play a game to collect a discounted up to 20% code</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Give code for..</a>
+                        <div class="header__update-1"><a style="color: white" href=""> Use code bananhhai to discount 10% on your bill</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Free ship if..</a>
+                        <div class="header__update-1"><a style="color: white" href=""> New collection is coming soon</a>
                         </div>
                     </div>
                 </div>
@@ -303,7 +303,7 @@
         var result = document.querySelectorAll("div .result");
         $(document).ready(function() {
 
-            // Increase 
+            // Increase
             $('.increase-quantity-btn').each(function(index) {
                 $(this).on('click', function() {
                     var product = $(this).val();
