@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\subscriber;
 use Illuminate\Support\Facades\Mail;
 use Alert;
-
+use DB;
 class MailController extends Controller
 {
     public function index()

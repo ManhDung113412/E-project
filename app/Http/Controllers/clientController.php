@@ -50,6 +50,7 @@ class clientController extends Controller
                 )
                 ->groupBy('Order_Code', 'Status', 'created_at', 'First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
                 ->where('u.id', $user_id)
+                ->orderBy('o.created_at','DESC')
                 ->get();
         } else {
             $user = DB::table('users As u')

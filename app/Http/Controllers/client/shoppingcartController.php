@@ -55,7 +55,6 @@ class shoppingcartController extends Controller
         foreach ($carts as $cart) {
             $subtotals += $cart->subtotal;
         }
-
         return view('clientsPage.shoppingCart', compact('carts', 'subtotals', 'ran_pro'));
 
 
@@ -329,7 +328,7 @@ class shoppingcartController extends Controller
             ->where('Customer_ID', $customer_ID)
             ->groupBy('Export_Price', 'Sale_Price', 'Main_IMG', 'Name', 'Color', 'Product_Detail_ID', 'Product_quantity')
             ->get();
-
+        
         if (isset($customer_cart[0])) {
             $price_array = [];
             foreach ($customer_cart as $item) {
