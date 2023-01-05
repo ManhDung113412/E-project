@@ -14,24 +14,23 @@
                         </button>
                         <input type="text" placeholder="Search" name="searchBox">
                     </div>
-                </form>
                 <div class="container__sideBar-box">
                     <div class="container__sideBar-box-tittle">Categories</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="radio" name="" id="filter" value="filter">
+                        <input type="radio" name="category" id="filter" value="Long Wallet">
                         <div class="container__sideBar-box-cate-name">Long Wallet</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="radio" name="" id="filter" value="filter">
+                        <input type="radio" name="category" id="filter" value="Small Wallet">
                         <div class="container__sideBar-box-cate-name">Small Wallet</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="radio" name="" id="filter" value="filter">
+                        <input type="radio" name="category" id="filter" value="Card Holder">
                         <div class="container__sideBar-box-cate-name">Cards Holder</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="radio" name="" id="filter" value="filter">
+                        <input type="radio" name="category" id="filter" value="Chain And Strap Wallet">
                         <div class="container__sideBar-box-cate-name">Chain and Strap Wallet</div>
                     </div>
                 </div>
@@ -39,11 +38,11 @@
                     <div class="container__sideBar-box-tittle">Price</div>
                     <hr class="box1">
                     <div class="container__sideBar-box-cate">
-                        <input type="radio" name="" id="filter" value="filter">
+                        <input type="radio" name="Price" id="filter" value="high">
                         <div class="container__sideBar-box-cate-name">High to low</div>
                     </div>
                     <div class="container__sideBar-box-cate">
-                        <input type="radio" name="" id="filter" value="filter">
+                        <input type="radio" name="Price" id="filter" value="low">
                         <div class="container__sideBar-box-cate-name">Low to high</div>
                     </div>
                 </div>
@@ -64,8 +63,9 @@
                     </div>
                 </div> --}}
                 <div class="container__sideBar-filter">
-                    <button>Filter</button>
+                    <button type="submit">Filter</button>
                 </div>
+            </form>
 
             </div>
             <div class="container__list">

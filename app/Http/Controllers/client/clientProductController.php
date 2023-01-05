@@ -466,48 +466,128 @@ class clientProductController extends Controller
     {
         $keyWord = $req->searchBox;
 
-        $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->get()->shuffle();
+        $products = DB::table('products')
+        ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+        ->get()
+        ->shuffle();
+
         $ran_pro = $products->take(4);
         $cart_quantity = session()->get('cart_quantity');
 
-        if (strlen($keyWord) > 0) {
-            $products = Product::where('Products.Name', 'like', '%' . $keyWord . '%')
-                ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-                ->where('product_details.Is_New_Arrivals', 'New Arrivals')->get();
-        } else {
-            $products = DB::table('products')->join('product_details', 'products.ID', '=', 'product_details.Product_ID')->where('product_details.Is_New_Arrivals', 'New Arrivals')->paginate(13);
-        }
+        $category_name = $req->category;
+        $price = $req->Price;
 
-        return view('layouts.newArrival', ['products' => $products, 'randomProduct' => $ran_pro, 'cart_quantity' => $cart_quantity]);
+        if ($category_name == null && strlen($keyWord) == 0 && $price == null) {
+            $products = DB::table('brands')
+                ->join('Products', 'Products.Brand_ID', '=', 'brands.ID')
+                ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                ->where('product_details.Is_New_Arrivals', 'New Arrivals')
+                ->groupBy('Product_details.Product_ID')
+                ->paginate(13);
+        } else {
+            switch ($price) {
+                case "high":
+                    $products = Category::join('Products', 'categories.ID', '=', 'Products.category_ID')
+                    ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                    ->where('product_details.Is_New_Arrivals', 'New Arrivals')
+                    ->where('categories.name', 'like', '%' . $category_name . '%')
+                    ->where('Products.Name', 'like', '%' . $keyWord . '%')
+                    ->orderBy('Product_details.Export_Price', 'DESC')
+                    ->groupBy('Product_details.Product_ID')
+                    ->paginate(13);
+                    break;  
+
+                case "low":
+                    $products = Category::join('Products', 'categories.ID', '=', 'Products.category_ID')
+                        ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                        ->where('product_details.Is_New_Arrivals', 'New Arrivals')
+                        ->where('categories.name', 'like', '%' . $category_name . '%')
+                        ->where('Products.Name', 'like', '%' . $keyWord . '%')
+                        ->orderBy('Product_details.Export_Price', 'ASC')
+                        ->groupBy('Product_details.Product_ID')
+                        ->paginate(13);
+
+                    break;
+
+                default:
+                    $products = Category::join('Products', 'categories.ID', '=', 'Products.category_ID')
+                        ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                        ->where('product_details.Is_New_Arrivals', 'New Arrivals')
+                        ->where('categories.Name', 'like', '%' . $category_name . '%')
+                        ->where('Products.Name', 'like', '%' . $keyWord . '%')
+                        ->groupBy('Product_details.Product_ID')
+                        ->paginate(13);
+
+                    break;
+            }
+        }
+        // dd($products);
+
+        return view('layouts.newArrival'
+        , ['products' => $products
+        , 'randomProduct' => $ran_pro
+        , 'cart_quantity' => $cart_quantity]);
     }
+
+
     public function getTrending(Request $req)
     {
         $keyWord = $req->searchBox;
 
         $products = DB::table('products')
-            ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-            ->get()
-            ->shuffle();
+        ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+        ->get()
+        ->shuffle();
+
         $ran_pro = $products->take(4);
         $cart_quantity = session()->get('cart_quantity');
 
-        $filter_longWallet = $req->long_Wallet;
-        $filter_smallWallet = $req->small_Wallet;
-        $filter_card_Holder = $req->card_Holder;
+        $category_name = $req->category;
+        $price = $req->Price;
 
-        if (strlen($keyWord) > 0) {
-            $products = Product::where('Products.Name', 'like', '%' . $keyWord . '%')
-                ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
-                ->where('product_details.Is_Trending', 'Trending')
-                ->groupBy('Product_details.Product_ID')->get();
-        } else {
-            $products = DB::table('products')
-                ->join('product_details', 'products.ID', '=', 'product_details.Product_ID')
+        if ($category_name == null && strlen($keyWord) == 0 && $price == null) {
+            $products = DB::table('brands')
+                ->join('Products', 'Products.Brand_ID', '=', 'brands.ID')
+                ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
                 ->where('product_details.Is_Trending', 'Trending')
                 ->groupBy('Product_details.Product_ID')
                 ->paginate(13);
-        }
+        } else {
+            switch ($price) {
+                case "high":
+                    $products = Category::join('Products', 'categories.ID', '=', 'Products.category_ID')
+                    ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                    ->where('product_details.Is_Trending', 'Trending')
+                    ->where('categories.name', 'like', '%' . $category_name . '%')
+                    ->where('Products.Name', 'like', '%' . $keyWord . '%')
+                    ->orderBy('Product_details.Export_Price', 'DESC')
+                    ->groupBy('Product_details.Product_ID')
+                    ->paginate(13);
+                    break;  
 
+                case "low":
+                    $products = Category::join('Products', 'categories.ID', '=', 'Products.category_ID')
+                        ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                        ->where('product_details.Is_Trending', 'Trending')
+                        ->where('categories.name', 'like', '%' . $category_name . '%')
+                        ->where('Products.Name', 'like', '%' . $keyWord . '%')
+                        ->orderBy('Product_details.Export_Price', 'ASC')
+                        ->groupBy('Product_details.Product_ID')
+                        ->paginate(13);
+
+                    break;
+                default:
+                    $products = Category::join('Products', 'categories.ID', '=', 'Products.category_ID')
+                        ->join('product_details', 'Products.ID', '=', 'product_details.Product_ID')
+                        ->where('product_details.Is_Trending', 'Trending')
+                        ->where('categories.Name', 'like', '%' . $category_name . '%')
+                        ->where('Products.Name', 'like', '%' . $keyWord . '%')
+                        ->groupBy('Product_details.Product_ID')
+                        ->paginate(13);
+
+                    break;
+            }
+        }
 
 
         return view('layouts.trending'
