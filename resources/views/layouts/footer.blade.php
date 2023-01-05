@@ -16,7 +16,7 @@
                     <p>MY ACCOUNT</p>
                     <li><a href="http://127.0.0.1:8000/client/login">Sign In</a></li>
                     <li><a href="http://127.0.0.1:8000/client/login">Sign Up</a></li>
-                    <li><a href="">My Wish List</a></li>
+                    <li><a href="http://127.0.0.1:8000/client/wishList">My Wish List</a></li>
                     <li><a href="http://127.0.0.1:8000/client/Cart">My Cart</a></li>
                 </ul>
                 <ul>

@@ -35,7 +35,7 @@ class homepageController extends Controller
             ->where('product_details.Is_Feature', 'Feature')
             ->get()
             ->shuffle();
-
+        // dd($products);
         $p = $products->take(4);
 
         $dior = DB::table('brand_collections')
@@ -87,7 +87,8 @@ class homepageController extends Controller
         return view('clientsPage.homePage', [
             'middle_slides_img' => $middle_slides_img
             , 'top_slides_img' => $top_slides_img
-            , 'randomPro' => $p, 'dior' => $dior
+            , 'randomPro' => $p
+            , 'dior' => $dior
             , 'channel' => $chanel
             , 'LV' => $LV
             , 'gucci' => $Gucci
@@ -162,14 +163,14 @@ class homepageController extends Controller
                 'Temporary' => 1,
             ]);
 
-            // $details = [
-            //     'title' => 'Recover Your Password From Pursellet'
-            //     ,'body' => 'Your discounted code is:'.$string 
-            // ];
+            $details = [
+                'title' => 'Recover Your Password From Pursellet'
+                ,'body' => 'Your discounted code is:'.$string 
+            ];
     
             // Alert::success('Please check your email for discount code')->autoclose(2000);
 
-            // Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
+            Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
 
             return response()->json([
                 'discount' => $discount,
@@ -186,14 +187,14 @@ class homepageController extends Controller
             'Temporary' => 1,
         ]);
 
-        // $details = [
-        //     'title' => 'Recover Your Password From Pursellet'
-        //     ,'body' => 'Your discounted code is:'.$string
-        // ];
+        $details = [
+            'title' => 'Recover Your Password From Pursellet'
+            ,'body' => 'Your discounted code is:'.$string
+        ];
 
         // Alert::success('Please check your email for discount code')->autoclose(2000);
 
-        // Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
+        Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
 
         return response()->json([
             'discount' => $discount,

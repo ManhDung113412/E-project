@@ -300,6 +300,7 @@
                         _token: _token
                     },
                     success: function(data) {
+                        // location.reload();
                         console.log(data);
                     }
                 })

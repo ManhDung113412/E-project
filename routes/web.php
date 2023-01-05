@@ -325,12 +325,17 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
     Route::get('logout', [clientLoginController::class, 'logOut']);
 });
 
+
+
 Route::prefix('client')->middleware('client-signIn')->group(function () {
     // Route::get('myshoppingcart', [shoppingcartController::class, 'getShoppingCart']);
 
     Route::get('orders/{Code}', [orderController::class, 'getOrder']);
     Route::post('orders/{Code}', [orderController::class, 'cancelOrder']);
 
+
+    // Route::post('minigame',[homepageController::class,'getCode']);
+    
 
     Route::get('Cart', [shoppingcartController::class, 'getShoppingCart'])->name('myshoppingcart');
     Route::post('Cart', [shoppingcartController::class, 'checkOut'])->name('check.out');
@@ -374,3 +379,5 @@ Route::prefix('client')->middleware('client-signIn')->group(function () {
 
     Route::get('changepassword', [clientController::class, 'changePassword']);
 });
+
+
