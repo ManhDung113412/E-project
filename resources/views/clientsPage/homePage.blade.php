@@ -300,8 +300,11 @@
                         _token: _token
                     },
                     success: function(data) {
-                        // location.reload();
-                        console.log(data);
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            alert('Discount code has been sent to your email');
+                        }
                     }
                 })
             })

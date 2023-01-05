@@ -85,15 +85,7 @@ class homepageController extends Controller
             ->shuffle();
 
         return view('clientsPage.homePage', [
-            'middle_slides_img' => $middle_slides_img
-            , 'top_slides_img' => $top_slides_img
-            , 'randomPro' => $p
-            , 'dior' => $dior
-            , 'channel' => $chanel
-            , 'LV' => $LV
-            , 'gucci' => $Gucci
-            , 'trending' => $tren
-            , 'cart_quantity' => $cart_quantity
+            'middle_slides_img' => $middle_slides_img, 'top_slides_img' => $top_slides_img, 'randomPro' => $p, 'dior' => $dior, 'channel' => $chanel, 'LV' => $LV, 'gucci' => $Gucci, 'trending' => $tren, 'cart_quantity' => $cart_quantity
         ]);
     }
 
@@ -112,14 +104,14 @@ class homepageController extends Controller
         $this_mail = $req->subscribe_email;
 
         $existed_email = DB::table('subscriber')
-        ->where('email', '=', $this_mail)
-        ->get('email');
+            ->where('email', '=', $this_mail)
+            ->get('email');
 
-        if(isset($existed_email[0])){
+        if (isset($existed_email[0])) {
             Alert::error('This email already exists');
-        }else{
+        } else {
             DB::table('subscriber')
-            ->insert(['email' => $this_mail]);
+                ->insert(['email' => $this_mail]);
             Alert::success('Subscribe successfully');
         }
 
@@ -128,17 +120,22 @@ class homepageController extends Controller
 
     public function getCode(Request $request)
     {
-        $discount = $request->discount;
         $user_id = Auth::guard('users')->id();
+        $has_discount_code = DB::table('users')->where('id', $user_id)->where('Has_Discount_Code', 'Received')->get();
+
+        if (count($has_discount_code) == 1) {
+            return response()->json([
+                'error' => 'You already received the discount code',
+            ]);
+        }
+
+        $discount = $request->discount;
         $user_mail = DB::table('users')
-        ->where('id',$user_id)
-        ->get();
+            ->where('id', $user_id)
+            ->get();
 
         $date_end = Carbon::now()->addDay(14)->toDateString();
         $today = Carbon::now()->toDateString();
-
-
-        echo $today;
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $pin = mt_rand(1000000, 9999999)
@@ -163,12 +160,13 @@ class homepageController extends Controller
                 'Temporary' => 1,
             ]);
 
+            User::where('id', $user_id)->update([
+                'Has_Discount_Code' => 'Received',
+            ]);
+
             $details = [
-                'title' => 'Recover Your Password From Pursellet'
-                ,'body' => 'Your discounted code is:'.$string 
+                'title' => 'Recover Your Password From Pursellet', 'body' => 'Your discounted code is:' . $string
             ];
-    
-            // Alert::success('Please check your email for discount code')->autoclose(2000);
 
             Mail::to($user_mail[0]->Email)->send(new DiscountMail($details));
 
@@ -187,9 +185,12 @@ class homepageController extends Controller
             'Temporary' => 1,
         ]);
 
+        User::where('id', $user_id)->update([
+            'Has_Discount_Code' => 'Received',
+        ]);
+
         $details = [
-            'title' => 'Recover Your Password From Pursellet'
-            ,'body' => 'Your discounted code is:'.$string
+            'title' => 'Recover Your Password From Pursellet', 'body' => 'Your discounted code is:' . $string
         ];
 
         // Alert::success('Please check your email for discount code')->autoclose(2000);
