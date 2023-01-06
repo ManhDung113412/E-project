@@ -202,9 +202,10 @@ form{
     border: none;
     font-weight: bold;
     font-size: 22px;
+    transition: 0.3s ease-in-out;
 }
 
-.cancel_button{
+.cancel_button:hover{
     background-color: #f50018;
     transition: 0.3s ease-in-out;
 }

@@ -68,7 +68,7 @@ form {
     overflow: hidden;
     background-position: 50% 50%;
     background-size: cover;
-    background-size: 110%;
+    /* background-size: 110%; */
     display: flex;
     justify-content: center;
 }
