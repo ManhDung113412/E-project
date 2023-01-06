@@ -11,8 +11,7 @@
             <div class="container__info-top">
                 <div class="container__info-top-avatar ">
                     @if ($user[0]->Avatar !== null)
-                        <div class="container__info-top-avatar-img"
-                            style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
+                        <div class="container__info-top-avatar-img" style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
                             {{-- <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt=""> --}}
                         @else
                             <div class="container__info-top-avatar-img"
@@ -286,7 +285,8 @@
                         $('#message').css('display', 'block');
                         $('#message').html(data.message);
                         $('#message').addClass(data.class_name);
-                        $(".uploaded_image").attr("src", data.avatar);
+                        // $(".uploaded_image").attr("src", data.avatar);
+                        $(".container__info-top-avatar-img").css("background-image", 'url('+data.avatar+')');
                     }
                 })
             })
