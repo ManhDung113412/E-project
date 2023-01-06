@@ -78,9 +78,6 @@
                             <a href="{{ url('/client/wishlist/addtowishlist', $item->ID) }}" class="iconProduct">
                                 <ion-icon name="heart-outline"></ion-icon>
                             </a>
-                            {{-- <a href="" class="iconProduct">
-                            <ion-icon name="git-compare-outline"></ion-icon>
-                        </a> --}}
                         </div>
                         <a href="{{ url('/client/products/specificProduct', $item->Slug) }}"
                             style="background-image: url({{ $item->Main_IMG }})"
@@ -91,7 +88,6 @@
                         </div>
                     </div>
                 @endforeach
-                {!! $Channel->links() !!}
             </div>
         </div>
     </div>
