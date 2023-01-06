@@ -34,7 +34,7 @@ class clientController extends Controller
                 ->join('orders_details as od', 'o.ID', 'od.Order_ID')
                 ->select(
                     DB::raw('sum(Quantity) as Total_Quantity'),
-                    DB::raw('sum(Quantity * Price) as Total_Price'),
+                    ('o.Total_paid as Total_Price'),
                     'o.Code as Order_Code',
                     'o.Status',
                     'o.created_at',
@@ -269,11 +269,14 @@ class clientController extends Controller
     public function changePassword(Request $req)
     {
         $rules = [
-            'current_pass' => 'required', 'new_pass'  => 'required', 'Cnew_pass' => 'same:new_pass'
+            'current_pass' => 'required'
+            , 'new_pass'  => 'required'
+            , 'Cnew_pass' => 'same:new_pass'
 
         ];
         $messages = [
-            'required'  => 'This Field Is Required', 'Cnew_pass.same' => 'Confirm Password Must Match With Password'
+            'required'  => 'This Field Is Required'
+            , 'Cnew_pass.same' => 'Confirm Password Must Match With Password'
         ];
         $req->validate($rules, $messages);
 
@@ -296,10 +299,12 @@ class clientController extends Controller
 
         if (Hash::check($curren_password, $user_password)) {
             DB::table('users')
-                ->where('id', $this_user_ID)
-                ->update(['password' => $new_password]);
+            ->where('id', $this_user_ID)
+            ->update(['password' => $new_password]);
 
-            Alert::success('Changing password successfully')->autoclose(2000);
+            Alert::success('Changing password successfully')
+            ->autoclose(2000);
+            
             return redirect()->back();
         }
     }
