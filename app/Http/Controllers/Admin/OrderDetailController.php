@@ -19,13 +19,13 @@ class OrderDetailController extends Controller
             ->join('users as u', 'o.Customer_ID', '=', 'u.id')
             ->join('orders_details as od', 'o.ID', '=', 'od.Order_ID')
             ->join('payments as p', 'o.Payment_ID', '=', 'p.ID')
-            ->join('codes as c', 'o.Code_ID', '=', 'c.ID')
-            ->select('o.ID','o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'c.Code','o.created_at',DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
-            ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'c.Code', 'o.created_at')
+            ->leftJoin('codes as c', 'o.Code_ID', '=', 'c.ID')
+            ->select('o.ID', 'o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'c.Code', 'o.created_at', DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
+            ->groupBy('Order_Code', 'Customer_Code', 'o.Status', 'o.Location', 'p.Method', 'c.Code', 'o.created_at')
             ->paginate(10);
         return view('admin.order_detail.list', compact('orders'));
     }
-    
+
     public function edit($id)
     {
         $order = Order::find($id);
@@ -34,12 +34,12 @@ class OrderDetailController extends Controller
         return view('admin.order_detail.edit', compact('order', 'user'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $order = Order::find($id);
 
         // Cancel
-        if($request->status == 'Cancel'){
+        if ($request->status == 'Cancel') {
             $order->where('ID', $id)->update([
                 'Status' => 'Cancel'
             ]);
@@ -47,10 +47,10 @@ class OrderDetailController extends Controller
         }
 
         // Done
-        if($request->status == 'Done'){
+        if ($request->status == 'Done') {
             $list_products = DB::select(DB::raw("SELECT od.Product_Detail_ID, od.Quantity FROM orders as o LEFT JOIN orders_details as od ON o.ID = od.Order_ID WHERE od.Order_ID = 1"));
-            
-            foreach($list_products as $product){
+
+            foreach ($list_products as $product) {
                 $product_detail = ProductDetail::where('ID', $product->Product_Detail_ID)->get();
                 $oldQuantity = $product_detail[0]->Quantity;
                 $oldMonthlyOrder = $product_detail[0]->Monthly_orders;
@@ -64,15 +64,15 @@ class OrderDetailController extends Controller
                 'Status' => 'Done'
             ]);
             $orderPrice = DB::table('orders_details')
-                            ->select(DB::raw('sum(Price * Quantity) as totalPrice'))
-                            ->where('Order_ID', $id)
-                            ->get();
-                            
+                ->select(DB::raw('sum(Price * Quantity) as totalPrice'))
+                ->where('Order_ID', $id)
+                ->get();
+
             $user = User::find($order->Customer_ID);
             $oldTotalSpending = $user->Total_Amount_Spent;
             $newTotalSpending = $oldTotalSpending + $orderPrice[0]->totalPrice;
 
-            if($newTotalSpending >= 5000){
+            if ($newTotalSpending >= 5000) {
                 $user->where('id', $order->Customer_ID)->update([
                     'Total_Amount_Spent' => $newTotalSpending,
                     'Rank' => 'DIAMOND',
@@ -80,7 +80,7 @@ class OrderDetailController extends Controller
                 return redirect()->route('admin.order-detail.edit', $id)->with('success', 'This Order Was Doned!');
             }
 
-            if($newTotalSpending >= 3000){
+            if ($newTotalSpending >= 3000) {
                 $user->where('id', $order->Customer_ID)->update([
                     'Total_Amount_Spent' => $newTotalSpending,
                     'Rank' => 'VIP',
@@ -100,7 +100,7 @@ class OrderDetailController extends Controller
         $order = Order::find($id);
         $order_detail = OrderDetail::where('Order_ID', $id)->get();
         $user = User::find($order->Customer_ID);
-        
+
         return view('admin.order_detail.detail', compact('order_detail', 'order', 'user'));
     }
 
@@ -111,16 +111,16 @@ class OrderDetailController extends Controller
             ->join('users as u', 'o.Customer_ID', '=', 'u.id')
             ->join('orders_details as od', 'o.ID', '=', 'od.Order_ID')
             ->join('payments as p', 'o.Payment_ID', '=', 'p.ID')
-            ->select('o.ID','o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'o.created_at',DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
+            ->select('o.ID', 'o.Code as Order_Code', 'u.Code as Customer_Code', 'u.username as Username', 'o.Status', 'o.Location', 'p.Method', 'o.created_at', DB::raw('sum(od.Quantity) as TotalQuantity'), DB::raw('sum(od.Price * od.Quantity) as TotalPrice'))
             ->where('o.Code', 'like', '%' . $data . '%')
             ->orWhere('p.Method', 'like', '%' . $data . '%')
             ->orWhere('o.Status', 'like', '%' . $data . '%')
             ->orWhere('o.Location', 'like', '%' . $data . '%')
             ->orWhereDate('o.created_at', 'like', '%' . $data . '%')
-            ->groupBy('Order_Code', 'Customer_Code','o.Status', 'o.Location', 'p.Method', 'o.created_at')
+            ->groupBy('Order_Code', 'Customer_Code', 'o.Status', 'o.Location', 'p.Method', 'o.created_at')
             ->paginate(10)
             ->appends(request()->query());
-        if(!count($orders)){
+        if (!count($orders)) {
             $error = 'No Result';
             return view('admin.order_detail.list', compact('error'));
         }

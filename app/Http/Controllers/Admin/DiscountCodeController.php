@@ -37,6 +37,7 @@ class DiscountCodeController extends Controller
             'Date_Start' => $request->date_start,
             'Date_End' => $request->date_end,
             'Temporary' => $request->temporary,
+            'Status' => 'Upcoming',
         ]);
 
         return redirect()->route('admin.discount.index')->with('success', 'Created Successfully');

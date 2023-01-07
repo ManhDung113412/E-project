@@ -355,7 +355,7 @@ class shoppingcartController extends Controller
                     ->where('ID', $code_Id)
                     ->get();
 
-                if ($this_code[0]->Temporary == 1) {
+                if ($this_code[0]->Temporary == 'Temporary') {
                     DB::table('codes')
                         ->where('ID', $code_Id)
                         ->update(['Date_Start' => $prev_day, 'Date_End' => $prev_day]);
