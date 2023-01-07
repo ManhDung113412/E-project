@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -62,19 +63,19 @@ class PaymentController extends Controller
         return redirect()->route('admin.payment.index')->with('success', 'Deleted Successfully!');
     }
 
-    // public function search(Request $request)
-    // {
-    //     $codes = DB::table('codes')
-    //     ->where('Code', 'LIKE', '%'. $request->search . '%')
-    //     ->orWhere('Discount', 'LIKE', '%'. $request->search . '%')
-    //     ->orWhere('Date_Start', 'LIKE', '%'. $request->search . '%')
-    //     ->orWhere('Date_End', 'LIKE', '%'. $request->search . '%')
-    //     ->orWhere('created_at', 'LIKE', '%'. $request->search . '%')
-    //     ->get();
-    //     if(!count($codes)){
-    //         $error = 'No Result';
-    //         return view('admin.discount_code.list', compact('error'));
-    //     }
-    //     return view('admin.discount_code.list', compact('codes'));
-    // }
+    public function search(Request $request)
+    {
+        $codes = DB::table('codes')
+        ->where('Code', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('Discount', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('Date_Start', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('Date_End', 'LIKE', '%'. $request->search . '%')
+        ->orWhere('created_at', 'LIKE', '%'. $request->search . '%')
+        ->get();
+        if(!count($codes)){
+            $error = 'No Result';
+            return view('admin.discount_code.list', compact('error'));
+        }
+        return view('admin.discount_code.list', compact('codes'));
+    }
 }

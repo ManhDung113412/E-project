@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <form action="{{route('admin.slide.search')}}" method="get">
                         @csrf
-                        <input name="search" class="input-search" placeholder="">
+                        <input name="search" class="input-search" placeholder="Search Name / Title / Slide">
                         <button type="submit" class="btn-add-product btn btn-success">Search</button>
                     </form>
                 </div>

@@ -46,7 +46,7 @@ class MailController extends Controller
     public function search(Request $request)
     {
         $data = $request->search;
-        $mails = DB::table('subscribe')
+        $mails = DB::table('subscriber')
             ->where('email', 'like', '%' . $data . '%')
             ->paginate(10);
 
