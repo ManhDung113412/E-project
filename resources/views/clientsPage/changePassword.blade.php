@@ -39,11 +39,11 @@
             </form>
         </div>
         <div id="abc" class="slideShow">
-            {{-- @foreach ($img as $item)
+            @foreach ($img as $item)
                 <div id="formImage" class="slideShow-image show"
                     style="background-image: url({{ $item->Before_Hover_IMG }});">
                 </div>
-            @endforeach --}}
+            @endforeach
         </div>
     </div>
 </body>

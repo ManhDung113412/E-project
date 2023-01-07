@@ -228,6 +228,7 @@
                     </div>
                 </div>
             @else
+            
                 <div id="openLog" class="header__log">
                     <div class="header__log-notSign">
                         <div class="header__log-notSign-signIn">
