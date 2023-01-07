@@ -14,14 +14,14 @@
         <div id="smallHeader" class="headerSmall ">
             <div class="headerSmallBig">
                 <div class="headerSmall__logo">
-                    <a href="">PURSELLET</a>
+                    <a href="{{ url('client/home') }}">PURSELLET</a>
                 </div>
                 <div id="dropSmallMenu" class="headerSmall__menu">
-                    <div><a href="">Home</a></div>
+                    <div><a href="{{ url('client/home') }}">Home</a></div>
                     <div>Categories</div>
                     <div>Collection</div>
                     <div>Brands</div>
-                    <div><a href="">About Us</a></div>
+                    <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                 </div>
                 <div class="headerSmall__right">
                         <a href="{{ url('client/myProfile') }}" class="">
