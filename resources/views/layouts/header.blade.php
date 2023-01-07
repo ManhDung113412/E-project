@@ -152,7 +152,7 @@
                                             <ion-icon name="remove-outline"></ion-icon>
                                         </button>
 
-                                        <div class="result" class="header__cart-list-items-info-quantity-num">
+                                        <div class="result1" class="header__cart-list-items-info-quantity-num">
                                             {{ $item->Product_quantity }}</div>
 
                                         {{-- ++ --}}
@@ -360,7 +360,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
 
     <script>
-        var result = document.querySelectorAll("div .result");
+        var result = document.querySelectorAll("div .result1");
         $(document).ready(function() {
 
             // Increase
