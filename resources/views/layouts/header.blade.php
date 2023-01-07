@@ -36,7 +36,7 @@
                             @endif
                         </a>
                         <a href="{{ url('client/Cart') }}" class="">
-                            <div class="quantityCartSmallHead">2</div>
+                            <div class="quantityCartSmallHead">{{ $cart_quantity }}</div>
                             <ion-icon name="cart-outline"></ion-icon>
                         </a>
                         <a href="{{ url('client/wishList') }}" class="">
