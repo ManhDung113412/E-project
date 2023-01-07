@@ -65,7 +65,7 @@ document.getElementById("startGame").onclick = function (e) {
         x.style.left = a + "px";
         x.style.top = b + "px";
         x.style.background = "aquamarine";
-    }, 600);
+    }, 650);
     var z = setInterval(function () {
         if (document.getElementById("time").innerHTML > 0) {
             document.getElementById("time").innerHTML = --c;
@@ -101,7 +101,7 @@ document.getElementById("restartGame").onclick = function (e) {
         x.style.left = a + "px";
         x.style.top = b + "px";
         x.style.background = "aquamarine";
-    }, 600);
+    }, 650);
     var z = setInterval(function () {
         if (document.getElementById("time").innerHTML > 0) {
             document.getElementById("time").innerHTML = --c;

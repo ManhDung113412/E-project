@@ -14,52 +14,58 @@
         <div id="smallHeader" class="headerSmall ">
             <div class="headerSmallBig">
                 <div class="headerSmall__logo">
-                    <a href="">PURSELLET</a>
+                    <a href="{{ url('client/home') }}">PURSELLET</a>
                 </div>
                 <div id="dropSmallMenu" class="headerSmall__menu">
-                    <div><a href="">Home</a></div>
+                    <div><a href="{{ url('client/home') }}">Home</a></div>
                     <div>Categories</div>
                     <div>Collection</div>
                     <div>Brands</div>
-                    <div><a href="">About Us</a></div>
+                    <div><a href="{{ url('client/aboutUs') }}">About Us</a></div>
                 </div>
                 <div class="headerSmall__right">
-                    <a href="{{ url('client/myProfile') }}" class=""></a>
-                    <a class="" >
-                        <ion-icon name="person"></ion-icon>
-
-                    </a>
-                    <a class="" >
-                        <div class=""></div>
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </a>
-                    <a href="{{ url('client/wishList') }}" class="">
-                        <div class=""></div>
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </a>
+                        <a href="{{ url('client/myProfile') }}" class="">
+                            @if (!empty($customer[0]->Avatar))
+                                <div class="avatarUser"
+                                    style="background-image:url('{{ asset('images/avatar/' . $customer[0]->Avatar) }}')">
+                                </div>
+                            @else
+                                <div class="avatarUser"
+                                    style="background-image:url('{{ asset('images/avatar/GOp5a-421-4212341_default-avatar-svg-h.jpg') }}')">
+                                </div>
+                            @endif
+                        </a>
+                        <a href="{{ url('client/Cart') }}" class="">
+                            <div class="quantityCartSmallHead">{{ $cart_quantity }}</div>
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </a>
+                        <a href="{{ url('client/wishList') }}" class="">
+                            <div class="quantityCartSmallHead">{{ $wishList_quantity }}</div>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </a>
                 </div>
                 <div id="showSmallMenu" class="headerSmall__menuDrop">
                     <div class="headerSmall__menuDrop-big">
                         <div class="headerSmall__menuDrop-categories">
-                            <a href="">Long Wallet</a>
-                            <a href="">Small Wallet</a>
-                            <a href="">Cards Holder</a>
-                            <a href="">Chain and Strap</a>
+                            <a href="{{ url('client/products/long-wallet') }}">Long Wallet</a>
+                            <a href="{{ url('client/products/small-wallet') }}">Small Wallet</a>
+                            <a href="{{ url('client/products/cards-holder') }}">Cards Holder</a>
+                            <a href="{{ url('client/products/chain-and-strap') }}">Chain and Strap</a>
                         </div>
                         <div class="headerSmall__menuDrop-collection">
-                            <a href="">New Arrivals</a>
-                            <a href="">Trending</a>
-                            <a href="">On Sales</a>
+                            <a href="{{ url('client/products/new-arrival') }}">New Arrivals</a>
+                            <a href="{{ url('client/products/trending') }}">Trending</a>
+                            <a href="{{ url('client/products/discount') }}">On Sales</a>
                         </div>
                         <div class="headerSmall__menuDrop-brands">
-                            <a href="">Dior</a>
-                            <a href="">Gucci</a>
-                            <a href="">Chanel</a>
-                            <a href="">Louis Vuiton</a>
+                            <a href="{{ url('client/products/dior') }}">Dior</a>
+                            <a href="{{ url('client/products/gucci') }}">Gucci</a>
+                            <a href="{{ url('client/products/channel') }}">Chanel</a>
+                            <a href="{{ url('client/products/louis-vuiton') }}">Louis Vuiton</a>
                         </div>
                         <div class="headerSmall__menuDrop-aboutUs">
-                            <a href="">Store</a>
-                            <a href="">Contact Us</a>
+                            <a href="{{ url('client/aboutUs') }}">Store</a>
+                            <a href="{{ url('client/aboutUs') }}">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -152,10 +158,12 @@
                                             <ion-icon name="remove-outline"></ion-icon>
                                         </button>
 
-                                        <div class="result1" class="header__cart-list-items-info-quantity-num">
+                                        <div class="result1 header__cart-list-items-info-quantity-num">
                                             {{ $item->Product_quantity }}</div>
 
                                         {{-- ++ --}}
+
+
                                         <button type="button" class="increase-quantity-btn"
                                             value="{{ $item->Product_Detail_ID }}">
                                             <ion-icon name="add-outline"></ion-icon>
@@ -179,7 +187,7 @@
 
                     <div class="header__cart-total">
                         <p><b>Total</b></p>
-                        <p class="total-price">${{$total_price}}</p>
+                        <p class="total-price">${{ $total_price }}</p>
                     </div>
                     <div class="header__cart-checkout">
                         <a href="{{ url('client/Cart') }}">Check Out</a>
@@ -187,11 +195,14 @@
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
-                        <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and play a game to collect a discounted up to 20% code</a>
+                        <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and
+                                play a game to collect a discounted up to 20% code</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhhai" to discount 10% on your bill</a>
+                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhhai" to
+                                discount 10% on your bill</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> New collection is coming soon</a>
+                        <div class="header__update-1"><a style="color: white" href=""> New collection is
+                                coming soon</a>
                         </div>
                     </div>
                 </div>
@@ -211,10 +222,14 @@
                         <a href="{{ url('client/myProfile') }}" class="userName">{{ $customer[0]->username }}</a>
                         <a class="iconHead" id="log">
                             {{-- <ion-icon name="person"></ion-icon> --}}
-                            @if($customer[0]->Avatar !== null)
-                            <div class="avatarUser" style="background-image:url('{{ asset('images/avatar/' . $customer[0]->Avatar) }}')"></div>
+                            @if ($customer[0]->Avatar !== null)
+                                <div class="avatarUser"
+                                    style="background-image:url('{{ asset('images/avatar/' . $customer[0]->Avatar) }}')">
+                                </div>
                             @else
-                            <div class="avatarUser" style="background-image:url('{{ asset('images/avatar/GOp5a-421-4212341_default-avatar-svg-h.jpg') }}')"></div>
+                                <div class="avatarUser"
+                                    style="background-image:url('{{ asset('images/avatar/GOp5a-421-4212341_default-avatar-svg-h.jpg') }}')">
+                                </div>
                             @endif
                         </a>
                         <a class="iconHead" id="showCart">
@@ -228,7 +243,6 @@
                     </div>
                 </div>
             @else
-            
                 <div id="openLog" class="header__log">
                     <div class="header__log-notSign">
                         <div class="header__log-notSign-signIn">
@@ -254,7 +268,7 @@
                                     <button>
                                         <ion-icon name="remove-outline"></ion-icon>
                                     </button>
-                                    <div class="header__cart-list-items-info-quantity-num">
+                                    <div class="">
                                     </div>
                                     <a>
                                         <ion-icon name="add-outline"></ion-icon>
@@ -282,11 +296,14 @@
                 </div>
                 <div class="header__update">
                     <div id="topUpdate" class="header__update-all">
-                        <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and play a game to collect a discounted up to 20% code</a>
+                        <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and
+                                play a game to collect a discounted up to 20% code</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhhai" to discount 10% on your bill</a>
+                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhhai" to
+                                discount 10% on your bill</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> New collection is coming soon</a>
+                        <div class="header__update-1"><a style="color: white" href=""> New collection is
+                                coming soon</a>
                         </div>
                     </div>
                 </div>
@@ -356,10 +373,11 @@
         </div> --}}
     </form>
 
-    <script src="{{ asset('javascript/client/header.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+
 
     <script>
+
+
         var result = document.querySelectorAll("div .result1");
         $(document).ready(function() {
 
@@ -414,8 +432,13 @@
                     }
                 })
             })
-        })
+        });
+
+
+
     </script>
+    <script src="{{ asset('javascript/client/header.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
 </body>
 
 

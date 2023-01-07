@@ -43,10 +43,10 @@ document.getElementById('dropdown3').onclick = function (e) {
 
 // topUpdate
 
-setInterval(function(){
+setInterval(function () {
     var update = document.querySelectorAll('.header__update-1');
     document.getElementById('topUpdate').appendChild(update[0]);
-},3000);
+}, 3000);
 
 
 // show log
@@ -92,7 +92,7 @@ dropMenu.onmouseover = function () {
 }
 dropMenu.onmouseout = function () {
     dropMenu.style.display = 'none';
-}
+};
 
 // scroll to show
 
@@ -118,4 +118,17 @@ window.addEventListener("scroll", function () {
     }
     prevScroll = currentScroll;
 
-})
+});
+
+// let mybutton = document.getElementById("scrollUp");
+
+window.onscroll = function () { scrollHeader() };
+
+function scrollHeader() {
+    if (document.documentElement.scrollTop > 112) {
+        document.getElementById('smallHeader').style.display = "block";
+    } else {
+        document.getElementById('smallHeader').style.display = "none";
+    }
+
+};

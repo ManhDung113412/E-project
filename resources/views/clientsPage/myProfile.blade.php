@@ -11,7 +11,8 @@
             <div class="container__info-top">
                 <div class="container__info-top-avatar ">
                     @if ($user[0]->Avatar !== null)
-                        <div class="container__info-top-avatar-img" style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
+                        <div class="container__info-top-avatar-img"
+                            style="background-image: url('{{ asset('images/avatar/' . $user[0]->Avatar) }}')">
                             {{-- <img class="uploaded_image" src="{{ asset('images/avatar/' . $user[0]->Avatar) }}" alt=""> --}}
                         @else
                             <div class="container__info-top-avatar-img"
@@ -99,7 +100,7 @@
                         <td>{{ $user[0]->Number_Phone }}</td>
                     </tr>
                     <tr>
-                        <th>DOB:</th>
+                        <th>DoB:</th>
                         <td>{{ $user[0]->Dob }}</td>
                     </tr>
                 @endif
@@ -150,7 +151,7 @@
         </div>
     </div>
     </div>
-    <div id="showEdit" class="container__edit ">
+    <form id="showEdit" class="container__edit ">
         <div class="editProfile">
             <div class="editProfile__title">Edit Profile</div>
             <div class="profile editProfile__content">
@@ -179,43 +180,43 @@
                 <ion-icon name="close-outline"></ion-icon>
             </button>
         </div>
-    </div>
+    </form>
     <form id="showChange" class="container__edit" action="{{ url('http://127.0.0.1:8000/client/changepassword') }}">
         @csrf
-        <div class=" ">
-            <div class="editProfile">
-                <div class="editProfile__title">Change Password</div>
-                <div class="profile editProfile__content">
-                    <div class="alert alert-danger print-error-msg" style="display:none">
-                        <ul></ul>
-                    </div>
-                    <input id="" type="password" value="" placeholder="  Current Password"
-                        name="current_pass">
-                    <small>
-                        @error('current_pass')
-                            {{ $message }}
-                        @enderror
-                    </small>
-                    <input id="" type="password" value="" placeholder="  New Password" name="new_pass">
-                    <small>
-                        @error('new_pass')
-                            {{ $message }}
-                        @enderror
-                    </small>
-                    <input id="" type="password" value="" placeholder="  Confirm New Password"
-                        name="Cnew_pass">
-                    <small>
-                        @error('Cnew_pass')
-                            {{ $message }}
-                        @enderror
-                    </small>
-                    <button id="" type="submit">Submit</button>
+        {{-- <div class=" "> --}}
+        <div class="editProfile">
+            <div class="editProfile__title">Change Password</div>
+            <div class="profile editProfile__content">
+                <div class="alert alert-danger print-error-msg" style="display:none">
+                    <ul></ul>
                 </div>
-                <button id="offChange" type="">
-                    <ion-icon name="close-outline"></ion-icon>
-                </button>
+                <input id="" type="password" value="" placeholder="  Current Password"
+                    name="current_pass">
+                <small>
+                    @error('current_pass')
+                        {{ $message }}
+                    @enderror
+                </small>
+                <input id="" type="password" value="" placeholder="  New Password" name="new_pass">
+                <small>
+                    @error('new_pass')
+                        {{ $message }}
+                    @enderror
+                </small>
+                <input id="" type="password" value="" placeholder="  Confirm New Password"
+                    name="Cnew_pass">
+                <small>
+                    @error('Cnew_pass')
+                        {{ $message }}
+                    @enderror
+                </small>
+                <button id="" type="submit">Submit</button>
             </div>
+            <button id="offChange" type="">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
         </div>
+        {{-- </div> --}}
     </form>
 
     <script src="{{ asset('javascript/client/profile.js') }}"></script>
@@ -286,7 +287,8 @@
                         $('#message').html(data.message);
                         $('#message').addClass(data.class_name);
                         // $(".uploaded_image").attr("src", data.avatar);
-                        $(".container__info-top-avatar-img").css("background-image", 'url('+data.avatar+')');
+                        $(".container__info-top-avatar-img").css("background-image", 'url(' +
+                            data.avatar + ')');
                     }
                 })
             })
