@@ -66,7 +66,7 @@ class clientLoginController extends Controller
             'first_name' => 'bail|required|max:30',
             'last_name'  => 'bail|required|max:30',
             'mail'  => 'bail|required|email|unique:users,Email',
-            'user_name'  => 'bail|required',
+            'user_name'  => 'bail|required|unique:users,username',
             'password'  => 'bail|required',
             'c_password'  => 'same:password',
         ];
@@ -78,6 +78,7 @@ class clientLoginController extends Controller
             'mail.unique' => 'This Email Has Already Exists',
             'regex' => 'Alphanumeric Characters And Must Be 8-20 Characters Long',
             'same'  => 'Must Match With Password'
+            ,'user_name.unique' => 'This username has been used'
         ];
 
         $request->validate($rules, $messages);
@@ -87,8 +88,8 @@ class clientLoginController extends Controller
                 'First_Name' => $request->first_name
                 ,'Last_Name'=> $request->last_name,
                 'Email'=> $request->mail,
-                'username' => $request->user_name, 'password'
-                => bcrypt($request->password), 'rank' => 1
+                'username' => $request->user_name, 'password'=> bcrypt($request->password)
+                , 'rank' => 'Normal'
             ]
         );
         Alert::success('resigtered successfully')->autoclose(2000);

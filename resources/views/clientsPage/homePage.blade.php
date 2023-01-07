@@ -234,6 +234,7 @@
             </a>
         </div>
     @endif
+    @if(Auth::guard('users')->check())
     <div id="openGame" class="PlayGame">
         <button id="openBoardGame" class="openBoardGame">
             <div>Play</div>
@@ -283,6 +284,7 @@
             </div>
         </div>
     </div>
+    @endif
     <script src="{{ asset('javascript/client/homepage.js') }}"></script>
     <script src="{{ asset('javascript/client/scrollUp.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
