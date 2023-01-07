@@ -25,7 +25,7 @@
                 </div>
                 <div class="headerSmall__right">
                         <a href="{{ url('client/myProfile') }}" class="">
-                            @if ($customer[0]->Avatar !== null)
+                            @if (!empty($customer[0]->Avatar))
                                 <div class="avatarUser"
                                     style="background-image:url('{{ asset('images/avatar/' . $customer[0]->Avatar) }}')">
                                 </div>
