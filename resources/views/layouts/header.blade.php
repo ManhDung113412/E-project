@@ -235,7 +235,7 @@
                             <a href="{{ url('client/login') }}">Sign In</a>
                         </div>
                         <div class="header__log-notSign-signUp">
-                            <a href="">Sign Up</a>
+                            <a href="{{ url('client/login') }}">Sign Up</a>
                         </div>
                     </div>
                 </div>

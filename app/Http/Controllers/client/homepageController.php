@@ -157,7 +157,7 @@ class homepageController extends Controller
                 'Status' => 'ON',
                 'Date_Start' => $today,
                 'Date_End' => $date_end,
-                'Temporary' => 1,
+                'Temporary' => 'Temporary',
             ]);
 
             User::where('id', $user_id)->update([
@@ -182,7 +182,7 @@ class homepageController extends Controller
             'Status' => 'ON',
             'Date_Start' => $today,
             'Date_End' => $date_end,
-            'Temporary' => 1,
+            'Temporary' => 'Temporary',
         ]);
 
         User::where('id', $user_id)->update([
