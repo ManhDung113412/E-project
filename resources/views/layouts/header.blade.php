@@ -47,25 +47,25 @@
                 <div id="showSmallMenu" class="headerSmall__menuDrop">
                     <div class="headerSmall__menuDrop-big">
                         <div class="headerSmall__menuDrop-categories">
-                            <a href="">Long Wallet</a>
-                            <a href="">Small Wallet</a>
-                            <a href="">Cards Holder</a>
-                            <a href="">Chain and Strap</a>
+                            <a href="{{ url('client/products/long-wallet') }}">Long Wallet</a>
+                            <a href="{{ url('client/products/small-wallet') }}">Small Wallet</a>
+                            <a href="{{ url('client/products/cards-holder') }}">Cards Holder</a>
+                            <a href="{{ url('client/products/chain-and-strap') }}">Chain and Strap</a>
                         </div>
                         <div class="headerSmall__menuDrop-collection">
-                            <a href="">New Arrivals</a>
-                            <a href="">Trending</a>
-                            <a href="">On Sales</a>
+                            <a href="{{ url('client/products/new-arrival') }}">New Arrivals</a>
+                            <a href="{{ url('client/products/trending') }}">Trending</a>
+                            <a href="{{ url('client/products/discount') }}">On Sales</a>
                         </div>
                         <div class="headerSmall__menuDrop-brands">
-                            <a href="">Dior</a>
-                            <a href="">Gucci</a>
-                            <a href="">Chanel</a>
-                            <a href="">Louis Vuiton</a>
+                            <a href="{{ url('client/products/dior') }}">Dior</a>
+                            <a href="{{ url('client/products/gucci') }}">Gucci</a>
+                            <a href="{{ url('client/products/channel') }}">Chanel</a>
+                            <a href="{{ url('client/products/louis-vuiton') }}">Louis Vuiton</a>
                         </div>
                         <div class="headerSmall__menuDrop-aboutUs">
-                            <a href="">Store</a>
-                            <a href="">Contact Us</a>
+                            <a href="{{ url('client/aboutUs') }}">Store</a>
+                            <a href="{{ url('client/aboutUs') }}">Contact Us</a>
                         </div>
                     </div>
                 </div>
