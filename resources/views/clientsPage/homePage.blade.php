@@ -254,7 +254,9 @@
             <button id="startGame">Play</button>
         </div>
         <div class="title">
-            <div class="gameTitle">PURSELLET GAME</div>
+            <div class="gameTitle">
+                <div>PURSELLET GAME</div>
+            </div>
             <div class="title__left">
                 <ion-icon name="alarm-outline"></ion-icon>
                 <div id="time" class="timerCount"></div>
