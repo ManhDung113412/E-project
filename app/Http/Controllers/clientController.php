@@ -50,12 +50,12 @@ class clientController extends Controller
                 )
                 ->groupBy('Order_Code', 'Status', 'created_at', 'First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code')
                 ->where('u.id', $user_id)
-                ->orderBy('o.created_at','DESC')
+                ->orderBy('o.created_at', 'DESC')
                 ->get();
         } else {
             $user = DB::table('users As u')
                 ->where('u.id', $user_id)
-                ->select('First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code','Avatar')
+                ->select('First_Name', 'Last_Name', 'username', 'Dob', 'Email', 'Number_Phone', 'Rank', 'Code', 'Avatar')
                 ->get();
         }
         // dd($user);
@@ -101,9 +101,15 @@ class clientController extends Controller
 
     public function editAvatar(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'select_file' => 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'select_file' => 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
+            ],
+            [
+                'select_file.required' => 'You must choose your file'
+            ]
+        );
 
         $user_id = Auth::guard('users')->id();
 
@@ -127,7 +133,7 @@ class clientController extends Controller
             $avatar = $user[0]->Avatar;
 
             return response()->json([
-                'message' => 'Avatar Upload Successfully',
+                'message' => 'Avatar is uploaded successfully',
                 'uploaded_image' => 'ok',
                 'class_name' => 'alert-success',
                 'avatar' => 'http://127.0.0.1:8000/images/avatar/' . $avatar,
