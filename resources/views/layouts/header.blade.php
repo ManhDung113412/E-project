@@ -11,6 +11,60 @@
 
 <body>
     <form action="">
+        <div id="smallHeader" class="headerSmall ">
+            <div class="headerSmallBig">
+                <div class="headerSmall__logo">
+                    <a href="">PURSELLET</a>
+                </div>
+                <div id="dropSmallMenu" class="headerSmall__menu">
+                    <div><a href="">Home</a></div>
+                    <div>Categories</div>
+                    <div>Collection</div>
+                    <div>Brands</div>
+                    <div><a href="">About Us</a></div>
+                </div>
+                <div class="headerSmall__right">
+                    <a href="{{ url('client/myProfile') }}" class=""></a>
+                    <a class="" >
+                        <ion-icon name="person"></ion-icon>
+
+                    </a>
+                    <a class="" >
+                        <div class=""></div>
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </a>
+                    <a href="{{ url('client/wishList') }}" class="">
+                        <div class=""></div>
+                        <ion-icon name="heart-outline"></ion-icon>
+                    </a>
+                </div>
+                <div id="showSmallMenu" class="headerSmall__menuDrop">
+                    <div class="headerSmall__menuDrop-big">
+                        <div class="headerSmall__menuDrop-categories">
+                            <a href="">Long Wallet</a>
+                            <a href="">Small Wallet</a>
+                            <a href="">Cards Holder</a>
+                            <a href="">Chain and Strap</a>
+                        </div>
+                        <div class="headerSmall__menuDrop-collection">
+                            <a href="">New Arrivals</a>
+                            <a href="">Trending</a>
+                            <a href="">On Sales</a>
+                        </div>
+                        <div class="headerSmall__menuDrop-brands">
+                            <a href="">Dior</a>
+                            <a href="">Gucci</a>
+                            <a href="">Chanel</a>
+                            <a href="">Louis Vuiton</a>
+                        </div>
+                        <div class="headerSmall__menuDrop-aboutUs">
+                            <a href="">Store</a>
+                            <a href="">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="header">
             <div id="header__side" class="">
                 <div class="header__sideBar">

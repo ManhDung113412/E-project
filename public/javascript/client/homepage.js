@@ -20,20 +20,15 @@ setInterval(function () {
 
 document.getElementById("nextNew").onclick = function (e) {
     e.preventDefault();
-    let colLists = document.querySelectorAll(
-        ".container__newArrivals-collection-list"
-    );
+    let colLists = document.querySelectorAll(".container__newArrivals-collection-list");
     document.getElementById("colListNew").appendChild(colLists[0]);
+
 };
 
 document.getElementById("prevNew").onclick = function (e) {
     e.preventDefault();
-    let colLists = document.querySelectorAll(
-        ".container__newArrivals-collection-list"
-    );
-    document
-        .getElementById("colListNew")
-        .prepend(colLists[colLists.length - 1]);
+    let colLists = document.querySelectorAll(".container__newArrivals-collection-list");
+    document.getElementById("colListNew").prepend(colLists[colLists.length - 1]);
 };
 
 // play game
