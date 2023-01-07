@@ -9,8 +9,8 @@
             <ul>
                 <h3>My Account</h3>
                 <li><a href="http://127.0.0.1:8000/client/login">Sign in/Sign up</a></li>
-                <li><a href="">My Wish List</a></li>
-                <li><a href="">My Shopping Cart</a></li>
+                <li><a href="http://127.0.0.1:8000/client/wishList">My Wish List</a></li>
+                <li><a href="http://127.0.0.1:8000/client/Cart">My Shopping Cart</a></li>
             </ul>
             <ul>
                 <h3>Service</h3>

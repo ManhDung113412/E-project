@@ -13,7 +13,9 @@ use RealRashid\SweetAlert\SweetAlertServiceProvider;
 class EmailController extends Controller
 {
     public function getRecoverPassword(){
-        return view('clientsPage.changePassword');
+        $slide = DB::table('brand_collections')
+        ->get();
+        return view('clientsPage.changePassword',['img'=>$slide]);
     }
 
     public function postRecoverPassword(Request $req){
