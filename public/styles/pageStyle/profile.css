@@ -510,7 +510,7 @@ table tr th {
     top: 180px;
     border-radius: 12px;
     background-color: rgb(255, 255, 255);
-    overflow: hidden;
+    /* overflow: hidden; */
     display: none;
     transition: 0.3s ease-in-out;
 
@@ -530,7 +530,7 @@ table tr th {
     margin-left: 30px;
     z-index: 1;
     background-color: #e4e4e4;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: 7px;
     display: flex;
     flex-direction: row;
@@ -605,6 +605,7 @@ table tr th {
 
 .formAvatar .alert {
     color: red;
+    margin-left: 30px;
 }
 
 @keyframes changeAvatar {
