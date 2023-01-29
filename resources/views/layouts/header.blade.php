@@ -198,8 +198,8 @@
                         <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and
                                 play a game to collect a discounted up to 20% code</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhhai" to
-                                discount 10% on your bill</a>
+                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhkhoa" to
+                                discount 20% on your bill</a>
                         </div>
                         <div class="header__update-1"><a style="color: white" href=""> New collection is
                                 coming soon</a>
@@ -299,8 +299,8 @@
                         <div class="header__update-1"><a style="color: white" href=""> UPDATE: Sign in and
                                 play a game to collect a discounted up to 20% code</a>
                         </div>
-                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhhai" to
-                                discount 10% on your bill</a>
+                        <div class="header__update-1"><a style="color: white" href=""> Use code "bananhkhoa" to
+                                discount 20% on your bill</a>
                         </div>
                         <div class="header__update-1"><a style="color: white" href=""> New collection is
                                 coming soon</a>

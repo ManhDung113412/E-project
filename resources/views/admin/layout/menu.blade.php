@@ -38,9 +38,9 @@
             <li>
                 <a href="{{ route('admin.dashboard.user-by-day') }}">User</a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin.dashboard.trending-product') }}">Trending Product</a>
-            </li>
+            </li> --}}
         </ul>
         <!-- /.nav-second-level -->
     </li>

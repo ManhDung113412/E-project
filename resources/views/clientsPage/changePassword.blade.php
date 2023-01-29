@@ -14,8 +14,7 @@
     @include('sweetalert::alert')
     <div class="frm" action="">
         <div class="container">
-            <form action="" id="signInForm" method="POST"
-                class="container__signIn active">
+            <form action="" id="signInForm" method="POST" class="container__signIn active">
                 @csrf
                 <div class="container__signIn-tittle">Find Your Password</div>
                 <div class="container__signIn-text">Enter your username then we will send password to your email </div>
@@ -34,8 +33,8 @@
                     <button id="" type="submit">Submit</button>
                 </div>
                 <div class="container__signIn-change">
-                    <a id="toRegister" href="http://127.0.0.1:8000/client/login">Sign In</a>
-                </div>
+                    <a href="http://127.0.0.1:8000/client/login">Sign In</a>
+                </div>`
             </form>
         </div>
         <div id="abc" class="slideShow">
@@ -48,4 +47,5 @@
     </div>
 </body>
 <script src="{{ asset('javascript/client/loginNew.js') }}"></script>
+
 </html>
